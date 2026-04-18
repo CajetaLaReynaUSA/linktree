@@ -1,0 +1,72 @@
+/* Variables de color basadas en tus fotos */
+:root {
+    --crema: #FDF5E6;
+    --cobre: #B87333;
+    --cafe: #4B2E1D;
+    --blanco: #FFFFFF;
+}
+
+body {
+    background-color: var(--crema);
+    color: var(--cafe);
+    font-family: 'Source Sans Pro', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    padding: 20px;
+}
+
+header h1 {
+    font-family: 'Playfair Display', serif;
+    margin-top: 15px;
+    font-size: 1.8rem;
+}
+
+.placeholder-logo {
+    font-size: 50px;
+    background: var(--blanco);
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    border-radius: 50%;
+    margin: 0 auto;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.links {
+    margin-top: 30px;
+}
+
+.btn-link {
+    background-color: var(--cobre);
+    color: var(--blanco);
+    text-decoration: none;
+    display: block;
+    padding: 16px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: transform 0.2s, background-color 0.2s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.btn-link:hover {
+    transform: translateY(-3px);
+    background-color: #a0632d;
+}
+
+.btn-link.secondary {
+    background-color: transparent;
+    border: 2px solid var(--cobre);
+    color: var(--cobre);
+    box-shadow: none;
+}
