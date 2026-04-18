@@ -1,72 +1,89 @@
-/* Variables de color basadas en tus fotos */
+/* Paleta refinada: Cobre, Crema de Leche y Carbón */
 :root {
-    --crema: #FDF5E6;
-    --cobre: #B87333;
-    --cafe: #4B2E1D;
-    --blanco: #FFFFFF;
+    --fondo-texturizado: #F4ECE1; /* Un crema más rústico */
+    --cobre-quemado: #8E442D;    /* Un tono más profundo de cazo usado */
+    --tinta-vieja: #2C1E1A;      /* Marrón casi negro para textos */
+    --borde-artesanal: #D9C5B2;  /* Color arena para separar secciones */
 }
 
 body {
-    background-color: var(--crema);
-    color: var(--cafe);
-    font-family: 'Source Sans Pro', sans-serif;
+    background-color: var(--fondo-texturizado);
+    /* Agregamos un patrón sutil que parezca papel artesanal o tela */
+    background-image: url("https://www.transparenttextures.com/patterns/felt.png"); 
+    color: var(--tinta-vieja);
+    font-family: 'Georgia', serif;
     margin: 0;
-    padding: 0;
+    padding: 40px 20px;
     display: flex;
     justify-content: center;
-    align-items: center;
-    min-height: 100vh;
 }
 
 .container {
-    width: 90%;
-    max-width: 400px;
+    max-width: 500px;
+    width: 100%;
+}
+
+header {
     text-align: center;
-    padding: 20px;
+    border-bottom: 2px solid var(--cobre-quemado);
+    padding-bottom: 30px;
+    margin-bottom: 40px;
 }
 
 header h1 {
     font-family: 'Playfair Display', serif;
-    margin-top: 15px;
-    font-size: 1.8rem;
+    font-size: 2.2rem;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
-.placeholder-logo {
-    font-size: 50px;
-    background: var(--blanco);
-    width: 80px;
-    height: 80px;
-    line-height: 80px;
-    border-radius: 50%;
-    margin: 0 auto;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+/* El "Menú" Artesanal */
+.links-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
 }
 
-.links {
-    margin-top: 30px;
-}
-
-.btn-link {
-    background-color: var(--cobre);
-    color: var(--blanco);
+.menu-item {
+    display: flex;
+    align-items: center;
     text-decoration: none;
+    color: var(--tinta-vieja);
+    border: 1px solid var(--borde-artesanal);
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.4);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* El efecto visual: al pasar el mouse parece una etiqueta premium */
+.menu-item:hover {
+    background: white;
+    border-color: var(--cobre-quemado);
+    transform: translateX(10px);
+}
+
+.item-info {
+    flex-grow: 1;
+}
+
+.item-title {
     display: block;
-    padding: 16px;
-    margin-bottom: 15px;
-    border-radius: 12px;
-    font-weight: 600;
-    transition: transform 0.2s, background-color 0.2s;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--cobre-quemado);
+    text-transform: lowercase; /* Estilo de marca moderna/artesanal */
+    font-variant: small-caps;
 }
 
-.btn-link:hover {
-    transform: translateY(-3px);
-    background-color: #a0632d;
+.item-desc {
+    font-size: 0.9rem;
+    font-style: italic;
+    opacity: 0.8;
 }
 
-.btn-link.secondary {
-    background-color: transparent;
-    border: 2px solid var(--cobre);
-    color: var(--cobre);
-    box-shadow: none;
+.arrow {
+    font-size: 1.5rem;
+    color: var(--cobre-quemado);
 }
