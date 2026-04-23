@@ -3,159 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cajeta Artesanal - Landing Page</title>
+    <title>Cajeta Artesanal - Catálogo</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --color-principal: #8B2E16; /* El tono rojizo de la nueva imagen */
-            --color-acento: #F9A825;    /* Naranja para resaltar */
-            --color-texto-claro: #FFF8E1;
-            --color-fondo-oscuro: #2b120a;
+            --color-fondo-top: #8B2E16; /* El marrón rojizo de la parte superior de tu foto */
+            --color-principal: #8B2E16;
+            --color-acento: #F9A825;
+            --blanco: #ffffff;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body, html {
             height: 100%;
             font-family: 'Open Sans', sans-serif;
-            background-color: var(--color-fondo-oscuro);
+            background-color: #1a0a05; /* Fondo externo muy oscuro */
         }
 
-        /* --- EFECTO FONDO DESENFOCADO (PARA COMPUTADORA) --- */
+        /* FONDO DESENFOCADO (PC) */
         .bg-blurred {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
-            background-image: url('https://res.cloudinary.com/dlylomauh/image/upload/v1776970323/Dise%C3%B1o_sin_t%C3%ADtulo_7_gjtxjl.jpg'); 
+            background-image: url('https://res.cloudinary.com/dlylomauh/image/upload/v1776971107/Dise%C3%B1o_sin_t%C3%ADtulo_7_cbkuhu.webp');
             background-size: cover;
             background-position: center;
-            filter: blur(25px) brightness(0.5);
+            filter: blur(30px) brightness(0.4);
             transform: scale(1.1);
         }
 
-        /* --- CONTENEDOR CENTRAL (MÓVIL) --- */
+        /* CONTENEDOR TIPO "SMARTPHONE" */
         .main-card {
             position: relative;
-            max-width: 500px;
+            max-width: 500px; /* Ancho máximo para que parezca móvil en PC */
             min-height: 100vh;
             margin: 0 auto;
-            background-image: url('https://res.cloudinary.com/dlylomauh/image/upload/v1776970323/Dise%C3%B1o_sin_t%C3%ADtulo_7_gjtxjl.jpg'); /* Imagen nítida */
-            background-size: cover;
-            background-position: center;
+            
+            /* AJUSTE DE IMAGEN PARA QUE ENTRE COMPLETA */
+            background-image: url('https://res.cloudinary.com/dlylomauh/image/upload/v1776971107/Dise%C3%B1o_sin_t%C3%ADtulo_7_cbkuhu.webp');
+            background-size: 100% auto; /* Forzamos a que el ancho sea el 100% */
+            background-repeat: no-repeat;
+            background-position: center bottom; /* Las botellas se quedan pegadas abajo */
+            background-color: var(--color-fondo-top); /* Rellena la parte de arriba si la pantalla es muy larga */
+
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            padding: 40px 25px;
-            box-shadow: 0 0 60px rgba(0,0,0,0.8);
+            justify-content: flex-start; /* Empujamos el contenido hacia arriba */
+            padding: 50px 25px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.7);
             text-align: center;
-            color: white;
         }
 
-        /* --- TÍTULOS (ESTILO PILL) --- */
-        .header {
-            width: 100%;
-            margin-top: 20px;
-        }
+        /* ESTILOS DE TEXTO */
+        .header { margin-bottom: 30px; }
 
         .main-title {
-            background-color: var(--color-principal);
-            color: white;
-            padding: 12px 25px;
+            background-color: var(--color-acento);
+            color: var(--color-principal);
+            padding: 12px 30px;
             border-radius: 50px;
             font-family: 'Montserrat', sans-serif;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             display: inline-block;
-            margin-bottom: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             text-transform: uppercase;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
         .sub-title {
-            background-color: white;
+            background-color: var(--blanco);
             color: var(--color-principal);
             padding: 8px 20px;
             border-radius: 50px;
             font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 800;
             display: inline-block;
+            margin-top: 10px;
             text-transform: uppercase;
         }
 
-        /* --- BOTONES --- */
+        /* BOTONES */
         .button-group {
             width: 100%;
             display: flex;
             flex-direction: column;
             gap: 12px;
-            margin: 20px 0;
+            margin-top: 20px;
+            z-index: 2;
         }
 
         .btn {
-            background: rgba(255, 248, 225, 0.9); /* Crema semi-transparente */
+            background: rgba(255, 255, 255, 0.9);
             color: var(--color-principal);
-            padding: 15px;
-            border-radius: 12px;
+            padding: 14px;
+            border-radius: 15px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 1rem;
             transition: 0.3s;
-            border: 2px solid transparent;
             backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.3);
         }
 
         .btn:hover {
-            background: var(--color-principal);
+            background: var(--color-acento);
             color: white;
-            border: 2px solid white;
-            transform: translateY(-3px);
+            transform: scale(1.02);
         }
 
-        /* --- REDES SOCIALES --- */
-        .social-container {
-            display: flex;
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .social-icon {
-            color: white;
-            font-size: 1.8rem;
-            transition: 0.3s;
-        }
-
-        .social-icon:hover {
-            color: var(--color-acento);
-        }
-
-        /* --- FOOTER / DISCLAIMER --- */
-        .footer {
+        /* REDES Y FOOTER */
+        .social-icons {
             margin-top: 30px;
-            font-size: 0.75rem;
-            opacity: 0.8;
-            background: rgba(0,0,0,0.5);
-            padding: 15px;
-            border-radius: 15px;
-            line-height: 1.4;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
         }
 
-        /* RESPONSIVO */
+        .social-icons i {
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .disclaimer {
+            margin-top: auto; /* Empuja el disclaimer al fondo, sobre las botellas o justo arriba */
+            padding-top: 40px;
+            color: white;
+            font-size: 0.7rem;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+        }
+
         @media (max-width: 600px) {
-            .main-card {
-                max-width: 100%;
-            }
-            .bg-blurred {
-                display: none;
-            }
+            .main-card { max-width: 100%; box-shadow: none; }
+            .bg-blurred { display: none; }
         }
     </style>
 </head>
@@ -166,30 +146,26 @@
     <div class="main-card">
         
         <div class="header">
-            <h1 class="main-title">Nuestra Variedad</h1>
+            <h1 class="main-title">Cajeta de Celaya</h1>
             <br>
-            <h2 class="sub-title">Sabor Artesanal de Celaya</h2>
-        </div>
-
-        <div style="margin-top: 20px;">
-            <p style="font-style: italic; font-size: 0.9rem;">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor."</p>
+            <h2 class="sub-title">Variedad Artesanal</h2>
         </div>
 
         <div class="button-group">
-            <a href="#" class="btn">Botón 1: Lorem Ipsum</a>
-            <a href="#" class="btn">Botón 2: Consectetur</a>
-            <a href="#" class="btn">Botón 3: Adipiscing Elit</a>
-            <a href="#" class="btn">Botón 4: Sed Do Eiusmod</a>
+            <a href="#" class="btn">Conoce nuestros sabores</a>
+            <a href="#" class="btn">Puntos de Venta</a>
+            <a href="#" class="btn">Pedidos por WhatsApp</a>
+            <a href="#" class="btn">Nuestra Historia</a>
         </div>
 
-        <div class="social-container">
-            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
         </div>
 
-        <div class="footer">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula.</p>
-            <p style="margin-top: 10px; font-weight: bold;">Distribuido por: Nombre de la Empresa o Marca</p>
+        <div class="disclaimer">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p style="font-weight: bold; margin-top: 5px;">Distribuido por: Tu Marca Aquí</p>
         </div>
 
     </div>
