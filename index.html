@@ -104,7 +104,7 @@
         }
 
         .btn {
-            background: rgba(255, 255, 255, 0.95);
+            background: #FFFFFF;
             color: var(--cafe-oscuro);
             text-decoration: none;
             padding: 14px;
@@ -113,13 +113,15 @@
             font-weight: 700;
             text-align: center;
             transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15); 
+            border: 1px solid rgba(255,255,255,0.8); /* Un borde sutil para dar brillo */
         }
 
         .btn:hover {
-            background: var(--cafe-oscuro);
-            color: white;
-            transform: translateY(-2px);
+            background: var(--naranja-brillante); 
+            color: var(--cafe-oscuro); /* El texto queda oscuro para legibilidad */
+            transform: translateY(-3px) scale(1.02); /* Sube un poco más y crece */
+            box-shadow: 0 10px 25px rgba(249, 168, 37, 0.4); /* Sombra naranja brillante */
         }
 
         /* FOOTER (RE-POSICIONADO PARA NO PISAR LAS BOTELLAS) */
