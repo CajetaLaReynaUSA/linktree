@@ -2,163 +2,149 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Cajeta de Celaya - Artesanal</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cajeta La Reyna - Gourmet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --naranja-premium: #e69127;
-            --cafe-profundo: #4a1d0f;
-            --crema-claro: #f8f1e9;
-            --blanco: #ffffff;
+            --naranja: #e69127;
+            --cafe: #4a1d0f;
+            --crema: #fdf5eb;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body, html {
             height: 100%;
             width: 100%;
-            font-family: 'Montserrat', sans-serif;
             background-color: #1a0a05;
+            font-family: 'Montserrat', sans-serif;
             display: flex;
             justify-content: center;
-            overflow: hidden; /* Evita scroll innecesario en la landing */
         }
 
-        /* FONDO DESENFOCADO (Solo visible en Desktop) */
+        /* FONDO DESENFOCADO PARA PC */
         .desktop-bg {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: 1;
-            background: url('https://res.cloudinary.com/dlylomauh/image/upload/v1776971107/Dise%C3%B1o_sin_t%C3%ADtulo_7_cbkuhu.webp') center center / cover no-repeat;
-            filter: blur(40px) brightness(0.3);
+            background: url('https://res.cloudinary.com/dlylomauh/image/upload/v1776971107/Dise%C3%B1o_sin_t%C3%ADtulo_7_cbkuhu.webp') center bottom / cover no-repeat;
+            filter: blur(50px) brightness(0.3);
             transform: scale(1.1);
         }
 
-        /* CONTENEDOR PRINCIPAL (EL "TELÉFONO" VISUAL) */
+        /* CONTENEDOR PRINCIPAL */
         .main-container {
             position: relative;
             z-index: 2;
             width: 100%;
-            max-width: 450px; /* Ancho estándar de móvil profesional */
-            height: 100dvh; /* Altura dinámica del visor */
-            background: url('https://res.cloudinary.com/dlylomauh/image/upload/v1776971107/Dise%C3%B1o_sin_t%C3%ADtulo_7_cbkuhu.webp') no-repeat;
-            background-size: 100% 100%; /* FUERZA el ajuste total a la pantalla */
-            background-position: center;
+            max-width: 430px; /* Ancho de un iPhone Pro Max */
+            height: 100vh;
+            background: url('https://res.cloudinary.com/dlylomauh/image/upload/v1776971107/Dise%C3%B1o_sin_t%C3%ADtulo_7_cbkuhu.webp') center bottom / cover no-repeat;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 10% 30px;
             box-shadow: 0 0 100px rgba(0,0,0,0.8);
+            padding: 12% 25px 5% 25px;
+            overflow: hidden;
         }
 
-        /* CABECERA (Títulos refinados) */
-        .header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
+        /* CABECERA PROFESIONAL */
+        .header { text-align: center; margin-bottom: 30px; }
 
         .main-title {
-            background: var(--naranja-premium);
-            color: var(--cafe-profundo);
-            padding: 10px 15px;
-            border-radius: 40px;
-            font-size: 1.4rem;
-            font-weight: 800;
+            background: var(--naranja);
+            color: var(--cafe);
+            padding: 10px 40px;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: 600;
             letter-spacing: 2px;
             text-transform: uppercase;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            margin-bottom: 12px;
             display: inline-block;
         }
 
         .sub-title {
-            color: var(--blanco);
-            font-size: 0.9rem;
-            font-weight: 300;
-            letter-spacing: 5px;
+            color: white;
+            font-family: 'Playfair Display', serif; /* Toque gourmet */
+            font-size: 1.1rem;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            margin-top: 15px;
             display: block;
-            border-bottom: 1px solid rgba(255,255,255,0.3);
-            padding-bottom: 5px;
+            opacity: 0.9;
         }
 
-        /* GRUPO DE BOTONES (Más pequeños y elegantes) */
+        /* BOTONES ESTILIZADOS */
         .nav-links {
             width: 100%;
-            max-width: 280px; /* Botones más compactos */
+            max-width: 260px; /* Más estrechos = más elegante */
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            margin-top: 20px;
+            gap: 10px;
         }
 
         .btn {
-            background: rgba(248, 241, 233, 0.95);
-            color: var(--cafe-profundo);
+            background: rgba(253, 245, 235, 0.95);
+            color: var(--cafe);
             text-decoration: none;
-            padding: 12px 20px;
+            padding: 12px 15px;
             border-radius: 12px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
             text-align: center;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255,255,255,0.5);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            border: 1px solid rgba(255,255,255,0.4);
         }
 
         .btn:hover {
-            background: var(--cafe-profundo);
-            color: var(--blanco);
+            background: var(--cafe);
+            color: white;
             transform: translateY(-2px);
         }
 
-        /* FOOTER (Logos + Distribuidor) */
-        .footer-section {
-            margin-top: auto; /* Empuja todo al final */
-            width: 100%;
-            padding-bottom: 20px;
+        /* FOOTER (RE-POSICIONADO) */
+        .footer-content {
+            margin-top: auto; /* Lo manda abajo */
+            margin-bottom: 25%; /* SUBIMOS LOS ICONOS para que no pisen las botellas */
             text-align: center;
+            width: 100%;
         }
 
         .social-icons {
             display: flex;
             justify-content: center;
-            gap: 25px;
-            margin-bottom: 15px;
+            gap: 30px;
+            margin-bottom: 10px;
         }
 
         .social-icons a {
-            color: var(--blanco);
-            font-size: 1.6rem;
-            transition: opacity 0.3s;
+            color: white;
+            font-size: 1.5rem;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
         }
 
-        .social-icons a:hover {
-            opacity: 0.7;
-        }
-
-        .distributor-text {
-            color: var(--blanco);
-            font-size: 0.7rem;
-            font-weight: 400;
-            letter-spacing: 1px;
+        .distributor {
+            color: white;
+            font-size: 0.65rem;
             text-transform: uppercase;
-            opacity: 0.9;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            letter-spacing: 1.5px;
+            opacity: 0.8;
+            margin-top: 5px;
         }
 
-        /* Ajuste para pantallas muy pequeñas */
-        @media (max-height: 700px) {
+        /* AJUSTES PARA PANTALLAS PEQUEÑAS */
+        @media (max-height: 750px) {
+            .footer-content { margin-bottom: 30%; } /* Sube más los iconos en pantallas cortas */
             .main-title { font-size: 1.1rem; }
             .nav-links { gap: 8px; }
-            .btn { padding: 10px; font-size: 0.8rem; }
+        }
+
+        @media (max-width: 600px) {
+            .desktop-bg { display: none; }
+            .main-container { max-width: 100%; box-shadow: none; }
         }
     </style>
 </head>
@@ -168,10 +154,10 @@
 
     <main class="main-container">
         
-        <div class="header">
+        <header class="header">
             <h1 class="main-title">Cajeta de Celaya</h1>
             <span class="sub-title">Variedad Artesanal</span>
-        </div>
+        </header>
 
         <nav class="nav-links">
             <a href="#" class="btn">Nuestros Sabores</a>
@@ -180,12 +166,12 @@
             <a href="#" class="btn">Nuestra Historia</a>
         </nav>
 
-        <div class="footer-section">
+        <div class="footer-content">
             <div class="social-icons">
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
             </div>
-            <p class="distributor-text">Distribuido por: Tu Marca Aquí</p>
+            <p class="distributor">Distribuido por: Tu Marca Aquí</p>
         </div>
 
     </main>
