@@ -16,6 +16,38 @@
       --blanco: #ffffff;
     }
 
+    .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.12);
+    color: var(--blanco);
+    text-decoration: none;
+    padding: 11px 16px;
+    border-radius: 14px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 26px;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: 0.25s ease;
+  }
+  
+  .back-btn:hover {
+    background: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+  }
+
+.subtitle {
+  margin-top: 14px;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--naranja);
+  font-weight: 800;
+}
+    
+
     * {
       margin: 0;
       padding: 0;
@@ -109,26 +141,6 @@
     .intro p {
       font-size: 0.88rem;
       line-height: 1.45;
-    }
-
-    .did-you-know {
-      background: rgba(249,168,37,0.95);
-      color: var(--cafe);
-      border-radius: 18px;
-      padding: 15px 16px;
-      margin: 24px 0;
-      font-size: 0.88rem;
-      line-height: 1.35;
-      box-shadow: 0 8px 22px rgba(0,0,0,0.16);
-    }
-
-    .did-you-know strong {
-      display: block;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.9rem;
-      margin-bottom: 4px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
     }
 
     .section-title {
@@ -240,12 +252,12 @@
   <div class="desktop-bg"></div>
 
   <main class="page">
-    <a class="top-link" href="index.html">← Volver</a>
+    <a class="back-btn" href="index.html">← Volver</a>
 
     <header>
       <span class="script">Guía de</span>
       <h1>Sabores</h1>
-      <p class="subtitle">Encuentra tu cajeta ideal</p>
+      <p class="subtitle">100 años de experiencia familiar</p>
     </header>
 
     <section class="intro">
@@ -255,11 +267,6 @@
         intenso o diferente. Empieza por el perfil que más va contigo.
       </p>
     </section>
-
-    <div class="did-you-know">
-      <strong>¿Sabías qué?</strong>
-      La cajeta es una tradición originaria de Celaya, Guanajuato. La Reyna es producida e importada desde México.
-    </div>
 
     <h2 class="section-title">Para empezar</h2>
     <section class="flavor-grid">
@@ -302,11 +309,6 @@
         </div>
       </article>
     </section>
-
-    <div class="did-you-know">
-      <strong>Tradición con variedad</strong>
-      Los sabores no buscan reemplazar la cajeta clásica: son formas distintas de disfrutar una base mexicana tradicional.
-    </div>
 
     <h2 class="section-title">Para sabores intensos</h2>
     <section class="flavor-grid">
