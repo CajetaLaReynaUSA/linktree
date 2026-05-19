@@ -16,6 +16,56 @@
       --blanco: #ffffff;
     }
 
+    .flavor-card {
+      background: var(--crema);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.2);
+    
+      transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+    }
+    
+    .flavor-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.28);
+    }
+    
+    .flavor-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    
+      transition:
+        transform 0.45s ease;
+    }
+    
+    .flavor-card:hover .flavor-img img {
+      transform: scale(1.04);
+    }
+    
+    .buy-btn {
+      display: block;
+      background: var(--cafe);
+      color: var(--blanco);
+      text-align: center;
+      text-decoration: none;
+      padding: 10px;
+      border-radius: 12px;
+      font-size: 0.74rem;
+      font-weight: 800;
+    
+      transition:
+        background 0.25s ease,
+        transform 0.25s ease;
+    }
+    
+    .buy-btn:hover {
+      background: #2f1209;
+      transform: translateY(-2px);
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -103,26 +153,6 @@
       color: var(--naranja);
       font-weight: 800;
       text-align: center;
-    }
-
-    .intro {
-      background: rgba(255,255,255,0.95);
-      border-radius: 20px;
-      padding: 18px;
-      margin-bottom: 24px;
-      text-align: center;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
-    }
-
-    .intro h2 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.15rem;
-      margin-bottom: 8px;
-    }
-
-    .intro p {
-      font-size: 0.88rem;
-      line-height: 1.45;
     }
 
     .section-title {
@@ -260,15 +290,6 @@
       </p>
     </header>
 
-    <section class="intro">
-      <h2>Una cajeta para cada gusto</h2>
-
-      <p>
-        Desde sabores tradicionales hasta perfiles más intensos y premium.
-        Explora la colección y encuentra cuál va contigo.
-      </p>
-    </section>
-
     <!-- TRADICIONALES -->
 
     <h2 class="section-title">Las tradicionales</h2>
@@ -321,14 +342,14 @@
 
       <article class="flavor-card">
         <div class="flavor-img">
-          <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1779196299/CAJ-FRE-360_Foto-Frontal_1_rykgc2.jpg" alt="Cajeta de Fresa La Reyna">
+          <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1779224214/copy_of_caj-fre-360_foto-frontal_1_rykgc2.webp" alt="Cajeta de Fresa La Reyna">
         </div>
 
         <div class="flavor-content">
           <h3>Fresa</h3>
 
           <p>
-            Inspirada en las famosas fresas de Irapuato. Dulce, divertida y perfecta para desayunos.
+            Elaborada con fresas de Irapuato, 100% guanajuatense
           </p>
 
           <a class="buy-btn" href="#">
