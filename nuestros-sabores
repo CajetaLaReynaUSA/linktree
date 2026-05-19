@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guía de Sabores | Cajeta La Reyna</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@800;900&family=Open+Sans:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --naranja: #f9a825;
+      --cafe: #4a1d0f;
+      --cafe-profundo: #1a0a05;
+      --crema: #fff8ef;
+      --blanco: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--cafe-profundo);
+      font-family: 'Open Sans', sans-serif;
+      color: var(--cafe);
+      display: flex;
+      justify-content: center;
+    }
+
+    .desktop-bg {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle, #7b2c12 0%, #1a0a05 60%);
+      filter: blur(30px);
+      z-index: 0;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 430px;
+      min-height: 100dvh;
+      background: linear-gradient(180deg, #cf441c 0%, #7a1f0b 100%);
+      padding: 28px 22px 36px;
+      box-shadow: 0 0 80px rgba(0,0,0,0.65);
+    }
+
+    .top-link {
+      display: inline-block;
+      color: var(--crema);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+      opacity: 0.9;
+    }
+
+    header {
+      text-align: center;
+      color: var(--blanco);
+      margin-bottom: 28px;
+    }
+
+    .script {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.6rem;
+      color: var(--naranja);
+      line-height: 0.8;
+      transform: rotate(-3deg);
+      display: block;
+    }
+
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.45rem;
+      line-height: 1;
+      letter-spacing: -1px;
+      text-shadow: 3px 3px 0 rgba(0,0,0,0.18);
+    }
+
+    .subtitle {
+      margin-top: 14px;
+      font-size: 0.82rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--naranja);
+      font-weight: 800;
+    }
+
+    .intro {
+      background: rgba(255,255,255,0.95);
+      border-radius: 20px;
+      padding: 18px;
+      margin-bottom: 22px;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    }
+
+    .intro h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.15rem;
+      margin-bottom: 8px;
+    }
+
+    .intro p {
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+
+    .did-you-know {
+      background: rgba(249,168,37,0.95);
+      color: var(--cafe);
+      border-radius: 18px;
+      padding: 15px 16px;
+      margin: 24px 0;
+      font-size: 0.88rem;
+      line-height: 1.35;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.16);
+    }
+
+    .did-you-know strong {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .section-title {
+      color: var(--blanco);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.15rem;
+      margin: 28px 0 14px;
+      text-align: center;
+    }
+
+    .flavor-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .flavor-card {
+      background: var(--crema);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.2);
+    }
+
+    .flavor-img {
+      height: 135px;
+      background: linear-gradient(135deg, #f5d3a6, #9f4b1e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      color: rgba(74,29,15,0.65);
+      text-align: center;
+      padding: 12px;
+    }
+
+    .flavor-content {
+      padding: 13px;
+    }
+
+    .flavor-content h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.96rem;
+      margin-bottom: 5px;
+    }
+
+    .flavor-content p {
+      font-size: 0.76rem;
+      line-height: 1.32;
+      margin-bottom: 10px;
+    }
+
+    .buy-btn {
+      display: block;
+      background: var(--cafe);
+      color: var(--blanco);
+      text-align: center;
+      text-decoration: none;
+      padding: 10px;
+      border-radius: 12px;
+      font-size: 0.74rem;
+      font-weight: 800;
+    }
+
+    .final-cta {
+      margin-top: 32px;
+      background: var(--blanco);
+      border-radius: 22px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.22);
+    }
+
+    .final-cta h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+
+    .final-cta p {
+      font-size: 0.85rem;
+      line-height: 1.4;
+      margin-bottom: 16px;
+    }
+
+    .main-btn {
+      display: block;
+      background: var(--naranja);
+      color: var(--cafe);
+      text-decoration: none;
+      padding: 14px;
+      border-radius: 14px;
+      font-weight: 900;
+      font-size: 0.9rem;
+    }
+
+    footer {
+      margin-top: 28px;
+      text-align: center;
+      color: rgba(255,255,255,0.75);
+      font-size: 0.62rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="desktop-bg"></div>
+
+  <main class="page">
+    <a class="top-link" href="index.html">← Volver</a>
+
+    <header>
+      <span class="script">Guía de</span>
+      <h1>Sabores</h1>
+      <p class="subtitle">Encuentra tu cajeta ideal</p>
+    </header>
+
+    <section class="intro">
+      <h2>No todas las cajetas saben igual</h2>
+      <p>
+        La Reyna tiene sabores para quienes buscan algo clásico, familiar,
+        intenso o diferente. Empieza por el perfil que más va contigo.
+      </p>
+    </section>
+
+    <div class="did-you-know">
+      <strong>¿Sabías qué?</strong>
+      La cajeta es una tradición originaria de Celaya, Guanajuato. La Reyna es producida e importada desde México.
+    </div>
+
+    <h2 class="section-title">Para empezar</h2>
+    <section class="flavor-grid">
+      <article class="flavor-card">
+        <div class="flavor-img">Imagen Natural</div>
+        <div class="flavor-content">
+          <h3>Natural</h3>
+          <p>El sabor clásico. Ideal si quieres probar la cajeta tradicional.</p>
+          <a class="buy-btn" href="#">Comprar Natural</a>
+        </div>
+      </article>
+
+      <article class="flavor-card">
+        <div class="flavor-img">Imagen Vainilla</div>
+        <div class="flavor-content">
+          <h3>Vainilla</h3>
+          <p>Suave, dulce y fácil de combinar con postres, pan o café.</p>
+          <a class="buy-btn" href="#">Comprar Vainilla</a>
+        </div>
+      </article>
+    </section>
+
+    <h2 class="section-title">Para gustos tradicionales</h2>
+    <section class="flavor-grid">
+      <article class="flavor-card">
+        <div class="flavor-img">Imagen Quemada</div>
+        <div class="flavor-content">
+          <h3>Quemada</h3>
+          <p>Más profunda e intensa. Para quienes aman el sabor tradicional.</p>
+          <a class="buy-btn" href="#">Comprar Quemada</a>
+        </div>
+      </article>
+
+      <article class="flavor-card">
+        <div class="flavor-img">Imagen Nuez</div>
+        <div class="flavor-content">
+          <h3>Nuez</h3>
+          <p>Un clásico más completo, con textura y sabor familiar.</p>
+          <a class="buy-btn" href="#">Comprar Nuez</a>
+        </div>
+      </article>
+    </section>
+
+    <div class="did-you-know">
+      <strong>Tradición con variedad</strong>
+      Los sabores no buscan reemplazar la cajeta clásica: son formas distintas de disfrutar una base mexicana tradicional.
+    </div>
+
+    <h2 class="section-title">Para sabores intensos</h2>
+    <section class="flavor-grid">
+      <article class="flavor-card">
+        <div class="flavor-img">Imagen Café</div>
+        <div class="flavor-content">
+          <h3>Café</h3>
+          <p>Para quienes prefieren notas tostadas, fuertes y menos comunes.</p>
+          <a class="buy-btn" href="#">Comprar Café</a>
+        </div>
+      </article>
+
+      <article class="flavor-card">
+        <div class="flavor-img">Imagen Mezcal</div>
+        <div class="flavor-content">
+          <h3>Mezcal</h3>
+          <p>Una opción más atrevida, con carácter mexicano y sabor profundo.</p>
+          <a class="buy-btn" href="#">Comprar Mezcal</a>
+        </div>
+      </article>
+    </section>
+
+    <h2 class="section-title">Para algo dulce y familiar</h2>
+    <section class="flavor-grid">
+      <article class="flavor-card">
+        <div class="flavor-img">Imagen Fresa</div>
+        <div class="flavor-content">
+          <h3>Fresa</h3>
+          <p>Dulce, amigable y fácil de disfrutar en familia.</p>
+          <a class="buy-btn" href="#">Comprar Fresa</a>
+        </div>
+      </article>
+
+      <article class="flavor-card">
+        <div class="flavor-img">Imagen Especial</div>
+        <div class="flavor-content">
+          <h3>Otro sabor</h3>
+          <p>Agrega aquí otro sabor de la línea según tu inventario actual.</p>
+          <a class="buy-btn" href="#">Comprar este sabor</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="final-cta">
+      <h2>¿Todavía no sabes cuál elegir?</h2>
+      <p>
+        Si es tu primera vez, empieza con Natural o Vainilla. Si ya conoces la cajeta,
+        prueba Quemada, Café o Mezcal.
+      </p>
+      <a class="main-btn" href="https://www.amazon.com/s?k=La+Reyna+Cajeta+Artesanal&language=es&ref=bl_dp_s_web_0">
+        Ver Cajetas en Amazon
+      </a>
+    </section>
+
+    <footer>
+      Distribuido en EE.UU por: Fevamex
+    </footer>
+  </main>
+</body>
+</html>
