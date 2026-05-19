@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Guía de Sabores | Cajeta La Reyna</title>
+  <title>Sabores | Cajeta La Reyna</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@800;900&family=Open+Sans:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -16,38 +16,6 @@
       --blanco: #ffffff;
     }
 
-    .back-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(255,255,255,0.12);
-    color: var(--blanco);
-    text-decoration: none;
-    padding: 11px 16px;
-    border-radius: 14px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    margin-bottom: 26px;
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255,255,255,0.15);
-    transition: 0.25s ease;
-  }
-  
-  .back-btn:hover {
-    background: rgba(255,255,255,0.2);
-    transform: translateY(-2px);
-  }
-
-.subtitle {
-  margin-top: 14px;
-  font-size: 0.9rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: #ffffff;
-  font-weight: 800;
-}
-    
-
     * {
       margin: 0;
       padding: 0;
@@ -57,9 +25,9 @@
     body {
       background: var(--cafe-profundo);
       font-family: 'Open Sans', sans-serif;
-      color: var(--cafe);
       display: flex;
       justify-content: center;
+      color: var(--cafe);
     }
 
     .desktop-bg {
@@ -81,27 +49,52 @@
       box-shadow: 0 0 80px rgba(0,0,0,0.65);
     }
 
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.12);
+      color: var(--blanco);
+      text-decoration: none;
+      padding: 11px 16px;
+      border-radius: 14px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 26px;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.15);
+      transition: 0.25s ease;
+    }
+
+    .back-btn:hover {
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
     .script-title {
       display: block;
       font-family: 'Dancing Script', cursive;
       font-size: 2.8rem;
       color: var(--naranja);
-      text-align: center;
-      margin-bottom: -12px;
+      margin-bottom: -10px;
       transform: rotate(-2deg);
       text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
     }
-    
+
     .main-title {
       font-family: 'Montserrat', sans-serif;
-      font-size: 2.2rem;
+      font-size: 2.3rem;
       line-height: 0.95;
       letter-spacing: -2px;
       color: var(--blanco);
-      text-align: center;
       text-shadow: 3px 3px 0 rgba(0,0,0,0.18);
     }
-    
+
     .subtitle {
       margin-top: 14px;
       font-size: 0.82rem;
@@ -112,53 +105,31 @@
       text-align: center;
     }
 
-    .top-link {
-      display: inline-block;
-      color: var(--crema);
-      text-decoration: none;
-      font-size: 0.8rem;
-      font-weight: 700;
+    .intro {
+      background: rgba(255,255,255,0.95);
+      border-radius: 20px;
+      padding: 18px;
       margin-bottom: 24px;
-      opacity: 0.9;
-    }
-
-    header {
       text-align: center;
-      color: var(--blanco);
-      margin-bottom: 28px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
     }
 
-    .script {
-      font-family: 'Dancing Script', cursive;
-      font-size: 2.6rem;
-      color: var(--naranja);
-      line-height: 0.8;
-      transform: rotate(-3deg);
-      display: block;
-    }
-
-    h1 {
+    .intro h2 {
       font-family: 'Montserrat', sans-serif;
-      font-size: 2.45rem;
-      line-height: 1;
-      letter-spacing: -1px;
-      text-shadow: 3px 3px 0 rgba(0,0,0,0.18);
+      font-size: 1.15rem;
+      margin-bottom: 8px;
     }
 
-    .subtitle {
-      margin-top: 14px;
-      font-size: 0.82rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--naranja);
-      font-weight: 800;
+    .intro p {
+      font-size: 0.88rem;
+      line-height: 1.45;
     }
 
     .section-title {
       color: var(--blanco);
       font-family: 'Montserrat', sans-serif;
       font-size: 1.15rem;
-      margin: 28px 0 14px;
+      margin: 30px 0 14px;
       text-align: center;
     }
 
@@ -176,16 +147,19 @@
     }
 
     .flavor-img {
-      height: 135px;
-      background: linear-gradient(135deg, #f5d3a6, #9f4b1e);
+      height: 180px;
+      background: var(--crema);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.75rem;
-      color: rgba(74,29,15,0.65);
-      text-align: center;
-      padding: 12px;
+      overflow: hidden;
+      padding: 0;
+    }
+
+    .flavor-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
 
     .flavor-content {
@@ -200,8 +174,9 @@
 
     .flavor-content p {
       font-size: 0.76rem;
-      line-height: 1.32;
+      line-height: 1.35;
       margin-bottom: 10px;
+      color: rgba(74,29,15,0.88);
     }
 
     .buy-btn {
@@ -214,10 +189,16 @@
       border-radius: 12px;
       font-size: 0.74rem;
       font-weight: 800;
+      transition: 0.2s ease;
+    }
+
+    .buy-btn:hover {
+      transform: translateY(-2px);
+      background: #2f1209;
     }
 
     .final-cta {
-      margin-top: 32px;
+      margin-top: 34px;
       background: var(--blanco);
       border-radius: 22px;
       padding: 20px;
@@ -233,7 +214,7 @@
 
     .final-cta p {
       font-size: 0.85rem;
-      line-height: 1.4;
+      line-height: 1.45;
       margin-bottom: 16px;
     }
 
@@ -260,123 +241,230 @@
 </head>
 
 <body>
+
   <div class="desktop-bg"></div>
 
   <main class="page">
+
     <a class="back-btn" href="index.html">← Volver</a>
 
     <header>
       <span class="script-title">100 años de</span>
-    
+
       <h1 class="main-title">
         experiencia Familiar
       </h1>
-    
+
       <p class="subtitle">
-        Hecho en México
+        Certificación de Hecho en México
       </p>
     </header>
 
-    <h2 class="section-title">Sabores tradicionales>
-    <section class="flavor-grid">
-      <article class="flavor-card">
-        <div class="flavor-img">Imagen Natural</div>
-        <div class="flavor-content">
-          <h3>Natural</h3>
-          <p>El sabor clásico. Ideal si quieres probar la cajeta tradicional.</p>
-          <a class="buy-btn" href="#">Comprar Natural</a>
-        </div>
-      </article>
+    <section class="intro">
+      <h2>Una cajeta para cada gusto</h2>
 
-      <article class="flavor-card">
-        <div class="flavor-img">Imagen Vainilla</div>
-        <div class="flavor-content">
-          <h3>Vainilla</h3>
-          <p>Suave, dulce y fácil de combinar con postres, pan o café.</p>
-          <a class="buy-btn" href="#">Comprar Vainilla</a>
-        </div>
-      </article>
+      <p>
+        Desde sabores tradicionales hasta perfiles más intensos y premium.
+        Explora la colección y encuentra cuál va contigo.
+      </p>
     </section>
 
-    <h2 class="section-title">Favoritos de los niños</h2>
+    <!-- TRADICIONALES -->
+
+    <h2 class="section-title">Las tradicionales</h2>
+
     <section class="flavor-grid">
+
       <article class="flavor-card">
         <div class="flavor-img">
-          <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1779224214/copy_of_caj-fre-360_foto-frontal_1_rykgc2.webp" alt="Cajeta de Fresa La Reyna">
+          <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1779196299/CAJ-FRE-360_Foto-Frontal_1_rykgc2.jpg" alt="Cajeta Natural La Reyna">
         </div>
+
         <div class="flavor-content">
-          <h3>Fresa</h3>
-          <p>Más profunda e intensa. Para quienes aman el sabor tradicional.</p>
-          <a class="buy-btn" href="#">Comprar Quemada</a>
+          <h3>Natural</h3>
+
+          <p>
+            El sabor clásico de la cajeta mexicana. La forma más tradicional de empezar.
+          </p>
+
+          <a class="buy-btn" href="#">
+            Comprar Natural
+          </a>
         </div>
       </article>
 
       <article class="flavor-card">
-        <div class="flavor-img">Imagen Nuez</div>
+        <div class="flavor-img">
+          <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1779196299/CAJ-FRE-360_Foto-Frontal_1_rykgc2.jpg" alt="Cajeta Vainilla La Reyna">
+        </div>
+
+        <div class="flavor-content">
+          <h3>Vainilla</h3>
+
+          <p>
+            Más suave y cremosa. Ideal para pan dulce, café y postres.
+          </p>
+
+          <a class="buy-btn" href="#">
+            Comprar Vainilla
+          </a>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- NIÑOS -->
+
+    <h2 class="section-title">Favoritos de la familia</h2>
+
+    <section class="flavor-grid">
+
+      <article class="flavor-card">
+        <div class="flavor-img">
+          <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1779196299/CAJ-FRE-360_Foto-Frontal_1_rykgc2.jpg" alt="Cajeta de Fresa La Reyna">
+        </div>
+
+        <div class="flavor-content">
+          <h3>Fresa</h3>
+
+          <p>
+            Inspirada en las famosas fresas de Irapuato. Dulce, divertida y perfecta para desayunos.
+          </p>
+
+          <a class="buy-btn" href="#">
+            Comprar Fresa
+          </a>
+        </div>
+      </article>
+
+      <article class="flavor-card">
+        <div class="flavor-img">
+          <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1779196299/CAJ-FRE-360_Foto-Frontal_1_rykgc2.jpg" alt="Cajeta de Nuez La Reyna">
+        </div>
+
         <div class="flavor-content">
           <h3>Nuez</h3>
-          <p>Un clásico más completo, con textura y sabor familiar.</p>
-          <a class="buy-btn" href="#">Comprar Nuez</a>
+
+          <p>
+            Más cremosa y profunda, ideal para pan tostado y postres caseros.
+          </p>
+
+          <a class="buy-btn" href="#">
+            Comprar Nuez
+          </a>
         </div>
       </article>
+
     </section>
+
+    <!-- INTENSOS -->
 
     <h2 class="section-title">Sabores intensos</h2>
+
     <section class="flavor-grid">
+
       <article class="flavor-card">
-        <div class="flavor-img">Imagen Café</div>
+        <div class="flavor-img">
+          <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1779196299/CAJ-FRE-360_Foto-Frontal_1_rykgc2.jpg" alt="Cajeta de Café La Reyna">
+        </div>
+
         <div class="flavor-content">
           <h3>Café</h3>
-          <p>Para quienes prefieren notas tostadas, fuertes y menos comunes.</p>
-          <a class="buy-btn" href="#">Comprar Café</a>
+
+          <p>
+            Notas tostadas y profundas para quienes buscan sabores más complejos.
+          </p>
+
+          <a class="buy-btn" href="#">
+            Comprar Café
+          </a>
         </div>
       </article>
 
       <article class="flavor-card">
-        <div class="flavor-img">Imagen Mezcal</div>
+        <div class="flavor-img">
+          <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1779196299/CAJ-FRE-360_Foto-Frontal_1_rykgc2.jpg" alt="Cajeta Quemada La Reyna">
+        </div>
+
         <div class="flavor-content">
-          <h3>Mezcal</h3>
-          <p>Una opción más atrevida, con carácter mexicano y sabor profundo.</p>
-          <a class="buy-btn" href="#">Comprar Mezcal</a>
+          <h3>Quemada</h3>
+
+          <p>
+            Uno de los perfiles más tradicionales de México, con sabor más intenso y caramelizado.
+          </p>
+
+          <a class="buy-btn" href="#">
+            Comprar Quemada
+          </a>
         </div>
       </article>
+
     </section>
 
-    <h2 class="section-title">Hechos con licor</h2>
+    <!-- PREMIUM -->
+
+    <h2 class="section-title">Inspiradas en licores mexicanos</h2>
+
     <section class="flavor-grid">
+
       <article class="flavor-card">
-        <div class="flavor-img">Imagen Fresa</div>
+        <div class="flavor-img">
+          <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1779196299/CAJ-FRE-360_Foto-Frontal_1_rykgc2.jpg" alt="Cajeta de Mezcal La Reyna">
+        </div>
+
         <div class="flavor-content">
-          <h3>Fresa</h3>
-          <p>Dulce, amigable y fácil de disfrutar en familia.</p>
-          <a class="buy-btn" href="#">Comprar Fresa</a>
+          <h3>Mezcal</h3>
+
+          <p>
+            Elaborada con mezcal real para un perfil más atrevido y sofisticado.
+          </p>
+
+          <a class="buy-btn" href="#">
+            Comprar Mezcal
+          </a>
         </div>
       </article>
 
       <article class="flavor-card">
-        <div class="flavor-img">Imagen Especial</div>
+        <div class="flavor-img">
+          <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1779196299/CAJ-FRE-360_Foto-Frontal_1_rykgc2.jpg" alt="Cajeta de Tequila La Reyna">
+        </div>
+
         <div class="flavor-content">
-          <h3>Otro sabor</h3>
-          <p>Agrega aquí otro sabor de la línea según tu inventario actual.</p>
-          <a class="buy-btn" href="#">Comprar este sabor</a>
+          <h3>Tequila</h3>
+
+          <p>
+            Una colección premium inspirada en ingredientes tradicionales mexicanos.
+          </p>
+
+          <a class="buy-btn" href="#">
+            Comprar Tequila
+          </a>
         </div>
       </article>
+
     </section>
 
     <section class="final-cta">
-      <h2>¿Todavía no sabes cuál elegir?</h2>
+
+      <h2>¿Primera vez probando cajeta?</h2>
+
       <p>
-        Si es tu primera vez, empieza con Natural o Vainilla. Si ya conoces la cajeta,
-        prueba Quemada, Café o Mezcal.
+        Empieza con Natural o Vainilla. Si buscas algo más intenso,
+        prueba Café, Quemada o Mezcal.
       </p>
-      <a class="main-btn" href="https://www.amazon.com/s?k=La+Reyna+Cajeta+Artesanal&language=es&ref=bl_dp_s_web_0">
-        Ver Cajetas en Amazon
+
+      <a class="main-btn" href="#">
+        Ver colección completa
       </a>
+
     </section>
 
     <footer>
-      Distribuido en EE.UU por: Fevamex
+      Distribuido en EE.UU por Fevamex
     </footer>
+
   </main>
+
 </body>
 </html>
