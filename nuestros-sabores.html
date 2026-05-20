@@ -38,10 +38,10 @@ body{
   position:relative;
   z-index:1;
   width:100%;
-  max-width:980px;
+  max-width:430px;
   min-height:100dvh;
   background:linear-gradient(180deg,#cf441c 0%,#7a1f0b 100%);
-  padding:32px 26px 42px;
+  padding:28px 20px 36px;
   box-shadow:0 0 80px rgba(0,0,0,0.65);
 }
 
@@ -69,13 +69,13 @@ body{
 
 header{
   text-align:center;
-  margin-bottom:44px;
+  margin-bottom:40px;
 }
 
 .script-title{
   display:block;
   font-family:'Dancing Script',cursive;
-  font-size:3.1rem;
+  font-size:2.8rem;
   color:var(--naranja);
   margin-bottom:-10px;
   transform:rotate(-2deg);
@@ -84,7 +84,7 @@ header{
 
 .main-title{
   font-family:'Montserrat',sans-serif;
-  font-size:2.8rem;
+  font-size:2.35rem;
   line-height:0.95;
   letter-spacing:-2px;
   color:var(--blanco);
@@ -93,7 +93,7 @@ header{
 
 .subtitle{
   margin-top:16px;
-  font-size:0.84rem;
+  font-size:0.82rem;
   letter-spacing:2px;
   text-transform:uppercase;
   color:var(--naranja);
@@ -103,29 +103,28 @@ header{
 .section-title{
   color:var(--blanco);
   font-family:'Montserrat',sans-serif;
-  font-size:1.55rem;
+  font-size:1.45rem;
   line-height:1.1;
-  margin:54px 0 24px;
+  margin:50px 0 20px;
   text-align:center;
   text-shadow:2px 2px 0 rgba(0,0,0,0.18);
 }
 
-.flavor-grid{
+.flavor-grid-3{
   display:grid;
-  gap:18px;
-}
-
-.grid-3{
   grid-template-columns:repeat(3, 1fr);
+  gap:12px;
 }
 
-.grid-2{
+.flavor-grid-2{
+  display:grid;
   grid-template-columns:repeat(2, 1fr);
+  gap:16px;
 }
 
 .flavor-card{
   background:var(--crema);
-  border-radius:22px;
+  border-radius:18px;
   overflow:hidden;
   box-shadow:0 8px 22px rgba(0,0,0,0.2);
   transition:transform 0.35s ease, box-shadow 0.35s ease;
@@ -158,21 +157,21 @@ header{
 }
 
 .flavor-content{
-  padding:18px 16px 16px;
+  padding:12px 10px 12px;
 }
 
 .flavor-content h3{
   font-family:'Montserrat',sans-serif;
-  font-size:1.08rem;
-  line-height:1.15;
-  margin-bottom:10px;
+  font-size:0.88rem;
+  line-height:1.1;
+  margin-bottom:7px;
 }
 
 .flavor-content p{
-  font-size:0.84rem;
-  line-height:1.5;
+  font-size:0.72rem;
+  line-height:1.35;
   color:rgba(74,29,15,0.9);
-  margin-bottom:16px;
+  margin-bottom:11px;
 }
 
 .buy-btn{
@@ -181,9 +180,9 @@ header{
   color:var(--blanco);
   text-align:center;
   text-decoration:none;
-  padding:12px;
-  border-radius:14px;
-  font-size:0.82rem;
+  padding:9px 6px;
+  border-radius:11px;
+  font-size:0.68rem;
   font-weight:800;
   transition:background 0.25s ease, transform 0.25s ease;
 }
@@ -194,7 +193,7 @@ header{
 }
 
 footer{
-  margin-top:44px;
+  margin-top:40px;
   text-align:center;
   color:rgba(255,255,255,0.75);
   font-size:0.65rem;
@@ -202,41 +201,36 @@ footer{
   text-transform:uppercase;
 }
 
-@media (max-width: 700px){
-  .page{
-    max-width:430px;
-    padding:28px 20px 36px;
-  }
-
-  .script-title{
-    font-size:2.8rem;
-  }
-
-  .main-title{
-    font-size:2.35rem;
-  }
-
-  .flavor-grid{
-    display:flex;
-    gap:16px;
-    overflow-x:auto;
-    padding:4px 2px 14px;
-    scroll-snap-type:x mandatory;
-    -webkit-overflow-scrolling:touch;
-  }
-
-  .flavor-grid::-webkit-scrollbar{
-    height:6px;
-  }
-
-  .flavor-grid::-webkit-scrollbar-thumb{
-    background:rgba(255,255,255,0.22);
-    border-radius:20px;
+@media (max-width: 600px){
+  .flavor-grid-3,
+  .flavor-grid-2{
+    grid-template-columns:1fr;
+    gap:18px;
   }
 
   .flavor-card{
-    min-width:72%;
-    scroll-snap-align:center;
+    border-radius:22px;
+  }
+
+  .flavor-content{
+    padding:18px 16px 16px;
+  }
+
+  .flavor-content h3{
+    font-size:1.08rem;
+    margin-bottom:10px;
+  }
+
+  .flavor-content p{
+    font-size:0.84rem;
+    line-height:1.5;
+    margin-bottom:16px;
+  }
+
+  .buy-btn{
+    padding:12px;
+    border-radius:14px;
+    font-size:0.82rem;
   }
 }
 </style>
@@ -257,7 +251,7 @@ footer{
 
 <h2 class="section-title">Las tradicionales</h2>
 
-<section class="flavor-grid grid-3">
+<section class="flavor-grid-3">
   <article class="flavor-card">
     <div class="flavor-img">
       <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1779224214/copy_of_caj-fre-360_foto-frontal_1_rykgc2.webp" alt="Cajeta Natural La Reyna">
@@ -265,7 +259,7 @@ footer{
     <div class="flavor-content">
       <h3>Natural</h3>
       <p>El sabor clásico de la cajeta mexicana.</p>
-      <a class="buy-btn" href="#">Comprar Natural</a>
+      <a class="buy-btn" href="#">Comprar</a>
     </div>
   </article>
 
@@ -275,8 +269,8 @@ footer{
     </div>
     <div class="flavor-content">
       <h3>Vainilla</h3>
-      <p>Más suave y cremosa. Ideal para pan dulce y café.</p>
-      <a class="buy-btn" href="#">Comprar Vainilla</a>
+      <p>Suave y cremosa. Ideal para pan dulce y café.</p>
+      <a class="buy-btn" href="#">Comprar</a>
     </div>
   </article>
 
@@ -286,15 +280,15 @@ footer{
     </div>
     <div class="flavor-content">
       <h3>Quemada</h3>
-      <p>Un perfil tradicional, más intenso y caramelizado.</p>
-      <a class="buy-btn" href="#">Comprar Quemada</a>
+      <p>Más intensa, tradicional y caramelizada.</p>
+      <a class="buy-btn" href="#">Comprar</a>
     </div>
   </article>
 </section>
 
 <h2 class="section-title">Perfectas para el desayuno</h2>
 
-<section class="flavor-grid grid-3">
+<section class="flavor-grid-3">
   <article class="flavor-card">
     <div class="flavor-img">
       <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1779224214/copy_of_caj-fre-360_foto-frontal_1_rykgc2.webp" alt="Cajeta de Fresa La Reyna">
@@ -302,7 +296,7 @@ footer{
     <div class="flavor-content">
       <h3>Fresa</h3>
       <p>Inspirada en las famosas fresas de Irapuato.</p>
-      <a class="buy-btn" href="#">Comprar Fresa</a>
+      <a class="buy-btn" href="#">Comprar</a>
     </div>
   </article>
 
@@ -312,8 +306,8 @@ footer{
     </div>
     <div class="flavor-content">
       <h3>Café</h3>
-      <p>Notas tostadas para combinar con pan dulce o café.</p>
-      <a class="buy-btn" href="#">Comprar Café</a>
+      <p>Notas tostadas para combinar con pan dulce.</p>
+      <a class="buy-btn" href="#">Comprar</a>
     </div>
   </article>
 
@@ -323,15 +317,15 @@ footer{
     </div>
     <div class="flavor-content">
       <h3>Nuez</h3>
-      <p>Cremosa y cálida, ideal para desayunos y pan tostado.</p>
-      <a class="buy-btn" href="#">Comprar Nuez</a>
+      <p>Cremosa y cálida, ideal para desayunos.</p>
+      <a class="buy-btn" href="#">Comprar</a>
     </div>
   </article>
 </section>
 
 <h2 class="section-title">Colección de licores</h2>
 
-<section class="flavor-grid grid-2">
+<section class="flavor-grid-2">
   <article class="flavor-card">
     <div class="flavor-img">
       <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1779224214/copy_of_caj-fre-360_foto-frontal_1_rykgc2.webp" alt="Cajeta de Mezcal La Reyna">
@@ -339,7 +333,7 @@ footer{
     <div class="flavor-content">
       <h3>Mezcal</h3>
       <p>Elaborada con mezcal real para un perfil sofisticado.</p>
-      <a class="buy-btn" href="#">Comprar Mezcal</a>
+      <a class="buy-btn" href="#">Comprar</a>
     </div>
   </article>
 
@@ -350,7 +344,7 @@ footer{
     <div class="flavor-content">
       <h3>Tequila</h3>
       <p>Hecha con tequila real y tradición mexicana.</p>
-      <a class="buy-btn" href="#">Comprar Tequila</a>
+      <a class="buy-btn" href="#">Comprar</a>
     </div>
   </article>
 
@@ -361,7 +355,7 @@ footer{
     <div class="flavor-content">
       <h3>Rompope</h3>
       <p>Cremosa y dulce, inspirada en una tradición mexicana.</p>
-      <a class="buy-btn" href="#">Comprar Rompope</a>
+      <a class="buy-btn" href="#">Comprar</a>
     </div>
   </article>
 
@@ -371,8 +365,8 @@ footer{
     </div>
     <div class="flavor-content">
       <h3>Envinada</h3>
-      <p>Más intensa y especial dentro de nuestra línea premium.</p>
-      <a class="buy-btn" href="#">Comprar Envinada</a>
+      <p>Más intensa y especial dentro de la línea premium.</p>
+      <a class="buy-btn" href="#">Comprar</a>
     </div>
   </article>
 </section>
