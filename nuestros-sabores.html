@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
+
 :root{
   --naranja:#f9a825;
   --cafe:#4a1d0f;
@@ -16,7 +17,11 @@
   --blanco:#ffffff;
 }
 
-*{ margin:0; padding:0; box-sizing:border-box; }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
 body{
   background:var(--cafe-profundo);
@@ -37,29 +42,52 @@ body{
 .page{
   position:relative;
   z-index:1;
+
   width:100%;
   max-width:430px;
   min-height:100dvh;
+
   background:linear-gradient(180deg,#cf441c 0%,#7a1f0b 100%);
+
   padding:28px 20px 38px;
+
   box-shadow:0 0 80px rgba(0,0,0,0.65);
 }
+
+/* BACK BUTTON */
 
 .back-btn{
   display:inline-flex;
   align-items:center;
   gap:8px;
+
   background:rgba(255,255,255,0.12);
   color:var(--blanco);
+
   text-decoration:none;
+
   padding:11px 16px;
+
   border-radius:14px;
+
   font-size:0.85rem;
   font-weight:700;
+
   margin-bottom:30px;
+
   backdrop-filter:blur(8px);
+
   border:1px solid rgba(255,255,255,0.15);
+
+  transition:0.25s ease;
 }
+
+.back-btn:hover{
+  background:rgba(255,255,255,0.2);
+  transform:translateY(-2px);
+}
+
+/* HERO */
 
 header{
   text-align:center;
@@ -68,84 +96,125 @@ header{
 
 .script-title{
   display:block;
+
   font-family:'Dancing Script',cursive;
+
   font-size:2.8rem;
+
   color:var(--naranja);
+
   margin-bottom:-10px;
+
   transform:rotate(-2deg);
+
   text-shadow:2px 2px 4px rgba(0,0,0,0.2);
 }
 
 .main-title{
   font-family:'Montserrat',sans-serif;
+
   font-size:2.35rem;
+
   line-height:0.95;
+
   letter-spacing:-2px;
+
   color:var(--blanco);
+
   text-shadow:3px 3px 0 rgba(0,0,0,0.18);
 }
 
 .subtitle{
   margin-top:16px;
+
   font-size:0.82rem;
+
   letter-spacing:2px;
+
   text-transform:uppercase;
+
   color:var(--naranja);
+
   font-weight:800;
 }
 
+/* SECTION TITLES */
+
 .section-title{
   color:var(--blanco);
+
   font-family:'Montserrat',sans-serif;
-  font-size:1.38rem;
+
+  font-size:1.4rem;
+
   line-height:1.1;
+
   margin:48px 0 20px;
+
   text-align:center;
+
   text-shadow:2px 2px 0 rgba(0,0,0,0.18);
 }
 
+/* GRID */
+
 .flavor-grid{
   display:grid;
+
   grid-template-columns:repeat(2, 1fr);
+
   gap:16px;
 }
 
-.flavor-grid.three-items .flavor-card:nth-child(3){
-  grid-column:1 / -1;
-  justify-self:center;
-  width:calc((100% - 16px) / 2);
-}
+/* CARD */
 
 .flavor-card{
   background:var(--crema);
+
   border-radius:20px;
+
   overflow:hidden;
+
   box-shadow:0 8px 22px rgba(0,0,0,0.2);
+
   display:flex;
   flex-direction:column;
+
   min-height:420px;
-  transition:transform 0.35s ease, box-shadow 0.35s ease;
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
 .flavor-card:hover{
   transform:translateY(-4px);
+
   box-shadow:0 14px 30px rgba(0,0,0,0.28);
 }
 
+/* IMAGE */
+
 .flavor-img{
   width:100%;
+
   aspect-ratio:2 / 3;
+
   background:var(--crema);
+
   overflow:hidden;
-  flex-shrink:0;
 }
 
 .flavor-img img{
   width:100%;
   height:100%;
+
   object-fit:contain;
+
   object-position:center center;
+
   display:block;
+
   transition:transform 0.45s ease;
 }
 
@@ -153,52 +222,124 @@ header{
   transform:scale(1.03);
 }
 
+/* CONTENT */
+
 .flavor-content{
   padding:15px 13px 14px;
+
   display:flex;
   flex-direction:column;
+
   flex:1;
 }
 
 .flavor-content h3{
   font-family:'Montserrat',sans-serif;
+
   font-size:1rem;
+
   line-height:1.12;
+
   margin-bottom:8px;
 }
 
 .flavor-content p{
   font-size:0.78rem;
+
   line-height:1.4;
+
   color:rgba(74,29,15,0.9);
+
   margin-bottom:14px;
 }
 
+/* BUTTON */
+
 .buy-btn{
   margin-top:auto;
+
   display:block;
+
   background:var(--cafe);
+
   color:var(--blanco);
+
   text-align:center;
+
   text-decoration:none;
+
   padding:11px 8px;
+
   border-radius:13px;
+
   font-size:0.76rem;
+
   font-weight:800;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
 }
 
+.buy-btn:hover{
+  background:#2f1209;
+
+  transform:translateY(-2px);
+}
+
+/* INFO BLOCK */
+
+.info-block{
+  margin-top:50px;
+
+  background:rgba(255,255,255,0.94);
+
+  border-radius:22px;
+
+  padding:22px 20px;
+
+  box-shadow:0 8px 24px rgba(0,0,0,0.2);
+}
+
+.info-block h2{
+  font-family:'Montserrat',sans-serif;
+
+  font-size:1.15rem;
+
+  margin-bottom:10px;
+
+  color:var(--cafe);
+}
+
+.info-block p{
+  font-size:0.86rem;
+
+  line-height:1.55;
+
+  color:rgba(74,29,15,0.92);
+}
+
+/* FOOTER */
+
 footer{
-  margin-top:42px;
+  margin-top:40px;
+
   text-align:center;
+
   color:rgba(255,255,255,0.75);
+
   font-size:0.65rem;
+
   letter-spacing:1.5px;
+
   text-transform:uppercase;
 }
+
 </style>
 </head>
 
 <body>
+
 <div class="desktop-bg"></div>
 
 <main class="page">
@@ -206,122 +347,292 @@ footer{
 <a class="back-btn" href="index.html">← Volver</a>
 
 <header>
-  <span class="script-title">100 años de</span>
-  <h1 class="main-title">experiencia Familiar</h1>
-  <p class="subtitle">Certificación de Hecho en México</p>
+
+  <span class="script-title">
+    100 años de
+  </span>
+
+  <h1 class="main-title">
+    experiencia Familiar
+  </h1>
+
+  <p class="subtitle">
+    Certificación de Hecho en México
+  </p>
+
 </header>
 
-<h2 class="section-title">Las tradicionales</h2>
+<!-- TRADICIONALES -->
 
-<section class="flavor-grid three-items">
-  <article class="flavor-card">
-    <div class="flavor-img"><img src="https://res.cloudinary.com/dlylomauh/image/upload/v1779255446/copy_of_caj-nat-360_foto-frontal_1_1_h0kjcd.webp" alt="Cajeta Natural La Reyna"></div>
-    <div class="flavor-content">
-      <h3>Natural</h3>
-      <p>El sabor clásico de la cajeta mexicana.</p>
-      <a class="buy-btn" href="#">Comprar</a>
-    </div>
-  </article>
-
-  <article class="flavor-card">
-    <div class="flavor-img"><img src="https://res.cloudinary.com/dlylomauh/image/upload/v1779255333/copy_of_caj-vai-360_foto-frontal_1_f6g3wx.webp" alt="Cajeta Vainilla La Reyna"></div>
-    <div class="flavor-content">
-      <h3>Vainilla</h3>
-      <p>Suave y cremosa. Ideal para pan dulce y café.</p>
-      <a class="buy-btn" href="#">Comprar</a>
-    </div>
-  </article>
-
-  <article class="flavor-card">
-    <div class="flavor-img"><img src="https://res.cloudinary.com/dlylomauh/image/upload/v1779255523/copy_of_caj-quem-360_foto-frontal_1_yrbvox.webp" alt="Cajeta Quemada La Reyna"></div>
-    <div class="flavor-content">
-      <h3>Quemada</h3>
-      <p>Más intensa, tradicional y caramelizada.</p>
-      <a class="buy-btn" href="#">Comprar</a>
-    </div>
-  </article>
-</section>
-
-
-  
-<h2 class="section-title">Perfectas para el desayuno</h2>
-
-<section class="flavor-grid three-items">
-  <article class="flavor-card">
-    <div class="flavor-img"><img src="https://res.cloudinary.com/dlylomauh/image/upload/v1779224214/copy_of_caj-fre-360_foto-frontal_1_rykgc2.webp" alt="Cajeta de Fresa La Reyna"></div>
-    <div class="flavor-content">
-      <h3>Fresa</h3>
-      <p>Inspirada en las famosas fresas de Irapuato.</p>
-      <a class="buy-btn" href="#">Comprar</a>
-    </div>
-  </article>
-
-  <article class="flavor-card">
-    <div class="flavor-img"><img src="https://res.cloudinary.com/dlylomauh/image/upload/v1779241121/copy_of_caj-caf-360_foto-frontal_2_k8f4af.webp" alt="Cajeta de Café La Reyna"></div>
-    <div class="flavor-content">
-      <h3>Café</h3>
-      <p>Notas tostadas para combinar con pan dulce.</p>
-      <a class="buy-btn" href="#">Comprar</a>
-    </div>
-  </article>
-
-  <article class="flavor-card">
-    <div class="flavor-img"><img src="https://res.cloudinary.com/dlylomauh/image/upload/v1779239386/copy_of_caj-nuez-360_foto-frontal_1_j8gn2o.webp" alt="Cajeta de Nuez La Reyna"></div>
-    <div class="flavor-content">
-      <h3>Nuez</h3>
-      <p>Cremosa y cálida, ideal para desayunos.</p>
-      <a class="buy-btn" href="#">Comprar</a>
-    </div>
-  </article>
-</section>
-
-
-
-  
-<h2 class="section-title">Con Licor</h2>
+<h2 class="section-title">
+  Las tradicionales
+</h2>
 
 <section class="flavor-grid">
+
   <article class="flavor-card">
-    <div class="flavor-img"><img src="https://res.cloudinary.com/dlylomauh/image/upload/v1779241207/copy_of_caj-mez-360_foto-frontal_1_dziilv.webp" alt="Cajeta de Mezcal La Reyna"></div>
-    <div class="flavor-content">
-      <h3>Mezcal</h3>
-      <p>Elaborada con mezcal real para un perfil sofisticado.</p>
-      <a class="buy-btn" href="#">Comprar</a>
+
+    <div class="flavor-img">
+      <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1779224214/copy_of_caj-fre-360_foto-frontal_1_rykgc2.webp">
     </div>
+
+    <div class="flavor-content">
+
+      <h3>Natural</h3>
+
+      <p>
+        El sabor clásico de la cajeta mexicana.
+      </p>
+
+      <a class="buy-btn" href="#">
+        Comprar
+      </a>
+
+    </div>
+
   </article>
 
   <article class="flavor-card">
-    <div class="flavor-img"><img src="https://res.cloudinary.com/dlylomauh/image/upload/v1779255233/copy_of_caj-teq-360_foto-frontal_1_oytpkx.webp" alt="Cajeta de Tequila La Reyna"></div>
-    <div class="flavor-content">
-      <h3>Tequila</h3>
-      <p>Hecha con tequila real y tradición mexicana.</p>
-      <a class="buy-btn" href="#">Comprar</a>
+
+    <div class="flavor-img">
+      <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1779224214/copy_of_caj-fre-360_foto-frontal_1_rykgc2.webp">
     </div>
+
+    <div class="flavor-content">
+
+      <h3>Quemada</h3>
+
+      <p>
+        Más intensa, tradicional y caramelizada.
+      </p>
+
+      <a class="buy-btn" href="#">
+        Comprar
+      </a>
+
+    </div>
+
   </article>
 
   <article class="flavor-card">
-    <div class="flavor-img"><img src="https://res.cloudinary.com/dlylomauh/image/upload/v1779255161/copy_of_caj-romp-360_foto-frontal_1_z7c681.webp" alt="Cajeta de Rompope La Reyna"></div>
-    <div class="flavor-content">
-      <h3>Rompope</h3>
-      <p>Cremosa y dulce, inspirada en una tradición mexicana.</p>
-      <a class="buy-btn" href="#">Comprar</a>
-    </div>
-  </article>
 
-  <article class="flavor-card">
-    <div class="flavor-img"><img src="https://res.cloudinary.com/dlylomauh/image/upload/v1779255384/copy_of_caj-env-360_foto-frontal_1_ucbl5k.webp" alt="Cajeta Envinada La Reyna"></div>
+    <div class="flavor-img">
+      <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1779224214/copy_of_caj-fre-360_foto-frontal_1_rykgc2.webp">
+    </div>
+
     <div class="flavor-content">
+
       <h3>Envinada</h3>
-      <p>Más intensa y especial dentro de la línea premium.</p>
-      <a class="buy-btn" href="#">Comprar</a>
+
+      <p>
+        Un perfil más intenso inspirado en sabores tradicionales.
+      </p>
+
+      <a class="buy-btn" href="#">
+        Comprar
+      </a>
+
     </div>
+
   </article>
+
+  <article class="flavor-card">
+
+    <div class="flavor-img">
+      <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1779224214/copy_of_caj-fre-360_foto-frontal_1_rykgc2.webp">
+    </div>
+
+    <div class="flavor-content">
+
+      <h3>Rompope</h3>
+
+      <p>
+        Cremosa y dulce, inspirada en una tradición mexicana.
+      </p>
+
+      <a class="buy-btn" href="#">
+        Comprar
+      </a>
+
+    </div>
+
+  </article>
+
+</section>
+
+<!-- DESAYUNO -->
+
+<h2 class="section-title">
+  Perfectas para el desayuno
+</h2>
+
+<section class="flavor-grid">
+
+  <article class="flavor-card">
+
+    <div class="flavor-img">
+      <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1779224214/copy_of_caj-fre-360_foto-frontal_1_rykgc2.webp">
+    </div>
+
+    <div class="flavor-content">
+
+      <h3>Fresa</h3>
+
+      <p>
+        Inspirada en las famosas fresas de Irapuato.
+      </p>
+
+      <a class="buy-btn" href="#">
+        Comprar
+      </a>
+
+    </div>
+
+  </article>
+
+  <article class="flavor-card">
+
+    <div class="flavor-img">
+      <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1779224214/copy_of_caj-fre-360_foto-frontal_1_rykgc2.webp">
+    </div>
+
+    <div class="flavor-content">
+
+      <h3>Vainilla</h3>
+
+      <p>
+        Suave y cremosa. Ideal para pan dulce y café.
+      </p>
+
+      <a class="buy-btn" href="#">
+        Comprar
+      </a>
+
+    </div>
+
+  </article>
+
+  <article class="flavor-card">
+
+    <div class="flavor-img">
+      <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1779239386/copy_of_caj-nuez-360_foto-frontal_1_j8gn2o.webp">
+    </div>
+
+    <div class="flavor-content">
+
+      <h3>Nuez</h3>
+
+      <p>
+        Cremosa y cálida, ideal para desayunos.
+      </p>
+
+      <a class="buy-btn" href="#">
+        Comprar
+      </a>
+
+    </div>
+
+  </article>
+
+  <article class="flavor-card">
+
+    <div class="flavor-img">
+      <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1779224214/copy_of_caj-fre-360_foto-frontal_1_rykgc2.webp">
+    </div>
+
+    <div class="flavor-content">
+
+      <h3>Café</h3>
+
+      <p>
+        Notas tostadas para combinar con pan dulce.
+      </p>
+
+      <a class="buy-btn" href="#">
+        Comprar
+      </a>
+
+    </div>
+
+  </article>
+
+</section>
+
+<!-- PREMIUM -->
+
+<h2 class="section-title">
+  Sabores Premium
+</h2>
+
+<section class="flavor-grid">
+
+  <article class="flavor-card">
+
+    <div class="flavor-img">
+      <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1779224214/copy_of_caj-fre-360_foto-frontal_1_rykgc2.webp">
+    </div>
+
+    <div class="flavor-content">
+
+      <h3>Mezcal</h3>
+
+      <p>
+        Elaborada con mezcal real para un perfil sofisticado.
+      </p>
+
+      <a class="buy-btn" href="#">
+        Comprar
+      </a>
+
+    </div>
+
+  </article>
+
+  <article class="flavor-card">
+
+    <div class="flavor-img">
+      <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1779224214/copy_of_caj-fre-360_foto-frontal_1_rykgc2.webp">
+    </div>
+
+    <div class="flavor-content">
+
+      <h3>Tequila</h3>
+
+      <p>
+        Hecha con tequila real y tradición mexicana.
+      </p>
+
+      <a class="buy-btn" href="#">
+        Comprar
+      </a>
+
+    </div>
+
+  </article>
+
+</section>
+
+<!-- INFO -->
+
+<section class="info-block">
+
+  <h2>
+    ¿Sabías qué?
+  </h2>
+
+  <p>
+    La mayoría del alcohol se evapora durante la elaboración de la cajeta.
+    Por eso, los sabores con licor no son productos alcohólicos aunque sí
+    utilicen licor auténtico durante su elaboración.
+  </p>
+
 </section>
 
 <footer>
-  Distribuido en EE.UU por Fevamex
+Distribuido en EE.UU por Fevamex
 </footer>
 
 </main>
+
 </body>
 </html>
