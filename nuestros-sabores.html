@@ -38,10 +38,10 @@ body{
   position:relative;
   z-index:1;
   width:100%;
-  max-width:430px;
+  max-width:980px;
   min-height:100dvh;
   background:linear-gradient(180deg,#cf441c 0%,#7a1f0b 100%);
-  padding:28px 20px 36px;
+  padding:32px 26px 42px;
   box-shadow:0 0 80px rgba(0,0,0,0.65);
 }
 
@@ -69,13 +69,13 @@ body{
 
 header{
   text-align:center;
-  margin-bottom:40px;
+  margin-bottom:44px;
 }
 
 .script-title{
   display:block;
   font-family:'Dancing Script',cursive;
-  font-size:2.8rem;
+  font-size:3.1rem;
   color:var(--naranja);
   margin-bottom:-10px;
   transform:rotate(-2deg);
@@ -84,7 +84,7 @@ header{
 
 .main-title{
   font-family:'Montserrat',sans-serif;
-  font-size:2.35rem;
+  font-size:2.8rem;
   line-height:0.95;
   letter-spacing:-2px;
   color:var(--blanco);
@@ -93,7 +93,7 @@ header{
 
 .subtitle{
   margin-top:16px;
-  font-size:0.82rem;
+  font-size:0.84rem;
   letter-spacing:2px;
   text-transform:uppercase;
   color:var(--naranja);
@@ -103,44 +103,24 @@ header{
 .section-title{
   color:var(--blanco);
   font-family:'Montserrat',sans-serif;
-  font-size:1.45rem;
+  font-size:1.55rem;
   line-height:1.1;
-  margin:50px 0 20px;
+  margin:54px 0 24px;
   text-align:center;
   text-shadow:2px 2px 0 rgba(0,0,0,0.18);
 }
 
-/* Carril horizontal para secciones de 3 */
-
-.flavor-row{
-  display:flex;
-  gap:16px;
-  overflow-x:auto;
-  padding:4px 2px 12px;
-  scroll-snap-type:x mandatory;
-  -webkit-overflow-scrolling:touch;
-}
-
-.flavor-row::-webkit-scrollbar{
-  height:6px;
-}
-
-.flavor-row::-webkit-scrollbar-thumb{
-  background:rgba(255,255,255,0.22);
-  border-radius:20px;
-}
-
-.flavor-row .flavor-card{
-  min-width:72%;
-  scroll-snap-align:center;
-}
-
-/* Grid normal para sección de 4 */
-
 .flavor-grid{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:16px;
+  gap:18px;
+}
+
+.grid-3{
+  grid-template-columns:repeat(3, 1fr);
+}
+
+.grid-2{
+  grid-template-columns:repeat(2, 1fr);
 }
 
 .flavor-card{
@@ -214,12 +194,50 @@ header{
 }
 
 footer{
-  margin-top:40px;
+  margin-top:44px;
   text-align:center;
   color:rgba(255,255,255,0.75);
   font-size:0.65rem;
   letter-spacing:1.5px;
   text-transform:uppercase;
+}
+
+@media (max-width: 700px){
+  .page{
+    max-width:430px;
+    padding:28px 20px 36px;
+  }
+
+  .script-title{
+    font-size:2.8rem;
+  }
+
+  .main-title{
+    font-size:2.35rem;
+  }
+
+  .flavor-grid{
+    display:flex;
+    gap:16px;
+    overflow-x:auto;
+    padding:4px 2px 14px;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  .flavor-grid::-webkit-scrollbar{
+    height:6px;
+  }
+
+  .flavor-grid::-webkit-scrollbar-thumb{
+    background:rgba(255,255,255,0.22);
+    border-radius:20px;
+  }
+
+  .flavor-card{
+    min-width:72%;
+    scroll-snap-align:center;
+  }
 }
 </style>
 </head>
@@ -239,7 +257,7 @@ footer{
 
 <h2 class="section-title">Las tradicionales</h2>
 
-<section class="flavor-row">
+<section class="flavor-grid grid-3">
   <article class="flavor-card">
     <div class="flavor-img">
       <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1779224214/copy_of_caj-fre-360_foto-frontal_1_rykgc2.webp" alt="Cajeta Natural La Reyna">
@@ -276,7 +294,7 @@ footer{
 
 <h2 class="section-title">Perfectas para el desayuno</h2>
 
-<section class="flavor-row">
+<section class="flavor-grid grid-3">
   <article class="flavor-card">
     <div class="flavor-img">
       <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1779224214/copy_of_caj-fre-360_foto-frontal_1_rykgc2.webp" alt="Cajeta de Fresa La Reyna">
@@ -313,7 +331,7 @@ footer{
 
 <h2 class="section-title">Colección de licores</h2>
 
-<section class="flavor-grid">
+<section class="flavor-grid grid-2">
   <article class="flavor-card">
     <div class="flavor-img">
       <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1779224214/copy_of_caj-fre-360_foto-frontal_1_rykgc2.webp" alt="Cajeta de Mezcal La Reyna">
