@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Nuestra Historia | Cajeta La Reyna</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+  --naranja:#f9a825;
+  --cafe:#4a1d0f;
+  --cafe-profundo:#1a0a05;
+  --crema:#fff8ef;
+  --blanco:#ffffff;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:var(--cafe-profundo);
+  font-family:'Open Sans',sans-serif;
+  display:flex;
+  justify-content:center;
+  color:var(--crema);
+}
+
+.desktop-bg{
+  position:fixed;
+  inset:0;
+  background:radial-gradient(circle,#7b2c12 0%,#1a0a05 60%);
+  filter:blur(30px);
+  z-index:0;
+}
+
+.page{
+  position:relative;
+  z-index:1;
+
+  width:100%;
+  max-width:430px;
+  min-height:100dvh;
+
+  background:linear-gradient(180deg,#cf441c 0%,#7a1f0b 100%);
+
+  padding:28px 22px 40px;
+
+  box-shadow:0 0 80px rgba(0,0,0,0.65);
+}
+
+/* BACK BUTTON */
+
+.back-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+
+  background:rgba(255,255,255,0.12);
+  color:var(--blanco);
+
+  text-decoration:none;
+
+  padding:11px 16px;
+
+  border-radius:14px;
+
+  font-size:0.85rem;
+  font-weight:700;
+
+  margin-bottom:34px;
+
+  backdrop-filter:blur(8px);
+
+  border:1px solid rgba(255,255,255,0.15);
+
+  transition:0.25s ease;
+}
+
+.back-btn:hover{
+  background:rgba(255,255,255,0.2);
+  transform:translateY(-2px);
+}
+
+/* HERO */
+
+.hero{
+  text-align:center;
+  margin-bottom:48px;
+}
+
+.script-title{
+  display:block;
+
+  font-family:'Dancing Script',cursive;
+
+  font-size:2.7rem;
+
+  color:var(--naranja);
+
+  margin-bottom:-10px;
+
+  transform:rotate(-2deg);
+
+  text-shadow:2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.main-title{
+  font-family:'Montserrat',sans-serif;
+
+  font-size:2.3rem;
+
+  line-height:0.95;
+
+  letter-spacing:-2px;
+
+  color:var(--blanco);
+
+  text-shadow:3px 3px 0 rgba(0,0,0,0.18);
+}
+
+.subtitle{
+  margin-top:16px;
+
+  font-size:0.82rem;
+
+  letter-spacing:2px;
+
+  text-transform:uppercase;
+
+  color:var(--naranja);
+
+  font-weight:800;
+}
+
+/* BLOCKS */
+
+.story-block{
+  margin-bottom:42px;
+}
+
+.story-block h2{
+  font-family:'Montserrat',sans-serif;
+
+  font-size:1.45rem;
+
+  line-height:1.1;
+
+  margin-bottom:16px;
+
+  color:var(--blanco);
+
+  text-shadow:2px 2px 0 rgba(0,0,0,0.18);
+}
+
+.story-block p{
+  font-size:0.96rem;
+
+  line-height:1.75;
+
+  color:rgba(255,255,255,0.92);
+}
+
+/* BADGES */
+
+.badges{
+  display:grid;
+
+  grid-template-columns:1fr 1fr;
+
+  gap:14px;
+
+  margin-top:22px;
+}
+
+.badge{
+  background:rgba(255,255,255,0.12);
+
+  border:1px solid rgba(255,255,255,0.14);
+
+  border-radius:18px;
+
+  padding:18px 14px;
+
+  text-align:center;
+
+  backdrop-filter:blur(8px);
+
+  transition:0.25s ease;
+}
+
+.badge:hover{
+  transform:translateY(-3px);
+
+  background:rgba(255,255,255,0.18);
+}
+
+.badge h3{
+  font-family:'Montserrat',sans-serif;
+
+  font-size:0.95rem;
+
+  line-height:1.2;
+
+  color:var(--blanco);
+
+  margin-bottom:8px;
+}
+
+.badge p{
+  font-size:0.74rem;
+
+  line-height:1.45;
+
+  color:rgba(255,255,255,0.82);
+}
+
+/* CTA */
+
+.cta{
+  margin-top:50px;
+
+  text-align:center;
+}
+
+.cta-btn{
+  display:inline-block;
+
+  background:var(--crema);
+
+  color:var(--cafe);
+
+  text-decoration:none;
+
+  padding:15px 24px;
+
+  border-radius:16px;
+
+  font-weight:800;
+
+  font-size:0.92rem;
+
+  transition:0.25s ease;
+}
+
+.cta-btn:hover{
+  transform:translateY(-3px);
+
+  background:#fff2dc;
+}
+
+/* FOOTER */
+
+footer{
+  margin-top:44px;
+
+  text-align:center;
+
+  color:rgba(255,255,255,0.7);
+
+  font-size:0.65rem;
+
+  letter-spacing:1.5px;
+
+  text-transform:uppercase;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="desktop-bg"></div>
+
+<main class="page">
+
+<a class="back-btn" href="index.html">
+  ← Volver
+</a>
+
+<section class="hero">
+
+  <span class="script-title">
+    Desde 1923
+  </span>
+
+  <h1 class="main-title">
+    Nuestra Historia
+  </h1>
+
+  <p class="subtitle">
+    Celaya, Guanajuato
+  </p>
+
+</section>
+
+<section class="story-block">
+
+  <h2>
+    Una tradición regional mexicana
+  </h2>
+
+  <p>
+    Cajetas La Reyna nace en Celaya, Guanajuato, una de las regiones más reconocidas de México por su tradición cajetera.
+    Durante más de 100 años, nuestra historia ha formado parte de una cultura regional que convirtió a la cajeta en uno de los dulces más representativos del país.
+  </p>
+
+</section>
+
+<section class="story-block">
+
+  <h2>
+    Elaborada en México
+  </h2>
+
+  <p>
+    Hoy seguimos elaborando cajeta en México inspirados en recetas y procesos tradicionales que han pasado de generación en generación.
+    Nuestro objetivo siempre ha sido mantener sabores auténticos que realmente sepan a México.
+  </p>
+
+</section>
+
+<section class="story-block">
+
+  <h2>
+    Reconocimientos y tradición
+  </h2>
+
+  <div class="badges">
+
+    <div class="badge">
+      <h3>Hecho en México</h3>
+      <p>
+        Certificación oficial mexicana.
+      </p>
+    </div>
+
+    <div class="badge">
+      <h3>Maestro Cajetero</h3>
+      <p>
+        Reconocimiento tradicional de elaboración.
+      </p>
+    </div>
+
+    <div class="badge">
+      <h3>Marca Guanajuato</h3>
+      <p>
+        Producto representativo de la región.
+      </p>
+    </div>
+
+    <div class="badge">
+      <h3>México Calidad Suprema</h3>
+      <p>
+        Reconocimiento nacional de calidad.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="story-block">
+
+  <h2>
+    De Celaya para Estados Unidos
+  </h2>
+
+  <p>
+    Actualmente, nuestros productos son comercializados en Estados Unidos a través de FEVAMEX, empresa encargada de importar y distribuir Cajetas La Reyna en USA.
+    Por eso, algunos productos pueden mostrar el nombre o logotipo de FEVAMEX como distribuidor oficial para Estados Unidos.
+  </p>
+
+</section>
+
+<section class="cta">
+
+  <a class="cta-btn" href="nuestros-sabores.html">
+    Explorar sabores
+  </a>
+
+</section>
+
+<footer>
+  Distribuido en EE.UU por FEVAMEX
+</footer>
+
+</main>
+
+</body>
+</html>
