@@ -1,71 +1,235 @@
-.cred-section{
-  margin-top:48px;
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Desde Celaya, México | Cajeta La Reyna</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --naranja:#f9a825;
+  --cafe:#4a1d0f;
+  --cafe-profundo:#1a0a05;
+  --crema:#fff8ef;
+  --blanco:#ffffff;
 }
 
-.cred-card{
+*{ margin:0; padding:0; box-sizing:border-box; }
+
+body{
+  background:var(--cafe-profundo);
+  font-family:'Open Sans',sans-serif;
+  display:flex;
+  justify-content:center;
+  color:var(--crema);
+}
+
+.desktop-bg{
+  position:fixed;
+  inset:0;
+  background:radial-gradient(circle,#7b2c12 0%,#1a0a05 60%);
+  filter:blur(30px);
+  z-index:0;
+}
+
+.page{
+  position:relative;
+  z-index:1;
+  width:100%;
+  max-width:430px;
+  min-height:100dvh;
+  background:linear-gradient(180deg,#cf441c 0%,#7a1f0b 100%);
+  padding:28px 22px 46px;
+  box-shadow:0 0 80px rgba(0,0,0,0.65);
+}
+
+.back-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:rgba(255,255,255,0.12);
+  color:var(--blanco);
+  text-decoration:none;
+  padding:11px 16px;
+  border-radius:14px;
+  font-size:0.85rem;
+  font-weight:700;
+  margin-bottom:34px;
+  border:1px solid rgba(255,255,255,0.15);
+}
+
+.credential-section{
+  margin-bottom:42px;
+  padding:26px 20px;
+  border-radius:24px;
   background:rgba(255,255,255,0.10);
-
-  border:1px solid rgba(255,255,255,0.12);
-
-  border-radius:28px;
-
-  padding:38px 26px;
-
+  border:1px solid rgba(255,255,255,0.14);
   text-align:center;
-
-  backdrop-filter:blur(10px);
-
-  box-shadow:0 10px 30px rgba(0,0,0,0.18);
 }
 
-.cred-script{
+.script-label{
   display:block;
-
   font-family:'Dancing Script',cursive;
-
-  font-size:2.5rem;
-
-  color:#f9a825;
-
-  margin-bottom:-10px;
-
+  font-size:2.25rem;
+  color:var(--naranja);
+  margin-bottom:-6px;
   transform:rotate(-2deg);
 }
 
-.cred-title{
+.section-main-title{
   font-family:'Montserrat',sans-serif;
-
-  font-size:3rem;
-
-  line-height:0.9;
-
-  letter-spacing:-2px;
-
-  color:white;
-
-  margin-bottom:18px;
-
-  text-shadow:3px 3px 0 rgba(0,0,0,0.15);
+  font-size:2rem;
+  line-height:0.98;
+  letter-spacing:-1.5px;
+  color:var(--blanco);
+  text-shadow:3px 3px 0 rgba(0,0,0,0.16);
+  margin-bottom:14px;
 }
 
-.cred-subtitle{
+.section-text{
+  font-size:0.92rem;
+  line-height:1.65;
+  color:rgba(255,255,255,0.9);
+}
+
+.badge-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin-top:22px;
+}
+
+.badge{
+  background:rgba(255,255,255,0.12);
+  border:1px solid rgba(255,255,255,0.13);
+  border-radius:18px;
+  padding:17px 13px;
+}
+
+.badge h3{
   font-family:'Montserrat',sans-serif;
+  font-size:0.92rem;
+  line-height:1.15;
+  color:var(--blanco);
+  margin-bottom:8px;
+}
 
-  font-size:0.82rem;
+.badge p{
+  font-size:0.74rem;
+  line-height:1.45;
+  color:rgba(255,255,255,0.82);
+}
 
-  letter-spacing:2px;
+.cta{
+  text-align:center;
+  margin-top:50px;
+}
 
+.cta-btn{
+  display:inline-block;
+  background:var(--crema);
+  color:var(--cafe);
+  text-decoration:none;
+  padding:15px 26px;
+  border-radius:16px;
+  font-weight:800;
+  font-size:0.92rem;
+}
+
+footer{
+  margin-top:44px;
+  text-align:center;
+  color:rgba(255,255,255,0.68);
+  font-size:0.65rem;
+  letter-spacing:1.5px;
   text-transform:uppercase;
-
-  color:#f9a825;
-
-  margin-bottom:22px;
 }
+</style>
+</head>
 
-.cred-text{
-  font-size:0.95rem;
+<body>
+<div class="desktop-bg"></div>
 
-  line-height:1.8;
+<main class="page">
 
-  color:rgba(255,255,255,0.92);
-}
+<a class="back-btn" href="index.html">← Volver</a>
+
+<section class="credential-section">
+  <span class="script-label">Récord Guinness</span>
+  <h1 class="section-main-title">2,820 kg de cajeta</h1>
+  <p class="section-text">
+    Cajetas La Reyna participó en el Récord Guinness de la cajeta más grande del mundo,
+    una muestra del peso cultural que tiene Celaya dentro de la tradición cajetera mexicana.
+  </p>
+</section>
+
+<section class="credential-section">
+  <span class="script-label">Fabricada e importada</span>
+  <h2 class="section-main-title">desde Celaya, México</h2>
+  <p class="section-text">
+    Nuestra cajeta se elabora en Celaya, Guanajuato, una región reconocida en México
+    por su tradición cajetera. No es una versión americanizada: es producto mexicano
+    importado para Estados Unidos.
+  </p>
+</section>
+
+<section class="credential-section">
+  <span class="script-label">Más de</span>
+  <h2 class="section-main-title">100 años de tradición</h2>
+  <p class="section-text">
+    La experiencia cajetera de La Reyna se remonta a 1923. Una tradición regional
+    construida durante generaciones alrededor del sabor, el oficio y la cultura de Celaya.
+  </p>
+</section>
+
+<section class="credential-section">
+  <span class="script-label">Credenciales</span>
+  <h2 class="section-main-title">mexicanas reales</h2>
+
+  <div class="badge-grid">
+    <div class="badge">
+      <h3>Hecho en México</h3>
+      <p>Certificación oficial de origen mexicano.</p>
+    </div>
+
+    <div class="badge">
+      <h3>Maestro Cajetero</h3>
+      <p>Reconocimiento al oficio tradicional cajetero.</p>
+    </div>
+
+    <div class="badge">
+      <h3>Marca Guanajuato</h3>
+      <p>Producto representativo de la región.</p>
+    </div>
+
+    <div class="badge">
+      <h3>México Calidad Suprema</h3>
+      <p>Distintivo nacional de calidad.</p>
+    </div>
+  </div>
+</section>
+
+<section class="credential-section">
+  <span class="script-label">En Estados Unidos</span>
+  <h2 class="section-main-title">distribuida por FEVAMEX</h2>
+  <p class="section-text">
+    Cajetas La Reyna se comercializa en Estados Unidos a través de FEVAMEX,
+    empresa encargada de importar y distribuir el producto para el mercado estadounidense.
+  </p>
+</section>
+
+<section class="cta">
+  <a class="cta-btn" href="nuestros-sabores.html">
+    Explorar sabores
+  </a>
+</section>
+
+<footer>
+  Distribuido en EE.UU por FEVAMEX
+</footer>
+
+</main>
+</body>
+</html>
