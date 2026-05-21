@@ -69,6 +69,23 @@ body{
   text-align:center;
 }
 
+.logo-placeholder{
+  width:88px;
+  height:88px;
+  margin:0 auto 18px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.16);
+  border:1px solid rgba(255,255,255,0.22);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:rgba(255,255,255,0.78);
+  font-size:0.68rem;
+  line-height:1.2;
+  text-align:center;
+  padding:10px;
+}
+
 .script-label{
   display:block;
   font-family:'Dancing Script',cursive;
@@ -88,38 +105,24 @@ body{
   margin-bottom:14px;
 }
 
+.section-subtitle{
+  font-size:0.78rem;
+  letter-spacing:1.7px;
+  text-transform:uppercase;
+  font-weight:800;
+  color:var(--naranja);
+  margin-bottom:14px;
+}
+
 .section-text{
   font-size:0.92rem;
   line-height:1.65;
   color:rgba(255,255,255,0.9);
 }
 
-.badge-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px;
-  margin-top:22px;
-}
-
-.badge{
-  background:rgba(255,255,255,0.12);
-  border:1px solid rgba(255,255,255,0.13);
-  border-radius:18px;
-  padding:17px 13px;
-}
-
-.badge h3{
-  font-family:'Montserrat',sans-serif;
-  font-size:0.92rem;
-  line-height:1.15;
-  color:var(--blanco);
-  margin-bottom:8px;
-}
-
-.badge p{
-  font-size:0.74rem;
-  line-height:1.45;
-  color:rgba(255,255,255,0.82);
+.highlight{
+  color:var(--naranja);
+  font-weight:800;
 }
 
 .cta{
@@ -157,58 +160,54 @@ footer{
 <a class="back-btn" href="index.html">← Volver</a>
 
 <section class="credential-section">
+  <div class="logo-placeholder">Logo / Imagen</div>
   <span class="script-label">Récord Guinness</span>
-  <h1 class="section-main-title">2,820 kg de cajeta</h1>
+  <h1 class="section-main-title">2,886 kg de cajeta</h1>
+  <p class="section-subtitle">Celaya, Guanajuato · 30 septiembre 2023</p>
   <p class="section-text">
-    Cajetas La Reyna participó en el Récord Guinness de la cajeta más grande del mundo,
-    una muestra del peso cultural que tiene Celaya dentro de la tradición cajetera mexicana.
+    El Municipio de Celaya logró el récord mundial del <span class="highlight">dulce de leche más grande</span>,
+    con una pieza de 2,886 kg realizada durante la sexta edición del Festival de la Cajeta,
+    Saboreando Celaya 2023.
   </p>
 </section>
 
 <section class="credential-section">
-  <span class="script-label">Fabricada e importada</span>
-  <h2 class="section-main-title">desde Celaya, México</h2>
+  <div class="logo-placeholder">Marca GTO</div>
+  <span class="script-label">Marca</span>
+  <h2 class="section-main-title">Guanajuato</h2>
   <p class="section-text">
-    Nuestra cajeta se elabora en Celaya, Guanajuato, una región reconocida en México
-    por su tradición cajetera. No es una versión americanizada: es producto mexicano
-    importado para Estados Unidos.
+    Marca Guanajuato impulsa productos y servicios de empresas guanajuatenses con orgullo de identidad estatal,
+    calidad, competitividad y presencia en escaparates nacionales e internacionales.
   </p>
 </section>
 
 <section class="credential-section">
-  <span class="script-label">Más de</span>
-  <h2 class="section-main-title">100 años de tradición</h2>
+  <div class="logo-placeholder">Hecho en México</div>
+  <span class="script-label">Certificación</span>
+  <h2 class="section-main-title">Hecho en México</h2>
   <p class="section-text">
-    La experiencia cajetera de La Reyna se remonta a 1923. Una tradición regional
-    construida durante generaciones alrededor del sabor, el oficio y la cultura de Celaya.
+    Una señal directa de procedencia: cajeta elaborada en México, no una versión americanizada del sabor mexicano.
   </p>
 </section>
 
 <section class="credential-section">
-  <span class="script-label">Credenciales</span>
-  <h2 class="section-main-title">mexicanas reales</h2>
+  <div class="logo-placeholder">Desde 1923</div>
+  <span class="script-label">100 años de</span>
+  <h2 class="section-main-title">tradición familiar</h2>
+  <p class="section-text">
+    La marca cumplió 50 años en julio de 2023, pero la experiencia familiar viene desde 1923,
+    cuando el fundador comenzó a trabajar en una fábrica de cajetas a los 9 años.
+    Desde entonces, la familia ha seguido elaborando cajeta artesanal de Celaya.
+  </p>
+</section>
 
-  <div class="badge-grid">
-    <div class="badge">
-      <h3>Hecho en México</h3>
-      <p>Certificación oficial de origen mexicano.</p>
-    </div>
-
-    <div class="badge">
-      <h3>Maestro Cajetero</h3>
-      <p>Reconocimiento al oficio tradicional cajetero.</p>
-    </div>
-
-    <div class="badge">
-      <h3>Marca Guanajuato</h3>
-      <p>Producto representativo de la región.</p>
-    </div>
-
-    <div class="badge">
-      <h3>México Calidad Suprema</h3>
-      <p>Distintivo nacional de calidad.</p>
-    </div>
-  </div>
+<section class="credential-section">
+  <span class="script-label">México</span>
+  <h2 class="section-main-title">Calidad Suprema</h2>
+  <p class="section-text">
+    El Sello México Calidad Suprema es una marca oficial que identifica productos agroalimentarios mexicanos
+    por su sanidad, inocuidad y calidad, ayudando a diferenciarlos en mercados nacionales e internacionales.
+  </p>
 </section>
 
 <section class="credential-section">
