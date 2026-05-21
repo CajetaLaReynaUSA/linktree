@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<title>Nuestra Historia | Cajeta La Reyna</title>
+<title>Desde Celaya, Guanajuato | Cajeta La Reyna</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -50,12 +50,12 @@ body{
 
   background:linear-gradient(180deg,#cf441c 0%,#7a1f0b 100%);
 
-  padding:28px 22px 40px;
+  padding:28px 22px 50px;
 
   box-shadow:0 0 80px rgba(0,0,0,0.65);
 }
 
-/* BACK BUTTON */
+/* BACK */
 
 .back-btn{
   display:inline-flex;
@@ -76,23 +76,14 @@ body{
 
   margin-bottom:34px;
 
-  backdrop-filter:blur(8px);
-
   border:1px solid rgba(255,255,255,0.15);
-
-  transition:0.25s ease;
-}
-
-.back-btn:hover{
-  background:rgba(255,255,255,0.2);
-  transform:translateY(-2px);
 }
 
 /* HERO */
 
 .hero{
   text-align:center;
-  margin-bottom:48px;
+  margin-bottom:32px;
 }
 
 .script-title{
@@ -100,133 +91,47 @@ body{
 
   font-family:'Dancing Script',cursive;
 
-  font-size:2.7rem;
+  font-size:2.6rem;
 
   color:var(--naranja);
 
-  margin-bottom:-10px;
-
-  transform:rotate(-2deg);
-
-  text-shadow:2px 2px 4px rgba(0,0,0,0.2);
+  margin-bottom:-8px;
 }
 
 .main-title{
   font-family:'Montserrat',sans-serif;
 
-  font-size:2.3rem;
+  font-size:2.15rem;
 
-  line-height:0.95;
-
-  letter-spacing:-2px;
+  line-height:1;
 
   color:var(--blanco);
+
+  letter-spacing:-2px;
 
   text-shadow:3px 3px 0 rgba(0,0,0,0.18);
 }
 
 .subtitle{
-  margin-top:16px;
+  margin-top:18px;
 
-  font-size:0.82rem;
+  font-size:0.85rem;
 
-  letter-spacing:2px;
+  line-height:1.7;
+
+  letter-spacing:1px;
 
   text-transform:uppercase;
 
-  color:var(--naranja);
-
-  font-weight:800;
-}
-
-/* BLOCKS */
-
-.story-block{
-  margin-bottom:42px;
-}
-
-.story-block h2{
-  font-family:'Montserrat',sans-serif;
-
-  font-size:1.45rem;
-
-  line-height:1.1;
-
-  margin-bottom:16px;
-
-  color:var(--blanco);
-
-  text-shadow:2px 2px 0 rgba(0,0,0,0.18);
-}
-
-.story-block p{
-  font-size:0.96rem;
-
-  line-height:1.75;
-
   color:rgba(255,255,255,0.92);
-}
 
-/* BADGES */
-
-.badges{
-  display:grid;
-
-  grid-template-columns:1fr 1fr;
-
-  gap:14px;
-
-  margin-top:22px;
-}
-
-.badge{
-  background:rgba(255,255,255,0.12);
-
-  border:1px solid rgba(255,255,255,0.14);
-
-  border-radius:18px;
-
-  padding:18px 14px;
-
-  text-align:center;
-
-  backdrop-filter:blur(8px);
-
-  transition:0.25s ease;
-}
-
-.badge:hover{
-  transform:translateY(-3px);
-
-  background:rgba(255,255,255,0.18);
-}
-
-.badge h3{
-  font-family:'Montserrat',sans-serif;
-
-  font-size:0.95rem;
-
-  line-height:1.2;
-
-  color:var(--blanco);
-
-  margin-bottom:8px;
-}
-
-.badge p{
-  font-size:0.74rem;
-
-  line-height:1.45;
-
-  color:rgba(255,255,255,0.82);
+  font-weight:700;
 }
 
 /* CTA */
 
-.cta{
-  margin-top:50px;
-
-  text-align:center;
+.top-cta{
+  margin-top:28px;
 }
 
 .cta-btn{
@@ -238,21 +143,116 @@ body{
 
   text-decoration:none;
 
-  padding:15px 24px;
+  padding:15px 26px;
 
   border-radius:16px;
 
   font-weight:800;
 
   font-size:0.92rem;
-
-  transition:0.25s ease;
 }
 
-.cta-btn:hover{
-  transform:translateY(-3px);
+/* BLOCKS */
 
-  background:#fff2dc;
+.section-title{
+  font-family:'Montserrat',sans-serif;
+
+  font-size:1.7rem;
+
+  line-height:1.05;
+
+  text-align:center;
+
+  margin-top:54px;
+  margin-bottom:26px;
+
+  color:var(--blanco);
+
+  text-shadow:2px 2px 0 rgba(0,0,0,0.15);
+}
+
+.credentials{
+  display:grid;
+
+  grid-template-columns:1fr 1fr;
+
+  gap:16px;
+}
+
+.credential{
+  background:rgba(255,255,255,0.12);
+
+  border:1px solid rgba(255,255,255,0.14);
+
+  border-radius:20px;
+
+  padding:20px 16px;
+
+  text-align:center;
+}
+
+.credential h3{
+  font-family:'Montserrat',sans-serif;
+
+  font-size:1rem;
+
+  line-height:1.2;
+
+  margin-bottom:10px;
+
+  color:var(--blanco);
+}
+
+.credential p{
+  font-size:0.8rem;
+
+  line-height:1.5;
+
+  color:rgba(255,255,255,0.82);
+}
+
+/* INFO BLOCK */
+
+.info-block{
+  margin-top:46px;
+
+  background:rgba(255,255,255,0.08);
+
+  border-radius:22px;
+
+  padding:26px 22px;
+
+  text-align:center;
+
+  border:1px solid rgba(255,255,255,0.12);
+}
+
+.info-block h2{
+  font-family:'Montserrat',sans-serif;
+
+  font-size:1.45rem;
+
+  line-height:1.15;
+
+  margin-bottom:14px;
+
+  color:var(--blanco);
+}
+
+.info-block p{
+  font-size:0.92rem;
+
+  line-height:1.75;
+
+  color:rgba(255,255,255,0.9);
+}
+
+/* FINAL CTA */
+
+.bottom-cta{
+  margin-top:54px;
+
+  text-align:center;
 }
 
 /* FOOTER */
@@ -262,7 +262,7 @@ footer{
 
   text-align:center;
 
-  color:rgba(255,255,255,0.7);
+  color:rgba(255,255,255,0.68);
 
   font-size:0.65rem;
 
@@ -291,98 +291,88 @@ footer{
   </span>
 
   <h1 class="main-title">
-    Nuestra Historia
+    Celaya,<br>
+    Guanajuato
   </h1>
 
   <p class="subtitle">
-    Celaya, Guanajuato
+    Fabricada e importada desde México
   </p>
 
-</section>
-
-<section class="story-block">
-
-  <h2>
-    Una tradición regional mexicana
-  </h2>
-
-  <p>
-    Cajetas La Reyna nace en Celaya, Guanajuato, una de las regiones más reconocidas de México por su tradición cajetera.
-    Durante más de 100 años, nuestra historia ha formado parte de una cultura regional que convirtió a la cajeta en uno de los dulces más representativos del país.
-  </p>
-
-</section>
-
-<section class="story-block">
-
-  <h2>
-    Elaborada en México
-  </h2>
-
-  <p>
-    Hoy seguimos elaborando cajeta en México inspirados en recetas y procesos tradicionales que han pasado de generación en generación.
-    Nuestro objetivo siempre ha sido mantener sabores auténticos que realmente sepan a México.
-  </p>
-
-</section>
-
-<section class="story-block">
-
-  <h2>
-    Reconocimientos y tradición
-  </h2>
-
-  <div class="badges">
-
-    <div class="badge">
-      <h3>Hecho en México</h3>
-      <p>
-        Certificación oficial mexicana.
-      </p>
-    </div>
-
-    <div class="badge">
-      <h3>Maestro Cajetero</h3>
-      <p>
-        Reconocimiento tradicional de elaboración.
-      </p>
-    </div>
-
-    <div class="badge">
-      <h3>Marca Guanajuato</h3>
-      <p>
-        Producto representativo de la región.
-      </p>
-    </div>
-
-    <div class="badge">
-      <h3>México Calidad Suprema</h3>
-      <p>
-        Reconocimiento nacional de calidad.
-      </p>
-    </div>
-
+  <div class="top-cta">
+    <a class="cta-btn" href="nuestros-sabores.html">
+      Explorar sabores
+    </a>
   </div>
 
 </section>
 
-<section class="story-block">
+<h2 class="section-title">
+  Credenciales
+</h2>
+
+<section class="credentials">
+
+  <article class="credential">
+    <h3>Hecho en México</h3>
+    <p>
+      Certificación oficial mexicana.
+    </p>
+  </article>
+
+  <article class="credential">
+    <h3>Maestro Cajetero</h3>
+    <p>
+      Reconocimiento tradicional de elaboración.
+    </p>
+  </article>
+
+  <article class="credential">
+    <h3>Marca Guanajuato</h3>
+    <p>
+      Producto representativo de la región.
+    </p>
+  </article>
+
+  <article class="credential">
+    <h3>México Calidad Suprema</h3>
+    <p>
+      Reconocimiento nacional de calidad.
+    </p>
+  </article>
+
+  <article class="credential">
+    <h3>Desde 1923</h3>
+    <p>
+      Más de 100 años de tradición cajetera.
+    </p>
+  </article>
+
+  <article class="credential">
+    <h3>Récord Guinness</h3>
+    <p>
+      Participación en la cajeta más grande del mundo.
+    </p>
+  </article>
+
+</section>
+
+<section class="info-block">
 
   <h2>
     De Celaya para Estados Unidos
   </h2>
 
   <p>
-    Actualmente, nuestros productos son comercializados en Estados Unidos a través de FEVAMEX, empresa encargada de importar y distribuir Cajetas La Reyna en USA.
-    Por eso, algunos productos pueden mostrar el nombre o logotipo de FEVAMEX como distribuidor oficial para Estados Unidos.
+    Cajetas La Reyna es distribuida en Estados Unidos por FEVAMEX, empresa encargada de importar oficialmente nuestros productos desde México.
   </p>
 
 </section>
 
-<section class="cta">
+<section class="bottom-cta">
 
-  <a class="cta-btn" href="nuestros-sabores.html">
-    Explorar sabores
+  <a class="cta-btn" href="https://www.amazon.com/">
+    Comprar en Amazon
   </a>
 
 </section>
