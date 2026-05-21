@@ -180,11 +180,43 @@
             <span class="orange-subtitle">Producida e importada desde Celaya, México</span>
         </header>
 
+         <!-- Botones para rastrear uso -->
         <nav class="nav-links">
-            <a href="https://a.co/d/04OIyzlR" class="btn">Comprar en Amazon</a>
-            <a href="nuestros-sabores.html" class="btn">Guía de sabores</a>
-            <a href="nosotros.html" class="btn">Desde Celaya, Guanajuato</a>
+            <a 
+              href="https://a.co/d/04OIyzlR"
+              class="btn"
+              onclick="gtag('event', 'click_amazon', {
+                button_name: 'comprar_amazon_home',
+                page_name: 'home'
+              });"
+            >
+              Comprar en Amazon
+            </a>
+        
+            <a 
+              href="nuestros-sabores.html"
+              class="btn"
+              onclick="gtag('event', 'click_guia_sabores', {
+                button_name: 'guia_sabores_home',
+                page_name: 'home'
+              });"
+            >
+              Guía de sabores
+            </a>
+        
+            <a 
+              href="nosotros.html"
+              class="btn"
+              onclick="gtag('event', 'click_credenciales', {
+                button_name: 'desde_celaya_home',
+                page_name: 'home'
+              });"
+            >
+              Desde Celaya, Guanajuato
+            </a>
         </nav>
+
+        
     </main>
 
 </body>
