@@ -1,387 +1,71 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-<title>Desde Celaya, Guanajuato | Cajeta La Reyna</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-
-<style>
-
-:root{
-  --naranja:#f9a825;
-  --cafe:#4a1d0f;
-  --cafe-profundo:#1a0a05;
-  --crema:#fff8ef;
-  --blanco:#ffffff;
+.cred-section{
+  margin-top:48px;
 }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+.cred-card{
+  background:rgba(255,255,255,0.10);
 
-body{
-  background:var(--cafe-profundo);
-  font-family:'Open Sans',sans-serif;
-  display:flex;
-  justify-content:center;
-  color:var(--crema);
-}
+  border:1px solid rgba(255,255,255,0.12);
 
-.desktop-bg{
-  position:fixed;
-  inset:0;
-  background:radial-gradient(circle,#7b2c12 0%,#1a0a05 60%);
-  filter:blur(30px);
-  z-index:0;
-}
+  border-radius:28px;
 
-.page{
-  position:relative;
-  z-index:1;
+  padding:38px 26px;
 
-  width:100%;
-  max-width:430px;
-  min-height:100dvh;
-
-  background:linear-gradient(180deg,#cf441c 0%,#7a1f0b 100%);
-
-  padding:28px 22px 50px;
-
-  box-shadow:0 0 80px rgba(0,0,0,0.65);
-}
-
-/* BACK */
-
-.back-btn{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-
-  background:rgba(255,255,255,0.12);
-  color:var(--blanco);
-
-  text-decoration:none;
-
-  padding:11px 16px;
-
-  border-radius:14px;
-
-  font-size:0.85rem;
-  font-weight:700;
-
-  margin-bottom:34px;
-
-  border:1px solid rgba(255,255,255,0.15);
-}
-
-/* HERO */
-
-.hero{
   text-align:center;
-  margin-bottom:32px;
+
+  backdrop-filter:blur(10px);
+
+  box-shadow:0 10px 30px rgba(0,0,0,0.18);
 }
 
-.script-title{
+.cred-script{
   display:block;
 
   font-family:'Dancing Script',cursive;
 
-  font-size:2.6rem;
+  font-size:2.5rem;
 
-  color:var(--naranja);
+  color:#f9a825;
 
-  margin-bottom:-8px;
+  margin-bottom:-10px;
+
+  transform:rotate(-2deg);
 }
 
-.main-title{
+.cred-title{
   font-family:'Montserrat',sans-serif;
 
-  font-size:2.15rem;
+  font-size:3rem;
 
-  line-height:1;
-
-  color:var(--blanco);
+  line-height:0.9;
 
   letter-spacing:-2px;
 
-  text-shadow:3px 3px 0 rgba(0,0,0,0.18);
+  color:white;
+
+  margin-bottom:18px;
+
+  text-shadow:3px 3px 0 rgba(0,0,0,0.15);
 }
 
-.subtitle{
-  margin-top:18px;
+.cred-subtitle{
+  font-family:'Montserrat',sans-serif;
 
-  font-size:0.85rem;
+  font-size:0.82rem;
 
-  line-height:1.7;
-
-  letter-spacing:1px;
+  letter-spacing:2px;
 
   text-transform:uppercase;
+
+  color:#f9a825;
+
+  margin-bottom:22px;
+}
+
+.cred-text{
+  font-size:0.95rem;
+
+  line-height:1.8;
 
   color:rgba(255,255,255,0.92);
-
-  font-weight:700;
 }
-
-/* CTA */
-
-.top-cta{
-  margin-top:28px;
-}
-
-.cta-btn{
-  display:inline-block;
-
-  background:var(--crema);
-
-  color:var(--cafe);
-
-  text-decoration:none;
-
-  padding:15px 26px;
-
-  border-radius:16px;
-
-  font-weight:800;
-
-  font-size:0.92rem;
-}
-
-/* BLOCKS */
-
-.section-title{
-  font-family:'Montserrat',sans-serif;
-
-  font-size:1.7rem;
-
-  line-height:1.05;
-
-  text-align:center;
-
-  margin-top:54px;
-  margin-bottom:26px;
-
-  color:var(--blanco);
-
-  text-shadow:2px 2px 0 rgba(0,0,0,0.15);
-}
-
-.credentials{
-  display:grid;
-
-  grid-template-columns:1fr 1fr;
-
-  gap:16px;
-}
-
-.credential{
-  background:rgba(255,255,255,0.12);
-
-  border:1px solid rgba(255,255,255,0.14);
-
-  border-radius:20px;
-
-  padding:20px 16px;
-
-  text-align:center;
-}
-
-.credential h3{
-  font-family:'Montserrat',sans-serif;
-
-  font-size:1rem;
-
-  line-height:1.2;
-
-  margin-bottom:10px;
-
-  color:var(--blanco);
-}
-
-.credential p{
-  font-size:0.8rem;
-
-  line-height:1.5;
-
-  color:rgba(255,255,255,0.82);
-}
-
-/* INFO BLOCK */
-
-.info-block{
-  margin-top:46px;
-
-  background:rgba(255,255,255,0.08);
-
-  border-radius:22px;
-
-  padding:26px 22px;
-
-  text-align:center;
-
-  border:1px solid rgba(255,255,255,0.12);
-}
-
-.info-block h2{
-  font-family:'Montserrat',sans-serif;
-
-  font-size:1.45rem;
-
-  line-height:1.15;
-
-  margin-bottom:14px;
-
-  color:var(--blanco);
-}
-
-.info-block p{
-  font-size:0.92rem;
-
-  line-height:1.75;
-
-  color:rgba(255,255,255,0.9);
-}
-
-/* FINAL CTA */
-
-.bottom-cta{
-  margin-top:54px;
-
-  text-align:center;
-}
-
-/* FOOTER */
-
-footer{
-  margin-top:44px;
-
-  text-align:center;
-
-  color:rgba(255,255,255,0.68);
-
-  font-size:0.65rem;
-
-  letter-spacing:1.5px;
-
-  text-transform:uppercase;
-}
-
-</style>
-</head>
-
-<body>
-
-<div class="desktop-bg"></div>
-
-<main class="page">
-
-<a class="back-btn" href="index.html">
-  ← Volver
-</a>
-
-<section class="hero">
-
-  <span class="script-title">
-    Desde 1923
-  </span>
-
-  <h1 class="main-title">
-    Celaya,<br>
-    Guanajuato
-  </h1>
-
-  <p class="subtitle">
-    Fabricada e importada desde México
-  </p>
-
-  <div class="top-cta">
-    <a class="cta-btn" href="nuestros-sabores.html">
-      Explorar sabores
-    </a>
-  </div>
-
-</section>
-
-<h2 class="section-title">
-  Credenciales
-</h2>
-
-<section class="credentials">
-
-  <article class="credential">
-    <h3>Hecho en México</h3>
-    <p>
-      Certificación oficial mexicana.
-    </p>
-  </article>
-
-  <article class="credential">
-    <h3>Maestro Cajetero</h3>
-    <p>
-      Reconocimiento tradicional de elaboración.
-    </p>
-  </article>
-
-  <article class="credential">
-    <h3>Marca Guanajuato</h3>
-    <p>
-      Producto representativo de la región.
-    </p>
-  </article>
-
-  <article class="credential">
-    <h3>México Calidad Suprema</h3>
-    <p>
-      Reconocimiento nacional de calidad.
-    </p>
-  </article>
-
-  <article class="credential">
-    <h3>Desde 1923</h3>
-    <p>
-      Más de 100 años de tradición cajetera.
-    </p>
-  </article>
-
-  <article class="credential">
-    <h3>Récord Guinness</h3>
-    <p>
-      Participación en la cajeta más grande del mundo.
-    </p>
-  </article>
-
-</section>
-
-<section class="info-block">
-
-  <h2>
-    De Celaya para Estados Unidos
-  </h2>
-
-  <p>
-    Cajetas La Reyna es distribuida en Estados Unidos por FEVAMEX, empresa encargada de importar oficialmente nuestros productos desde México.
-  </p>
-
-</section>
-
-<section class="bottom-cta">
-
-  <a class="cta-btn" href="https://www.amazon.com/">
-    Comprar en Amazon
-  </a>
-
-</section>
-
-<footer>
-  Distribuido en EE.UU por FEVAMEX
-</footer>
-
-</main>
-
-</body>
-</html>
