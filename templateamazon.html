@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Protocolo FBA - Wokine Style</title>
+    <title>Protocolo FBA - Estilo Minimalista</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -11,7 +11,7 @@
             --text-light: #ffffff;
             --text-dark: #333333;
             
-            /* Gradientes basados en tu imagen */
+            /* Gradientes y fondos alternados */
             --gradient-warm: linear-gradient(135deg, #8B4513 0%, #A0522D 50%, #CD853F 100%);
             --bg-dark-card: #1a1a1a;
             --nav-bg: #4a4a4a;
@@ -27,45 +27,13 @@
             background-color: var(--bg-page);
             font-family: 'Inter', sans-serif;
             color: var(--text-dark);
-            padding: 40px 20px 120px 20px; /* Espacio extra abajo para la barra de navegación */
+            padding: 40px 20px 120px 20px; /* Espacio inferior para la barra flotante */
         }
 
-        /* Encabezado superior tipo logo/contacto (como en la imagen) */
-        .top-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1400px;
-            margin: 0 auto 40px auto;
-            padding: 0 10px;
-        }
-
-        .logo-box {
-            width: 40px;
-            height: 50px;
-            border: 2px solid #000;
-            border-radius: 0 0 20px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        .contact-btn {
-            border: 1px solid #000;
-            padding: 8px 16px;
-            border-radius: 20px;
-            text-decoration: none;
-            color: #000;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        /* Cuadrícula de Tarjetas (Cards) */
+        /* Cuadrícula de Tarjetas: Forzada a 2 columnas exactas para que todas midan lo mismo */
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 20px;
             max-width: 1400px;
             margin: 0 auto;
@@ -77,17 +45,16 @@
             overflow: hidden;
             color: var(--text-light);
             transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
         }
 
-        /* Alternando estilos de tarjetas como en tu imagen */
+        /* Alternando estilos de tarjetas */
         details:nth-child(odd) {
             background: var(--gradient-warm);
         }
         
         details:nth-child(even) {
             background: var(--bg-dark-card);
-            /* Patrón sutil para simular la textura oscura de la imagen derecha */
             background-image: radial-gradient(circle at 100% 0%, rgba(255,255,255,0.05) 0%, transparent 40%);
         }
 
@@ -98,7 +65,7 @@
             list-style: none;
             display: flex;
             flex-direction: column;
-            min-height: 400px; /* Altura grande como en la imagen */
+            min-height: 400px; /* Todas tienen exactamente la misma altura mínima */
             position: relative;
         }
 
@@ -106,13 +73,13 @@
             display: none;
         }
 
-        /* Etiqueta pequeña superior (ej. • PASO 1) */
+        /* Etiqueta superior de "PASO" - Tamaño Aumentado */
         .overline {
-            font-size: 0.75rem;
+            font-size: 1.5rem; /* Tamaño notablemente más grande */
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: auto; /* Empuja el título hacia el centro/abajo */
+            letter-spacing: 2px;
+            margin-bottom: auto; 
         }
 
         .overline span {
@@ -122,7 +89,7 @@
 
         /* Título gigante */
         summary h2 {
-            font-size: 3rem;
+            font-size: 2.8rem;
             font-weight: 700;
             line-height: 1.1;
             letter-spacing: -1px;
@@ -145,7 +112,7 @@
             opacity: 0.7;
         }
 
-        /* Contenido desplegable */
+        /* Contenido desplegable (Vacío para rellenar) */
         .content {
             padding: 0 40px 50px 40px;
             font-size: 1.1rem;
@@ -159,7 +126,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Barra de navegación flotante inferior (Como en la imagen) */
+        /* Barra de navegación flotante inferior */
         .floating-nav {
             position: fixed;
             bottom: 30px;
@@ -209,13 +176,16 @@
             color: black;
         }
 
-        /* Responsividad para móviles */
-        @media (max-width: 768px) {
+        /* Responsividad para móviles y tablets */
+        @media (max-width: 900px) {
             .grid-container {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr; /* 1 sola columna en pantallas pequeñas */
             }
             summary h2 {
                 font-size: 2.2rem;
+            }
+            .overline {
+                font-size: 1.2rem;
             }
             summary {
                 min-height: 300px;
@@ -234,13 +204,6 @@
     </style>
 </head>
 <body>
-
-    <div class="top-bar">
-        <div class="logo-box">W</div>
-        <div>
-            <a href="mailto:jpolanco@alchilecreativos.com" class="contact-btn">Preguntas &rarr;</a>
-        </div>
-    </div>
 
     <div class="grid-container">
 
@@ -284,7 +247,8 @@
                 </div>
         </details>
 
-        <details style="grid-column: 1 / -1;"> <summary style="min-height: 250px;">
+        <details>
+            <summary>
                 <div class="overline"><span>●</span> PASO 5</div>
                 <h2>Cierre y recolección.</h2>
                 <div class="action-link">Abrir instrucciones</div>
