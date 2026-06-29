@@ -3,208 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guía FBA - Cajeta</title>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>Protocolo FBA</title>
     <style>
-        :root {
-            --naranja-brillante: #f9a825;
-            --cafe-oscuro: #4a1d0f;
-            --blanco: #ffffff;
-            --bg-dark: #1a0a05;
-            --text-muted: rgba(255, 255, 255, 0.8);
-            --card-border: rgba(249, 168, 37, 0.4);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
-            background-color: var(--bg-dark);
-            font-family: 'Open Sans', sans-serif;
-            color: var(--blanco);
-            line-height: 1.6;
-            padding: 2rem 1rem;
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* Hero y Alerta Fija */
-        .hero { text-align: center; margin-bottom: 2rem; }
-        .hero h1 { font-size: 2.5rem; color: var(--naranja-brillante); margin-bottom: 1rem; }
-        
-        .alert-box {
-            background-color: rgba(249, 168, 37, 0.1);
-            border-left: 4px solid var(--naranja-brillante);
-            padding: 1.5rem;
-            border-radius: 4px;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-        .alert-box strong { color: var(--naranja-brillante); font-size: 1.1rem; }
-        .alert-box a { color: var(--blanco); font-weight: bold; text-decoration: none; }
-
-        /* Estilos del Acordeón (Details/Summary) */
         details {
-            background-color: var(--cafe-oscuro);
-            border: 1px solid var(--card-border);
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            overflow: hidden;
-        }
-
-        summary {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: var(--naranja-brillante);
-            padding: 1.5rem;
-            cursor: pointer;
-            list-style: none;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background-color 0.2s ease;
-        }
-
-        summary:hover { background-color: rgba(0,0,0,0.2); }
-        summary::-webkit-details-marker { display: none; } /* Ocultar flecha default */
-        
-        /* Icono de flecha personalizado */
-        summary::after {
-            content: '+';
-            font-size: 1.5rem;
-            transition: transform 0.3s;
-        }
-        details[open] summary::after { content: '−'; }
-        details[open] summary { border-bottom: 1px solid var(--card-border); }
-
-        /* Contenido desplegable */
-        .content {
-            padding: 1.5rem;
-            color: var(--text-muted);
-        }
-
-        .content ul { margin-left: 1.5rem; margin-bottom: 1rem; }
-        .content li { margin-bottom: 0.5rem; }
-        .highlight { color: #ff5252; font-weight: bold; } /* Rojo para advertencias */
-
-        /* Botones */
-        .btn {
-            display: inline-block;
-            padding: 0.6rem 1.2rem;
-            background-color: var(--naranja-brillante);
-            color: var(--cafe-oscuro);
-            text-decoration: none;
-            font-weight: 800;
+            border: 1px solid #aaa;
             border-radius: 4px;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            margin: 5px 0;
-        }
-        .btn:hover { opacity: 0.9; }
-
-        /* Grid de botones de etiquetas */
-        .grid-etiquetas {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 10px;
-            margin-top: 1rem;
-        }
-        .grid-item {
-            border: 1px solid rgba(255,255,255,0.2);
             padding: 10px;
-            border-radius: 4px;
-            text-align: center;
+            margin-bottom: 10px;
         }
-        .grid-item span { display: block; font-size: 0.8rem; color: var(--naranja-brillante); margin-bottom: 5px; }
+        summary {
+            font-weight: bold;
+            font-size: 1.1em;
+            cursor: pointer;
+        }
+        .contenido {
+            margin-top: 10px;
+            padding-left: 18px;
+            color: #555;
+        }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="hero">
-            <h1>Protocolo FBA</h1>
-        </div>
+    <h2>Protocolo Operativo FBA</h2>
 
-        <div class="alert-box">
-            <strong>¿No sabes qué cantidades preparar hoy?</strong><br>
-            DETENTE y pregunta a coordinación antes de armar paquetes:<br>
-            <a href="mailto:jpolanco@alchilecreativos.com">jpolanco@alchilecreativos.com</a> | <a href="https://wa.me/521231231234">WhatsApp: +52 123 123 1234</a>
-        </div>
-
-        <details>
-            <summary>1. ¿Cuántos Bundles se tienen que preparar?</summary>
-            <div class="content">
-                <p>Revisa el documento o mensaje del <strong>"Pedido Actual"</strong>. Nuestro menú oficial de paquetes (en tamaños de 360g y 155g) es el siguiente:</p>
-                <ul>
-                    <li>Natural, Vainilla y Fresa</li>
-                    <li>Natural, Café y Envinada</li>
-                    <li>Natural, Quemada y Nuez</li>
-                    <li>Tequila, Mezcal y Rompope</li>
-                </ul>
-                <p>Arma estrictamente las cantidades indicadas en tu orden del día.</p>
+    <details>
+        <summary>1. ¿Cuántos Bundles se tienen que preparar?</summary>
+        <div class="contenido">
             </div>
-        </details>
+    </details>
 
-        <details>
-            <summary>2. ¿Cómo se preparan los Bundles?</summary>
-            <div class="content">
-                <p>Los paquetes se arman en <strong>grupos de 3 botellas</strong> utilizando el plástico y la máquina termoencogible (pistola de calor).</p>
-                <p class="highlight">⚠️ REGLA DE ORO: Es vital que los códigos de barras de cada botella queden ocultos. Al juntar las botellas, gíralas para que los códigos miren hacia ADENTRO del paquete.</p>
-                <p>Aplica el calor uniformemente para que el paquete quede firme y no se separen los frascos.</p>
+    <details>
+        <summary>2. ¿Cómo se preparan los Bundles?</summary>
+        <div class="contenido">
             </div>
-        </details>
+    </details>
 
-        <details>
-            <summary>3. El etiquetado</summary>
-            <div class="content">
-                <p>Cada paquete debe llevar DOS etiquetas impresas en planillas de 30 calcomanías (tamaño 2x1 pulgadas):</p>
-                <ol>
-                    <li><strong>Etiqueta de Seguridad:</strong> <a href="https://drive.google.com/file/d/1D4tiRYkPGp0Cz68NA6_hp90k9zEP8bDh/view?usp=sharing" target="_blank" class="btn" style="padding: 0.3rem 0.6rem; font-size:0.7rem;">Descargar "Sold as a Set"</a></li>
-                    <li><strong>Código del Producto (FNSKU):</strong> Descarga la etiqueta correspondiente a lo que acabas de armar:</li>
-                </ol>
-                
-                <div class="grid-etiquetas">
-                    <div class="grid-item"><span>360g | Nat-Vai-Fre</span><a href="#" class="btn" style="width:100%;">Descargar</a></div>
-                    <div class="grid-item"><span>360g | Nat-Caf-Env</span><a href="#" class="btn" style="width:100%;">Descargar</a></div>
-                    <div class="grid-item"><span>360g | Nat-Que-Nue</span><a href="#" class="btn" style="width:100%;">Descargar</a></div>
-                    <div class="grid-item"><span>360g | Teq-Mez-Rom</span><a href="#" class="btn" style="width:100%;">Descargar</a></div>
-                    
-                    <div class="grid-item"><span>155g | Nat-Vai-Fre</span><a href="#" class="btn" style="width:100%;">Descargar</a></div>
-                    <div class="grid-item"><span>155g | Nat-Caf-Env</span><a href="#" class="btn" style="width:100%;">Descargar</a></div>
-                    <div class="grid-item"><span>155g | Nat-Que-Nue</span><a href="#" class="btn" style="width:100%;">Descargar</a></div>
-                    <div class="grid-item"><span>155g | Teq-Mez-Rom</span><a href="#" class="btn" style="width:100%;">Descargar</a></div>
-                </div>
+    <details>
+        <summary>3. El etiquetado</summary>
+        <div class="contenido">
             </div>
-        </details>
+    </details>
 
-        <details>
-            <summary>4. El empaquetado en cajas</summary>
-            <div class="content">
-                <p>Acomoda los bundles etiquetados en la caja de envío siguiendo estas reglas de Amazon:</p>
-                <ul>
-                    <li><strong>Caja Limpia:</strong> Revisa que la caja NO tenga otros códigos de barras o logos. Si los hay, tápalos con cinta o etiquetas en blanco.</li>
-                    <li><strong>Límite de Tamaño:</strong> La caja no debe superar las 25 pulgadas en ninguno de sus lados.</li>
-                    <li><strong>Límite de Peso (Máx 50 lbs):</strong> Esto equivale a meter un máximo de <strong>20 bundles grandes</strong> o <strong>46 bundles chicos</strong> por caja.</li>
-                </ul>
-                <p class="highlight">⚠️ OBLIGATORIO: Lleva una bitácora exacta de cuántos bundles de qué sabores estás metiendo en cada caja. Amazon rechazará el envío si los números no cuadran.</p>
+    <details>
+        <summary>4. El empaquetado en cajas</summary>
+        <div class="contenido">
             </div>
-        </details>
+    </details>
 
-        <details>
-            <summary>5. Cierre y recolección</summary>
-            <div class="content">
-                <p>Una vez llenas las cajas, sigue estos pasos finales:</p>
-                <ol>
-                    <li>Manda la bitácora terminada a <a href="mailto:jpolanco@alchilecreativos.com" style="color:var(--naranja-brillante);">jpolanco@alchilecreativos.com</a> o al WhatsApp indicado.</li>
-                    <li>Recibirás de regreso los datos de envío (Guías FBA y UPS).</li>
-                    <li>Imprímelas (miden 4x6 pulgadas) y pégalas en una cara plana de la caja. <strong>NO dobles las esquinas y NO pongas cinta transparente sobre los códigos de barras.</strong></li>
-                    <li>Amazon Partnered Carrier pasará a recolectar las cajas a la oficina.</li>
-                </ol>
+    <details>
+        <summary>5. Cierre y recolección</summary>
+        <div class="contenido">
             </div>
-        </details>
+    </details>
 
-    </div>
 </body>
 </html>
