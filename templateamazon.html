@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proceso Amazon FBA - Cajeta</title>
+    <title>Guía FBA - Cajeta</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -11,160 +11,86 @@
             --cafe-oscuro: #4a1d0f;
             --blanco: #ffffff;
             --bg-dark: #1a0a05;
-            --text-muted: rgba(255, 255, 255, 0.6);
-            --card-border: rgba(249, 168, 37, 0.2);
-            --danger: #ff5252;
+            --text-muted: rgba(255, 255, 255, 0.8);
+            --card-border: rgba(249, 168, 37, 0.4);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body, html {
-            height: 100%;
-            width: 100%;
+        body {
             background-color: var(--bg-dark);
             font-family: 'Open Sans', sans-serif;
-            display: flex;
-            justify-content: center;
-            overflow: hidden;
             color: var(--blanco);
-        }
-
-        .scroll-wrapper {
-            height: 100%;
-            width: 100%;
-            overflow-y: auto;
-            display: flex;
-            justify-content: center;
+            line-height: 1.6;
+            padding: 2rem 1rem;
         }
 
         .container {
-            max-width: 1200px;
-            width: 100%;
-            padding: 4rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        /* --- Hero Section --- */
-        .hero {
-            text-align: center;
-            margin-bottom: 5rem;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            letter-spacing: -1px;
-            margin-bottom: 1rem;
-        }
-
-        .hero h1 span { color: var(--naranja-brillante); }
-
-        .contact-pill {
-            display: inline-block;
+        /* Hero y Alerta Fija */
+        .hero { text-align: center; margin-bottom: 2rem; }
+        .hero h1 { font-size: 2.5rem; color: var(--naranja-brillante); margin-bottom: 1rem; }
+        
+        .alert-box {
             background-color: rgba(249, 168, 37, 0.1);
-            border: 1px solid var(--naranja-brillante);
-            color: var(--naranja-brillante);
-            padding: 0.8rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-top: 1rem;
+            border-left: 4px solid var(--naranja-brillante);
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin-bottom: 2rem;
+            text-align: center;
         }
+        .alert-box strong { color: var(--naranja-brillante); font-size: 1.1rem; }
+        .alert-box a { color: var(--blanco); font-weight: bold; text-decoration: none; }
 
-        .contact-pill a { color: var(--blanco); text-decoration: none; margin-left: 5px; }
-
-        /* --- Tarjetas de Pasos (Estilo Protocolo) --- */
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 5rem;
-        }
-
-        .step-card {
+        /* Estilos del Acordeón (Details/Summary) */
+        details {
             background-color: var(--cafe-oscuro);
             border: 1px solid var(--card-border);
             border-radius: 8px;
-            padding: 3rem 2rem;
-            text-align: center;
-            transition: transform 0.3s ease;
+            margin-bottom: 1rem;
+            overflow: hidden;
         }
 
-        .step-card:hover { transform: translateY(-5px); }
-
-        .step-card .icon-circle {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            border: 2px solid var(--naranja-brillante);
-            margin: 0 auto 2rem auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
+        summary {
+            font-size: 1.3rem;
             font-weight: 800;
             color: var(--naranja-brillante);
-        }
-
-        .step-card h3 { font-size: 1.5rem; margin-bottom: 1rem; }
-        .step-card p { color: var(--text-muted); font-size: 0.95rem; }
-        .step-card strong { color: var(--blanco); }
-        .alert-text { color: var(--danger); font-weight: 800; display: block; margin-top: 10px; }
-
-        /* Tarjeta Central Resaltada */
-        .step-card.highlight {
-            background-color: var(--naranja-brillante);
-            color: var(--cafe-oscuro);
-            border-color: var(--naranja-brillante);
-            transform: scale(1.05);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-        }
-
-        .step-card.highlight .icon-circle {
-            border-color: var(--cafe-oscuro);
-            color: var(--cafe-oscuro);
-        }
-
-        .step-card.highlight h3, .step-card.highlight strong { color: var(--cafe-oscuro); }
-        .step-card.highlight p { color: rgba(74, 29, 15, 0.8); }
-
-        /* --- Lista de Tareas Detalladas (Reglas de Caja) --- */
-        .details-section {
-            background-color: var(--cafe-oscuro);
-            padding: 3rem;
-            border-radius: 8px;
-            border: 1px solid var(--card-border);
-            margin-bottom: 5rem;
-        }
-
-        .details-section h2 {
-            text-align: center;
-            font-size: 2.2rem;
-            margin-bottom: 3rem;
-        }
-
-        .task-row {
+            padding: 1.5rem;
+            cursor: pointer;
+            list-style: none;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 2rem;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            transition: background-color 0.2s ease;
         }
 
-        .task-row:last-child { border-bottom: none; }
+        summary:hover { background-color: rgba(0,0,0,0.2); }
+        summary::-webkit-details-marker { display: none; } /* Ocultar flecha default */
+        
+        /* Icono de flecha personalizado */
+        summary::after {
+            content: '+';
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+        details[open] summary::after { content: '−'; }
+        details[open] summary { border-bottom: 1px solid var(--card-border); }
 
-        .task-row.active {
-            background-color: var(--naranja-brillante);
-            color: var(--cafe-oscuro);
-            border-radius: 6px;
+        /* Contenido desplegable */
+        .content {
+            padding: 1.5rem;
+            color: var(--text-muted);
         }
 
-        .task-info h4 { font-size: 1.2rem; margin-bottom: 0.2rem; }
-        .task-info p { font-size: 0.85rem; opacity: 0.8; }
-        .task-row.active .task-info p { color: var(--cafe-oscuro); font-weight: 600; }
-        .task-status { font-weight: 800; font-size: 1.1rem; text-align: right; }
+        .content ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+        .content li { margin-bottom: 0.5rem; }
+        .highlight { color: #ff5252; font-weight: bold; } /* Rojo para advertencias */
 
-        /* --- Botones --- */
-        .btn-action {
+        /* Botones */
+        .btn {
             display: inline-block;
             padding: 0.6rem 1.2rem;
             background-color: var(--naranja-brillante);
@@ -172,166 +98,113 @@
             text-decoration: none;
             font-weight: 800;
             border-radius: 4px;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             text-transform: uppercase;
-            transition: opacity 0.3s;
-            margin-top: 10px;
+            margin: 5px 0;
         }
-        .btn-action:hover { opacity: 0.8; }
-        .btn-outline {
-            background-color: transparent;
-            border: 1px solid var(--naranja-brillante);
-            color: var(--naranja-brillante);
-        }
+        .btn:hover { opacity: 0.9; }
 
-        /* --- Catálogo Bundles --- */
-        .bundles-grid {
+        /* Grid de botones de etiquetas */
+        .grid-etiquetas {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 1rem;
         }
-
-        .bundle-item {
-            background-color: rgba(0,0,0,0.2);
-            border: 1px solid var(--card-border);
-            padding: 1.5rem;
-            border-radius: 6px;
+        .grid-item {
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 10px;
+            border-radius: 4px;
             text-align: center;
         }
-
-        .bundle-item h4 { font-size: 1.1rem; margin-bottom: 5px; }
-        .bundle-item .size { color: var(--naranja-brillante); font-weight: 800; font-size: 0.9rem; margin-bottom: 15px; display: block; }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .step-card.highlight { transform: scale(1); }
-            .task-row { flex-direction: column; text-align: center; gap: 1rem; }
-            .task-status { text-align: center; }
-        }
+        .grid-item span { display: block; font-size: 0.8rem; color: var(--naranja-brillante); margin-bottom: 5px; }
     </style>
 </head>
 <body>
 
-    <div class="scroll-wrapper">
-        <div class="container">
-            
-            <div class="hero">
-                <p style="color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px;">Protocolo FBA</p>
-                <h1>Proceso <span>Operativo</span></h1>
-                
-                <div class="contact-pill">
-                    ¿Dudas con la cantidad a armar? Pregunte a:
-                    <a href="mailto:jpolanco@alchilecreativos.com">jpolanco@...</a> | 
-                    <a href="https://wa.me/521231231234">WA: +52 123 123 1234</a>
-                </div>
-            </div>
-
-            <div class="steps-grid">
-                
-                <div class="step-card">
-                    <div class="icon-circle">01</div>
-                    <h3>Armado de Bundles</h3>
-                    <p>Se abren cajas de fábrica y se arman en <strong>botellas de 3</strong> usando la máquina termoencogible.</p>
-                    <span class="alert-text">¡IMPORTANTE! Los códigos de barra de cada botella deben quedar hacia ADENTRO (ocultos).</span>
-                </div>
-
-                <div class="step-card highlight">
-                    <div class="icon-circle">02</div>
-                    <h3>Bitácora Obligatoria</h3>
-                    <p>Al acomodar en cajas, debe llevar una <strong>bitácora exacta</strong> de cuántos Bundles de qué sabores van en cada caja.</p>
-                    <strong>Amazon regresará el envío si esto falla.</strong>
-                </div>
-
-                <div class="step-card">
-                    <div class="icon-circle">03</div>
-                    <h3>Envío y Recolección</h3>
-                    <p>Mande la bitácora terminada a coordinación. Recibirá datos para pegar en la caja (Guías 4x6). Amazon pasará a recogerlas.</p>
-                    <p style="margin-top: 10px; font-size: 0.8rem;">*No poner cinta transparente sobre códigos.</p>
-                </div>
-
-            </div>
-
-            <div class="details-section">
-                <h2>Reglas de Empaque y Cajas</h2>
-                
-                <div class="task-row active">
-                    <div class="task-info">
-                        <h4>Límite de Peso</h4>
-                        <p>Máximo 20 bundles grandes o 46 bundles chicos por caja.</p>
-                    </div>
-                    <div class="task-status">MAX 50 LBS</div>
-                </div>
-
-                <div class="task-row">
-                    <div class="task-info">
-                        <h4>Medidas y Limpieza de Caja</h4>
-                        <p>Ningún lado mayor a X medidas. Tapar códigos de barra viejos o logos con cinta/etiquetas.</p>
-                    </div>
-                    <div class="task-status">CAJA LIMPIA</div>
-                </div>
-
-                <div class="task-row">
-                    <div class="task-info">
-                        <h4>Etiqueta: Sold as a Set</h4>
-                        <p>Planilla de 30 calcomanías de 2x1. Obligatorio en todos los bundles.</p>
-                        <a href="https://www.amazon.com/-/es/Etiquetas-direcci%C3%B3n-imprimibles-etiquetas-impresoras/dp/B0CKG81JHG/" target="_blank" class="btn-action btn-outline" style="margin-right: 10px;">Comprar Papel</a>
-                    </div>
-                    <div class="task-status">
-                        <a href="https://drive.google.com/file/d/1D4tiRYkPGp0Cz68NA6_hp90k9zEP8bDh/view?usp=sharing" target="_blank" class="btn-action">Descargar PDF</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="details-section">
-                <h2>Descarga de Códigos FNSKU</h2>
-                <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">Imprimir en página de etiquetas de 30 calcomanías de 2x1.</p>
-                
-                <div class="bundles-grid">
-                    <div class="bundle-item">
-                        <h4>Natural, Vainilla, Fresa</h4>
-                        <span class="size">360 gr</span>
-                        <a href="#" class="btn-action">Etiqueta</a>
-                    </div>
-                    <div class="bundle-item">
-                        <h4>Natural, Café, Envinada</h4>
-                        <span class="size">360 gr</span>
-                        <a href="#" class="btn-action">Etiqueta</a>
-                    </div>
-                    <div class="bundle-item">
-                        <h4>Natural, Quemada, Nuez</h4>
-                        <span class="size">360 gr</span>
-                        <a href="#" class="btn-action">Etiqueta</a>
-                    </div>
-                    <div class="bundle-item">
-                        <h4>Tequila, Mezcal, Rompope</h4>
-                        <span class="size">360 gr</span>
-                        <a href="#" class="btn-action">Etiqueta</a>
-                    </div>
-                    <div class="bundle-item">
-                        <h4>Natural, Vainilla, Fresa</h4>
-                        <span class="size">155 gr</span>
-                        <a href="#" class="btn-action">Etiqueta</a>
-                    </div>
-                    <div class="bundle-item">
-                        <h4>Natural, Café, Envinada</h4>
-                        <span class="size">155 gr</span>
-                        <a href="#" class="btn-action">Etiqueta</a>
-                    </div>
-                    <div class="bundle-item">
-                        <h4>Natural, Quemada, Nuez</h4>
-                        <span class="size">155 gr</span>
-                        <a href="#" class="btn-action">Etiqueta</a>
-                    </div>
-                    <div class="bundle-item">
-                        <h4>Tequila, Mezcal, Rompope</h4>
-                        <span class="size">155 gr</span>
-                        <a href="#" class="btn-action">Etiqueta</a>
-                    </div>
-                </div>
-            </div>
-
+    <div class="container">
+        <div class="hero">
+            <h1>Protocolo FBA</h1>
         </div>
-    </div>
 
+        <div class="alert-box">
+            <strong>¿No sabes qué cantidades preparar hoy?</strong><br>
+            DETENTE y pregunta a coordinación antes de armar paquetes:<br>
+            <a href="mailto:jpolanco@alchilecreativos.com">jpolanco@alchilecreativos.com</a> | <a href="https://wa.me/521231231234">WhatsApp: +52 123 123 1234</a>
+        </div>
+
+        <details>
+            <summary>1. ¿Cuántos Bundles se tienen que preparar?</summary>
+            <div class="content">
+                <p>Revisa el documento o mensaje del <strong>"Pedido Actual"</strong>. Nuestro menú oficial de paquetes (en tamaños de 360g y 155g) es el siguiente:</p>
+                <ul>
+                    <li>Natural, Vainilla y Fresa</li>
+                    <li>Natural, Café y Envinada</li>
+                    <li>Natural, Quemada y Nuez</li>
+                    <li>Tequila, Mezcal y Rompope</li>
+                </ul>
+                <p>Arma estrictamente las cantidades indicadas en tu orden del día.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>2. ¿Cómo se preparan los Bundles?</summary>
+            <div class="content">
+                <p>Los paquetes se arman en <strong>grupos de 3 botellas</strong> utilizando el plástico y la máquina termoencogible (pistola de calor).</p>
+                <p class="highlight">⚠️ REGLA DE ORO: Es vital que los códigos de barras de cada botella queden ocultos. Al juntar las botellas, gíralas para que los códigos miren hacia ADENTRO del paquete.</p>
+                <p>Aplica el calor uniformemente para que el paquete quede firme y no se separen los frascos.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>3. El etiquetado</summary>
+            <div class="content">
+                <p>Cada paquete debe llevar DOS etiquetas impresas en planillas de 30 calcomanías (tamaño 2x1 pulgadas):</p>
+                <ol>
+                    <li><strong>Etiqueta de Seguridad:</strong> <a href="https://drive.google.com/file/d/1D4tiRYkPGp0Cz68NA6_hp90k9zEP8bDh/view?usp=sharing" target="_blank" class="btn" style="padding: 0.3rem 0.6rem; font-size:0.7rem;">Descargar "Sold as a Set"</a></li>
+                    <li><strong>Código del Producto (FNSKU):</strong> Descarga la etiqueta correspondiente a lo que acabas de armar:</li>
+                </ol>
+                
+                <div class="grid-etiquetas">
+                    <div class="grid-item"><span>360g | Nat-Vai-Fre</span><a href="#" class="btn" style="width:100%;">Descargar</a></div>
+                    <div class="grid-item"><span>360g | Nat-Caf-Env</span><a href="#" class="btn" style="width:100%;">Descargar</a></div>
+                    <div class="grid-item"><span>360g | Nat-Que-Nue</span><a href="#" class="btn" style="width:100%;">Descargar</a></div>
+                    <div class="grid-item"><span>360g | Teq-Mez-Rom</span><a href="#" class="btn" style="width:100%;">Descargar</a></div>
+                    
+                    <div class="grid-item"><span>155g | Nat-Vai-Fre</span><a href="#" class="btn" style="width:100%;">Descargar</a></div>
+                    <div class="grid-item"><span>155g | Nat-Caf-Env</span><a href="#" class="btn" style="width:100%;">Descargar</a></div>
+                    <div class="grid-item"><span>155g | Nat-Que-Nue</span><a href="#" class="btn" style="width:100%;">Descargar</a></div>
+                    <div class="grid-item"><span>155g | Teq-Mez-Rom</span><a href="#" class="btn" style="width:100%;">Descargar</a></div>
+                </div>
+            </div>
+        </details>
+
+        <details>
+            <summary>4. El empaquetado en cajas</summary>
+            <div class="content">
+                <p>Acomoda los bundles etiquetados en la caja de envío siguiendo estas reglas de Amazon:</p>
+                <ul>
+                    <li><strong>Caja Limpia:</strong> Revisa que la caja NO tenga otros códigos de barras o logos. Si los hay, tápalos con cinta o etiquetas en blanco.</li>
+                    <li><strong>Límite de Tamaño:</strong> La caja no debe superar las 25 pulgadas en ninguno de sus lados.</li>
+                    <li><strong>Límite de Peso (Máx 50 lbs):</strong> Esto equivale a meter un máximo de <strong>20 bundles grandes</strong> o <strong>46 bundles chicos</strong> por caja.</li>
+                </ul>
+                <p class="highlight">⚠️ OBLIGATORIO: Lleva una bitácora exacta de cuántos bundles de qué sabores estás metiendo en cada caja. Amazon rechazará el envío si los números no cuadran.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>5. Cierre y recolección</summary>
+            <div class="content">
+                <p>Una vez llenas las cajas, sigue estos pasos finales:</p>
+                <ol>
+                    <li>Manda la bitácora terminada a <a href="mailto:jpolanco@alchilecreativos.com" style="color:var(--naranja-brillante);">jpolanco@alchilecreativos.com</a> o al WhatsApp indicado.</li>
+                    <li>Recibirás de regreso los datos de envío (Guías FBA y UPS).</li>
+                    <li>Imprímelas (miden 4x6 pulgadas) y pégalas en una cara plana de la caja. <strong>NO dobles las esquinas y NO pongas cinta transparente sobre los códigos de barras.</strong></li>
+                    <li>Amazon Partnered Carrier pasará a recolectar las cajas a la oficina.</li>
+                </ol>
+            </div>
+        </details>
+
+    </div>
 </body>
 </html>
