@@ -141,6 +141,7 @@
             margin-top: 40px;
         }
 
+        /* Enlace subrayado inferior */
         .action-link {
             font-size: 1.1rem;
             font-weight: 600;
@@ -149,6 +150,16 @@
             text-decoration-thickness: 2px;
             margin-top: auto;
             transition: opacity 0.2s;
+        }
+
+        /* Inyecta "Ver más" cuando está cerrado */
+        .action-link::after {
+            content: "Ver más";
+        }
+
+        /* Inyecta "Ver menos" cuando está abierto */
+        details[open] .action-link::after {
+            content: "Ver menos";
         }
 
         summary:hover .action-link {
@@ -264,7 +275,7 @@
             <summary>
                 <div class="overline"><span>●</span> PASO 1</div>
                 <h2>¿Cuántos Bundles se tienen que preparar?</h2>
-                <div class="action-link">Ver más</div>
+                <div class="action-link"></div>
             </summary>
             
             <div class="content">
@@ -290,7 +301,7 @@
             <summary>
                 <div class="overline"><span>●</span> PASO 2</div>
                 <h2>¿Cómo se preparan los Bundles?</h2>
-                <div class="action-link">Ver más</div>
+                <div class="action-link"></div>
             </summary>
             <div class="content">
                 <p style="margin-bottom: 20px;">Los Bundles se arman siempre con los <strong>códigos de barras viendo hacia adentro</strong> del paquete, de manera que los códigos queden ocultos. Esto es para que los escáneres de Amazon no los puedan leer por accidente.</p>
@@ -307,7 +318,7 @@
             <summary>
                 <div class="overline"><span>●</span> PASO 3</div>
                 <h2>Etiquetado.</h2>
-                <div class="action-link">Ver más</div>
+                <div class="action-link"></div>
             </summary>
            <div class="content">
                 <p style="margin-bottom: 20px;">Cada Bundle debe llevar <strong>2 etiquetas</strong> pegadas en la parte más amplia y plana del paquete. Normalmente esta va a ser en la parte lateral del Bundle.</p>
@@ -347,7 +358,7 @@
             <summary>
                 <div class="overline"><span>●</span> PASO 4</div>
                 <h2>Empaquetado.</h2>
-                <div class="action-link">Ver más</div>
+                <div class="action-link"></div>
             </summary>
             <div class="content">
                 </div>
@@ -357,7 +368,7 @@
             <summary>
                 <div class="overline"><span>●</span> PASO 5</div>
                 <h2>Cierre y recolección.</h2>
-                <div class="action-link">Ver más</div>
+                <div class="action-link"></div>
             </summary>
             <div class="content">
                 </div>
@@ -367,7 +378,7 @@
             <summary>
                 <div class="overline"><span>●</span> PASO 6</div>
                 <h2>Dudas</h2>
-                <div class="action-link">Ver más</div>
+                <div class="action-link"></div>
             </summary>
             <div class="content">
                 </div>
