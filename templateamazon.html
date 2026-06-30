@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Protocolo FBA - Estilo Minimalista</title>
+    <title>Protocolo FBA - Envío de Cajetas</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-page: #ffffff;
             --text-light: #ffffff;
             --text-dark: #333333;
-            
-            /* Gradientes y fondos alternados */
             --gradient-warm: linear-gradient(135deg, #8B4513 0%, #A0522D 50%, #CD853F 100%);
             --bg-dark-card: #1a1a1a;
             --nav-bg: #4a4a4a;
+            --accent: #CD853F;
         }
 
         * {
@@ -28,6 +27,54 @@
             font-family: 'Inter', sans-serif;
             color: var(--text-dark);
             padding: 40px 20px 120px 20px;
+        }
+
+        /* Sección de Encabezado y Overview */
+        .overview-container {
+            max-width: 1400px;
+            margin: 0 auto 40px auto;
+            background: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 40px;
+        }
+
+        .overview-header {
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+        }
+
+        .overview-header h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .meta-info {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #555555;
+        }
+
+        .overview-body p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            color: #444444;
+        }
+
+        .overview-body ol {
+            margin: 20px 0 20px 25px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #444444;
+        }
+
+        .overview-body li {
+            margin-bottom: 10px;
         }
 
         /* Cuadrícula de Tarjetas */
@@ -47,14 +94,14 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.15);
         }
 
-        /* Estilos para los sub-menús de etiquetas */
         .sub-details {
-            background: #0a0a0a; /* Negro sólido y oscuro */
+            background: #0a0a0a;
             border: 1px solid rgba(255,255,255,0.1);
             border-radius: 8px;
             margin-bottom: 15px;
             box-shadow: none;
         }
+
         .sub-summary {
             min-height: auto;
             padding: 15px 20px;
@@ -63,17 +110,16 @@
             color: var(--accent);
             border-bottom: none;
             margin: 0;
+            cursor: pointer;
         }
-        .sub-summary::after {
-            font-size: 1.5rem;
-        }
+
         .sub-content {
             padding: 0 20px 20px 20px;
             display: flex;
             flex-direction: column;
             gap: 10px;
-            animation: none;
         }
+
         .sub-btn {
             display: block;
             background-color: #2a2a2a;
@@ -85,11 +131,11 @@
             transition: background 0.2s;
             border: 1px solid rgba(255,255,255,0.1);
         }
+
         .sub-btn:hover {
             background-color: #444;
         }
 
-        /* EL TRUCO: Cuando se abre en PC, ocupa todo el ancho de la pantalla */
         @media (min-width: 901px) {
             .grid-container > details[open] {
                 grid-column: 1 / -1;
@@ -141,7 +187,6 @@
             margin-top: 40px;
         }
 
-        /* Enlace subrayado inferior */
         .action-link {
             font-size: 1.1rem;
             font-weight: 600;
@@ -152,12 +197,10 @@
             transition: opacity 0.2s;
         }
 
-        /* Inyecta "Ver más" cuando está cerrado */
         .action-link::after {
             content: "Ver más";
         }
 
-        /* Inyecta "Ver menos" cuando está abierto */
         details[open] .action-link::after {
             content: "Ver menos";
         }
@@ -166,7 +209,6 @@
             opacity: 0.7;
         }
 
-        /* Control de tamaño para las imágenes de instrucciones */
         .instruction-img {
             width: 100%;
             max-width: 400px; 
@@ -177,10 +219,9 @@
             display: block;
         }
         
-        /* Caja para destacar instrucciones críticas */
         .highlight-box {
             background-color: rgba(255, 255, 255, 0.05);
-            border-left: 4px solid var(--accent); /* Línea lateral del color de acento */
+            border-left: 4px solid var(--accent);
             padding: 15px 20px;
             border-radius: 4px;
             font-size: 1.1rem;
@@ -189,10 +230,9 @@
             margin-bottom: 10px;
         }
 
-        /* Contenido desplegable con fondo contrastante */
         .content {
-            padding: 40px 40px 50px 40px; /* IMPORTANTE: Añadimos 40px arriba (el primer valor) */
-            background-color: rgba(0, 0, 0, 0.25); /* Mantenemos el fondo ahumado */
+            padding: 40px 40px 50px 40px;
+            background-color: rgba(0, 0, 0, 0.25);
             border-top: 1px solid rgba(255, 255, 255, 0.15);
             font-size: 1.1rem;
             line-height: 1.6;
@@ -200,7 +240,6 @@
             animation: slideDown 0.4s ease forwards;
         }
 
-        /* NUEVO: Estilo para resaltar las cantidades */
         .quantity-title {
             font-size: 1.4rem;
             font-weight: 800;
@@ -213,55 +252,6 @@
         @keyframes slideDown {
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
-        }
-
-        .floating-nav {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: var(--nav-bg);
-            padding: 15px 25px;
-            border-radius: 40px;
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            color: white;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            z-index: 100;
-        }
-
-        .floating-nav span {
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-        }
-
-        .floating-nav span.inactive {
-            color: rgba(255,255,255,0.5);
-        }
-
-        .nav-btn {
-            background-color: #2a2a2a;
-            border-radius: 30px;
-            padding: 8px 12px 8px 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .nav-icon {
-            background: white;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: black;
         }
 
         @media (max-width: 900px) {
@@ -281,16 +271,45 @@
             .content {
                 padding: 30px 20px 30px 20px;
             }
-            .floating-nav {
-                width: 90%;
-                justify-content: space-between;
-                padding: 10px 15px;
-                gap: 10px;
+            .overview-container {
+                padding: 20px;
+            }
+            .overview-header h1 {
+                font-size: 1.8rem;
             }
         }
     </style>
 </head>
 <body>
+
+    <div class="overview-container">
+        <div class="overview-header">
+            <h1>¿Cómo se envían los Bundles de Cajetas a Amazon?</h1>
+            <div class="meta-info">
+                <strong>Para:</strong> Equipo en oficina apoyando con el armado físico de las cajetas.<br>
+                <strong>Asunto:</strong> Protocolo de preparación y envío para Amazon FBA
+            </div>
+        </div>
+        <div class="overview-body">
+            <p>Hola. Preparé este breve reporte con el objetivo de alinear el trabajo manual que nos están ayudando a hacer en la oficina (el armado de los Bundles y el empaquetado), con el registro en el sistema de Amazon que hacemos nosotros, y así asegurar que los envíos fluyan sin contratiempos.</p>
+            
+            <p>Amazon intenta que sus procesos logísticos involucren a la menor cantidad de personas posible, por lo que casi el 100% de la recepción de mercancía está automatizada mediante escáneres y básculas.</p>
+            
+            <p>Al momento en que se genera una orden de envío, Amazon nos exige declarar exactamente cuántas cajas estamos mandando, cuántos productos hay en cada una y qué productos son, así como el peso y tamaño total de cada caja. Con esa información, el sistema genera las etiquetas de envío y espera que, al llegar a sus instalaciones, el escáner lea la caja exterior y lo que haya dentro coincida perfectamente con lo que se declaró previamente.</p>
+            
+            <p style="color: #c0392b; font-weight: 600;">Si hay discrepancias —mayor o menor cantidad de producto, artículos distintos o un peso que no cuadra— el sistema puede retener los productos, cobrar multas por procesamiento manual y, en el peor de los casos, bloquear nuestra cuenta para envíos futuros.</p>
+            
+            <p>Por eso mismo, es importante que la declaración de productos al momento de generar la orden de envío sea exacta. No como capricho propio, sino como una exigencia estricta de Amazon.</p>
+            
+            <p>Dada esta exigencia, y para que la operación sea impecable, nuestro flujo de trabajo general se divide en tres etapas:</p>
+            
+            <ol>
+                <li><strong>Armado y empaquetado:</strong> Ustedes arman los Bundles, los etiquetan y los guardan en las cajas llevando un registro exacto de qué contiene cada caja, cuánto pesa y cuánto mide.</li>
+                <li><strong>Aviso (Online):</strong> Nos reportan esta información. Con estos datos, nosotros entramos a la plataforma de Amazon para declarar el envío y generar las etiquetas oficiales.</li>
+                <li><strong>Etiquetado y salida:</strong> Les enviamos las etiquetas generadas para que las impriman y las peguen en los costados de cada caja correspondiente, se sellan y se espera a que la paquetería pase a recolectarlas.</li>
+            </ol>
+        </div>
+    </div>
 
     <div class="grid-container">
 
@@ -300,7 +319,6 @@
                 <h2>¿Cuántos Bundles se tienen que preparar?</h2>
                 <div class="action-link"></div>
             </summary>
-            
             <div class="content">
                 <p class="quantity-title">60 bundles de 360 gr por cada uno de los siguientes sabores:</p>
                 <ul style="list-style-position: inside; line-height: 1.8; margin-bottom: 40px;">
@@ -333,7 +351,7 @@
 
                 <p style="margin-bottom: 20px;">Para armar el Bundle se utiliza una máquina que comprime el plástico calentándolo.</p>
                 
-                <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1782783592/Reporte_de_Amazon_Hasta_el_20_de_abril_del_2026_1_dmih93.webp" alt="Códigos hacia adentro" class="instruction-img">
+                <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1782783592/Reporte_de_Amazon_Hasta_el_20_de_abril_del_2026_1_dmih93.webp" alt="Paquete termoencogido" class="instruction-img">
             </div>
         </details>
 
@@ -343,8 +361,7 @@
                 <h2>Etiquetado.</h2>
                 <div class="action-link"></div>
             </summary>
-            
-           <div class="content">
+            <div class="content">
                 <p style="margin-bottom: 30px;">Cada Bundle debe de llevar 2 etiquetas en tamaños de 2x1 pulgadas:</p>
 
                 <p class="quantity-title">1- Etiqueta de "Sold as a Set"</p>
@@ -380,7 +397,6 @@
                 <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1782783591/Reporte_de_Amazon_Hasta_el_20_de_abril_del_2026_2_sqse2q.webp" alt="Ejemplo de etiquetado" class="instruction-img" style="margin-bottom: 0;">
             </div>
         </details>
-
 
         <details>
             <summary>
@@ -426,41 +442,39 @@
                 <p style="margin-bottom: 20px;">Una vez que las cajas estén selladas, sigue este proceso para finalizar el envío:</p>
 
                 <p class="quantity-title">1. Reporte de Bitácora</p>
-                <p style="margin-bottom: 20px;">Envía la bitácora con la cantidad exacta de Bundles y sabores que empacaste en cada caja a <strong>jpolanco@alchilecreativos.com</strong> o al WhatsApp <strong>+52 123 123 1234</strong>.</p>
+                <p style="margin-bottom: 20px;">Envía la información de cada caja (cantidad de productos, tamaño y peso total) a nuestro equipo interno al correo <strong>jpolanco@alchilecreativos.com.mx</strong> o por WhatsApp al número <strong>+52 981-829-6408</strong>.</p>
 
                 <p class="quantity-title">2. Etiquetas de Envío Externas</p>
-                <p style="margin-bottom: 15px;">Recibirás 2 etiquetas (de 4x6 pulgadas) para cada caja. Pégalas siguiendo estas reglas vitales:</p>
+                <p style="margin-bottom: 15px;">Recibirás las etiquetas de envío generadas. Imprímelas y pégalas siguiendo estas reglas vitales:</p>
                 
                 <ul style="list-style-position: inside; line-height: 1.8; margin-bottom: 30px;">
-                    <li>Pega ambas etiquetas en <strong>una sola cara plana y visible</strong> de la caja exterior.</li>
-                    <li>Deja al menos <strong>1.25 pulgadas (3 cm)</strong> de distancia entre las etiquetas y los bordes de la caja.</li>
-                    <li><strong style="color: #ff5252;">Prohibido:</strong> Doblar las etiquetas por las esquinas, pegarlas sobre la línea de apertura (donde pasa el cúter) o poner cinta transparente encima de los códigos de barras.</li>
+                    <li>Pega la etiqueta de envío en el costado de cada caja correspondiente.</li>
+                    <li>Deja espacio para que los códigos de barras queden en una superficie plana y visible.</li>
+                    <li><strong style="color: #ff5252;">Prohibido:</strong> Doblar las etiquetas por las esquinas o poner cinta transparente encima de los códigos de barras.</li>
                 </ul>
 
                 <p class="quantity-title">3. Recolección</p>
-                <p style="margin-bottom: 0;">El personal de mensajería pasará a recoger las cajas terminadas. ¡Buen trabajo!</p>
+                <p style="margin-bottom: 0;">Espera a que la paquetería pase a buscar las cajas para llevarlas al centro de distribución de Amazon. ¡Buen trabajo!</p>
             </div>
-        </details>
-        
-
-        <details>
-            <summary>
-                <div class="overline"><span>●</span> PASO 5</div>
-                <h2>Cierre y recolección.</h2>
-                <div class="action-link"></div>
-            </summary>
-            <div class="content">
-                </div>
         </details>
 
         <details>
             <summary>
                 <div class="overline"><span>●</span> PASO 6</div>
-                <h2>Dudas</h2>
+                <h2>Dudas y Notas</h2>
                 <div class="action-link"></div>
             </summary>
             <div class="content">
+                <div class="highlight-box" style="border-left-color: #3498db; margin-bottom: 30px;">
+                    ℹ️ NOTA SOBRE ESTE PRIMER ENVÍO
+                    <br><br>
+                    Por ser la primera vez que se hacen los envíos, actualmente estamos esperando que Amazon nos apruebe los productos para tener los códigos de barras listos y poder pegarlos a los Bundles. La siguiente vez ya tendremos este material de antemano y el proceso no debería tardar tanto.
                 </div>
+
+                <p style="margin-bottom: 15px;">Si tienes alguna duda con el empaque o algún paso del proceso, puedes comunicarte directamente con soporte técnico:</p>
+                <p>📧 Correo: <strong>jpolanco@alchilecreativos.com.mx</strong></p>
+                <p>📱 WhatsApp: <strong>+52 981-829-6408</strong></p>
+            </div>
         </details>
 
     </div>
