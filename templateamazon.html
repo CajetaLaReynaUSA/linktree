@@ -166,6 +166,17 @@
             opacity: 0.7;
         }
 
+        /* Control de tamaño para las imágenes de instrucciones */
+        .instruction-img {
+            width: 100%;
+            max-width: 400px; /* Pone un tope visual en Desktop */
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.2);
+            margin: 0 auto 30px auto; /* Esto centra la imagen perfectamente */
+            display: block;
+        }
+
         /* Contenido desplegable con fondo contrastante */
         .content {
             padding: 40px 40px 50px 40px; /* IMPORTANTE: Añadimos 40px arriba (el primer valor) */
@@ -306,11 +317,11 @@
             <div class="content">
                 <p style="margin-bottom: 20px;">Los Bundles se arman siempre con los <strong>códigos de barras viendo hacia adentro</strong> del paquete, de manera que los códigos queden ocultos. Esto es para que los escáneres de Amazon no los puedan leer por accidente.</p>
                 
-                <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1782783591/Reporte_de_Amazon_Hasta_el_20_de_abril_del_2026_3_br6ve5.webp" alt="Códigos hacia adentro" style="max-width: 100%; border-radius: 8px; margin-bottom: 30px; border: 1px solid rgba(255,255,255,0.2);">
+                <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1782783591/Reporte_de_Amazon_Hasta_el_20_de_abril_del_2026_3_br6ve5.webp" alt="Códigos hacia adentro" class="instruction-img">
 
                 <p style="margin-bottom: 20px;">Para armar el Bundle se utiliza una máquina que comprime el plástico calentándolo.</p>
                 
-                <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1782783592/Reporte_de_Amazon_Hasta_el_20_de_abril_del_2026_1_dmih93.webp" alt="Paquete termoencogido" style="max-width: 100%; border-radius: 8px; margin-bottom: 10px; border: 1px solid rgba(255,255,255,0.2);">
+                <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1782783592/Reporte_de_Amazon_Hasta_el_20_de_abril_del_2026_1_dmih93.webp" alt="Códigos hacia adentro" class="instruction-img">
             </div>
         </details>
 
@@ -323,7 +334,7 @@
            <div class="content">
                 <p style="margin-bottom: 20px;">Cada Bundle debe llevar <strong>2 etiquetas</strong> pegadas en la parte más amplia y plana del paquete. Normalmente esta va a ser en la parte lateral del Bundle.</p>
                 
-                <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1782783591/Reporte_de_Amazon_Hasta_el_20_de_abril_del_2026_2_sqse2q.webp" alt="Ejemplo de etiquetado" style="max-width: 100%; border-radius: 8px; margin-bottom: 40px; border: 1px solid rgba(255,255,255,0.2);">
+                <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1782783591/Reporte_de_Amazon_Hasta_el_20_de_abril_del_2026_2_sqse2q.webp" alt="Ejemplo de etiquetado" class="instruction-img">
 
                 <p class="quantity-title">1. Etiqueta "Sold as a Set"</p>
                 <p style="margin-bottom: 15px;">Tamaño: 2x1 pulgadas.</p>
