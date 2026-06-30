@@ -49,7 +49,7 @@
 
         /* Estilos para los sub-menús de etiquetas */
         .sub-details {
-            background: rgba(255,255,255,0.05);
+            background: #0a0a0a; /* Negro sólido y oscuro */
             border: 1px solid rgba(255,255,255,0.1);
             border-radius: 8px;
             margin-bottom: 15px;
@@ -169,12 +169,24 @@
         /* Control de tamaño para las imágenes de instrucciones */
         .instruction-img {
             width: 100%;
-            max-width: 400px; /* Pone un tope visual en Desktop */
+            max-width: 400px; 
             height: auto;
             border-radius: 8px;
             border: 1px solid rgba(255,255,255,0.2);
-            margin: 0 auto 30px auto; /* Esto centra la imagen perfectamente */
+            margin: 30px auto 40px auto; 
             display: block;
+        }
+        
+        /* Caja para destacar instrucciones críticas */
+        .highlight-box {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid var(--accent); /* Línea lateral del color de acento */
+            padding: 15px 20px;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 10px;
         }
 
         /* Contenido desplegable con fondo contrastante */
@@ -331,40 +343,42 @@
                 <h2>Etiquetado.</h2>
                 <div class="action-link"></div>
             </summary>
+            
            <div class="content">
-                <p style="margin-bottom: 20px;">Cada Bundle debe llevar <strong>2 etiquetas</strong> de tamaño 2x1 pulgadas </p>
+                <p style="margin-bottom: 30px;">Cada Bundle debe de llevar 2 etiquetas:</p>
 
-                <p class="quantity-title">1. "Sold as a Set"</p>
-                <p style="margin-bottom: 15px;">Cada Bundle debe de tener una etiqueta de "Sold as Set".</p>
-               <p style="margin-bottom: 15px;">En el botón de abajo pueden descargar la plantilla para impresión (40 etiquetas)</p>
-                <a href="https://drive.google.com/file/d/1D4tiRYkPGp0Cz68NA6_hp90k9zEP8bDh/view?usp=sharing" target="_blank" style="display: inline-block; background-color: #ffffff; color: #000; padding: 10px 20px; border-radius: 20px; text-decoration: none; font-weight: 700; margin-bottom: 40px;">Descargar</a>
+                <p class="quantity-title">1- Etiqueta de "Sold as a Set"</p>
+                <p style="margin-bottom: 15px;">En un tamaño de 2x1 pulgadas. Puedes encontrar la planilla para impresión aquí:</p>
+                <a href="https://drive.google.com/file/d/1D4tiRYkPGp0Cz68NA6_hp90k9zEP8bDh/view?usp=sharing" target="_blank" style="display: inline-block; background-color: #ffffff; color: #000; padding: 10px 20px; border-radius: 20px; text-decoration: none; font-weight: 700; margin-bottom: 40px;">⬇ Descargar planilla de impresión</a>
 
-                <p class="quantity-title">2. Códiog de barras (FNSKU)</p>
-               <p style="margin-bottom: 20px;">Abajo se puede descargar la plantilla del código de barras de cada producto</p>
+                <p class="quantity-title">2- Etiqueta de Producto</p>
+                <p style="margin-bottom: 15px;">En un tamaño de 2x1 pulgadas. Esta depende de cada Bundle. Puedes encontrar la planilla aquí:</p>
 
                 <details class="sub-details">
-                    <summary class="sub-summary">Bundles 155 gr</summary>
+                    <summary class="sub-summary">Planillas de 360 gr</summary>
                     <div class="sub-content">
-                        <a href="#" class="sub-btn">Natural, Vainilla y Fresa</a>
-                        <a href="#" class="sub-btn">Natural, Café y Envinada</a>
-                        <a href="#" class="sub-btn">Natural, Quemada y Nuez</a>
-                        <a href="#" class="sub-btn">Tequila, Mezcal y Rompope</a>
+                        <a href="#" class="sub-btn">⬇ Natural, Vainilla y Fresa</a>
+                        <a href="#" class="sub-btn">⬇ Natural, Café y Envinada</a>
+                        <a href="#" class="sub-btn">⬇ Natural, Quemada y Nuez</a>
+                        <a href="#" class="sub-btn">⬇ Tequila, Mezcal y Rompope</a>
                     </div>
                 </details>
 
-                <details class="sub-details">
-                    <summary class="sub-summary">Bundles 360 gr</summary>
+                <details class="sub-details" style="margin-bottom: 40px;">
+                    <summary class="sub-summary">Planillas de 155 gr</summary>
                     <div class="sub-content">
-                        <a href="#" class="sub-btn">Natural, Vainilla y Fresa</a>
-                        <a href="#" class="sub-btn">Natural, Café y Envinada</a>
-                        <a href="#" class="sub-btn">Natural, Quemada y Nuez</a>
-                        <a href="#" class="sub-btn">Tequila, Mezcal y Rompope</a>
+                        <a href="#" class="sub-btn">⬇ Natural, Vainilla y Fresa</a>
+                        <a href="#" class="sub-btn">⬇ Natural, Café y Envinada</a>
+                        <a href="#" class="sub-btn">⬇ Natural, Quemada y Nuez</a>
+                        <a href="#" class="sub-btn">⬇ Tequila, Mezcal y Rompope</a>
                     </div>
                 </details>
 
-               <p>Las etiquetas deben de pegarse en la parte más amplia y plana del Bundle. Normalmente esta va a ser en la parte lateral del Bundle.</p>
-               <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1782783591/Reporte_de_Amazon_Hasta_el_20_de_abril_del_2026_2_sqse2q.webp" alt="Ejemplo de etiquetado" class="instruction-img">
-               
+                <div class="highlight-box">
+                    Las etiquetas deben de ir pegadas en la parte más amplia y plana del paquete. Normalmente esta va a ser en la parte lateral del Bundle.
+                </div>
+                
+                <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1782783591/Reporte_de_Amazon_Hasta_el_20_de_abril_del_2026_2_sqse2q.webp" alt="Ejemplo de etiquetado" class="instruction-img" style="margin-bottom: 0;">
             </div>
         </details>
 
