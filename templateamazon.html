@@ -27,10 +27,10 @@
             background-color: var(--bg-page);
             font-family: 'Inter', sans-serif;
             color: var(--text-dark);
-            padding: 40px 20px 120px 20px; /* Espacio inferior para la barra flotante */
+            padding: 40px 20px 120px 20px;
         }
 
-        /* Cuadrícula de Tarjetas: Forzada a 2 columnas exactas para que todas midan lo mismo */
+        /* Cuadrícula de Tarjetas */
         .grid-container {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -39,7 +39,6 @@
             margin: 0 auto;
         }
 
-        /* Estilo base de los colapsables (Cards) */
         details {
             border-radius: 12px;
             overflow: hidden;
@@ -48,7 +47,13 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.15);
         }
 
-        /* Alternando estilos de tarjetas */
+        /* EL TRUCO: Cuando se abre en PC, ocupa todo el ancho de la pantalla */
+        @media (min-width: 901px) {
+            details[open] {
+                grid-column: 1 / -1;
+            }
+        }
+
         details:nth-child(odd) {
             background: var(--gradient-warm);
         }
@@ -58,14 +63,13 @@
             background-image: radial-gradient(circle at 100% 0%, rgba(255,255,255,0.05) 0%, transparent 40%);
         }
 
-        /* El botón clickeable de la tarjeta */
         summary {
             padding: 50px 40px;
             cursor: pointer;
             list-style: none;
             display: flex;
             flex-direction: column;
-            min-height: 400px; /* Todas tienen exactamente la misma altura mínima */
+            min-height: 400px;
             position: relative;
         }
 
@@ -73,9 +77,8 @@
             display: none;
         }
 
-        /* Etiqueta superior de "PASO" - Tamaño Aumentado */
         .overline {
-            font-size: 1.5rem; /* Tamaño notablemente más grande */
+            font-size: 1.5rem;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -87,7 +90,6 @@
             margin-right: 8px;
         }
 
-        /* Título gigante */
         summary h2 {
             font-size: 2.8rem;
             font-weight: 700;
@@ -97,7 +99,6 @@
             margin-top: 40px;
         }
 
-        /* Enlace subrayado inferior */
         .action-link {
             font-size: 1.1rem;
             font-weight: 600;
@@ -112,7 +113,6 @@
             opacity: 0.7;
         }
 
-        /* Contenido desplegable (Vacío para rellenar) */
         .content {
             padding: 0 40px 50px 40px;
             font-size: 1.1rem;
@@ -121,12 +121,21 @@
             animation: slideDown 0.4s ease forwards;
         }
 
+        /* NUEVO: Estilo para resaltar las cantidades */
+        .quantity-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: #ffffff;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 10px;
+        }
+
         @keyframes slideDown {
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Barra de navegación flotante inferior */
         .floating-nav {
             position: fixed;
             bottom: 30px;
@@ -176,10 +185,9 @@
             color: black;
         }
 
-        /* Responsividad para móviles y tablets */
         @media (max-width: 900px) {
             .grid-container {
-                grid-template-columns: 1fr; /* 1 sola columna en pantallas pequeñas */
+                grid-template-columns: 1fr;
             }
             summary h2 {
                 font-size: 2.2rem;
@@ -213,20 +221,17 @@
                 <h2>¿Cuántos Bundles se tienen que preparar?</h2>
                 <div class="action-link">Ver más</div>
             </summary>
+            
             <div class="content">
-                <p style="margin-bottom: 20px;">60 uniades de 360 gr de los siguientes sabores:</p>
-                
-                <ul style="list-style-position: inside; line-height: 1.8;">
+                <p class="quantity-title">60 bundles de 360 gr de los siguientes sabores:</p>
+                <ul style="list-style-position: inside; line-height: 1.8; margin-bottom: 40px;">
                     <li>Natural, Vainilla y Fresa</li>
                     <li>Natural, Café y Envinada</li>
                     <li>Natural, Quemada y Nuez</li>
                     <li>Tequila, Mezcal y Rompope</li>
                 </ul>
-            </div>
 
-             <div class="content">
-                <p style="margin-bottom: 20px;">40 uniades de 155 gr de los siguientes sabores:</p>
-                
+                <p class="quantity-title">40 bundles de 155 gr de los siguientes sabores:</p>
                 <ul style="list-style-position: inside; line-height: 1.8;">
                     <li>Natural, Vainilla y Fresa</li>
                     <li>Natural, Café y Envinada</li>
@@ -285,7 +290,6 @@
             <div class="content">
                 </div>
         </details>
-
 
     </div>
 
