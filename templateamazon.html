@@ -3,481 +3,177 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Protocolo FBA - Envío de Cajetas</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <title>Guía de Empaquetado FBA</title>
     <style>
-        :root {
-            --bg-page: #ffffff;
-            --text-light: #ffffff;
-            --text-dark: #333333;
-            --gradient-warm: linear-gradient(135deg, #8B4513 0%, #A0522D 50%, #CD853F 100%);
-            --bg-dark-card: #1a1a1a;
-            --nav-bg: #4a4a4a;
-            --accent: #CD853F;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* Estilos Base y Estética Premium */
         body {
-            background-color: var(--bg-page);
-            font-family: 'Inter', sans-serif;
-            color: var(--text-dark);
-            padding: 40px 20px 120px 20px;
-        }
-
-        /* Sección de Encabezado y Overview */
-        .overview-container {
-            max-width: 1400px;
-            margin: 0 auto 40px auto;
-            background: #f9f9f9;
-            border: 1px solid #e0e0e0;
-            border-radius: 12px;
-            padding: 40px;
-        }
-
-        .overview-header {
-            border-bottom: 2px solid #e0e0e0;
-            padding-bottom: 20px;
-            margin-bottom: 25px;
-        }
-
-        .overview-header h1 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: #1a1a1a;
-            margin-bottom: 15px;
-            line-height: 1.2;
-        }
-
-        .meta-info {
-            font-size: 1.05rem;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f5f7;
+            color: #333;
             line-height: 1.6;
-            color: #555555;
+            margin: 0;
+            padding: 20px;
         }
-
-        .overview-body p {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            margin-bottom: 20px;
-            color: #444444;
-        }
-
-        .overview-body ol {
-            margin: 20px 0 20px 25px;
-            font-size: 1.1rem;
-            line-height: 1.7;
-            color: #444444;
-        }
-
-        .overview-body li {
-            margin-bottom: 10px;
-        }
-
-        /* Cuadrícula de Tarjetas */
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            max-width: 1400px;
+        .container {
+            max-width: 800px;
             margin: 0 auto;
         }
+        h1, h2, h3 {
+            color: #111;
+        }
+        
+        /* Banner de Alerta */
+        .alert-box {
+            background-color: #fff3cd;
+            color: #856404;
+            border-left: 6px solid #ffeeba;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
 
-        details {
+        /* Tarjetas (Cards) Blancas */
+        .card {
+            background: #ffffff;
             border-radius: 12px;
-            overflow: hidden;
-            color: var(--text-light);
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-
-        .sub-details {
-            background: #0a0a0a;
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 8px;
-            margin-bottom: 15px;
-            box-shadow: none;
-        }
-
-        .sub-summary {
-            min-height: auto;
-            padding: 15px 20px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--accent);
-            border-bottom: none;
-            margin: 0;
-            cursor: pointer;
-        }
-
-        .sub-content {
-            padding: 0 20px 20px 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .sub-btn {
-            display: block;
-            background-color: #2a2a2a;
-            color: white;
-            text-decoration: none;
-            padding: 10px 15px;
-            border-radius: 6px;
-            font-size: 0.95rem;
-            transition: background 0.2s;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .sub-btn:hover {
-            background-color: #444;
-        }
-
-        @media (min-width: 901px) {
-            .grid-container > details[open] {
-                grid-column: 1 / -1;
-            }
-        }
-
-        details:nth-child(odd) {
-            background: var(--gradient-warm);
-        }
-        
-        details:nth-child(even) {
-            background: var(--bg-dark-card);
-            background-image: radial-gradient(circle at 100% 0%, rgba(255,255,255,0.05) 0%, transparent 40%);
-        }
-
-        summary {
-            padding: 50px 40px;
-            cursor: pointer;
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            min-height: 400px;
-            position: relative;
-        }
-
-        summary::-webkit-details-marker {
-            display: none;
-        }
-
-        .overline {
-            font-size: 1.5rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: auto; 
-        }
-
-        .overline span {
-            color: rgba(255,255,255,0.7);
-            margin-right: 8px;
-        }
-
-        summary h2 {
-            font-size: 2.8rem;
-            font-weight: 700;
-            line-height: 1.1;
-            letter-spacing: -1px;
-            margin-bottom: 40px;
-            margin-top: 40px;
-        }
-
-        .action-link {
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-decoration: underline;
-            text-underline-offset: 6px;
-            text-decoration-thickness: 2px;
-            margin-top: auto;
-            transition: opacity 0.2s;
-        }
-
-        .action-link::after {
-            content: "Ver más";
-        }
-
-        details[open] .action-link::after {
-            content: "Ver menos";
-        }
-
-        summary:hover .action-link {
-            opacity: 0.7;
-        }
-
-        .instruction-img {
-            width: 100%;
-            max-width: 400px; 
-            height: auto;
-            border-radius: 8px;
-            border: 1px solid rgba(255,255,255,0.2);
-            margin: 30px auto 40px auto; 
-            display: block;
-        }
-        
-        .highlight-box {
-            background-color: rgba(255, 255, 255, 0.05);
-            border-left: 4px solid var(--accent);
-            padding: 15px 20px;
-            border-radius: 4px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #ffffff;
-            margin-bottom: 10px;
-        }
-
-        .content {
-            padding: 40px 40px 50px 40px;
-            background-color: rgba(0, 0, 0, 0.25);
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: rgba(255, 255, 255, 0.9);
-            animation: slideDown 0.4s ease forwards;
-        }
-
-        .quantity-title {
-            font-size: 1.4rem;
-            font-weight: 800;
+            padding: 25px;
             margin-bottom: 20px;
-            color: #ffffff;
-            border-bottom: 1px solid rgba(255,255,255,0.2);
-            padding-bottom: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
 
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* Tablas Limpias */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+        }
+        th {
+            background-color: #f8f9fa;
+            color: #555;
         }
 
-        @media (max-width: 900px) {
-            .grid-container {
-                grid-template-columns: 1fr;
-            }
-            summary h2 {
-                font-size: 2.2rem;
-            }
-            .overline {
-                font-size: 1.2rem;
-            }
-            summary {
-                min-height: 300px;
-                padding: 30px 20px;
-            }
-            .content {
-                padding: 30px 20px 30px 20px;
-            }
-            .overview-container {
-                padding: 20px;
-            }
-            .overview-header h1 {
-                font-size: 1.8rem;
-            }
+        /* Acordeones Interactivos */
+        .accordion {
+            background-color: #f8f9fa;
+            color: #333;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: 0.3s;
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .accordion:hover, .active {
+            background-color: #e2e6ea;
+        }
+        .accordion:after {
+            content: '\002B'; /* Símbolo de Más */
+            font-weight: bold;
+            float: right;
+        }
+        .active:after {
+            content: "\2212"; /* Símbolo de Menos */
+        }
+        .panel {
+            padding: 0 18px;
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            border-radius: 0 0 8px 8px;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #d93025; /* Rojo sutil para alertas de Amazon */
         }
     </style>
 </head>
 <body>
 
-    <div class="overview-container">
-        <div class="overview-header">
-            <h1>¿Cómo se envían los Bundles de Cajetas a Amazon?</h1>
-            <div class="meta-info">
-                <strong>Para:</strong> Equipo en oficina apoyando con el armado físico de las cajetas.<br>
-                <strong>Asunto:</strong> Protocolo de preparación y envío para Amazon FBA
-            </div>
+<div class="container">
+
+    <div class="alert-box">
+        <strong>⚠️ AVISO IMPORTANTE:</strong> De momento, Amazon no nos ha autorizado la venta de Bundles y no tenemos todavía los códigos de barras. Estoy apelando para que nos autoricen pronto. 
+    </div>
+
+    <div class="card">
+        <h2>Antes de comenzar</h2>
+        <p>Hola, soy <strong>Juan Pablo</strong>, encargado de la gestión digital de Amazon FBA. Hice este sitio web para que tengan todas las especificaciones físicas a la mano de forma clara y directa, sin manuales extensos.</p>
+        <p>Si surge alguna duda técnica u operativa, pueden contactarme directamente en <strong>[Tu Correo / Tu Teléfono]</strong>.</p>
+    </div>
+
+    <div class="card">
+        <h2>¿Cómo se envían los Bundles a Amazon?</h2>
+        <p>Amazon intenta que sus procesos involucren a la menor cantidad de personas posible. Todo está automatizado con escáneres y básculas.</p>
+        <p>Por eso, el flujo se divide en 3:</p>
+        <ol>
+            <li><strong>Armado y empaquetado:</strong> Se arman los Bundles y se llevan registros exactos.</li>
+            <li><strong>Aviso y orden:</strong> Me mandan la info y genero las etiquetas.</li>
+            <li><strong>Etiquetado y salida:</strong> Imprimen, pegan y entregan a paquetería.</li>
+        </ol>
+    </div>
+
+    <div class="card">
+        <h2>Instrucciones Físicas Paso a Paso</h2>
+        
+        <button class="accordion">1. Armado de los Bundles</button>
+        <div class="panel">
+            <p>Hay condiciones estrictas para que el almacén acepte los paquetes:</p>
+            <ul>
+                <li><strong>Códigos ocultos:</strong> Los frascos se ordenan de manera que los códigos de barras de las botellas queden viendo "hacia el interior".</li>
+                <li><strong>Prueba de caída:</strong> Los Bundles sellados deben aguantar una caída de 1 metro de altura sin separarse.</li>
+            </ul>
         </div>
-        <div class="overview-body">
-            <p>Hola. Preparé este breve reporte con el objetivo de alinear el trabajo manual que nos están ayudando a hacer en la oficina (el armado de los Bundles y el empaquetado), con el registro en el sistema de Amazon que hacemos nosotros, y así asegurar que los envíos fluyan sin contratiempos.</p>
-            
-            <p>Amazon intenta que sus procesos logísticos involucren a la menor cantidad de personas posible, por lo que casi el 100% de la recepción de mercancía está automatizada mediante escáneres y básculas.</p>
-            
-            <p>Al momento en que se genera una orden de envío, Amazon nos exige declarar exactamente cuántas cajas estamos mandando, cuántos productos hay en cada una y qué productos son, así como el peso y tamaño total de cada caja. Con esa información, el sistema genera las etiquetas de envío y espera que, al llegar a sus instalaciones, el escáner lea la caja exterior y lo que haya dentro coincida perfectamente con lo que se declaró previamente.</p>
-            
-            <p style="color: #c0392b; font-weight: 600;">Si hay discrepancias —mayor o menor cantidad de producto, artículos distintos o un peso que no cuadra— el sistema puede retener los productos, cobrar multas por procesamiento manual y, en el peor de los casos, bloquear nuestra cuenta para envíos futuros.</p>
-            
-            <p>Por eso mismo, es importante que la declaración de productos al momento de generar la orden de envío sea exacta. No como capricho propio, sino como una exigencia estricta de Amazon.</p>
-            
-            <p>Dada esta exigencia, y para que la operación sea impecable, nuestro flujo de trabajo general se divide en tres etapas:</p>
-            
-            <ol>
-                <li><strong>Armado y empaquetado:</strong> Ustedes arman los Bundles, los etiquetan y los guardan en las cajas llevando un registro exacto de qué contiene cada caja, cuánto pesa y cuánto mide.</li>
-                <li><strong>Aviso (Online):</strong> Nos reportan esta información. Con estos datos, nosotros entramos a la plataforma de Amazon para declarar el envío y generar las etiquetas oficiales.</li>
-                <li><strong>Etiquetado y salida:</strong> Les enviamos las etiquetas generadas para que las impriman y las peguen en los costados de cada caja correspondiente, se sellan y se espera a que la paquetería pase a recolectarlas.</li>
-            </ol>
+
+        <button class="accordion">2. Empaquetado en Cajas</button>
+        <div class="panel">
+            <p>Conforme acomoden, es vital <span class="highlight">llevar un registro de cuántos y de qué sabores van en cada caja, además del peso y medida final.</span></p>
+            <ul>
+                <li><strong>Cajas Lisas:</strong> Sin logotipos ni códigos ajenos (tapar con plumón o etiquetas).</li>
+                <li><strong>Medidas:</strong> Ningún lado debe medir más de 25 pulgadas (63.5 cm).</li>
+                <li><strong>Peso:</strong> Máximo 22.6 kg (50 libras) por caja. (Equivale a 20 bundles grandes o 46 chicos).</li>
+                <li><strong>Sellado en H:</strong> Cinta en la apertura central y en los 4 bordes laterales, arriba y abajo.</li>
+            </ul>
+        </div>
+
+        <button class="accordion">3. Aviso y Recolección</button>
+        <div class="panel">
+            <p>Una vez selladas las cajas, envíen la lista con tamaño, peso y productos al WhatsApp <strong>xxx-xxx-xxxx</strong> o a <strong>correo@template.com</strong>.</p>
+            <p>Les responderé con los PDFs para imprimir y pegar a un costado. La paquetería pasará directamente a las instalaciones.</p>
         </div>
     </div>
 
-    <div class="grid-container">
+</div>
 
-        <details>
-            <summary>
-                <div class="overline"><span>●</span> PASO 1</div>
-                <h2>¿Cuántos Bundles se tienen que preparar?</h2>
-                <div class="action-link"></div>
-            </summary>
-            <div class="content">
-                <p class="quantity-title">60 bundles de 360 gr por cada uno de los siguientes sabores:</p>
-                <ul style="list-style-position: inside; line-height: 1.8; margin-bottom: 40px;">
-                    <li>Natural, Vainilla y Fresa</li>
-                    <li>Natural, Café y Envinada</li>
-                    <li>Natural, Quemada y Nuez</li>
-                    <li>Tequila, Mezcal y Rompope</li>
-                </ul>
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
 
-                <p class="quantity-title">40 bundles de 155 gr por cada uno de los siguientes sabores:</p>
-                <ul style="list-style-position: inside; line-height: 1.8;">
-                    <li>Natural, Vainilla y Fresa</li>
-                    <li>Natural, Café y Envinada</li>
-                    <li>Natural, Quemada y Nuez</li>
-                    <li>Tequila, Mezcal y Rompope</li>
-                </ul>
-            </div>
-        </details>
-
-        <details>
-            <summary>
-                <div class="overline"><span>●</span> PASO 2</div>
-                <h2>¿Cómo se preparan los Bundles?</h2>
-                <div class="action-link"></div>
-            </summary>
-            <div class="content">
-                <p style="margin-bottom: 20px;">Los Bundles se arman siempre con los <strong>códigos de barras viendo hacia adentro</strong> del paquete, de manera que los códigos queden ocultos. Esto es para que los escáneres de Amazon no los puedan leer por accidente.</p>
-                
-                <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1782783591/Reporte_de_Amazon_Hasta_el_20_de_abril_del_2026_3_br6ve5.webp" alt="Códigos hacia adentro" class="instruction-img">
-
-                <p style="margin-bottom: 20px;">Para armar el Bundle se utiliza una máquina que comprime el plástico calentándolo.</p>
-                
-                <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1782783592/Reporte_de_Amazon_Hasta_el_20_de_abril_del_2026_1_dmih93.webp" alt="Paquete termoencogido" class="instruction-img">
-            </div>
-        </details>
-
-        <details>
-            <summary>
-                <div class="overline"><span>●</span> PASO 3</div>
-                <h2>Etiquetado.</h2>
-                <div class="action-link"></div>
-            </summary>
-            <div class="content">
-                <p style="margin-bottom: 30px;">Cada Bundle debe de llevar 2 etiquetas en tamaños de 2x1 pulgadas:</p>
-
-                <p class="quantity-title">1- Etiqueta de "Sold as a Set"</p>
-                <p style="margin-bottom: 15px;">Puedes descargar la plantilla de 40 etiquetas aquí:</p>
-                <a href="https://drive.google.com/file/d/1D4tiRYkPGp0Cz68NA6_hp90k9zEP8bDh/view?usp=sharing" target="_blank" style="display: inline-block; background-color: #ffffff; color: #000; padding: 10px 20px; border-radius: 20px; text-decoration: none; font-weight: 700; margin-bottom: 40px;">Descargar planilla de impresión</a>
-
-                <p class="quantity-title">2- Código de barras</p>
-
-                <details class="sub-details">
-                    <summary class="sub-summary">Planillas de 360 gr</summary>
-                    <div class="sub-content">
-                        <a href="#" class="sub-btn">Natural, Vainilla y Fresa</a>
-                        <a href="#" class="sub-btn">Natural, Café y Envinada</a>
-                        <a href="#" class="sub-btn">Natural, Quemada y Nuez</a>
-                        <a href="#" class="sub-btn">Tequila, Mezcal y Rompope</a>
-                    </div>
-                </details>
-
-                <details class="sub-details" style="margin-bottom: 40px;">
-                    <summary class="sub-summary">Planillas de 155 gr</summary>
-                    <div class="sub-content">
-                        <a href="#" class="sub-btn">Natural, Vainilla y Fresa</a>
-                        <a href="#" class="sub-btn">Natural, Café y Envinada</a>
-                        <a href="#" class="sub-btn">Natural, Quemada y Nuez</a>
-                        <a href="#" class="sub-btn">Tequila, Mezcal y Rompope</a>
-                    </div>
-                </details>
-
-                <div class="highlight-box">
-                    Las etiquetas deben de ir pegadas en la parte más amplia y plana del paquete. Normalmente esta va a ser en la parte lateral del Bundle.
-                </div>
-                
-                <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1782783591/Reporte_de_Amazon_Hasta_el_20_de_abril_del_2026_2_sqse2q.webp" alt="Ejemplo de etiquetado" class="instruction-img" style="margin-bottom: 0;">
-            </div>
-        </details>
-
-        <details>
-            <summary>
-                <div class="overline"><span>●</span> PASO 4</div>
-                <h2>Empaquetado.</h2>
-                <div class="action-link"></div>
-            </summary>
-            <div class="content">
-                <p style="margin-bottom: 20px;">Acomoda los Bundles etiquetados en la caja de envío siguiendo estrictamente estas reglas de Amazon:</p>
-                
-                <ul style="list-style-position: inside; line-height: 1.8; margin-bottom: 30px;">
-                    <li><strong>Caja limpia:</strong> Usa cajas rígidas de cartón corrugado. Revisa que NO tengan códigos de barras anteriores ni logos ajenos. Si los hay, tápalos con etiquetas en blanco o táchalos completamente con plumón grueso.</li>
-                    <li><strong>Límites de medida:</strong> Ningún lado de la caja (largo, ancho o alto) puede superar las <strong>25 pulgadas</strong> (63.5 cm).</li>
-                </ul>
-
-                <div class="highlight-box">
-                    ⚠️ LÍMITE DE PESO (Máx 50 lbs / 22.6 kg)
-                    <br><br>
-                    Para evitar rechazos y multas, el tope exacto de capacidad por caja es:
-                    <ul style="margin-top: 10px; margin-bottom: 0; margin-left: 20px;">
-                        <li>Cajas con Bundles de 360 gr: <strong>Máximo 20 unidades.</strong></li>
-                        <li>Cajas con Bundles de 155 gr: <strong>Máximo 46 unidades.</strong></li>
-                    </ul>
-                </div>
-
-                <p class="quantity-title" style="margin-top: 40px;">Registro y Sellado</p>
-                
-                <ul style="list-style-position: inside; line-height: 1.8; margin-bottom: 20px;">
-                    <li><strong>La Bitácora:</strong> Antes de cerrar la caja, es obligatorio anotar exactamente cuántos Bundles y de qué sabores metiste. (Esta lista se usa en el Paso 5).</li>
-                    <li><strong>Cierre en "H":</strong> Sella la caja usando cinta de embalaje (mínimo 2 pulgadas de ancho). Aplica la cinta en la unión central y en los 4 bordes laterales, formando una "H" tanto arriba como abajo.</li>
-                    <li><strong style="color: #ff5252;">Prohibido:</strong> Usar cuerdas, lazos, flejes de plástico o envolver la caja por fuera con plástico de playo (shrink wrap).</li>
-                </ul>
-            </div>
-        </details>
-
-        <details>
-            <summary>
-                <div class="overline"><span>●</span> PASO 5</div>
-                <h2>Cierre y recolección.</h2>
-                <div class="action-link"></div>
-            </summary>
-            <div class="content">
-                <p style="margin-bottom: 20px;">Una vez que las cajas estén selladas, sigue este proceso para finalizar el envío:</p>
-
-                <p class="quantity-title">1. Reporte de Bitácora</p>
-                <p style="margin-bottom: 20px;">Envía la información de cada caja (cantidad de productos, tamaño y peso total) a nuestro equipo interno al correo <strong>jpolanco@alchilecreativos.com.mx</strong> o por WhatsApp al número <strong>+52 981-829-6408</strong>.</p>
-
-                <p class="quantity-title">2. Etiquetas de Envío Externas</p>
-                <p style="margin-bottom: 15px;">Recibirás las etiquetas de envío generadas. Imprímelas y pégalas siguiendo estas reglas vitales:</p>
-                
-                <ul style="list-style-position: inside; line-height: 1.8; margin-bottom: 30px;">
-                    <li>Pega la etiqueta de envío en el costado de cada caja correspondiente.</li>
-                    <li>Deja espacio para que los códigos de barras queden en una superficie plana y visible.</li>
-                    <li><strong style="color: #ff5252;">Prohibido:</strong> Doblar las etiquetas por las esquinas o poner cinta transparente encima de los códigos de barras.</li>
-                </ul>
-
-                <p class="quantity-title">3. Recolección</p>
-                <p style="margin-bottom: 0;">Espera a que la paquetería pase a buscar las cajas para llevarlas al centro de distribución de Amazon. ¡Buen trabajo!</p>
-            </div>
-        </details>
-
-        <details>
-            <summary>
-                <div class="overline"><span>●</span> PASO 6</div>
-                <h2>Dudas y Notas</h2>
-                <div class="action-link"></div>
-            </summary>
-            <div class="content">
-                <div class="highlight-box" style="border-left-color: #3498db; margin-bottom: 30px;">
-                    ℹ️ NOTA SOBRE ESTE PRIMER ENVÍO
-                    <br><br>
-                    Por ser la primera vez que se hacen los envíos, actualmente estamos esperando que Amazon nos apruebe los productos para tener los códigos de barras listos y poder pegarlos a los Bundles. La siguiente vez ya tendremos este material de antemano y el proceso no debería tardar tanto.
-                </div>
-
-                <p style="margin-bottom: 15px;">Si tienes alguna duda con el empaque o algún paso del proceso, puedes comunicarte directamente con soporte técnico:</p>
-                <p>📧 Correo: <strong>jpolanco@alchilecreativos.com.mx</strong></p>
-                <p>📱 WhatsApp: <strong>+52 981-829-6408</strong></p>
-            </div>
-        </details>
-
-    </div>
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = null;
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        } 
+      });
+    }
+</script>
 
 </body>
 </html>
