@@ -3,218 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manual FBA: Cajetas</title>
+    <title>FBA Editorial Journey</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
-    
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        retro: {
-                            cream: '#F4EFE6',    /* Fondo principal espacioso */
-                            paper: '#FFFCF8',    /* Fondo de las tarjetas */
-                            coffee: '#3C2A21',   /* Texto oscuro principal */
-                            rust: '#C14B2B',     /* Rojo Óxido para alertas */
-                            mustard: '#DE9930',  /* Mostaza para acentos */
-                            olive: '#6A7B58'     /* Verde para etiquetas/éxito */
+                        brand: {
+                            paper: '#F4F0EA',   /* Textured cream background */
+                            ink: '#23211E',     /* Almost black for high contrast */
+                            mauve: '#A58D85',   /* The muted pink/brown from your image */
+                            rust: '#8A3C32'     /* Alert color */
                         }
                     },
                     fontFamily: {
-                        display: ['Fraunces', 'serif'], /* Letra grande y nostálgica */
-                        body: ['DM Sans', 'sans-serif'], /* Letra limpia para lectura */
-                    },
-                    boxShadow: {
-                        'retro-soft': '0 20px 40px -15px rgba(60, 42, 33, 0.08)', /* Sombra sutil pero expansiva */
-                        'retro-hover': '0 30px 50px -15px rgba(222, 153, 48, 0.15)', /* Sombra con acento mostaza al pasar el mouse */
+                        editorial: ['Playfair Display', 'serif'],
+                        tech: ['Space Mono', 'monospace'],
+                        body: ['Inter', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
-
     <style>
-        /* Ajustes finos para el Acordeón */
-        .accordion-content {
-            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
-            max-height: 0;
-            opacity: 0;
-            overflow: hidden;
+        /* The Dashed Journey Line */
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            border-left: 2px dashed #A58D85;
+            transform: translateX(-50%);
+            z-index: 0;
+            opacity: 0.4;
         }
-        .accordion-content.open {
-            opacity: 1;
+        @media (max-width: 768px) { .timeline-line { left: 30px; } }
+        
+        /* Noise Texture for that vintage feel */
+        .bg-noise {
+            background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="0.04"/%3E%3C/svg%3E');
         }
-        .icon-rotate {
-            transition: transform 0.4s ease;
-        }
-        .accordion-btn.active .icon-rotate {
-            transform: rotate(180deg);
+
+        /* Polaroid Image Styling */
+        .polaroid {
+            background: #fff;
+            padding: 12px 12px 40px 12px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border: 1px solid #eaeaea;
         }
     </style>
 </head>
 
-<body class="bg-retro-cream text-retro-coffee font-body antialiased selection:bg-retro-mustard selection:text-white">
+<body class="bg-brand-paper bg-noise text-brand-ink font-body antialiased relative overflow-x-hidden">
 
-    <div class="max-w-4xl mx-auto px-6 py-24 sm:py-32">
+    <div class="fixed bottom-6 right-6 bg-brand-ink text-brand-paper p-4 rounded-xl shadow-2xl z-50 font-tech text-xs w-48 border border-brand-mauve/30">
+        <p class="mb-2 uppercase tracking-widest text-brand-mauve">Calculadora de Caja</p>
+        <div class="flex justify-between items-center mb-1">
+            <span>Bundles 360g:</span>
+            <span class="font-bold">0 / 20</span>
+        </div>
+        <div class="flex justify-between items-center text-brand-rust">
+            <span>Límite Peso:</span>
+            <span>50 lbs</span>
+        </div>
+        <p class="mt-2 text-[10px] opacity-60 italic">Haz clic para añadir +</p>
+    </div>
 
-        <header class="mb-24" data-aos="fade-down" data-aos-duration="1000">
-            <span class="inline-block py-1 px-4 rounded-full bg-retro-olive/10 text-retro-olive font-bold text-sm tracking-widest uppercase mb-6">Operación Logística</span>
-            <h1 class="font-display font-medium text-6xl md:text-8xl leading-tight tracking-tight text-retro-coffee mb-8">
-                Bundles <br>
-                <span class="text-retro-mustard italic">FBA Amazon</span>
+    <div class="max-w-6xl mx-auto px-6 py-24 relative">
+        
+        <div class="timeline-line hidden md:block"></div>
+
+        <header class="text-center mb-32 relative z-10">
+            <p class="font-tech text-brand-mauve tracking-[0.2em] uppercase text-sm mb-4">Operación Amazon FBA</p>
+            <h1 class="font-editorial text-7xl md:text-9xl tracking-tight leading-none mb-6">
+                Manual <br> <span class="italic text-brand-mauve">Visual</span>
             </h1>
+            <p class="max-w-xl mx-auto text-lg opacity-80 mt-8">
+                El escáner de Amazon no perdona discrepancias. Esta es la guía definitiva para el armado físico.
+            </p>
         </header>
 
-        <div class="bg-retro-mustard/10 border-l-4 border-retro-mustard p-8 rounded-2xl mb-24 shadow-retro-soft transform transition duration-500 hover:-translate-y-1 hover:shadow-retro-hover" data-aos="fade-up" data-aos-delay="100">
-            <div class="flex items-start gap-6">
-                <span class="text-4xl">⏳</span>
-                <div>
-                    <h3 class="font-display text-2xl text-retro-coffee font-bold mb-2">Aviso de Autorización Pendiente</h3>
-                    <p class="text-lg text-retro-coffee/80 leading-relaxed">
-                        De momento, Amazon no nos ha autorizado la venta de Bundles y, por lo tanto, no tenemos todavía los códigos de barras. Entiendo que esto pausa el empaquetado final; estoy apelando para resolverlo lo antes posible.
+        <div class="max-w-2xl mx-auto bg-brand-mauve text-brand-paper p-10 rounded-sm mb-32 relative z-10 shadow-2xl transform -rotate-1">
+            <h2 class="font-editorial text-4xl mb-4 italic">Aviso Pendiente</h2>
+            <p class="font-tech text-sm leading-relaxed opacity-90">
+                [ ESTADO: EN ESPERA DE AUTORIZACIÓN ]<br><br>
+                Amazon aún no autoriza la venta de Bundles. Los códigos de barras están pendientes. El empaquetado final está en pausa.
+            </p>
+        </div>
+
+        <div class="relative w-full">
+
+            <div class="flex flex-col md:flex-row items-center md:items-start justify-between w-full mb-40 relative z-10">
+                
+                <div class="w-full md:w-5/12 text-center md:text-right md:sticky top-32 mb-10 md:mb-0 md:pr-16">
+                    <h2 class="font-editorial text-[10rem] leading-none text-brand-ink/10 absolute -top-16 right-0 select-none">01</h2>
+                    <h3 class="font-editorial text-5xl mb-4 relative">Armado de <br> Bundles</h3>
+                    <p class="font-tech text-xs tracking-widest text-brand-mauve uppercase">La Regla de Oro</p>
+                </div>
+
+                <div class="w-full md:w-5/12 md:pl-16 relative">
+                    <p class="text-xl leading-relaxed mb-8">
+                        Los Bundles no deben tener <strong class="text-brand-rust">ningún código original a la vista</strong>. Ordenen los frascos para que los códigos queden hacia el interior.
+                    </p>
+                    
+                    <div class="polaroid transform rotate-2 w-3/4 ml-auto mb-12">
+                        <div class="w-full aspect-[4/3] bg-brand-mauve/20 flex items-center justify-center border border-dashed border-brand-mauve">
+                            <span class="font-tech text-xs text-brand-mauve text-center px-4">[ INSERTA IMAGEN AQUÍ ]<br>Foto de botellas con códigos ocultos</span>
+                        </div>
+                        <p class="font-editorial italic text-sm mt-3 text-center text-brand-ink/60">Fig 1: Códigos hacia el interior.</p>
+                    </div>
+
+                    <p class="text-xl leading-relaxed">
+                        <strong class="font-editorial italic text-2xl">La prueba de caída:</strong> Los Bundles sellados con termoencogible deben quedar firmes y aguantar una caída de 1 metro sin separarse.
                     </p>
                 </div>
             </div>
-        </div>
 
-        <div class="bg-retro-paper p-10 md:p-14 rounded-[2rem] shadow-retro-soft mb-24 transform transition duration-500 hover:-translate-y-2 hover:shadow-retro-hover" data-aos="fade-up">
-            <h2 class="font-display text-4xl md:text-5xl text-retro-rust mb-6">Antes de comenzar</h2>
-            <div class="space-y-6 text-lg md:text-xl text-retro-coffee/80 leading-relaxed">
-                <p>Hola, soy <strong class="text-retro-coffee font-bold">Juan Pablo</strong>, encargado de la gestión digital de Amazon FBA.</p>
-                <p>Amazon es algo estricto con sus especificaciones y la información que requiere. Por eso, diseñé este sitio con mucho espacio visual para que tengan todas las medidas y reglas a la mano de forma clara y directa, sin manuales extensos.</p>
-                <p>Si surge alguna duda técnica u operativa durante el armado, contáctenme en <a href="#" class="text-retro-mustard font-bold underline decoration-2 underline-offset-4 hover:text-retro-rust transition-colors">mi correo o teléfono</a>.</p>
-            </div>
-        </div>
-
-        <div class="mb-24" data-aos="fade-up">
-            <h2 class="font-display text-4xl md:text-5xl text-retro-olive mb-8">La Exactitud del Sistema</h2>
-            <div class="bg-retro-paper p-10 md:p-14 rounded-[2rem] shadow-retro-soft">
-                <p class="text-lg md:text-xl text-retro-coffee/80 leading-relaxed mb-8">
-                    Casi el 100% de la recepción en bodegas está automatizada mediante escáneres y básculas. Amazon nos exige declarar exactamente: cuántas cajas enviamos, tamaño, peso y el contenido específico. 
-                    <br><br>
-                    Si el escáner detecta discrepancias, <strong class="text-retro-rust font-bold">el sistema retiene productos, cobra multas o bloquea la cuenta.</strong>
-                </p>
+            <div class="flex flex-col md:flex-row-reverse items-center md:items-start justify-between w-full mb-40 relative z-10">
                 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-                    <div class="p-6 bg-retro-cream rounded-2xl border border-retro-coffee/5" data-aos="fade-up" data-aos-delay="100">
-                        <span class="text-retro-mustard font-display text-3xl block mb-2">01.</span>
-                        <h4 class="font-bold text-xl mb-2">Armado</h4>
-                        <p class="text-retro-coffee/70">Se ensamblan y guardan llevando un registro exacto por caja.</p>
-                    </div>
-                    <div class="p-6 bg-retro-cream rounded-2xl border border-retro-coffee/5" data-aos="fade-up" data-aos-delay="200">
-                        <span class="text-retro-mustard font-display text-3xl block mb-2">02.</span>
-                        <h4 class="font-bold text-xl mb-2">Aviso</h4>
-                        <p class="text-retro-coffee/70">Me envían los datos y yo genero la declaración oficial.</p>
-                    </div>
-                    <div class="p-6 bg-retro-cream rounded-2xl border border-retro-coffee/5" data-aos="fade-up" data-aos-delay="300">
-                        <span class="text-retro-mustard font-display text-3xl block mb-2">03.</span>
-                        <h4 class="font-bold text-xl mb-2">Salida</h4>
-                        <p class="text-retro-coffee/70">Imprimen los PDFs enviados, sellan y entregan a paquetería.</p>
+                <div class="w-full md:w-5/12 text-center md:text-left md:sticky top-32 mb-10 md:mb-0 md:pl-16">
+                    <h2 class="font-editorial text-[10rem] leading-none text-brand-ink/10 absolute -top-16 left-0 select-none">02</h2>
+                    <h3 class="font-editorial text-5xl mb-4 relative">Códigos & <br> Etiquetas</h3>
+                    <p class="font-tech text-xs tracking-widest text-brand-mauve uppercase">30 por Hoja Carta</p>
+                </div>
+
+                <div class="w-full md:w-5/12 md:pr-16 text-right relative">
+                    <p class="text-xl leading-relaxed mb-8">
+                        Cada Bundle lleva 2 etiquetas visibles en la parte lateral o plana más amplia. No usar el gramaje equivocado.
+                    </p>
+
+                    <div class="polaroid transform -rotate-3 w-3/4 mr-auto mb-12">
+                        <div class="w-full aspect-square bg-brand-ink/5 flex items-center justify-center border border-dashed border-brand-ink/30">
+                            <span class="font-tech text-xs text-brand-ink/50 text-center px-4">[ INSERTA IMAGEN AQUÍ ]<br>Ejemplo de etiqueta "Sold as a Set"</span>
+                        </div>
+                        <p class="font-editorial italic text-sm mt-3 text-center text-brand-ink/60">Fig 2: Sold as a Set.</p>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div data-aos="fade-up">
-            <h2 class="font-display text-4xl md:text-5xl text-retro-coffee mb-10">Paso a Paso del Armado</h2>
-            
-            <div class="space-y-6">
-                <div class="bg-retro-paper rounded-2xl shadow-retro-soft overflow-hidden transition-all duration-300 hover:shadow-retro-hover border border-retro-coffee/5">
-                    <button class="accordion-btn w-full text-left p-8 flex justify-between items-center focus:outline-none">
-                        <span class="font-display text-2xl md:text-3xl text-retro-coffee">1. Reglas de los Bundles</span>
-                        <svg class="icon-rotate w-8 h-8 text-retro-mustard" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </button>
-                    <div class="accordion-content bg-white px-8">
-                        <div class="pb-8 text-lg text-retro-coffee/80 space-y-4">
-                            <p><strong class="text-retro-rust">Códigos ocultos:</strong> Los Bundles no deben tener ningún código original a la vista. Ordenen los frascos para que los códigos propios queden "hacia el interior".</p>
-                            <p><strong class="text-retro-rust">Prueba de caída:</strong> Los Bundles sellados con termoencogible deben quedar firmes y aguantar una caída de 1 metro de altura sin separarse.</p>
-                        </div>
-                    </div>
+            <div class="flex flex-col md:flex-row items-center md:items-start justify-between w-full mb-20 relative z-10">
+                
+                <div class="w-full md:w-5/12 text-center md:text-right md:sticky top-32 mb-10 md:mb-0 md:pr-16">
+                    <h2 class="font-editorial text-[10rem] leading-none text-brand-ink/10 absolute -top-16 right-0 select-none">03</h2>
+                    <h3 class="font-editorial text-5xl mb-4 relative">Cajas <br> Maestras</h3>
+                    <p class="font-tech text-xs tracking-widest text-brand-rust uppercase">Límite 50 Lbs</p>
                 </div>
 
-                <div class="bg-retro-paper rounded-2xl shadow-retro-soft overflow-hidden transition-all duration-300 hover:shadow-retro-hover border border-retro-coffee/5">
-                    <button class="accordion-btn w-full text-left p-8 flex justify-between items-center focus:outline-none">
-                        <span class="font-display text-2xl md:text-3xl text-retro-coffee">2. Especificaciones de Etiquetas</span>
-                        <svg class="icon-rotate w-8 h-8 text-retro-mustard" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </button>
-                    <div class="accordion-content bg-white px-8">
-                        <div class="pb-8 text-lg text-retro-coffee/80 space-y-4">
-                            <p>Cada Bundle lleva 2 etiquetas visibles en la parte lateral o plana más amplia:</p>
-                            <ul class="list-disc pl-6 space-y-2 mt-4">
-                                <li><strong>Formato:</strong> Papel Tamaño Carta (US Letter) / 30 Etiquetas por hoja (1" x 2-5/8").</li>
-                                <li><strong>Código de Barras:</strong> Pegar la etiqueta del gramaje correcto (360 gr o 155 gr).</li>
-                                <li><strong>Sold as a Set:</strong> Evita que personal de Amazon abra paquetes por error.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                <div class="w-full md:w-5/12 md:pl-16 relative">
+                    <ul class="space-y-6 text-lg">
+                        <li class="flex items-start">
+                            <span class="font-tech text-brand-mauve mr-4">-></span>
+                            <p><strong>Cajas Lisas:</strong> Sin logotipos ni códigos ajenos (tapar con plumón).</p>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="font-tech text-brand-mauve mr-4">-></span>
+                            <p><strong>Medidas:</strong> Ningún lado mayor a 25" (63.5 cm).</p>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="font-tech text-brand-mauve mr-4">-></span>
+                            <p><strong>Sellado en H:</strong> Cinta en la línea central y 4 bordes laterales, arriba y abajo.</p>
+                        </li>
+                    </ul>
 
-                <div class="bg-retro-paper rounded-2xl shadow-retro-soft overflow-hidden transition-all duration-300 hover:shadow-retro-hover border border-retro-coffee/5">
-                    <button class="accordion-btn w-full text-left p-8 flex justify-between items-center focus:outline-none">
-                        <span class="font-display text-2xl md:text-3xl text-retro-coffee">3. Empaquetado en Cajas Maestras</span>
-                        <svg class="icon-rotate w-8 h-8 text-retro-mustard" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </button>
-                    <div class="accordion-content bg-white px-8">
-                        <div class="pb-8 text-lg text-retro-coffee/80 space-y-4">
-                            <div class="p-4 bg-retro-rust/10 border-l-4 border-retro-rust rounded text-retro-rust font-bold mb-6">
-                                ⚠️ Recordatorio: Llevar registro exacto de qué sabores, cantidades, pesos y medidas van en cada caja.
-                            </div>
-                            <ul class="list-disc pl-6 space-y-3">
-                                <li><strong>Estética:</strong> Cajas de cartón liso, sin logotipos ni códigos ajenos (tapar con plumón).</li>
-                                <li><strong>Medidas:</strong> Ningún lado debe medir más de 25 pulgadas (63.5 cm).</li>
-                                <li><strong>Peso:</strong> Máximo 22.6 kg (50 libras) por caja.</li>
-                                <li><strong>Sellado en H:</strong> Cinta de embalaje en la línea central y en los 4 bordes laterales, arriba y abajo.</li>
-                            </ul>
+                    <div class="polaroid transform rotate-1 w-full mt-12">
+                        <div class="w-full h-40 bg-brand-mauve/10 flex items-center justify-center border border-dashed border-brand-mauve">
+                            <span class="font-tech text-xs text-brand-mauve text-center px-4">[ INSERTA IMAGEN AQUÍ ]<br>Foto del Sellado en H</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
+        </div>
     </div>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        // Inicializar Animaciones al hacer Scroll
-        AOS.init({
-            once: true, // Que la animación solo suceda una vez
-            offset: 50, // Distancia antes de activar
-        });
-
-        // Lógica de los Acordeones (Micro-interacción de despliegue)
-        const accordionBtns = document.querySelectorAll('.accordion-btn');
-
-        accordionBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                // Alternar clase activa para rotar el icono
-                this.classList.toggle('active');
-                
-                // Obtener el contenido a desplegar
-                const content = this.nextElementSibling;
-                
-                if (content.style.maxHeight) {
-                    // Cerrar
-                    content.style.maxHeight = null;
-                    content.classList.remove('open');
-                } else {
-                    // Abrir (Cerrando los demás primero para mantener el diseño limpio)
-                    document.querySelectorAll('.accordion-content').forEach(otherContent => {
-                        otherContent.style.maxHeight = null;
-                        otherContent.classList.remove('open');
-                        otherContent.previousElementSibling.classList.remove('active');
-                    });
-                    
-                    this.classList.add('active');
-                    content.classList.add('open');
-                    content.style.maxHeight = content.scrollHeight + "px";
-                }
-            });
-        });
-    </script>
 </body>
 </html>
