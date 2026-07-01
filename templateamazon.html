@@ -1,238 +1,220 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Operación FBA: Bundles</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <title>Manual FBA: Cajetas</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        retro: {
+                            cream: '#F4EFE6',    /* Fondo principal espacioso */
+                            paper: '#FFFCF8',    /* Fondo de las tarjetas */
+                            coffee: '#3C2A21',   /* Texto oscuro principal */
+                            rust: '#C14B2B',     /* Rojo Óxido para alertas */
+                            mustard: '#DE9930',  /* Mostaza para acentos */
+                            olive: '#6A7B58'     /* Verde para etiquetas/éxito */
+                        }
+                    },
+                    fontFamily: {
+                        display: ['Fraunces', 'serif'], /* Letra grande y nostálgica */
+                        body: ['DM Sans', 'sans-serif'], /* Letra limpia para lectura */
+                    },
+                    boxShadow: {
+                        'retro-soft': '0 20px 40px -15px rgba(60, 42, 33, 0.08)', /* Sombra sutil pero expansiva */
+                        'retro-hover': '0 30px 50px -15px rgba(222, 153, 48, 0.15)', /* Sombra con acento mostaza al pasar el mouse */
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        /* Premium Reset & Typography */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #f6f8fb 0%, #e5ebf4 100%);
-            color: #2d3748;
-            line-height: 1.7;
-            min-height: 100vh;
-            padding: 40px 20px;
-        }
-        
-        .container { max-width: 850px; margin: 0 auto; }
-
-        /* Typography Hierarchy */
-        h1 { font-size: 2.2rem; font-weight: 800; color: #1a202c; margin-bottom: 10px; letter-spacing: -0.5px; }
-        h2 { font-size: 1.5rem; font-weight: 600; color: #2d3748; margin-bottom: 20px; border-bottom: 2px solid #edf2f7; padding-bottom: 10px; }
-        p { margin-bottom: 16px; color: #4a5568; font-size: 1.05rem; }
-        strong { color: #1a202c; font-weight: 600; }
-
-        /* Sleek Alert Banner */
-        .alert-banner {
-            background: linear-gradient(90deg, #fffaf0 0%, #feebc8 100%);
-            border-left: 6px solid #ed8936;
-            padding: 20px 25px;
-            border-radius: 12px;
-            margin-bottom: 35px;
-            box-shadow: 0 4px 15px rgba(237, 137, 54, 0.1);
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-        }
-        .alert-banner span { font-size: 1.5rem; }
-        .alert-banner p { margin: 0; color: #7b341e; font-size: 0.95rem; }
-
-        /* Floating Cards */
-        .card {
-            background: #ffffff;
-            border-radius: 16px;
-            padding: 35px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-            border: 1px solid rgba(255,255,255,0.6);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.07);
-        }
-
-        /* Modern Tables */
-        .table-wrapper { overflow-x: auto; margin-bottom: 20px; }
-        table { width: 100%; border-collapse: separate; border-spacing: 0; }
-        th { background: #f7fafc; color: #4a5568; font-weight: 600; padding: 15px; text-align: left; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px; border-top-left-radius: 8px; border-top-right-radius: 8px;}
-        td { padding: 15px; border-bottom: 1px solid #edf2f7; color: #2d3748; }
-        tr:last-child td { border-bottom: none; }
-
-        /* Badges / Tags */
-        .tag {
-            display: inline-block;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 10px;
-        }
-        .tag-amazon { background: #fee2e2; color: #991b1b; }
-        .tag-info { background: #e0f2fe; color: #075985; }
-
-        /* Interactive Accordions (The Multi-Layer Design) */
-        .accordion {
-            background-color: #ffffff;
-            color: #1a202c;
-            cursor: pointer;
-            padding: 20px 25px;
-            width: 100%;
-            border: 1px solid #e2e8f0;
-            text-align: left;
-            outline: none;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            margin-top: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .accordion:hover { border-color: #cbd5e0; background-color: #f8fafc; }
-        .accordion.active { border-color: #3182ce; box-shadow: 0 0 0 3px rgba(49,130,206,0.1); border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom: none;}
-        
-        /* Animated Arrow */
-        .accordion-icon {
-            transition: transform 0.3s ease;
-            width: 20px; height: 20px;
-        }
-        .active .accordion-icon { transform: rotate(180deg); }
-
-        .panel {
-            padding: 0 25px;
-            background-color: #ffffff;
+        /* Ajustes finos para el Acordeón */
+        .accordion-content {
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
             max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid #e2e8f0;
-            border-top: none;
-            border-bottom-left-radius: 12px;
-            border-bottom-right-radius: 12px;
             opacity: 0;
+            overflow: hidden;
         }
-        .panel.show { opacity: 1; padding: 20px 25px; border-color: #3182ce; }
-        
-        .panel ul { margin-left: 20px; margin-bottom: 15px; }
-        .panel li { margin-bottom: 8px; color: #4a5568; }
-
-        /* Elegant Links */
-        a { color: #3182ce; text-decoration: none; font-weight: 600; border-bottom: 1px solid transparent; transition: border-color 0.2s ease;}
-        a:hover { border-bottom-color: #3182ce; }
+        .accordion-content.open {
+            opacity: 1;
+        }
+        .icon-rotate {
+            transition: transform 0.4s ease;
+        }
+        .accordion-btn.active .icon-rotate {
+            transform: rotate(180deg);
+        }
     </style>
 </head>
-<body>
 
-<div class="container">
+<body class="bg-retro-cream text-retro-coffee font-body antialiased selection:bg-retro-mustard selection:text-white">
 
-    <div class="alert-banner">
-        <span>⏳</span>
-        <div>
-            <strong>Aviso de Autorización Pendiente</strong>
-            <p>De momento, Amazon no nos ha autorizado la venta de Bundles y, por lo tanto, no tenemos todavía los códigos de barras. Entiendo que esto pausa el empaquetado final; estoy apelando para resolverlo lo antes posible.</p>
-        </div>
-    </div>
+    <div class="max-w-4xl mx-auto px-6 py-24 sm:py-32">
 
-    <div class="card">
-        <span class="tag tag-info">Contexto Operativo</span>
-        <h1>Antes de comenzar</h1>
-        <p>Hola, soy <strong>Juan Pablo</strong>, encargado de la gestión digital de Amazon FBA.</p>
-        <p>Amazon es algo estricto con sus especificaciones y la información que requiere. Por eso, diseñé este sitio para que tengan todas las medidas y reglas a la mano de forma clara y directa, sin manuales extensos.</p>
-        <p>Si surge alguna duda técnica u operativa durante el armado, contáctenme en <strong>[Tu Correo / Tu Teléfono]</strong>.</p>
-    </div>
+        <header class="mb-24" data-aos="fade-down" data-aos-duration="1000">
+            <span class="inline-block py-1 px-4 rounded-full bg-retro-olive/10 text-retro-olive font-bold text-sm tracking-widest uppercase mb-6">Operación Logística</span>
+            <h1 class="font-display font-medium text-6xl md:text-8xl leading-tight tracking-tight text-retro-coffee mb-8">
+                Bundles <br>
+                <span class="text-retro-mustard italic">FBA Amazon</span>
+            </h1>
+        </header>
 
-    <div class="card">
-        <span class="tag tag-amazon">Exigencias de Amazon</span>
-        <h2>La Exactitud del Sistema</h2>
-        <p>Casi el 100% de la recepción en bodegas está automatizada mediante escáneres y básculas. Amazon nos exige declarar exactamente: cuántas cajas enviamos, tamaño, peso y el contenido específico.</p>
-        <p>Si el escáner detecta discrepancias (mayor o menor cantidad, artículos distintos o un peso que no cuadra) <strong>el sistema retiene productos, cobra multas o bloquea la cuenta.</strong></p>
-        <p>Por eso, nuestro flujo se divide en 3 pasos clave:</p>
-        <ul>
-            <li><strong>1. Armado y empaquetado:</strong> Se ensamblan y guardan llevando un registro exacto por caja.</li>
-            <li><strong>2. Aviso y orden:</strong> Me envían los datos y yo genero la declaración oficial.</li>
-            <li><strong>3. Etiquetado y salida:</strong> Imprimen los PDFs enviados, sellan y entregan a paquetería.</li>
-        </ul>
-    </div>
-
-    <div class="card">
-        <h2>Paso 1: Armado y Empaquetado</h2>
-        <p>Despliega cada sección para ver las especificaciones exactas que deben cumplirse.</p>
-
-        <button class="accordion">
-            1.1 Reglas de Armado de Bundles
-            <svg class="accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </button>
-        <div class="panel">
-            <ul>
-                <li><strong>Códigos ocultos:</strong> Los Bundles no deben tener ningún código original a la vista. Ordenen los frascos para que los códigos propios queden "hacia el interior".</li>
-                <li><strong>Prueba de caída:</strong> Los Bundles sellados con termoencogible deben quedar firmes y aguantar una caída de 1 metro de altura sin separarse.</li>
-            </ul>
+        <div class="bg-retro-mustard/10 border-l-4 border-retro-mustard p-8 rounded-2xl mb-24 shadow-retro-soft transform transition duration-500 hover:-translate-y-1 hover:shadow-retro-hover" data-aos="fade-up" data-aos-delay="100">
+            <div class="flex items-start gap-6">
+                <span class="text-4xl">⏳</span>
+                <div>
+                    <h3 class="font-display text-2xl text-retro-coffee font-bold mb-2">Aviso de Autorización Pendiente</h3>
+                    <p class="text-lg text-retro-coffee/80 leading-relaxed">
+                        De momento, Amazon no nos ha autorizado la venta de Bundles y, por lo tanto, no tenemos todavía los códigos de barras. Entiendo que esto pausa el empaquetado final; estoy apelando para resolverlo lo antes posible.
+                    </p>
+                </div>
+            </div>
         </div>
 
-        <button class="accordion">
-            1.2 Especificaciones de Etiquetas
-            <svg class="accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </button>
-        <div class="panel">
-            <p>Cada Bundle lleva 2 etiquetas visibles en la parte lateral o plana más amplia:</p>
-            <ul>
-                <li><strong>Formato:</strong> Papel Tamaño Carta (US Letter) / 30 Etiquetas por hoja (1" x 2-5/8").</li>
-                <li><strong>Código de Barras:</strong> Asegurarse de pegar la etiqueta del gramaje correcto (360 gr o 155 gr).</li>
-                <li><strong>Etiqueta "Sold as a Set":</strong> Evita que el personal de Amazon abra los paquetes por error. <a href="https://drive.google.com/file/d/1BVIo4PhHDz91jv6kU1cvcosFaDL6vUyo/view" target="_blank">Descargar plantilla aquí</a>.</li>
-            </ul>
+        <div class="bg-retro-paper p-10 md:p-14 rounded-[2rem] shadow-retro-soft mb-24 transform transition duration-500 hover:-translate-y-2 hover:shadow-retro-hover" data-aos="fade-up">
+            <h2 class="font-display text-4xl md:text-5xl text-retro-rust mb-6">Antes de comenzar</h2>
+            <div class="space-y-6 text-lg md:text-xl text-retro-coffee/80 leading-relaxed">
+                <p>Hola, soy <strong class="text-retro-coffee font-bold">Juan Pablo</strong>, encargado de la gestión digital de Amazon FBA.</p>
+                <p>Amazon es algo estricto con sus especificaciones y la información que requiere. Por eso, diseñé este sitio con mucho espacio visual para que tengan todas las medidas y reglas a la mano de forma clara y directa, sin manuales extensos.</p>
+                <p>Si surge alguna duda técnica u operativa durante el armado, contáctenme en <a href="#" class="text-retro-mustard font-bold underline decoration-2 underline-offset-4 hover:text-retro-rust transition-colors">mi correo o teléfono</a>.</p>
+            </div>
         </div>
 
-        <button class="accordion">
-            1.3 Empaquetado en Cajas Maestras
-            <svg class="accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </button>
-        <div class="panel">
-            <p><strong>⚠️ Recordatorio:</strong> Llevar registro de qué sabores, cantidades, pesos y medidas van en cada caja.</p>
-            <ul>
-                <li><strong>Estética:</strong> Cajas de cartón liso, sin logotipos ni códigos ajenos (tapar con plumón o etiqueta blanca).</li>
-                <li><strong>Medidas Máximas:</strong> Ningún lado (largo, ancho, alto) debe medir más de 25 pulgadas (63.5 cm).</li>
-                <li><strong>Peso Máximo:</strong> 22.6 kg (50 libras) por caja. (Aprox. 20 bundles grandes o 46 chicos).</li>
-                <li><strong>Sellado en H:</strong> Usar cinta de embalaje normal (mín. 2 pulgadas). Sellar la línea central y los 4 bordes laterales, arriba y abajo.</li>
-            </ul>
+        <div class="mb-24" data-aos="fade-up">
+            <h2 class="font-display text-4xl md:text-5xl text-retro-olive mb-8">La Exactitud del Sistema</h2>
+            <div class="bg-retro-paper p-10 md:p-14 rounded-[2rem] shadow-retro-soft">
+                <p class="text-lg md:text-xl text-retro-coffee/80 leading-relaxed mb-8">
+                    Casi el 100% de la recepción en bodegas está automatizada mediante escáneres y básculas. Amazon nos exige declarar exactamente: cuántas cajas enviamos, tamaño, peso y el contenido específico. 
+                    <br><br>
+                    Si el escáner detecta discrepancias, <strong class="text-retro-rust font-bold">el sistema retiene productos, cobra multas o bloquea la cuenta.</strong>
+                </p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                    <div class="p-6 bg-retro-cream rounded-2xl border border-retro-coffee/5" data-aos="fade-up" data-aos-delay="100">
+                        <span class="text-retro-mustard font-display text-3xl block mb-2">01.</span>
+                        <h4 class="font-bold text-xl mb-2">Armado</h4>
+                        <p class="text-retro-coffee/70">Se ensamblan y guardan llevando un registro exacto por caja.</p>
+                    </div>
+                    <div class="p-6 bg-retro-cream rounded-2xl border border-retro-coffee/5" data-aos="fade-up" data-aos-delay="200">
+                        <span class="text-retro-mustard font-display text-3xl block mb-2">02.</span>
+                        <h4 class="font-bold text-xl mb-2">Aviso</h4>
+                        <p class="text-retro-coffee/70">Me envían los datos y yo genero la declaración oficial.</p>
+                    </div>
+                    <div class="p-6 bg-retro-cream rounded-2xl border border-retro-coffee/5" data-aos="fade-up" data-aos-delay="300">
+                        <span class="text-retro-mustard font-display text-3xl block mb-2">03.</span>
+                        <h4 class="font-bold text-xl mb-2">Salida</h4>
+                        <p class="text-retro-coffee/70">Imprimen los PDFs enviados, sellan y entregan a paquetería.</p>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <div data-aos="fade-up">
+            <h2 class="font-display text-4xl md:text-5xl text-retro-coffee mb-10">Paso a Paso del Armado</h2>
+            
+            <div class="space-y-6">
+                <div class="bg-retro-paper rounded-2xl shadow-retro-soft overflow-hidden transition-all duration-300 hover:shadow-retro-hover border border-retro-coffee/5">
+                    <button class="accordion-btn w-full text-left p-8 flex justify-between items-center focus:outline-none">
+                        <span class="font-display text-2xl md:text-3xl text-retro-coffee">1. Reglas de los Bundles</span>
+                        <svg class="icon-rotate w-8 h-8 text-retro-mustard" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="accordion-content bg-white px-8">
+                        <div class="pb-8 text-lg text-retro-coffee/80 space-y-4">
+                            <p><strong class="text-retro-rust">Códigos ocultos:</strong> Los Bundles no deben tener ningún código original a la vista. Ordenen los frascos para que los códigos propios queden "hacia el interior".</p>
+                            <p><strong class="text-retro-rust">Prueba de caída:</strong> Los Bundles sellados con termoencogible deben quedar firmes y aguantar una caída de 1 metro de altura sin separarse.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-retro-paper rounded-2xl shadow-retro-soft overflow-hidden transition-all duration-300 hover:shadow-retro-hover border border-retro-coffee/5">
+                    <button class="accordion-btn w-full text-left p-8 flex justify-between items-center focus:outline-none">
+                        <span class="font-display text-2xl md:text-3xl text-retro-coffee">2. Especificaciones de Etiquetas</span>
+                        <svg class="icon-rotate w-8 h-8 text-retro-mustard" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="accordion-content bg-white px-8">
+                        <div class="pb-8 text-lg text-retro-coffee/80 space-y-4">
+                            <p>Cada Bundle lleva 2 etiquetas visibles en la parte lateral o plana más amplia:</p>
+                            <ul class="list-disc pl-6 space-y-2 mt-4">
+                                <li><strong>Formato:</strong> Papel Tamaño Carta (US Letter) / 30 Etiquetas por hoja (1" x 2-5/8").</li>
+                                <li><strong>Código de Barras:</strong> Pegar la etiqueta del gramaje correcto (360 gr o 155 gr).</li>
+                                <li><strong>Sold as a Set:</strong> Evita que personal de Amazon abra paquetes por error.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-retro-paper rounded-2xl shadow-retro-soft overflow-hidden transition-all duration-300 hover:shadow-retro-hover border border-retro-coffee/5">
+                    <button class="accordion-btn w-full text-left p-8 flex justify-between items-center focus:outline-none">
+                        <span class="font-display text-2xl md:text-3xl text-retro-coffee">3. Empaquetado en Cajas Maestras</span>
+                        <svg class="icon-rotate w-8 h-8 text-retro-mustard" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="accordion-content bg-white px-8">
+                        <div class="pb-8 text-lg text-retro-coffee/80 space-y-4">
+                            <div class="p-4 bg-retro-rust/10 border-l-4 border-retro-rust rounded text-retro-rust font-bold mb-6">
+                                ⚠️ Recordatorio: Llevar registro exacto de qué sabores, cantidades, pesos y medidas van en cada caja.
+                            </div>
+                            <ul class="list-disc pl-6 space-y-3">
+                                <li><strong>Estética:</strong> Cajas de cartón liso, sin logotipos ni códigos ajenos (tapar con plumón).</li>
+                                <li><strong>Medidas:</strong> Ningún lado debe medir más de 25 pulgadas (63.5 cm).</li>
+                                <li><strong>Peso:</strong> Máximo 22.6 kg (50 libras) por caja.</li>
+                                <li><strong>Sellado en H:</strong> Cinta de embalaje en la línea central y en los 4 bordes laterales, arriba y abajo.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-</div>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Inicializar Animaciones al hacer Scroll
+        AOS.init({
+            once: true, // Que la animación solo suceda una vez
+            offset: 50, // Distancia antes de activar
+        });
 
-<script>
-    const accordions = document.querySelectorAll('.accordion');
+        // Lógica de los Acordeones (Micro-interacción de despliegue)
+        const accordionBtns = document.querySelectorAll('.accordion-btn');
 
-    accordions.forEach(acc => {
-        acc.addEventListener('click', function() {
-            // Cierra los demás
-            accordions.forEach(otherAcc => {
-                if (otherAcc !== this && otherAcc.classList.contains('active')) {
-                    otherAcc.classList.remove('active');
-                    otherAcc.nextElementSibling.style.maxHeight = null;
-                    otherAcc.nextElementSibling.classList.remove('show');
+        accordionBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Alternar clase activa para rotar el icono
+                this.classList.toggle('active');
+                
+                // Obtener el contenido a desplegar
+                const content = this.nextElementSibling;
+                
+                if (content.style.maxHeight) {
+                    // Cerrar
+                    content.style.maxHeight = null;
+                    content.classList.remove('open');
+                } else {
+                    // Abrir (Cerrando los demás primero para mantener el diseño limpio)
+                    document.querySelectorAll('.accordion-content').forEach(otherContent => {
+                        otherContent.style.maxHeight = null;
+                        otherContent.classList.remove('open');
+                        otherContent.previousElementSibling.classList.remove('active');
+                    });
+                    
+                    this.classList.add('active');
+                    content.classList.add('open');
+                    content.style.maxHeight = content.scrollHeight + "px";
                 }
             });
-
-            // Toggle actual
-            this.classList.toggle('active');
-            const panel = this.nextElementSibling;
-            
-            if (panel.style.maxHeight) {
-                panel.style.maxHeight = null;
-                panel.classList.remove('show');
-            } else {
-                panel.classList.add('show');
-                panel.style.maxHeight = panel.scrollHeight + 40 + "px"; // +40 para padding
-            }
         });
-    });
-</script>
-
+    </script>
 </body>
 </html>
