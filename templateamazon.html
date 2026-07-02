@@ -215,4 +215,52 @@
                 const w1 = document.querySelector('.ch1-word.antes');
                 return -(w1.offsetHeight * 0.95); // 0.95 hace que queden pegaditos y elegantes
             },
-            duration: 2.0
+            duration: 2.0, ease: "power2.inOut"
+        }, "desarme");
+
+        // Palabra 2 "de": Se mueve en el eje X para alinear su borde izquierdo con la palabra 1
+        tlCh1.to(".ch1-word.de", {
+            x: () => {
+                const w1 = document.querySelector('.ch1-word.antes');
+                const w2 = document.querySelector('.ch1-word.de');
+                return -(w2.offsetLeft - w1.offsetLeft);
+            },
+            duration: 2.0, ease: "power2.inOut"
+        }, "desarme");
+
+        // Palabra 3 "comenzar": Se mueve en Y (abajo) y en X (alineación izquierda)
+        tlCh1.to(".ch1-word.comenzar", {
+            x: () => {
+                const w1 = document.querySelector('.ch1-word.antes');
+                const w3 = document.querySelector('.ch1-word.comenzar');
+                return -(w3.offsetLeft - w1.offsetLeft);
+            },
+            y: () => {
+                const w3 = document.querySelector('.ch1-word.comenzar');
+                return w3.offsetHeight * 0.95;
+            },
+            duration: 2.0, ease: "power2.inOut"
+        }, "desarme");
+
+        // Entrada del texto de Juan Pablo (sincronizada perfectamente)
+        tlCh1.fromTo(".ch1-slide-1",
+            { opacity: 0, x: 50 },
+            { opacity: 1, x: 0, duration: 2.0, ease: "power2.out" },
+            "desarme" 
+        );
+
+        tlCh1.to({}, { duration: 1.5 }); 
+
+        // FASE 3: Transición de los textos
+        tlCh1.to(".ch1-slide-1", { opacity: 0, y: -40, duration: 1.5, ease: "none" }, "cambio");
+        tlCh1.fromTo(".ch1-slide-2",
+            { opacity: 0, y: 40 },
+            { opacity: 1, y: 0, duration: 1.5, ease: "none" },
+            "cambio"
+        );
+
+        tlCh1.to({}, { duration: 2.0 }); 
+
+    </script>
+</body>
+</html>
