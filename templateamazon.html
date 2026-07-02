@@ -42,9 +42,13 @@
         ::-webkit-scrollbar-track { background: #F4EFE6; }
         ::-webkit-scrollbar-thumb { background: #E19832; border-radius: 10px; }
         
+        /* Clases para la Técnica del Envoltorio */
+        .word-wrapper {
+            display: inline-block;
+            overflow: visible; /* Asegura que la explosión no se corte */
+        }
         .hero-piece {
             display: inline-block;
-            white-space: pre;
             will-change: transform, opacity;
         }
     </style>
@@ -77,15 +81,15 @@
             <span class="hero-extra inline-block py-1.5 px-5 rounded-full bg-fall-rust/10 text-fall-rust font-bold text-sm tracking-widest uppercase mb-8">Manual Logístico FBA</span>
             
             <h1 class="font-retro text-5xl md:text-7xl lg:text-8xl xl:text-[6.5rem] text-fall-coffee font-extrabold leading-[1.05] tracking-tight mb-10 flex flex-wrap justify-center gap-x-3 md:gap-x-5 gap-y-2">
-                <span class="hero-piece">¿Cómo</span>
-                <span class="hero-piece">se</span>
-                <span class="hero-piece">envían</span>
-                <span class="hero-piece">los</span>
-                <span class="hero-piece text-fall-rust">Bundles</span>
-                <span class="hero-piece text-fall-rust">de</span>
-                <span class="hero-piece text-fall-rust">Cajetas</span>
-                <span class="hero-piece">a</span>
-                <span class="hero-piece">Amazon?</span>
+                <span class="word-wrapper"><span class="hero-piece">¿Cómo</span></span>
+                <span class="word-wrapper"><span class="hero-piece">se</span></span>
+                <span class="word-wrapper"><span class="hero-piece">envían</span></span>
+                <span class="word-wrapper"><span class="hero-piece">los</span></span>
+                <span class="word-wrapper"><span class="hero-piece text-fall-rust">Bundles</span></span>
+                <span class="word-wrapper"><span class="hero-piece text-fall-rust">de</span></span>
+                <span class="word-wrapper"><span class="hero-piece text-fall-rust">Cajetas</span></span>
+                <span class="word-wrapper"><span class="hero-piece">a</span></span>
+                <span class="word-wrapper"><span class="hero-piece">Amazon?</span></span>
             </h1>
             
             <div class="hero-extra w-16 md:w-28 h-1.5 bg-fall-mustard mx-auto rounded-full"></div>
@@ -100,21 +104,22 @@
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
-        // 1. Animación inicial fluida al cargar
-        gsap.from(".hero-piece", {
+        // 1. Animación inicial fluida al cargar (Atacamos al WRAPPER, no al texto directo)
+        gsap.from(".word-wrapper", {
             y: 80,
             opacity: 0,
             duration: 1,
             stagger: 0.04,
             ease: "power4.out"
         });
+        
         gsap.from(".hero-extra", {
             opacity: 0,
             duration: 0.8,
             delay: 0.4
         });
 
-        // 2. Línea de tiempo atada al scroll
+        // 2. Línea de tiempo atada al scroll (Atacamos a la PIEZA interna)
         const tlDesarmar = gsap.timeline({
             scrollTrigger: {
                 trigger: "#hero-section",
@@ -125,33 +130,23 @@
             }
         });
 
-        // Usamos fromTo para forzar matemáticamente el origen perfecto (x:0, y:0, opacity:1)
-        tlDesarmar.fromTo(".hero-extra", 
-            { opacity: 1, y: 0 },
-            { opacity: 0, y: -30, ease: "none", immediateRender: false }, 
-            0
-        );
+        // Desvanecemos elementos extra
+        tlDesarmar.to(".hero-extra", {
+            opacity: 0,
+            y: -30,
+            ease: "none"
+        }, 0);
 
-        tlDesarmar.fromTo(".hero-piece", 
-            { 
-                x: 0, 
-                y: 0, 
-                rotation: 0, 
-                scale: 1, 
-                opacity: 1 
-            },
-            {
-                x: () => gsap.utils.random(-120, 120),
-                y: () => gsap.utils.random(-180, -40),
-                rotation: () => gsap.utils.random(-35, 35),
-                scale: () => gsap.utils.random(0.7, 1.3),
-                opacity: 0,
-                stagger: 0.01,
-                ease: "none",
-                immediateRender: false // Clave: Evita que el scroll pelee con la animación de carga
-            }, 
-            0
-        );
+        // Explosión de palabras (Como ahora atacamos a .hero-piece que está "limpio", usamos un simple .to())
+        tlDesarmar.to(".hero-piece", {
+            x: () => gsap.utils.random(-150, 150),
+            y: () => gsap.utils.random(-150, -50),
+            rotation: () => gsap.utils.random(-45, 45),
+            scale: () => gsap.utils.random(0.7, 1.3),
+            opacity: 0,
+            stagger: 0.01,
+            ease: "none" // Clave para el rearmado perfecto
+        }, 0);
 
         // 3. Parallax del fondo
         gsap.to('.bg-shape-1', { y: 100, ease: "none", scrollTrigger: { scrub: true } });
