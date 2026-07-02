@@ -39,11 +39,9 @@
     <style>
         body {
             background-color: #F4EFE6;
-            /* Textura sutil para dar el toque premium/retro */
             background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22 opacity=%220.03%22/%3E%3C/svg%3E');
         }
         
-        /* Ocultar barra de scroll para mayor limpieza visual */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #F4EFE6; }
         ::-webkit-scrollbar-thumb { background: #E19832; border-radius: 10px; }
@@ -77,13 +75,13 @@
 
         <div class="w-full md:w-[55%] h-[65vh] md:h-screen relative flex items-center justify-center px-6 md:px-16 lg:px-20">
             
-            <div class="slide absolute w-full px-6 md:px-0 opacity-0 transform translate-y-12">
+            <div class="slide absolute w-full px-6 md:px-0 opacity-0 transform translate-y-16">
                 <p class="text-2xl md:text-4xl lg:text-5xl font-medium leading-relaxed md:leading-[1.3] text-fall-coffee shadow-sm rounded-2xl md:bg-transparent">
                     Hola, soy Juan Pablo, encargado de la gestión digital de Amazon FBA.
                 </p>
             </div>
 
-            <div class="slide absolute w-full px-6 md:px-0 opacity-0 transform translate-y-12">
+            <div class="slide absolute w-full px-6 md:px-0 opacity-0 transform translate-y-16">
                 <p class="text-xl md:text-3xl lg:text-4xl font-medium leading-relaxed md:leading-[1.4] text-fall-coffee shadow-sm rounded-2xl md:bg-transparent">
                     Amazon es algo estricto con sus especificaciones para enviarle productos y con la información que me pide para generar una orden de envío. Por eso, hice este sitio web para que tengan todas las especificaciones físicas a la mano de forma clara y directa, sin necesidad de manuales extensos.
                 </p>
@@ -92,75 +90,52 @@
         </div>
     </section>
 
-    <div class="h-screen flex items-center justify-center bg-fall-olive/10">
+    <div class="h-screen flex items-center justify-center bg-fall-olive/10 border-t border-fall-coffee/10">
         <p class="text-fall-olive font-retro text-2xl md:text-4xl opacity-50">Aquí continuará el resto de la página...</p>
     </div>
 
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
-        // 1. Animación de entrada inicial del Hero Section (Fade in)
-        gsap.from("#hero-content", {
-            duration: 1.5,
-            y: 50,
-            opacity: 0,
-            ease: "power4.out"
-        });
-
-        // 2. Animación de salida del Hero Section al hacer scroll (Desvanecimiento)
+        // 1. Animación del Hero Section (Salida) atada 1 a 1 al scroll
         gsap.to("#hero-content", {
             opacity: 0,
-            y: -100, // Sube ligeramente mientras desaparece
-            ease: "none",
+            y: -150, 
+            ease: "none", // Interpolación matemática exacta, sin aceleraciones raras
             scrollTrigger: {
                 trigger: "#hero-section",
-                start: "top top",     // Comienza cuando el usuario empieza a bajar
-                end: "bottom top",    // Termina cuando el hero sale de la pantalla
-                scrub: true           // Lo ata directamente a la rueda del ratón
+                start: "top top",
+                end: "bottom top",
+                scrub: true // Exactitud sin retraso (Scrubbing)
             }
         });
 
-        // 3. Creamos la línea de tiempo atada al scroll para la pantalla dividida
+        // 2. Línea de tiempo para la Pantalla Dividida
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: "#intro-section",
-                start: "top top", // Inicia cuando la sección toca el borde superior de la pantalla
-                end: "+=2500",    // El usuario tendrá que hacer 2500px de scroll para ver toda la animación
-                pin: true,        // Congela toda la sección en la pantalla
-                scrub: 1,         // Le da esa sensación fluida de "mantequilla"
+                start: "top top",
+                end: "+=2000", // La longitud del scroll en pixeles para leer estas 2 diapositivas
+                pin: true,
+                scrub: true, // Exactitud total bidireccional
             }
         });
 
-        // 4. Seleccionamos las diapositivas
         const slides = gsap.utils.toArray(".slide");
 
-        // 5. Programamos el comportamiento de cada diapositiva
-        slides.forEach((slide, index) => {
-            
-            // Aparece la diapositiva
-            tl.to(slide, {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                ease: "power2.out"
-            });
-
-            // Mantenemos la diapositiva visible un momento
-            tl.to(slide, {
-                opacity: 1,
-                duration: 2 // Un poco más de tiempo de lectura
-            });
-
-            // Si NO es la última diapositiva, hacemos que desaparezca subiendo
-            if (index !== slides.length - 1) {
-                tl.to(slide, {
-                    opacity: 0,
-                    y: -30,
-                    duration: 1,
-                    ease: "power2.in"
-                });
-            }
-        });
+        // 3. Programación secuencial exacta sin "zonas muertas"
+        // Ease "none" asegura que la opacidad y el movimiento suban/bajen linealmente con tu dedo.
+        
+        // Diapositiva 1 Entra
+        tl.to(slides[0], { opacity: 1, y: 0, duration: 1, ease: "none" })
+          // Se mantiene un poco mientras bajas
+          .to(slides[0], { opacity: 1, duration: 1 }) 
+          // Sale la Diapositiva 1
+          .to(slides[0], { opacity: 0, y: -40, duration: 1, ease: "none" }, "transicion")
+          // EXACTAMENTE al mismo tiempo que sale la 1, entra la Diapositiva 2
+          .to(slides[1], { opacity: 1, y: 0, duration: 1, ease: "none" }, "transicion")
+          // Se mantiene la Diapositiva 2
+          .to(slides[1], { opacity: 1, duration: 1.5 });
     </script>
 </body>
 </html>
