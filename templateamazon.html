@@ -45,6 +45,9 @@
         .word-wrapper { display: inline-block; overflow: visible; }
         .hero-piece { display: inline-block; will-change: transform, opacity; }
         .menu-item { will-change: transform, opacity; }
+        
+        /* Clase común para el desarme vertical */
+        .ch1-word { display: inline-block; will-change: transform, opacity; }
     </style>
 </head>
 
@@ -85,6 +88,7 @@
     </header>
 
     <section id="menu-section" class="min-h-screen w-full flex flex-col items-center justify-center py-24 px-4 relative z-10 border-t border-fall-coffee/5">
+        
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 w-full max-w-5xl">
             
             <a href="#chapter-1" class="menu-item group opacity-0 flex flex-col justify-between bg-white/50 backdrop-blur-md border border-white hover:border-fall-mustard hover:bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(225,152,50,0.15)] rounded-3xl p-6 md:p-8 h-48 md:h-56 transition-all duration-300 cursor-pointer">
@@ -174,69 +178,89 @@
 
     <section id="chapter-1" class="relative w-full h-screen overflow-hidden border-t border-fall-coffee/5">
         
-        <div id="ch1-title-box" class="absolute top-0 left-0 w-full h-full flex items-center justify-center px-6 md:px-16 z-20">
-            <h2 class="font-retro text-5xl md:text-6xl lg:text-[5.5rem] font-extrabold text-fall-rust leading-[1.05] tracking-tight text-center">
-                <span class="ch1-word inline-block">Antes</span>
-                <span class="ch1-word inline-block">de</span>
-                <span class="ch1-word inline-block">comenzar</span>
-            </h2>
-        </div>
-
-        <div class="absolute right-0 bottom-0 w-full md:w-[55%] h-[60vh] md:h-full flex items-center justify-center px-6 md:px-12 lg:px-20 z-10 pointer-events-none">
+        <div class="grid grid-cols-1 md:grid-cols-2 h-full w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
             
-            <div class="ch1-slide-1 absolute w-full px-6 md:px-8 lg:px-12 opacity-0">
-                <p class="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-medium leading-relaxed md:leading-[1.35] text-fall-coffee">
-                    Hola, soy Juan Pablo, encargado de la gestión digital de Amazon FBA.
-                </p>
+            <div id="ch1-left-col" class="w-full h-full flex flex-col justify-center items-center md:items-start z-20 pointer-events-none opacity-0">
+                <h2 class="font-retro text-5xl md:text-7xl lg:text-[6rem] font-extrabold text-fall-rust leading-[1.1] tracking-tight text-center md:text-left">
+                    <span class="ch1-word antes inline-block">Antes</span><br class="md:hidden">
+                    <span class="ch1-word de inline-block">de</span>
+                    <span class="ch1-word comenzar inline-block">comenzar</span>
+                </h2>
             </div>
             
-            <div class="ch1-slide-2 absolute w-full px-6 md:px-8 lg:px-12 opacity-0 flex flex-col gap-6 md:gap-8">
-                <p class="text-xl md:text-2xl lg:text-3xl font-medium leading-relaxed md:leading-[1.4] text-fall-coffee">
-                    Amazon es algo estricto con sus especificaciones para enviarle productos.
-                </p>
-                <p class="text-xl md:text-2xl lg:text-3xl font-medium leading-relaxed md:leading-[1.4] text-fall-coffee">
-                    Por eso, hice este sitio web para que tengan todas las especificaciones físicas a la mano de forma clara y directa, sin necesidad de manuales extensos.
-                </p>
-            </div>
+            <div id="ch1-right-col" class="w-full h-full flex flex-col justify-center items-center px-6 md:px-12 lg:px-20 z-10 pointer-events-none">
+                
+                <div class="ch1-slide-1 absolute w-full px-6 md:px-12 lg:px-16 opacity-0">
+                    <p class="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-medium leading-relaxed md:leading-[1.35] text-fall-coffee">
+                        Hola, soy Juan Pablo, encargado de la gestión digital de Amazon FBA.
+                    </p>
+                </div>
+                
+                <div class="ch1-slide-2 absolute w-full px-6 md:px-12 lg:px-16 opacity-0 flex flex-col gap-6 md:gap-8">
+                    <p class="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-medium leading-relaxed md:leading-[1.4] text-fall-coffee">
+                        Amazon es algo estricto con sus especificaciones para enviarle productos.
+                    </p>
+                    <p class="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-medium leading-relaxed md:leading-[1.4] text-fall-coffee">
+                        Por eso, hice este sitio web para que tengan todas las especificaciones físicas a la mano de forma clara y directa, sin necesidad de manuales extensos.
+                    </p>
+                </div>
 
+            </div>
+            
         </div>
     </section>
 
-    <div class="h-screen flex items-center justify-center border-t border-fall-coffee/5">
-        <p class="font-retro text-2xl text-fall-coffee/30">Aquí irá el Capítulo 2...</p>
+    <div class="h-screen flex items-center justify-center border-t border-fall-coffee/5 mt-10">
+        <p class="font-retro text-2xl text-fall-coffee/30">Aquí irán los siguientes capítulos...</p>
     </div>
 
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
         // ============================================
-        // 1. ANIMACIONES DEL HERO & DASHBOARD MENU
+        // 1. ANIMACIONES GLOBALES Y HERO SECTION
         // ============================================
-        gsap.from(".word-wrapper", { y: 80, opacity: 0, duration: 1, stagger: 0.04, ease: "power4.out" });
+        gsap.from(".word-wrapper", {
+            y: 80, opacity: 0, duration: 1, stagger: 0.04, ease: "power4.out"
+        });
+        
         gsap.from(".hero-extra", { opacity: 0, duration: 0.8, delay: 0.4 });
 
         const tlDesarmar = gsap.timeline({
-            scrollTrigger: { trigger: "#hero-section", start: "top top", end: "+=600", pin: true, scrub: true }
+            scrollTrigger: {
+                trigger: "#hero-section", start: "top top", end: "+=600", pin: true, scrub: true
+            }
         });
 
-        tlDesarmar.fromTo(".hero-extra", { opacity: 1, y: 0 }, { opacity: 0, y: -30, ease: "none", immediateRender: false }, 0);
+        tlDesarmar.fromTo(".hero-extra", 
+            { opacity: 1, y: 0 },
+            { opacity: 0, y: -30, ease: "none", immediateRender: false }, 
+            0
+        );
+
         tlDesarmar.fromTo(".hero-piece", 
             { x: 0, y: 0, rotation: 0, scale: 1, opacity: 1 },
             {
-                x: () => gsap.utils.random(-120, 120), y: () => gsap.utils.random(-180, -40),
-                rotation: () => gsap.utils.random(-35, 35), scale: () => gsap.utils.random(0.7, 1.3),
+                x: () => gsap.utils.random(-120, 120),
+                y: () => gsap.utils.random(-180, -40),
+                rotation: () => gsap.utils.random(-35, 35),
+                scale: () => gsap.utils.random(0.7, 1.3),
                 opacity: 0, stagger: 0.01, ease: "none", immediateRender: false 
-            }, 0
+            }, 
+            0
         );
 
         gsap.fromTo(".menu-item", 
-            { y: 80, opacity: 0 }, 
+            { y: 80, opacity: 0 },
             {
                 y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: "power3.out",
-                scrollTrigger: { trigger: "#menu-section", start: "top 85%", toggleActions: "play none none reverse" }
+                scrollTrigger: {
+                    trigger: "#menu-section", start: "top 85%", toggleActions: "play none none reverse"
+                }
             }
         );
 
+        // Parallax del fondo
         gsap.to('.bg-shape-1', { y: 100, ease: "none", scrollTrigger: { scrub: true } });
         gsap.to('.bg-shape-2', { y: -150, ease: "none", scrollTrigger: { scrub: true } });
         gsap.to('.bg-shape-3', { y: -80, x: 30, ease: "none", scrollTrigger: { scrub: true } });
@@ -250,51 +274,79 @@
             scrollTrigger: {
                 trigger: "#chapter-1",
                 start: "top top",
-                end: "+=4000", // Distancia para scrollear tranquilamente
+                end: "+=4000", // Distancia larga para lectura cómoda
                 pin: true,
                 scrub: true
             }
         });
 
-        // FASE 1: Armado del título 3D en el centro perfecto de la pantalla
+        // FASE 1: Armar el título centrado (Aparece invisible en el centro perfecto de su columna)
+        tlCh1.fromTo("#ch1-left-col",
+            { opacity: 0 },
+            { opacity: 1, duration: 0.5, ease: "power2.out" }
+        );
+        
+        // Efecto inicial 3D suavecentrado
         tlCh1.fromTo(".ch1-word", 
-            { opacity: 0, y: 80, rotationX: -90 },
-            { opacity: 1, y: 0, rotationX: 0, duration: 1.2, stagger: 0.2, ease: "power3.out" }
+            { opacity: 0, y: 80, rotationX: -90 }, // Efecto 3D
+            { opacity: 1, y: 0, rotationX: 0, duration: 1, stagger: 0.2, ease: "power2.out" }
         );
         
         // Pausa breve para leer el título centrado
-        tlCh1.to({}, { duration: 0.8 }); 
+        tlCh1.to({}, { duration: 0.5 }); 
 
-        // FASE 2 (El Reflow Nativo): En lugar de forzar con 'X', encogemos la caja que lo contiene.
-        // Pasa del 100% al 45% (PC). Como el texto está centrado dentro de su caja, se empuja suavemente.
-        tlCh1.to("#ch1-title-box", {
-            width: () => window.innerWidth >= 768 ? "45%" : "100%",
-            y: () => window.innerWidth < 768 ? "-25vh" : "0", // Solo en celular sube para dejar espacio
-            duration: 2.0, // Movimiento muy suave
+        // ============================================
+        // CORRECCIÓN CLAVE: Desarme vertical + Movimiento lateral sincronizado
+        // ============================================
+        
+        // Timeline sincronizado (usando el label "desarme")
+        tlCh1.add("desarme");
+
+        // 1. "Antes" sube hacia arriba (Y negativo) y se mueve a la izquierda (X)
+        tlCh1.to(".ch1-word.antes", {
+            x: () => window.innerWidth >= 768 ? "-25vw" : "0", 
+            y: () => window.innerWidth >= 768 ? "-50px" : "-30vh - 50px", // Separación vertical premium
+            duration: 2.0, 
             ease: "power2.inOut"
-        }, "mover");
+        }, "desarme");
 
-        // FASE 2.5: Al mismísimo tiempo que la caja se encoge, la Diapositiva 1 entra por la derecha.
+        // 2. "de" básicamente solo se mueve lateral (Y cero)
+        tlCh1.to(".ch1-word.de", {
+            x: () => window.innerWidth >= 768 ? "-25vw" : "0", 
+            y: () => window.innerWidth < 768 ? "-30vh" : "0", 
+            duration: 2.0, 
+            ease: "power2.inOut"
+        }, "desarme");
+
+        // 3. "comenzar" baja hacia abajo (Y positivo) y se mueve a la izquierda (X)
+        tlCh1.to(".ch1-word.comenzar", {
+            x: () => window.innerWidth >= 768 ? "-25vw" : "0", 
+            y: () => window.innerWidth >= 768 ? "+50px" : "-30vh + 50px", // Separación vertical premium
+            duration: 2.0, 
+            ease: "power2.inOut"
+        }, "desarme");
+
+        // 4. Sincronizamos la aparición de Diapositiva 1 (Juan Pablo)
         tlCh1.fromTo(".ch1-slide-1",
             { opacity: 0, x: 50 },
-            { opacity: 1, x: 0, duration: 2.0, ease: "power2.out" },
-            "mover" 
+            { opacity: 1, x: 0, duration: 2.0, ease: "power2.out" }, // Misma duración para suavidad
+            "desarme" 
         );
 
         // Pausa extensa para leer Diapositiva 1
-        tlCh1.to({}, { duration: 1.5 }); 
+        tlCh1.to({}, { duration: 2 }); 
 
-        // FASE 3: Transición de textos (Sale 1, Entra 2)
+        // FASE 3: Transición de Diapositivas (Se va 1, Entra 2)
         tlCh1.to(".ch1-slide-1", { opacity: 0, y: -40, duration: 1.5, ease: "none" }, "cambio");
         
         tlCh1.fromTo(".ch1-slide-2",
             { opacity: 0, y: 40 },
-            { opacity: 1, y: 0, duration: 1.5, ease: "none" },
+            { opacity: 1, y: 0, duration: 1.5, ease: "none" }, // Duración igual para suavidad
             "cambio"
         );
 
         // Pausa final antes de que la página se desancle
-        tlCh1.to({}, { duration: 2.0 }); 
+        tlCh1.to({}, { duration: 2.5 }); 
 
     </script>
 </body>
