@@ -45,8 +45,6 @@
         .word-wrapper { display: inline-block; overflow: visible; }
         .hero-piece { display: inline-block; will-change: transform, opacity; }
         .menu-item { will-change: transform, opacity; }
-        
-        /* Aseguramos animación por GPU independiente */
         .ch1-word { display: inline-block; will-change: transform, opacity; }
     </style>
 </head>
@@ -67,9 +65,7 @@
 
     <header id="hero-section" class="relative w-full h-screen flex flex-col justify-center items-center text-center px-6">
         <div id="hero-content" class="max-w-6xl mx-auto w-full">
-            
             <span class="hero-extra inline-block py-1.5 px-5 rounded-full bg-fall-rust/10 text-fall-rust font-bold text-sm tracking-widest uppercase mb-8">Manual Logístico FBA</span>
-            
             <h1 class="font-retro text-5xl md:text-7xl lg:text-8xl xl:text-[6.5rem] text-fall-coffee font-extrabold leading-[1.05] tracking-tight mb-10 flex flex-wrap justify-center gap-x-3 md:gap-x-5 gap-y-2">
                 <span class="word-wrapper"><span class="hero-piece">¿Cómo</span></span>
                 <span class="word-wrapper"><span class="hero-piece">se</span></span>
@@ -81,9 +77,7 @@
                 <span class="word-wrapper"><span class="hero-piece">a</span></span>
                 <span class="word-wrapper"><span class="hero-piece">Amazon?</span></span>
             </h1>
-            
             <div class="hero-extra w-16 md:w-28 h-1.5 bg-fall-mustard mx-auto rounded-full"></div>
-            
         </div>
     </header>
 
@@ -188,38 +182,36 @@
                 end: "+=4000", 
                 pin: true,
                 scrub: true,
-                invalidateOnRefresh: true // IMPORTANTE: Recalcula medidas exactas si la ventana cambia de tamaño
+                invalidateOnRefresh: true 
             }
         });
 
-        // FASE 1: Armado inicial en el centro de la pantalla
+        // FASE 1: Aparición 3D en el centro
         tlCh1.fromTo(".ch1-word", 
             { opacity: 0, y: 80, rotationX: -90 },
             { opacity: 1, y: 0, rotationX: 0, duration: 1.2, stagger: 0.15, ease: "power3.out" }
         );
-        tlCh1.to({}, { duration: 0.5 }); // Pausa de lectura
+        tlCh1.to({}, { duration: 0.5 }); 
 
-        // FASE 2: EL DESARME INDEPENDIENTE
+        // FASE 2: DESARME
         tlCh1.add("desarme");
 
-        // Todo el contenedor se mueve a la izquierda (PC) o arriba (Móvil)
+        // SOLUCIÓN 1: El contenedor se mueve a "-18vw" (Para que quede perfectamente centrado en su mitad, no pegado a la orilla)
         tlCh1.to("#ch1-title-container", {
-            x: () => window.innerWidth >= 768 ? "-22vw" : "0",
-            y: () => window.innerWidth < 768 ? "-35vh" : "0",
+            x: () => window.innerWidth >= 768 ? "-18vw" : "0",
+            y: () => window.innerWidth < 768 ? "-30vh" : "0",
             duration: 2.0, ease: "power2.inOut"
         }, "desarme");
 
-        // Palabra 1 "Antes": Solo se mueve en el eje Y (hacia arriba)
+        // SOLUCIÓN 1.2: Solo las palabras de las orillas suben y bajan, no se mueven extra a la izquierda.
         tlCh1.to(".ch1-word.antes", {
-            y: () => {
-                const w1 = document.querySelector('.ch1-word.antes');
-                return -(w1.offsetHeight * 0.95); // 0.95 hace que queden pegaditos y elegantes
-            },
+            y: () => window.innerWidth >= 768 ? "-80px" : "-60px",
+            x: 0, 
             duration: 2.0, ease: "power2.inOut"
         }, "desarme");
 
-        // Palabra 2 "de": Se mueve en el eje X para alinear su borde izquierdo con la palabra 1
         tlCh1.to(".ch1-word.de", {
+            y: 0,
             x: () => {
                 const w1 = document.querySelector('.ch1-word.antes');
                 const w2 = document.querySelector('.ch1-word.de');
@@ -228,21 +220,17 @@
             duration: 2.0, ease: "power2.inOut"
         }, "desarme");
 
-        // Palabra 3 "comenzar": Se mueve en Y (abajo) y en X (alineación izquierda)
         tlCh1.to(".ch1-word.comenzar", {
+            y: () => window.innerWidth >= 768 ? "80px" : "60px",
             x: () => {
                 const w1 = document.querySelector('.ch1-word.antes');
                 const w3 = document.querySelector('.ch1-word.comenzar');
                 return -(w3.offsetLeft - w1.offsetLeft);
             },
-            y: () => {
-                const w3 = document.querySelector('.ch1-word.comenzar');
-                return w3.offsetHeight * 0.95;
-            },
             duration: 2.0, ease: "power2.inOut"
         }, "desarme");
 
-        // Entrada del texto de Juan Pablo (sincronizada perfectamente)
+        // Entrada del texto Juan Pablo
         tlCh1.fromTo(".ch1-slide-1",
             { opacity: 0, x: 50 },
             { opacity: 1, x: 0, duration: 2.0, ease: "power2.out" },
@@ -251,12 +239,14 @@
 
         tlCh1.to({}, { duration: 1.5 }); 
 
-        // FASE 3: Transición de los textos
-        tlCh1.to(".ch1-slide-1", { opacity: 0, y: -40, duration: 1.5, ease: "none" }, "cambio");
+        // SOLUCIÓN 2: SECUENCIA DE TEXTOS
+        // Primero desaparece la 1
+        tlCh1.to(".ch1-slide-1", { opacity: 0, y: -40, duration: 1.0, ease: "power2.inOut" });
+        
+        // HASTA QUE DESAPARECIÓ, aparece la 2
         tlCh1.fromTo(".ch1-slide-2",
             { opacity: 0, y: 40 },
-            { opacity: 1, y: 0, duration: 1.5, ease: "none" },
-            "cambio"
+            { opacity: 1, y: 0, duration: 1.0, ease: "power2.inOut" }
         );
 
         tlCh1.to({}, { duration: 2.0 }); 
