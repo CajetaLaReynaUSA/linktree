@@ -42,19 +42,9 @@
         ::-webkit-scrollbar-track { background: #F4EFE6; }
         ::-webkit-scrollbar-thumb { background: #E19832; border-radius: 10px; }
         
-        .word-wrapper {
-            display: inline-block;
-            overflow: visible; 
-        }
-        .hero-piece {
-            display: inline-block;
-            will-change: transform, opacity;
-        }
-        
-        /* Ajuste fino para la expansión del menú al estilo Wealthsimple */
-        .menu-item {
-            will-change: width, padding, background-color;
-        }
+        .word-wrapper { display: inline-block; overflow: visible; }
+        .hero-piece { display: inline-block; will-change: transform, opacity; }
+        .menu-item { will-change: transform, opacity, width, padding, background-color; }
     </style>
 </head>
 
@@ -101,107 +91,65 @@
         </div>
     </header>
 
-    <section id="menu-section" class="min-h-screen w-full flex flex-col items-center justify-center py-24 px-4 relative z-10 border-t border-fall-coffee/5">
+    <section id="menu-section" class="min-h-screen w-full flex flex-col items-center justify-center py-20 px-4 relative z-10">
         
         <span class="font-bold tracking-widest uppercase text-fall-olive text-sm mb-12 opacity-60">Índice Operativo</span>
 
         <div class="flex flex-col items-center w-full max-w-5xl gap-4 md:gap-6">
             
-            <a href="#section-1" class="menu-item group flex items-center justify-center lg:justify-between transition-all duration-500 hover:bg-white hover:shadow-xl px-6 hover:px-10 py-5 md:py-6 rounded-3xl w-auto lg:hover:w-full border border-transparent hover:border-fall-coffee/10 cursor-pointer">
-                <div class="hidden lg:flex w-24 opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center text-3xl">
-                    👋
-                </div>
-                <h2 class="font-retro text-2xl md:text-4xl lg:text-5xl text-fall-coffee/80 group-hover:text-fall-coffee transition-colors duration-300 text-center font-bold">
-                    1. Antes de comenzar
-                </h2>
-                <div class="hidden lg:flex w-24 opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center justify-end text-sm font-bold text-fall-rust uppercase tracking-wider">
-                    Leer →
-                </div>
+            <a href="#section-1" class="menu-item opacity-0 group flex items-center justify-center lg:justify-between transition-all duration-500 hover:bg-white hover:shadow-xl px-6 hover:px-10 py-5 md:py-6 rounded-3xl w-auto lg:hover:w-full border border-transparent hover:border-fall-coffee/10 cursor-pointer">
+                <div class="hidden lg:flex w-24 opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center text-3xl">👋</div>
+                <h2 class="font-retro text-2xl md:text-4xl lg:text-5xl text-fall-coffee/80 group-hover:text-fall-coffee transition-colors duration-300 text-center font-bold">1. Antes de comenzar</h2>
+                <div class="hidden lg:flex w-24 opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center justify-end text-sm font-bold text-fall-rust uppercase tracking-wider">Leer →</div>
             </a>
 
-            <a href="#section-2" class="menu-item group flex items-center justify-center lg:justify-between transition-all duration-500 hover:bg-white hover:shadow-xl px-6 hover:px-10 py-5 md:py-6 rounded-3xl w-auto lg:hover:w-full border border-transparent hover:border-fall-coffee/10 cursor-pointer">
-                <div class="hidden lg:flex w-24 opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center text-3xl">
-                    📦
-                </div>
-                <h2 class="font-retro text-2xl md:text-4xl lg:text-5xl text-fall-coffee/80 group-hover:text-fall-coffee transition-colors duration-300 text-center font-bold">
-                    2. ¿Cómo se envían los Bundles?
-                </h2>
-                <div class="hidden lg:flex w-24 opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center justify-end text-sm font-bold text-fall-rust uppercase tracking-wider">
-                    Leer →
-                </div>
+            <a href="#section-2" class="menu-item opacity-0 group flex items-center justify-center lg:justify-between transition-all duration-500 hover:bg-white hover:shadow-xl px-6 hover:px-10 py-5 md:py-6 rounded-3xl w-auto lg:hover:w-full border border-transparent hover:border-fall-coffee/10 cursor-pointer">
+                <div class="hidden lg:flex w-24 opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center text-3xl">📦</div>
+                <h2 class="font-retro text-2xl md:text-4xl lg:text-5xl text-fall-coffee/80 group-hover:text-fall-coffee transition-colors duration-300 text-center font-bold">2. ¿Cómo se envían los Bundles?</h2>
+                <div class="hidden lg:flex w-24 opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center justify-end text-sm font-bold text-fall-rust uppercase tracking-wider">Leer →</div>
             </a>
 
-            <a href="#section-3" class="menu-item group flex items-center justify-center lg:justify-between transition-all duration-500 hover:bg-white hover:shadow-xl px-6 hover:px-10 py-5 md:py-6 rounded-3xl w-auto lg:hover:w-full border border-transparent hover:border-fall-coffee/10 cursor-pointer">
-                <div class="hidden lg:flex w-24 opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center text-3xl">
-                    🧮
-                </div>
-                <h2 class="font-retro text-2xl md:text-4xl lg:text-5xl text-fall-coffee/80 group-hover:text-fall-coffee transition-colors duration-300 text-center font-bold">
-                    3. ¿Cuántos se preparan?
-                </h2>
-                <div class="hidden lg:flex w-24 opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center justify-end text-sm font-bold text-fall-rust uppercase tracking-wider">
-                    Leer →
-                </div>
+            <a href="#section-3" class="menu-item opacity-0 group flex items-center justify-center lg:justify-between transition-all duration-500 hover:bg-white hover:shadow-xl px-6 hover:px-10 py-5 md:py-6 rounded-3xl w-auto lg:hover:w-full border border-transparent hover:border-fall-coffee/10 cursor-pointer">
+                <div class="hidden lg:flex w-24 opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center text-3xl">🧮</div>
+                <h2 class="font-retro text-2xl md:text-4xl lg:text-5xl text-fall-coffee/80 group-hover:text-fall-coffee transition-colors duration-300 text-center font-bold">3. ¿Cuántos se preparan?</h2>
+                <div class="hidden lg:flex w-24 opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center justify-end text-sm font-bold text-fall-rust uppercase tracking-wider">Leer →</div>
             </a>
 
-            <a href="#section-4" class="menu-item group flex items-center justify-center lg:justify-between transition-all duration-500 hover:bg-white hover:shadow-xl px-6 hover:px-10 py-5 md:py-6 rounded-3xl w-auto lg:hover:w-full border border-transparent hover:border-fall-coffee/10 cursor-pointer">
-                <div class="hidden lg:flex w-24 opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center text-3xl">
-                    🛠️
-                </div>
-                <h2 class="font-retro text-2xl md:text-4xl lg:text-5xl text-fall-coffee/80 group-hover:text-fall-coffee transition-colors duration-300 text-center font-bold">
-                    4. Paso 1: Armado y empaquetado
-                </h2>
-                <div class="hidden lg:flex w-24 opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center justify-end text-sm font-bold text-fall-rust uppercase tracking-wider">
-                    Leer →
-                </div>
+            <a href="#section-4" class="menu-item opacity-0 group flex items-center justify-center lg:justify-between transition-all duration-500 hover:bg-white hover:shadow-xl px-6 hover:px-10 py-5 md:py-6 rounded-3xl w-auto lg:hover:w-full border border-transparent hover:border-fall-coffee/10 cursor-pointer">
+                <div class="hidden lg:flex w-24 opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center text-3xl">🛠️</div>
+                <h2 class="font-retro text-2xl md:text-4xl lg:text-5xl text-fall-coffee/80 group-hover:text-fall-coffee transition-colors duration-300 text-center font-bold">4. Paso 1: Armado y empaquetado</h2>
+                <div class="hidden lg:flex w-24 opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center justify-end text-sm font-bold text-fall-rust uppercase tracking-wider">Leer →</div>
             </a>
 
-            <a href="#section-5" class="menu-item group flex items-center justify-center lg:justify-between transition-all duration-500 hover:bg-white hover:shadow-xl px-6 hover:px-10 py-5 md:py-6 rounded-3xl w-auto lg:hover:w-full border border-transparent hover:border-fall-coffee/10 cursor-pointer">
-                <div class="hidden lg:flex w-24 opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center text-3xl">
-                    📝
-                </div>
-                <h2 class="font-retro text-2xl md:text-4xl lg:text-5xl text-fall-coffee/80 group-hover:text-fall-coffee transition-colors duration-300 text-center font-bold">
-                    5. Paso 2: Orden de envío
-                </h2>
-                <div class="hidden lg:flex w-24 opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center justify-end text-sm font-bold text-fall-rust uppercase tracking-wider">
-                    Leer →
-                </div>
+            <a href="#section-5" class="menu-item opacity-0 group flex items-center justify-center lg:justify-between transition-all duration-500 hover:bg-white hover:shadow-xl px-6 hover:px-10 py-5 md:py-6 rounded-3xl w-auto lg:hover:w-full border border-transparent hover:border-fall-coffee/10 cursor-pointer">
+                <div class="hidden lg:flex w-24 opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center text-3xl">📝</div>
+                <h2 class="font-retro text-2xl md:text-4xl lg:text-5xl text-fall-coffee/80 group-hover:text-fall-coffee transition-colors duration-300 text-center font-bold">5. Paso 2: Orden de envío</h2>
+                <div class="hidden lg:flex w-24 opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center justify-end text-sm font-bold text-fall-rust uppercase tracking-wider">Leer →</div>
             </a>
 
-            <a href="#section-6" class="menu-item group flex items-center justify-center lg:justify-between transition-all duration-500 hover:bg-white hover:shadow-xl px-6 hover:px-10 py-5 md:py-6 rounded-3xl w-auto lg:hover:w-full border border-transparent hover:border-fall-coffee/10 cursor-pointer">
-                <div class="hidden lg:flex w-24 opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center text-3xl">
-                    🏷️
-                </div>
-                <h2 class="font-retro text-2xl md:text-4xl lg:text-5xl text-fall-coffee/80 group-hover:text-fall-coffee transition-colors duration-300 text-center font-bold">
-                    6. Paso 3: Etiquetado a almacén
-                </h2>
-                <div class="hidden lg:flex w-24 opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center justify-end text-sm font-bold text-fall-rust uppercase tracking-wider">
-                    Leer →
-                </div>
+            <a href="#section-6" class="menu-item opacity-0 group flex items-center justify-center lg:justify-between transition-all duration-500 hover:bg-white hover:shadow-xl px-6 hover:px-10 py-5 md:py-6 rounded-3xl w-auto lg:hover:w-full border border-transparent hover:border-fall-coffee/10 cursor-pointer">
+                <div class="hidden lg:flex w-24 opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center text-3xl">🏷️</div>
+                <h2 class="font-retro text-2xl md:text-4xl lg:text-5xl text-fall-coffee/80 group-hover:text-fall-coffee transition-colors duration-300 text-center font-bold">6. Paso 3: Etiquetado a almacén</h2>
+                <div class="hidden lg:flex w-24 opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center justify-end text-sm font-bold text-fall-rust uppercase tracking-wider">Leer →</div>
             </a>
 
-            <a href="#section-7" class="menu-item group flex items-center justify-center lg:justify-between transition-all duration-500 hover:bg-white hover:shadow-xl px-6 hover:px-10 py-5 md:py-6 rounded-3xl w-auto lg:hover:w-full border border-transparent hover:border-fall-coffee/10 cursor-pointer">
-                <div class="hidden lg:flex w-24 opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center text-3xl">
-                    💬
-                </div>
-                <h2 class="font-retro text-2xl md:text-4xl lg:text-5xl text-fall-coffee/80 group-hover:text-fall-mustard transition-colors duration-300 text-center font-bold">
-                    7. Dudas
-                </h2>
-                <div class="hidden lg:flex w-24 opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center justify-end text-sm font-bold text-fall-rust uppercase tracking-wider">
-                    Leer →
-                </div>
+            <a href="#section-7" class="menu-item opacity-0 group flex items-center justify-center lg:justify-between transition-all duration-500 hover:bg-white hover:shadow-xl px-6 hover:px-10 py-5 md:py-6 rounded-3xl w-auto lg:hover:w-full border border-transparent hover:border-fall-coffee/10 cursor-pointer">
+                <div class="hidden lg:flex w-24 opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center text-3xl">💬</div>
+                <h2 class="font-retro text-2xl md:text-4xl lg:text-5xl text-fall-coffee/80 group-hover:text-fall-mustard transition-colors duration-300 text-center font-bold">7. Dudas</h2>
+                <div class="hidden lg:flex w-24 opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center justify-end text-sm font-bold text-fall-rust uppercase tracking-wider">Leer →</div>
             </a>
 
         </div>
     </section>
 
-    <div class="h-screen flex items-center justify-center">
+    <div class="h-[50vh] flex items-center justify-center">
         <p class="font-retro text-2xl text-fall-coffee/30">Aquí irán los capítulos...</p>
     </div>
 
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
-        // 1. Animación inicial fluida al cargar el Hero
+        // 1. Animación inicial del Hero (Wrappers)
         gsap.from(".word-wrapper", {
             y: 80,
             opacity: 0,
@@ -248,19 +196,25 @@
             0
         );
 
-        // 3. Armado del Menú al bajar el scroll (NUEVO)
-        gsap.from(".menu-item", {
-            scrollTrigger: {
-                trigger: "#menu-section",
-                start: "top 80%", // La animación inicia cuando la sección entra en el 80% de la pantalla
-                toggleActions: "play none none reverse" // Si regresas hacia arriba, se vuelve a esconder
+        // 3. Aparición del Menú con fromTo (Cero errores de cálculo)
+        gsap.fromTo(".menu-item", 
+            { 
+                y: 60, 
+                opacity: 0 
             },
-            y: 60,
-            opacity: 0,
-            duration: 0.8,
-            stagger: 0.08, // Efecto cascada
-            ease: "back.out(1.2)" // Rebote sutil
-        });
+            {
+                y: 0,
+                opacity: 1,
+                duration: 0.8,
+                stagger: 0.08,
+                ease: "back.out(1.2)",
+                scrollTrigger: {
+                    trigger: "#menu-section",
+                    start: "top 95%", // Inicia la animación casi en cuanto toca la pantalla
+                    toggleActions: "play none none reverse"
+                }
+            }
+        );
 
         // 4. Parallax del fondo
         gsap.to('.bg-shape-1', { y: 100, ease: "none", scrollTrigger: { scrub: true } });
