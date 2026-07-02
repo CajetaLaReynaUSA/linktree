@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manual Operativo FBA</title>
+    <title>¿Cómo se envían los Bundles de Cajetas a Amazon?</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -37,44 +37,57 @@
     </script>
     
     <style>
-        body {
-            background-color: #F4EFE6;
-            /* Textura sutil para dar el toque premium/retro */
-            background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22 opacity=%220.03%22/%3E%3C/svg%3E');
-        }
-        
-        /* Ocultar barra de scroll para mayor limpieza visual */
+        body { background-color: #F4EFE6; overflow-x: hidden; }
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #F4EFE6; }
         ::-webkit-scrollbar-thumb { background: #E19832; border-radius: 10px; }
+        
+        /* Control fino de opacidad y escala para las diapositivas de texto */
+        .scrolly-slide {
+            opacity: 0;
+            transform: translateY(40px) scale(0.98);
+            will-change: opacity, transform;
+        }
     </style>
 </head>
 
 <body class="text-fall-coffee font-body antialiased selection:bg-fall-mustard selection:text-white">
 
-    <div class="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 flex flex-col items-center opacity-60 animate-bounce pointer-events-none">
-        <span class="text-xs tracking-widest uppercase font-bold text-fall-rust mb-2">Haz Scroll</span>
-        <div class="w-[2px] h-8 bg-fall-rust"></div>
+    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none opacity-45 md:opacity-60">
+        <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E');"></div>
+        <div class="shape-1 absolute -top-20 -left-20 w-64 h-64 md:w-96 md:h-96 bg-fall-mustard rounded-full blur-[80px] md:blur-[120px]"></div>
+        <div class="shape-2 absolute top-1/4 right-0 w-72 h-96 md:w-[30rem] md:h-[40rem] bg-fall-olive/30 rounded-full blur-[100px] md:blur-[150px]"></div>
+        <div class="shape-3 absolute bottom-0 left-1/4 w-80 h-80 md:w-[40rem] md:h-[40rem] bg-fall-rust/20 rounded-full blur-[100px] md:blur-[150px]"></div>
     </div>
 
-    <section id="intro-section" class="relative w-full h-screen flex flex-col md:flex-row overflow-hidden">
-        
-        <div class="w-full md:w-[45%] h-[35vh] md:h-screen flex flex-col justify-end md:justify-center px-6 md:px-16 lg:px-24 pb-4 md:pb-0">
-            <h1 class="font-retro text-5xl md:text-7xl lg:text-[6.5rem] font-extrabold text-fall-rust leading-[1.05] tracking-tight drop-shadow-sm">
-                Antes de comenzar:
+    <header class="min-h-[70vh] md:min-h-[85vh] flex flex-col justify-center items-center text-center px-5 md:px-12 bg-gradient-to-b from-[#EAE2D3] to-fall-cream relative border-b border-fall-coffee/5">
+        <div class="max-w-6xl mx-auto z-10 w-full" id="hero-content">
+            <span class="inline-block py-1.5 px-5 rounded-full bg-fall-rust/10 text-fall-rust font-bold text-xs md:text-sm tracking-widest uppercase mb-6 font-body">Guía de Logística Interna</span>
+            <h1 class="font-retro text-5xl md:text-7xl lg:text-8xl xl:text-9xl text-fall-coffee font-extrabold leading-[1.1] tracking-tight mb-8">
+                ¿Cómo se envían los <br class="hidden md:block"><span class="text-fall-rust">Bundles de Cajetas</span> a Amazon?
             </h1>
+            <div class="w-16 md:w-24 h-1 md:h-1.5 bg-fall-mustard mx-auto rounded-full"></div>
+        </div>
+    </header>
+
+    <section id="intro-section" class="relative w-full h-screen flex flex-col md:flex-row overflow-hidden max-w-[90rem] mx-auto">
+        
+        <div class="w-full md:w-[45%] h-[30vh] md:h-screen flex flex-col justify-end md:justify-center px-5 md:px-16 lg:px-24 pb-4 md:pb-0">
+            <h2 class="font-retro text-4xl md:text-6xl lg:text-[6.5rem] font-extrabold text-fall-rust leading-[1.05] tracking-tight">
+                Antes de comenzar:
+            </h2>
         </div>
 
-        <div class="w-full md:w-[55%] h-[65vh] md:h-screen relative flex items-center justify-center px-6 md:px-16 lg:px-20">
+        <div class="w-full md:w-[55%] h-[70vh] md:h-screen relative flex items-center justify-center px-5 md:px-16 lg:px-20">
             
-            <div class="slide absolute w-full px-6 md:px-0 opacity-0 transform translate-y-12">
-                <p class="text-2xl md:text-4xl lg:text-5xl font-medium leading-relaxed md:leading-[1.3] text-fall-coffee shadow-sm rounded-2xl md:bg-transparent">
+            <div class="scrolly-slide slide absolute w-full px-5 md:px-0">
+                <p class="text-xl md:text-4xl lg:text-5xl font-medium leading-relaxed md:leading-[1.3] text-fall-coffee">
                     Hola, soy Juan Pablo, encargado de la gestión digital de Amazon FBA.
                 </p>
             </div>
 
-            <div class="slide absolute w-full px-6 md:px-0 opacity-0 transform translate-y-12">
-                <p class="text-xl md:text-4xl lg:text-5xl font-medium leading-relaxed md:leading-[1.3] text-fall-coffee shadow-sm rounded-2xl md:bg-transparent">
+            <div class="scrolly-slide slide absolute w-full px-5 md:px-0">
+                <p class="text-lg md:text-3xl lg:text-4xl xl:text-5xl font-medium leading-relaxed md:leading-[1.3] text-fall-coffee">
                     Amazon es algo estricto con sus especificaciones para enviarle productos y con la información que me pide para generar una orden de envío. Por eso, hice este sitio web para que tengan todas las especificaciones físicas a la mano de forma clara y directa, sin necesidad de manuales extensos.
                 </p>
             </div>
@@ -82,49 +95,56 @@
         </div>
     </section>
 
-    <div class="h-screen flex items-center justify-center bg-fall-olive/10">
-        <p class="text-fall-olive font-retro text-2xl md:text-4xl opacity-50">Aquí continuará el resto de la página...</p>
+    <div class="h-screen flex items-center justify-center bg-fall-olive/5 border-t border-fall-coffee/5">
+        <p class="text-fall-olive font-retro text-2xl md:text-4xl opacity-40">Aquí continuará el resto de la página...</p>
     </div>
 
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
-        // 1. Creamos la línea de tiempo atada al scroll
+        // Entrada fluida del Hero al cargar
+        gsap.from("#hero-content", { duration: 1.3, y: 50, autoAlpha: 0, ease: "power4.out" });
+
+        // Parallax sutil del fondo geométrico al interactuar
+        gsap.to('.shape-1', { y: 120, ease: "none", scrollTrigger: { scrub: true } });
+        gsap.to('.shape-2', { y: -180, ease: "none", scrollTrigger: { scrub: true } });
+        gsap.to('.shape-3', { y: -100, ease: "none", scrollTrigger: { scrub: true } });
+
+        // ARQUITECTURA DE SCROLLYTELLING FIJO (Wealthsimple Clone)
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: "#intro-section",
-                start: "top top", // Inicia cuando la sección toca el borde superior de la pantalla
-                end: "+=2500",    // El usuario tendrá que hacer 2500px de scroll para ver toda la animación (hace que se sienta suave y costoso)
-                pin: true,        // Congela toda la sección en la pantalla
-                scrub: 1,         // Le da esa sensación fluida de "mantequilla" y obedece al dedo/ratón
+                start: "top top",   // Congela la pantalla cuando la sección toca el borde superior
+                end: "+=2200",      // Duración del viaje del scroll
+                pin: true,          // Activa el anclaje físico de la sección
+                scrub: 1,           // Animación ligada directamente a la rueda del mouse o dedo
             }
         });
 
-        // 2. Seleccionamos las diapositivas
         const slides = gsap.utils.toArray(".slide");
 
-        // 3. Programamos el comportamiento de cada diapositiva
         slides.forEach((slide, index) => {
-            
-            // Aparece la diapositiva (sube y cambia de opacidad 0 a 1)
+            // Entrada de la diapositiva (Aparece y sube ligeramente)
             tl.to(slide, {
                 opacity: 1,
                 y: 0,
+                scale: 1,
                 duration: 1,
                 ease: "power2.out"
             });
 
-            // Mantenemos la diapositiva visible un momento para que el usuario la lea cómodamente
+            // Retención en pantalla (Se mantiene estático al 100% para facilitar la lectura libre)
             tl.to(slide, {
                 opacity: 1,
                 duration: 1.5
             });
 
-            // Si NO es la última diapositiva, hacemos que desaparezca subiendo
+            // Salida de la diapositiva (Se desvanece subiendo solo si NO es la última del bloque)
             if (index !== slides.length - 1) {
                 tl.to(slide, {
                     opacity: 0,
-                    y: -30,
+                    y: -40,
+                    scale: 0.98,
                     duration: 1,
                     ease: "power2.in"
                 });
