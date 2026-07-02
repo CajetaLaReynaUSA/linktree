@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manual FBA: Cajetas</title>
+    <title>Manual Operativo FBA</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -21,7 +21,6 @@
                     colors: {
                         fall: {
                             cream: '#F4EFE6',
-                            paper: '#FDFBF7',
                             coffee: '#3E2723',
                             rust: '#C84B31',
                             mustard: '#E19832',
@@ -38,167 +37,99 @@
     </script>
     
     <style>
-        body { background-color: #F4EFE6; overflow-x: hidden; }
+        body {
+            background-color: #F4EFE6;
+            /* Textura sutil para dar el toque premium/retro */
+            background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22 opacity=%220.03%22/%3E%3C/svg%3E');
+        }
+        
+        /* Ocultar barra de scroll para mayor limpieza visual */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #F4EFE6; }
         ::-webkit-scrollbar-thumb { background: #E19832; border-radius: 10px; }
-        
-        /* Asegura que los slides invisibles no bloqueen los clics de los enlaces debajo */
-        .slide { visibility: hidden; }
     </style>
 </head>
 
 <body class="text-fall-coffee font-body antialiased selection:bg-fall-mustard selection:text-white">
 
-    <header class="h-screen flex flex-col justify-center items-center text-center px-6 md:px-12 bg-fall-cream">
-        <div class="max-w-5xl mx-auto z-10 w-full">
-            <span class="inline-block py-1.5 px-5 rounded-full bg-fall-rust/10 text-fall-rust font-bold text-sm tracking-widest uppercase mb-8">Manual Interactivo</span>
-            <h1 class="font-retro text-5xl md:text-7xl lg:text-[6rem] text-fall-coffee font-extrabold leading-[1.05] tracking-tight mb-10">
-                Logística <span class="text-fall-rust">Amazon FBA</span>
+    <div class="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 flex flex-col items-center opacity-60 animate-bounce pointer-events-none">
+        <span class="text-xs tracking-widest uppercase font-bold text-fall-rust mb-2">Haz Scroll</span>
+        <div class="w-[2px] h-8 bg-fall-rust"></div>
+    </div>
+
+    <section id="intro-section" class="relative w-full h-screen flex flex-col md:flex-row overflow-hidden">
+        
+        <div class="w-full md:w-[45%] h-[35vh] md:h-screen flex flex-col justify-end md:justify-center px-6 md:px-16 lg:px-24 pb-4 md:pb-0">
+            <h1 class="font-retro text-5xl md:text-7xl lg:text-[6.5rem] font-extrabold text-fall-rust leading-[1.05] tracking-tight drop-shadow-sm">
+                Antes de comenzar:
             </h1>
-            <p class="text-xl md:text-2xl text-fall-coffee/70 font-medium">Desliza hacia abajo para comenzar el recorrido</p>
-            <div class="w-[2px] h-16 bg-fall-mustard mx-auto mt-12 animate-pulse"></div>
         </div>
-    </header>
 
-    <section class="split-section relative bg-fall-cream" style="height: 700vh;">
-        <div class="sticky top-0 h-screen w-full flex flex-col md:flex-row overflow-hidden">
+        <div class="w-full md:w-[55%] h-[65vh] md:h-screen relative flex items-center justify-center px-6 md:px-16 lg:px-20">
             
-            <div class="w-full md:w-5/12 h-[30vh] md:h-full flex items-center justify-center p-8 md:p-16 border-b md:border-b-0 md:border-r border-fall-coffee/10 z-10 bg-fall-cream">
-                <h2 class="font-retro text-4xl md:text-6xl lg:text-7xl text-fall-rust text-center md:text-left leading-tight">
-                    Antes de comenzar:
-                </h2>
+            <div class="slide absolute w-full px-6 md:px-0 opacity-0 transform translate-y-12">
+                <p class="text-2xl md:text-4xl lg:text-5xl font-medium leading-relaxed md:leading-[1.3] text-fall-coffee shadow-sm rounded-2xl md:bg-transparent">
+                    Hola, soy Juan Pablo, encargado de la gestión digital de Amazon FBA.
+                </p>
             </div>
-            
-            <div class="w-full md:w-7/12 h-[70vh] md:h-full relative flex items-center justify-center p-6 md:p-20 bg-fall-paper">
-                
-                <div class="slide absolute w-full max-w-2xl px-6">
-                    <p class="text-2xl md:text-4xl lg:text-5xl font-medium leading-relaxed md:leading-[1.3] text-fall-coffee">
-                        Hola, soy Juan Pablo, encargado de la gestión digital de Amazon FBA.
-                    </p>
-                </div>
-                
-                <div class="slide absolute w-full max-w-2xl px-6">
-                    <p class="text-xl md:text-3xl lg:text-4xl font-medium leading-relaxed md:leading-[1.4] text-fall-coffee">
-                        Amazon es algo estricto con sus especificaciones para enviarle productos y con la información que me pide para generar una orden de envío. Por eso, hice este sitio web para que tengan todas las especificaciones físicas a la mano de forma clara y directa, sin necesidad de manuales extensos.
-                    </p>
-                </div>
 
-                <div class="slide absolute w-full max-w-2xl px-6">
-                    <p class="text-2xl md:text-4xl lg:text-5xl font-medium leading-relaxed md:leading-[1.3] text-fall-mustard font-retro">
-                        De momento, Amazon no nos ha autorizado la venta de Bundles y, por lo tanto, no tenemos todavía los códigos de Barras para imprimir y pegar en cada Bundle.
-                    </p>
-                </div>
-
-                <div class="slide absolute w-full max-w-2xl px-6">
-                    <p class="text-2xl md:text-4xl lg:text-5xl font-medium leading-relaxed md:leading-[1.3] text-fall-coffee">
-                        Entiendo que esto es un problema porque no podemos terminar los Bundles y empaquetarlos.
-                    </p>
-                </div>
-
-                <div class="slide absolute w-full max-w-2xl px-6">
-                    <p class="text-2xl md:text-4xl lg:text-5xl font-medium leading-relaxed md:leading-[1.3] text-fall-coffee">
-                        Estoy apelando a Amazon para que nos autorice lo más pronto posible.
-                    </p>
-                </div>
-
-                <div class="slide absolute w-full max-w-2xl px-6">
-                    <p class="text-2xl md:text-4xl lg:text-5xl font-medium leading-relaxed md:leading-[1.3] text-fall-olive bg-fall-olive/10 p-8 rounded-3xl">
-                        Si surge alguna duda técnica u operativa durante el armado, pueden contactarme directamente en [Tu Correo / Tu Teléfono] .
-                    </p>
-                </div>
+            <div class="slide absolute w-full px-6 md:px-0 opacity-0 transform translate-y-12">
+                <p class="text-xl md:text-4xl lg:text-5xl font-medium leading-relaxed md:leading-[1.3] text-fall-coffee shadow-sm rounded-2xl md:bg-transparent">
+                    Amazon es algo estricto con sus especificaciones para enviarle productos y con la información que me pide para generar una orden de envío. Por eso, hice este sitio web para que tengan todas las especificaciones físicas a la mano de forma clara y directa, sin necesidad de manuales extensos.
+                </p>
             </div>
+
         </div>
     </section>
 
-    <section class="split-section relative bg-fall-paper" style="height: 1000vh;">
-        <div class="sticky top-0 h-screen w-full flex flex-col md:flex-row overflow-hidden">
+    <div class="h-screen flex items-center justify-center bg-fall-olive/10">
+        <p class="text-fall-olive font-retro text-2xl md:text-4xl opacity-50">Aquí continuará el resto de la página...</p>
+    </div>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // 1. Creamos la línea de tiempo atada al scroll
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: "#intro-section",
+                start: "top top", // Inicia cuando la sección toca el borde superior de la pantalla
+                end: "+=2500",    // El usuario tendrá que hacer 2500px de scroll para ver toda la animación (hace que se sienta suave y costoso)
+                pin: true,        // Congela toda la sección en la pantalla
+                scrub: 1,         // Le da esa sensación fluida de "mantequilla" y obedece al dedo/ratón
+            }
+        });
+
+        // 2. Seleccionamos las diapositivas
+        const slides = gsap.utils.toArray(".slide");
+
+        // 3. Programamos el comportamiento de cada diapositiva
+        slides.forEach((slide, index) => {
             
-            <div class="w-full md:w-5/12 h-[30vh] md:h-full flex items-center justify-center p-8 md:p-16 border-b md:border-b-0 md:border-r border-fall-coffee/10 z-10 bg-fall-paper">
-                <h2 class="font-retro text-4xl md:text-6xl lg:text-7xl text-fall-olive text-center md:text-left leading-tight">
-                    ¿Cómo se envían los Bundles de Cajetas a Amazon?
-                </h2>
-            </div>
-            
-            <div class="w-full md:w-7/12 h-[70vh] md:h-full relative flex items-center justify-center p-6 md:p-20 bg-fall-cream">
-                
-                <div class="slide absolute w-full max-w-2xl px-6">
-                    <p class="text-xl md:text-3xl lg:text-4xl font-medium leading-relaxed md:leading-[1.4]">
-                        Amazon intenta que sus procesos logísticos involucren a la menor cantidad de personas posible, por lo que casi el 100% de la recepción de mercancía está automatizada mediante escáneres y básculas.
-                    </p>
-                </div>
+            // Aparece la diapositiva (sube y cambia de opacidad 0 a 1)
+            tl.to(slide, {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power2.out"
+            });
 
-                <div class="slide absolute w-full max-w-2xl px-6">
-                    <p class="text-xl md:text-3xl font-medium mb-6">Eso significa que, al momento de generar una orden de envío, Amazon me exige declarar exactamente:</p>
-                    <ul class="text-lg md:text-2xl space-y-4 font-semibold text-fall-rust">
-                        <li>❖ Cuantas cajas estamos enviando a las bodegas de Amazon.</li>
-                        <li>❖ El tamaño y peso de cada caja.</li>
-                        <li>❖ Qué productos específicos contiene cada caja.</li>
-                    </ul>
-                </div>
+            // Mantenemos la diapositiva visible un momento para que el usuario la lea cómodamente
+            tl.to(slide, {
+                opacity: 1,
+                duration: 1.5
+            });
 
-                <div class="slide absolute w-full max-w-2xl px-6">
-                    <p class="text-xl md:text-3xl lg:text-4xl font-medium leading-relaxed md:leading-[1.4]">
-                        Así, Amazon genera una etiqueta por cada caja. Esa etiqueta es la que sus escáneres leen para verificar que el paquete físico coincida perfectamente con lo que declaré en el sistema.
-                    </p>
-                </div>
-
-                <div class="slide absolute w-full max-w-2xl px-6">
-                    <p class="text-xl md:text-3xl lg:text-4xl font-medium leading-relaxed md:leading-[1.4] text-fall-rust">
-                        Si hay discrepancias —mayor o menor cantidad de producto, artículos distintos o un peso que no cuadra— el sistema puede retener los productos, cobrar multas por procesamiento manual y, en el peor de los casos, bloquear nuestra cuenta para envíos futuros.
-                    </p>
-                </div>
-
-                <div class="slide absolute w-full max-w-2xl px-6">
-                    <p class="text-2xl md:text-4xl lg:text-5xl font-medium leading-relaxed md:leading-[1.4]">
-                        Todo esto hace que el protocolo de enviar productos a Amazon sea algo estricto.
-                    </p>
-                </div>
-
-                <div class="slide absolute w-full max-w-2xl px-6">
-                    <p class="text-3xl md:text-5xl lg:text-6xl font-retro text-fall-mustard leading-[1.2]">
-                        No es capricho mío, sino las exigencias que Amazon impone.
-                    </p>
-                </div>
-
-                <div class="slide absolute w-full max-w-2xl px-6">
-                    <p class="text-2xl md:text-4xl lg:text-5xl font-medium leading-relaxed">
-                        Por eso mismo, el flujo de trabajo se divide en 3 partes:
-                    </p>
-                </div>
-
-                <div class="slide absolute w-full max-w-2xl px-6 border-l-8 border-fall-olive pl-8">
-                    <strong class="font-retro text-3xl md:text-5xl block mb-4">1. Armado y empaquetado:</strong>
-                    <p class="text-xl md:text-2xl mb-4">Se ensamblan los Bundles, se les coloca su etiqueta y se guardan en las cajas maestras.</p>
-                    <p class="text-xl md:text-2xl">El paso más importante aquí es llevar un registro exacto por cada caja, anotando qué productos contiene, su peso final y sus medidas.</p>
-                </div>
-
-                <div class="slide absolute w-full max-w-2xl px-6 border-l-8 border-fall-mustard pl-8">
-                    <strong class="font-retro text-3xl md:text-5xl block mb-4">2. Aviso y orden de envío:</strong>
-                    <p class="text-xl md:text-2xl mb-4">Me mandan la información de las cajas y los productos que contienen.</p>
-                    <p class="text-xl md:text-2xl">Con esos datos precisos, ya se puede entrar a la plataforma de Amazon, declarar el envío y generar las etiquetas oficiales.</p>
-                </div>
-
-                <div class="slide absolute w-full max-w-2xl px-6 border-l-8 border-fall-rust pl-8">
-                    <strong class="font-retro text-3xl md:text-5xl block mb-4">3. Etiquetado y salida:</strong>
-                    <p class="text-xl md:text-2xl mb-4">Les envio de regreso las etiquetas generadas en PDF.</p>
-                    <p class="text-xl md:text-2xl">Únicamente resta imprimirlas, pegarlas en el costado de la caja correspondiente, sellar y esperar a que la paquetería pase a recogerlas.</p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section class="split-section relative bg-fall-cream" style="height: 600vh;">
-        <div class="sticky top-0 h-screen w-full flex flex-col md:flex-row overflow-hidden">
-            
-            <div class="w-full md:w-5/12 h-[30vh] md:h-full flex items-center justify-center p-8 md:p-16 border-b md:border-b-0 md:border-r border-fall-coffee/10 z-10 bg-fall-cream">
-                <h2 class="font-retro text-4xl md:text-6xl lg:text-7xl text-fall-rust text-center md:text-left leading-tight">
-                    ¿Cuántos Bundles se tienen que preparar?
-                </h2>
-            </div>
-            
-            <div class="w-full md:w-7/12 h-[70vh] md:h-full relative flex items-center justify-center p-6 md:p-20 bg-fall-paper">
-                
-                <div class="slide absolute w-full max-w-2xl px-6">
-                    <p class="text-2
+            // Si NO es la última diapositiva, hacemos que desaparezca subiendo
+            if (index !== slides.length - 1) {
+                tl.to(slide, {
+                    opacity: 0,
+                    y: -30,
+                    duration: 1,
+                    ease: "power2.in"
+                });
+            }
+        });
+    </script>
+</body>
+</html>
