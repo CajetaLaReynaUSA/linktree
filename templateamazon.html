@@ -42,13 +42,11 @@
         ::-webkit-scrollbar-track { background: #F4EFE6; }
         ::-webkit-scrollbar-thumb { background: #E19832; border-radius: 10px; }
         
-        /* Ajuste de transición para las diapositivas de texto */
-        .slide-text {
-            position: absolute;
-            width: 100%;
-            opacity: 0;
-            transform: translateY(40px);
-            will-change: opacity, transform;
+        /* Aseguramos que los elementos que vamos a desarmar mantengan el espaciado correcto */
+        .hero-piece {
+            display: inline-block;
+            white-space: pre; /* Mantiene los espacios entre palabras */
+            will-change: transform, opacity;
         }
     </style>
 </head>
@@ -69,309 +67,88 @@
         </svg>
     </div>
 
-    <div class="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 flex flex-col items-center opacity-50 animate-bounce pointer-events-none">
-        <span class="text-xs tracking-widest uppercase font-bold text-fall-rust mb-2 font-body">Scroll</span>
+    <div class="hero-extra fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 flex flex-col items-center opacity-50 pointer-events-none">
+        <span class="text-xs tracking-widest uppercase font-bold text-fall-rust mb-2 font-body animate-pulse">Haz Scroll</span>
         <div class="w-[2px] h-6 bg-fall-rust"></div>
     </div>
 
     <header id="hero-section" class="relative w-full h-screen flex flex-col justify-center items-center text-center px-6">
         <div id="hero-content" class="max-w-6xl mx-auto w-full">
-            <span class="inline-block py-1.5 px-5 rounded-full bg-fall-rust/10 text-fall-rust font-bold text-sm tracking-widest uppercase mb-8">Manual Logístico FBA</span>
-            <h1 class="font-retro text-5xl md:text-7xl lg:text-8xl xl:text-[6.5rem] text-fall-coffee font-extrabold leading-[1.05] tracking-tight mb-10">
-                ¿Cómo se envían los <br class="hidden md:block"><span class="text-fall-rust">Bundles de Cajetas</span> a Amazon?
+            
+            <span class="hero-extra inline-block py-1.5 px-5 rounded-full bg-fall-rust/10 text-fall-rust font-bold text-sm tracking-widest uppercase mb-8">Manual Logístico FBA</span>
+            
+            <h1 class="font-retro text-5xl md:text-7xl lg:text-8xl xl:text-[6.5rem] text-fall-coffee font-extrabold leading-[1.05] tracking-tight mb-10 flex flex-wrap justify-center gap-x-3 md:gap-x-5 gap-y-2">
+                <span class="hero-piece">¿Cómo</span>
+                <span class="hero-piece">se</span>
+                <span class="hero-piece">envían</span>
+                <span class="hero-piece">los</span>
+                <span class="hero-piece text-fall-rust">Bundles</span>
+                <span class="hero-piece text-fall-rust">de</span>
+                <span class="hero-piece text-fall-rust">Cajetas</span>
+                <span class="hero-piece">a</span>
+                <span class="hero-piece">Amazon?</span>
             </h1>
-            <div class="w-16 md:w-28 h-1.5 bg-fall-mustard mx-auto rounded-full"></div>
+            
+            <div class="hero-extra w-16 md:w-28 h-1.5 bg-fall-mustard mx-auto rounded-full"></div>
+            
         </div>
     </header>
 
-    <section id="section-1" class="pin-container relative w-full h-screen flex flex-col md:flex-row overflow-hidden border-t border-fall-coffee/5">
-        <div class="w-full md:w-[42%] h-[25vh] md:h-screen flex flex-col justify-end md:justify-center px-5 md:px-12 lg:px-20 pb-4 md:pb-0">
-            <h2 class="font-retro text-4xl md:text-6xl lg:text-[5.5rem] font-extrabold text-fall-rust leading-[1.1] tracking-tight">
-                Antes de comenzar:
-            </h2>
-        </div>
-        <div class="w-full md:w-[58%] h-[75vh] md:h-screen relative flex items-center justify-center px-5 md:px-12 lg:px-16">
-            <div class="slide-1 slide-text text-xl md:text-3xl lg:text-4xl xl:text-5xl font-medium leading-relaxed md:leading-[1.35]">
-                Hola, soy Juan Pablo, encargado de la gestión digital de Amazon FBA.
-            </div>
-            
-            <div class="slide-1 slide-text text-lg md:text-2xl lg:text-3xl xl:text-4xl font-medium leading-relaxed md:leading-[1.4] flex flex-col gap-6">
-                <p>
-                    Amazon es algo estricto con sus especificaciones para enviarle productos y con la información que me pide para generar una orden de envío. 
-                </p>
-                <p>
-                    Por eso, hice este sitio web para que tengan todas las especificaciones físicas a la mano de forma clara y directa, sin necesidad de manuales extensos.
-                </p>
-            </div>
-            
-            <div class="slide-1 slide-text text-lg md:text-2xl lg:text-3xl xl:text-4xl font-medium leading-relaxed md:leading-[1.4] text-fall-mustard flex flex-col gap-6">
-                <p>
-                    De momento, Amazon no nos ha autorizado la venta de Bundles y, por lo tanto, no tenemos todavía los códigos de Barras para imprimir y pegar en cada Bundle.
-                </p>
-            </div>
-            
-            <div class="slide-1 slide-text text-lg md:text-2xl lg:text-3xl xl:text-4xl font-medium leading-relaxed md:leading-[1.4] flex flex-col gap-6">
-                <p>
-                    Entiendo que esto es un problema porque no podemos terminar los Bundles y empaquetarlos. 
-                </p>
-                <p>
-                    Estoy apelando a Amazon para que nos autorice lo más pronto posible.
-                </p>
-            </div>
-            
-            <div class="slide-1 slide-text text-lg md:text-2xl lg:text-3xl xl:text-4xl font-semibold leading-relaxed md:leading-[1.4] text-fall-olive">
-                Si surge alguna duda técnica u operativa durante el armado, pueden contactarme directamente en [Tu Correo / Tu Teléfono] .
-            </div>
-        </div>
-    </section>
-
-    <section id="section-2" class="pin-container relative w-full h-screen flex flex-col md:flex-row overflow-hidden border-t border-fall-coffee/5">
-        <div class="w-full md:w-[42%] h-[25vh] md:h-screen flex flex-col justify-end md:justify-center px-5 md:px-12 lg:px-20 pb-4 md:pb-0">
-            <h2 class="font-retro text-3xl md:text-5xl lg:text-[4.5rem] font-extrabold text-fall-olive leading-[1.1] tracking-tight">
-                ¿Cómo se envían los Bundles de Cajetas a Amazon?
-            </h2>
-        </div>
-        <div class="w-full md:w-[58%] h-[75vh] md:h-screen relative flex items-center justify-center px-5 md:px-12 lg:px-16">
-            <div class="slide-2 slide-text text-lg md:text-2xl lg:text-3xl xl:text-4xl font-medium leading-relaxed">
-                Amazon intenta que sus procesos logísticos involucren a la menor cantidad de personas posible, por lo que casi el 100% de la recepción de mercancía está automatizada mediante escáneres y básculas.
-            </div>
-            <div class="slide-2 slide-text text-lg md:text-2xl lg:text-3xl xl:text-4xl font-medium leading-relaxed">
-                Eso significa que, al momento de generar una orden de envío, Amazon me exige declarar exactamente:
-                <ul class="mt-8 space-y-5 font-bold text-fall-rust text-base md:text-xl lg:text-2xl font-retro">
-                    <li>• Cuantas cajas estamos enviando a las bodegas de Amazon.</li>
-                    <li>• El tamaño y peso de cada caja.</li>
-                    <li>• Qué productos específicos contiene cada caja.</li>
-                </ul>
-            </div>
-            <div class="slide-2 slide-text text-lg md:text-2xl lg:text-3xl xl:text-4xl font-medium leading-relaxed">
-                Así, Amazon genera una etiqueta por cada caja. Esa etiqueta es la que sus escáneres leen para verificar que el paquete físico coincida perfectamente con lo que declaré en el sistema.
-            </div>
-            <div class="slide-2 slide-text text-lg md:text-2xl lg:text-3xl xl:text-4xl font-semibold leading-relaxed text-fall-rust">
-                Si hay discrepancias —mayor o menor cantidad de producto, artículos distintos o un peso que no cuadra— el sistema puede retener los productos, cobrar multas por procesamiento manual y, en el peor de los casos, bloquear nuestra cuenta para envíos futuros.
-            </div>
-            <div class="slide-2 slide-text text-lg md:text-2xl lg:text-3xl xl:text-4xl font-medium leading-relaxed flex flex-col gap-6">
-                <p>
-                    Todo esto hace que el protocolo de enviar productos a Amazon sea algo estricto. 
-                </p>
-                <p class="font-bold text-fall-mustard">
-                    No es capricho mío, sino las exigencias que Amazon impone.
-                </p>
-            </div>
-            <div class="slide-2 slide-text text-base md:text-xl lg:text-2xl xl:text-3xl font-medium leading-relaxed space-y-8 overflow-y-auto max-h-[90%] pr-2">
-                <p class="font-retro text-2xl md:text-3xl text-fall-mustard font-bold mb-4">Por eso mismo, el flujo de trabajo se divide en 3 partes:</p>
-                <p><strong>1. Armado y empaquetado:</strong> Se ensamblan los Bundles, se les coloca su etiqueta y se guardan en las cajas maestras. El paso más importante aquí es llevar un registro exacto por cada caja, anotando qué productos contiene, su peso final y sus medidas.</p>
-                <p><strong>2. Aviso y orden de envío:</strong> Me mandan la información de las cajas y los productos que contienen. Con esos datos precisos, ya se puede entrar a la plataforma de Amazon, declarar el envío y generar las etiquetas oficiales.</p>
-                <p><strong>3. Etiquetado y salida:</strong> Les envio de regreso las etiquetas generadas en PDF. Únicamente resta imprimirlas, pegarlas en el costado de la caja correspondiente, sellar y esperar a que la paquetería pase a recogerlas.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="section-3" class="pin-container relative w-full h-screen flex flex-col md:flex-row overflow-hidden border-t border-fall-coffee/5">
-        <div class="w-full md:w-[42%] h-[25vh] md:h-screen flex flex-col justify-end md:justify-center px-5 md:px-12 lg:px-20 pb-4 md:pb-0">
-            <h2 class="font-retro text-3xl md:text-5xl lg:text-[4.5rem] font-extrabold text-fall-mustard leading-[1.1] tracking-tight">
-                ¿Cuántos Bundles se tienen que preparar?
-            </h2>
-        </div>
-        <div class="w-full md:w-[58%] h-[75vh] md:h-screen relative flex items-center justify-center px-5 md:px-12 lg:px-16">
-            <div class="slide-3 slide-text text-lg md:text-2xl lg:text-3xl xl:text-4xl font-medium leading-relaxed">
-                A continuación, se detalla la cantidad exacta de Bundles que se requieren armar para este envío (Julio - Agosto)
-            </div>
-            <div class="slide-3 slide-text text-lg md:text-2xl lg:text-3xl xl:text-4xl font-medium leading-relaxed">
-                <strong class="font-retro text-3xl md:text-4xl text-fall-olive block mb-6">60 bundles de 360 gr por cada uno de los siguientes sabores:</strong>
-                <ul class="space-y-3 font-semibold">
-                    <li>• Natural, Vainilla y Fresa</li>
-                    <li>• Natural, Café y Envinada</li>
-                    <li>• Natural, Quemada y Nuez</li>
-                    <li>• Tequila, Mezcal y Rompope</li>
-                </ul>
-            </div>
-            <div class="slide-3 slide-text text-lg md:text-2xl lg:text-3xl xl:text-4xl font-medium leading-relaxed">
-                <strong class="font-retro text-3xl md:text-4xl text-fall-rust block mb-6">40 bundles de 155 gr por cada uno de los siguientes sabores:</strong>
-                <ul class="space-y-3 font-semibold">
-                    <li>• Natural, Vainilla y Fresa</li>
-                    <li>• Natural, Café y Envinada</li>
-                    <li>• Natural, Quemada y Nuez</li>
-                    <li>• Tequila, Mezcal y Rompope</li>
-                </ul>
-            </div>
-            <div class="slide-3 slide-text text-lg md:text-2xl lg:text-3xl xl:text-4xl font-medium leading-relaxed flex flex-col gap-8">
-                <p>Para esto, les deben de haber llegado la siguiente cantidad de botellas:</p>
-                <div class="bg-fall-cream/40 p-6 rounded-2xl border border-fall-coffee/5">
-                    <strong class="font-retro text-2xl md:text-3xl text-fall-coffee block mb-4">Natural:</strong>
-                    <ul class="space-y-2 font-semibold text-lg md:text-2xl">
-                        <li>• 180 botellas de 360 gr</li>
-                        <li>• 120 botellas de 155 gr</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="slide-3 slide-text text-lg md:text-2xl lg:text-3xl xl:text-4xl font-medium leading-relaxed">
-                <strong class="font-retro text-2xl md:text-3xl text-fall-olive block mb-6 leading-tight">Vainilla, Fresa, Envinada, Café, Mezcal, Rompope, Tequila, Quemada y Nuez:</strong>
-                <ul class="space-y-3 font-semibold text-lg md:text-2xl">
-                    <li>• 60 botellas de 360 gr por cada sabor</li>
-                    <li>• 40 botellas de 155 gr por cada sabor</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section id="section-4" class="pin-container relative w-full h-screen flex flex-col md:flex-row overflow-hidden border-t border-fall-coffee/5">
-        <div class="w-full md:w-[42%] h-[25vh] md:h-screen flex flex-col justify-end md:justify-center px-5 md:px-12 lg:px-20 pb-4 md:pb-0">
-            <h2 class="font-retro text-3xl md:text-5xl lg:text-[4.5rem] font-extrabold text-fall-coffee leading-[1.1] tracking-tight">
-                Paso 1: Armado y Empaquetado <br><span class="text-xl md:text-3xl font-body block font-normal text-fall-rust mt-4">1.1 Armado de los Bundles</span>
-            </h2>
-        </div>
-        <div class="w-full md:w-[58%] h-[75vh] md:h-screen relative flex items-center justify-center px-5 md:px-12 lg:px-16">
-            <div class="slide-4 slide-text text-lg md:text-2xl lg:text-3xl xl:text-4xl font-medium leading-relaxed">
-                Para que Amazon nos acepte los Bundles hay 3 condiciones que se deben de cumplir.
-            </div>
-            <div class="slide-4 slide-text text-lg md:text-2xl lg:text-3xl xl:text-4xl font-medium leading-relaxed space-y-6">
-                <p><strong>Los Bundles no deben de tener ni un código ajeno a la vista:</strong></p>
-                <p>Es importante que al momento de hacer los Bundles los frascos se ordenen de manera que los códigos de barras propios de las botellas queden viendo “Hacia el interior”. Que queden ocultos.</p>
-                <p>Esto para evitar que los escáneres de Amazon pudieran leerlos por accidente.</p>
-            </div>
-            <div class="slide-4 slide-text text-base md:text-xl lg:text-2xl font-bold text-fall-rust break-all text-center bg-white/50 p-6 rounded-2xl">
-                Ejemplo Visual: <br><br><a href="https://res.cloudinary.com/dlylomauh/image/upload/v1782783591/Reporte_de_Amazon_Hasta_el_20_de_abril_del_2026_3_br6ve5.webp" target="_blank" class="underline underline-offset-4">https://res.cloudinary.com/dlylomauh/image/upload/v1782783591/Reporte_de_Amazon_Hasta_el_20_de_abril_del_2026_3_br6ve5.webp</a>
-            </div>
-            <div class="slide-4 slide-text text-lg md:text-2xl lg:text-3xl xl:text-4xl font-medium leading-relaxed border-l-4 border-fall-rust pl-6 md:pl-8">
-                <strong>Los Bundles sellados deben aguantar una caída de 1 metro de altura sin separarse:</strong> <br><br>Cuando se sellen con el plástico termoencogible debe quedar firme sin movimiento.
-            </div>
-            <div class="slide-4 slide-text text-lg md:text-2xl lg:text-3xl xl:text-4xl font-medium leading-relaxed border-l-4 border-fall-rust pl-6 md:pl-8">
-                <strong>El etiquetado de los Bundles debe ser el correcto:</strong> <br><br>Amazon pide que cada Bundle tenga 2 etiquetas visibles en la parte lateral del producto o en la parte plana más amplia del mismo.
-            </div>
-            <div class="slide-4 slide-text text-lg md:text-2xl lg:text-3xl xl:text-4xl font-medium leading-relaxed space-y-6">
-                <p><strong>El código de barras de cada producto:</strong> Cada Bundle es considerado un producto.</p>
-                <p>Como tenemos 4 combinaciones de sabores con 2 tamaños diferentes. Solo hay que revisar que el Bundle corresponda al tamaño.</p>
-                <p class="font-retro text-2xl md:text-3xl text-fall-rust font-bold mt-4">Las etiquetas deben de estar impresas en un tamaño adecuado de 1" x 2-5/8" en papel tamaño Carta (US Letter / 8.5" x 11") - 30 por Hoja</p>
-            </div>
-            <div class="slide-4 slide-text text-lg md:text-xl lg:text-2xl font-medium space-y-4">
-                <p class="font-retro text-3xl text-fall-olive font-bold mb-4">En los siguientes enlaces pueden descargar la plantilla para cada Bundle (360 gr):</p>
-                <p>• Natural, Vainilla y Fresa: <span class="underline text-fall-rust font-bold cursor-pointer">Link</span></p>
-                <p>• Natural, Café y Envinada: <span class="underline text-fall-rust font-bold cursor-pointer">Link</span></p>
-                <p>• Natural, Quemada y Nuez: <span class="underline text-fall-rust font-bold cursor-pointer">Link</span></p>
-                <p>• Tequila, Mezcal y Rompope: <span class="underline text-fall-rust font-bold cursor-pointer">Link</span></p>
-            </div>
-            <div class="slide-4 slide-text text-lg md:text-xl lg:text-2xl font-medium space-y-4">
-                <p class="font-retro text-3xl text-fall-mustard font-bold mb-4">Plantillas de descarga (155 gr):</p>
-                <p>• Natural, Vainilla y Fresa: <span class="underline text-fall-rust font-bold cursor-pointer">Link</span></p>
-                <p>• Natural, Café y Envinada: <span class="underline text-fall-rust font-bold cursor-pointer">Link</span></p>
-                <p>• Natural, Quemada y Nuez: <span class="underline text-fall-rust font-bold cursor-pointer">Link</span></p>
-                <p>• Tequila, Mezcal y Rompope: <span class="underline text-fall-rust font-bold cursor-pointer">Link</span></p>
-            </div>
-            <div class="slide-4 slide-text text-lg md:text-2xl lg:text-3xl xl:text-4xl font-medium leading-relaxed space-y-6">
-                <p><strong>Etiqueta de “Sold as a Set”:</strong> Cada Bundle debe de llevar una etiqueta de “Sold as a set” para evitar que un empleado de Amazon en el futuro pudiera abrir los productos por error.</p>
-                <p class="opacity-90">Estas etiquetas no tienen un formato establecido, pero para comodidad, les hice una plantilla con el mismo formato que los códigos de barras de Amazon, para que puedan imprimir.</p>
-                <p class="text-base md:text-xl text-fall-olive font-bold break-all mt-4">Link: <br><a href="https://drive.google.com/file/d/1BVIo4PhHDz91jv6kU1cvcosFaDL6vUyo/view?usp=sharing" target="_blank" class="underline">https://drive.google.com/file/d/1BVIo4PhHDz91jv6kU1cvcosFaDL6vUyo/view?usp=sharing</a></p>
-            </div>
-            <div class="slide-4 slide-text text-lg md:text-2xl lg:text-3xl xl:text-4xl font-medium leading-relaxed bg-fall-mustard/10 p-8 rounded-2xl border border-fall-mustard/20 space-y-6">
-                <p><strong>Nota:</strong> Por si las necesitan, aquí les dejo el link de Amazon con las hojas de etiquetas que ya vienen pre-cortadas para la impresora.</p>
-                <p class="text-base md:text-2xl font-bold text-fall-rust break-all">Solo se desprenden y listo: <br><a href="https://a.co/d/08WWIgsC" target="_blank" class="underline">https://a.co/d/08WWIgsC</a></p>
-            </div>
-        </div>
-    </section>
-
-    <section id="section-5" class="pin-container relative w-full h-screen flex flex-col md:flex-row overflow-hidden border-t border-fall-coffee/5">
-        <div class="w-full md:w-[42%] h-[25vh] md:h-screen flex flex-col justify-end md:justify-center px-5 md:px-12 lg:px-20 pb-4 md:pb-0">
-            <h2 class="font-retro text-3xl md:text-5xl lg:text-[4.5rem] font-extrabold text-fall-olive leading-[1.1] tracking-tight">
-                Paso 1: Armado y Empaquetado <br><span class="text-xl md:text-3xl font-body block font-normal text-fall-rust mt-4">1.2 Empaquetado en cajas</span>
-            </h2>
-        </div>
-        <div class="w-full md:w-[58%] h-[75vh] md:h-screen relative flex items-center justify-center px-5 md:px-12 lg:px-16">
-            <div class="slide-5 slide-text text-lg md:text-2xl lg:text-3xl xl:text-4xl font-medium leading-relaxed bg-fall-rust text-white p-8 md:p-12 rounded-3xl shadow-sm space-y-6">
-                <p><strong>Un recordatorio importante antes de empezar:</strong></p>
-                <p>Conforme vayan acomodando los Bundles en las cajas, les pido de favor llevar un registro de cuántos y de qué sabores van metiendo en cada caja, además del peso y las medidas finales de los paquetes.</p>
-                <p>Con esos datos se va a generar la orden de envío a Amazon.</p>
-            </div>
-            <div class="slide-5 slide-text text-lg md:text-2xl lg:text-3xl xl:text-4xl font-medium leading-relaxed space-y-6">
-                <p>Una vez que los Bundles ya están sellados y etiquetados, se pueden enviar en cualquier caja siempre que sea de cartón liso.</p>
-                <p>Sin embargo, para que las bodegas de Amazon acepten las cajas, hay un par de especificaciones que las cajas tienen que cumplir:</p>
-            </div>
-            <div class="slide-5 slide-text text-lg md:text-2xl lg:text-3xl xl:text-4xl font-medium leading-relaxed border-l-4 border-fall-coffee pl-6 md:pl-8 space-y-4">
-                <p><strong>Las cajas no deben de tener ningún logotipo ni código de barras ajeno:</strong></p>
-                <p>En caso de que las cajas tengan algún logo o código de barras se puede tapar con plumón permanente o con etiquetas en blanco.</p>
-            </div>
-            <div class="slide-5 slide-text text-2xl md:text-4xl lg:text-5xl font-bold text-fall-rust leading-none font-retro">
-                Medidas: <br><br><span class="font-body font-medium text-xl md:text-3xl text-fall-coffee block leading-relaxed">Ningún lado de la caja (largo, ancho o alto) debe medir más de 25 pulgadas (63.5 cm).</span>
-            </div>
-            <div class="slide-5 slide-text text-lg md:text-2xl lg:text-3xl xl:text-4xl font-medium leading-relaxed border-l-4 border-fall-mustard pl-6 md:pl-8 space-y-4">
-                <p><strong>El límite de peso:</strong> Ninguna caja debe pesar más de 22.6 kg (50 libras).</p>
-                <p>Esto equivale a un máximo 20 bundles grandes (de 360 gr) o 46 bundles chicos (de 155 gr) por caja.</p>
-            </div>
-            <div class="slide-5 slide-text text-lg md:text-2xl lg:text-3xl xl:text-4xl font-medium leading-relaxed border-l-4 border-fall-olive pl-6 md:pl-8 space-y-4">
-                <p><strong>Las cajas deben estar selladas en forma de H:</strong></p>
-                <p>La caja se debe cerrar usando cinta de embalaje normal (mínimo de 2 pulgadas de ancho). Hay que poner cinta en la línea central de apertura y también en los 4 bordes laterales, formando una "H" tanto arriba como abajo.</p>
-            </div>
-            <div class="slide-5 slide-text text-lg md:text-2xl lg:text-3xl xl:text-4xl font-medium leading-relaxed">
-                Una vez sellada las cajas, me pueden enviar la lista de cajas con tamaño, peso, y productos al whatsapp <strong class="text-fall-rust font-retro block mt-4">xxx-xxx-xxxx</strong> o <strong class="text-fall-rust font-retro block mt-2">correo@template.com</strong>
-            </div>
-            <div class="slide-5 slide-text text-lg md:text-2xl lg:text-3xl xl:text-4xl font-medium leading-relaxed border-b-4 border-fall-rust pb-6 space-y-4">
-                <p><strong>Etiquetado de las cajas:</strong></p>
-                <p>Una vez que la orden se generada, les responderé al mensaje que me hagan llegar con las etiquetas y solo necesito que se impriman y peguen en uno de los costados de las cajas.</p>
-            </div>
-            <div class="slide-5 slide-text text-2xl md:text-4xl lg:text-5xl font-bold font-retro text-fall-olive">
-                Recolección de las cajas: <br><br><span class="font-body font-medium text-xl md:text-3xl text-fall-coffee block leading-relaxed">Amazon tiene un sistema Partner en el que una empresa de paquetería va a pasar a buscar las cajas a la dirección de FEVAMEX y ellos se encargan del resto.</span>
-            </div>
-        </div>
-    </section>
-
-    <footer class="h-[30vh] flex items-center justify-center bg-[#EAE2D3]/40 border-t border-fall-coffee/10">
-        <p class="font-retro text-sm uppercase tracking-widest text-fall-coffee/50 font-bold">Fin de la Guía Operativa FBA</p>
-    </footer>
+    <div class="h-screen flex items-center justify-center">
+        <p class="font-retro text-2xl text-fall-coffee/30">Aquí irá la siguiente sección...</p>
+    </div>
 
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
-        gsap.to("#hero-content", {
+        // 1. Animación de ENTRADA (Cuando cargas la página)
+        gsap.from(".hero-piece", {
+            y: 100,
             opacity: 0,
-            y: -120,
-            ease: "none",
+            duration: 1.2,
+            stagger: 0.05,
+            ease: "power4.out"
+        });
+        gsap.from(".hero-extra", {
+            opacity: 0,
+            duration: 1,
+            delay: 0.5
+        });
+
+        // 2. Animación de SALIDA "DESARMAR" (Cuando haces Scroll)
+        const tlDesarmar = gsap.timeline({
             scrollTrigger: {
                 trigger: "#hero-section",
-                start: "top top",
-                end: "bottom top",
-                scrub: true
+                start: "top top", // Inicia cuando la sección toca la parte superior
+                end: "+=1500",    // Te da 1500px de scroll para ver el efecto lentamente
+                pin: true,        // Congela la pantalla mientras ocurre la animación
+                scrub: true       // Ata la animación a la rueda del ratón
             }
         });
 
+        // Configuramos la física de la explosión
+        tlDesarmar.to(".hero-extra", {
+            opacity: 0,
+            y: -50,
+            duration: 0.5
+        }, 0);
+
+        tlDesarmar.to(".hero-piece", {
+            // Genera coordenadas y rotaciones aleatorias para cada palabra
+            x: () => gsap.utils.random(-150, 150),
+            y: () => gsap.utils.random(-200, -50),
+            rotation: () => gsap.utils.random(-45, 45),
+            scale: () => gsap.utils.random(0.5, 1.5),
+            opacity: 0,
+            duration: 1,
+            stagger: 0.02, // Hacemos que no exploten todas de golpe, sino una tras otra rapidísimo
+            ease: "power1.inOut"
+        }, 0); // El ", 0" asegura que comience al mismo tiempo que el resto
+
+        // Animación sutil de las figuras del fondo atadas al scroll (Parallax)
         gsap.to('.bg-shape-1', { y: 150, ease: "none", scrollTrigger: { scrub: true } });
         gsap.to('.bg-shape-2', { y: -250, ease: "none", scrollTrigger: { scrub: true } });
         gsap.to('.bg-shape-3', { y: -100, x: 50, ease: "none", scrollTrigger: { scrub: true } });
-        gsap.to('.geo-vector-1', { rotation: 60, ease: "none", scrollTrigger: { scrub: true } });
-        gsap.to('.geo-vector-2', { y: -120, rotation: -20, ease: "none", scrollTrigger: { scrub: true } });
-
-        // Función ajustada para scroll más largo y suave
-        function createScrollyTimeline(sectionId, slidesClass, scrollDistance) {
-            const timeline = gsap.timeline({
-                scrollTrigger: {
-                    trigger: sectionId,
-                    start: "top top",
-                    end: "+=" + scrollDistance, // Distancia multiplicada para mayor suavidad
-                    pin: true,
-                    scrub: true,
-                }
-            });
-
-            const slides = gsap.utils.toArray(slidesClass);
-            
-            slides.forEach((slide, index) => {
-                // Transición de entrada más lenta (ease in/out en vez de none)
-                timeline.to(slide, { opacity: 1, y: 0, duration: 2, ease: "power1.inOut" });
-                
-                // Retención estática más larga para lectura relajada
-                timeline.to(slide, { opacity: 1, duration: 4 });
-                
-                if (index !== slides.length - 1) {
-                    // Salida hacia arriba ralentizada
-                    timeline.to(slide, { opacity: 0, y: -40, duration: 2, ease: "power1.inOut" });
-                }
-            });
-        }
-
-        // Las distancias han sido aumentadas drásticamente para requerir más movimiento físico del usuario
-        createScrollyTimeline("#section-1", ".slide-1", 5000);
-        createScrollyTimeline("#section-2", ".slide-2", 8000);
-        createScrollyTimeline("#section-3", ".slide-3", 6000);
-        createScrollyTimeline("#section-4", ".slide-4", 12000);
-        createScrollyTimeline("#section-5", ".slide-5", 10000);
     </script>
 </body>
 </html>
