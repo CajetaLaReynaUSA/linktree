@@ -6,7 +6,6 @@
     <title>Cajeta La Reyna - Gourmet</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@900&family=Open+Sans:wght@600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
         :root {
@@ -17,9 +16,7 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        html {
-            scroll-behavior: smooth; /* Hace que el scroll sea fluido */
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             background-color: #1a0a05;
@@ -27,7 +24,6 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            /* Eliminamos overflow:hidden y justify-content:center que rompían el scroll */
         }
 
         /* --- FONDO PARA PC --- */
@@ -40,7 +36,7 @@
             transform: scale(1.1);
         }
 
-        /* --- CONTENEDOR MÓVIL --- */
+        /* --- CONTENEDOR MÓVIL PRINCIPAL --- */
         .main-container {
             position: relative;
             z-index: 2;
@@ -52,15 +48,14 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            /* Aumentamos el padding superior e inferior para dar mucho más respiro a las ideas */
             padding: 10% 25px 15% 25px; 
             box-shadow: 0 0 100px rgba(0,0,0,0.8);
         }
 
-        /* --- TÍTULOS --- */
+        /* --- SECCIÓN 1: HEADER --- */
         .header {
             text-align: center;
-            margin-bottom: 45px; /* Más aire entre el header y los botones */
+            margin-bottom: 45px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -69,7 +64,7 @@
         .script-text {
             font-family: 'Dancing Script', cursive;
             color: var(--naranja-brillante);
-            font-size: 3.5rem; /* Un poco más grande para contraste */
+            font-size: 3.5rem;
             margin-bottom: -20px; 
             z-index: 3;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
@@ -93,40 +88,8 @@
             letter-spacing: 3px;
             font-size: 0.85rem;
             text-transform: uppercase;
-            margin-top: 20px; /* Separamos más el subtítulo del título principal */
+            margin-top: 20px;
             display: block;
-        }
-
-        /* --- BOTONES --- */
-        .nav-links {
-            width: 100%;
-            max-width: 290px; /* Ensanchamos ligeramente para mejor lectura */
-            display: flex;
-            flex-direction: column;
-            gap: 20px; /* Aumentamos el espacio entre ideas (antes 11px) */
-            z-index: 4;
-            margin-bottom: auto; /* Empuja contenido futuro hacia abajo */
-        }
-
-        .btn {
-            background: #FFFFFF;
-            color: var(--cafe-oscuro);
-            text-decoration: none;
-            padding: 16px; /* Más altos para mejor zona de "toque" (UX) */
-            border-radius: 14px;
-            font-size: 0.95rem;
-            font-weight: 700;
-            text-align: center;
-            transition: all 0.3s ease; /* Transición general suavizada */
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15); 
-            border: 1px solid rgba(255,255,255,0.8); 
-        }
-
-        .btn:hover {
-            background: var(--naranja-brillante); 
-            color: var(--cafe-oscuro); 
-            transform: translateY(-4px) scale(1.02); /* Animación más notoria */
-            box-shadow: 0 10px 25px rgba(249, 168, 37, 0.4); 
         }
 
         /* --- MEDIA QUERIES --- */
@@ -135,20 +98,11 @@
             .main-container { 
                 max-width: 100%; 
                 padding-top: 15%; 
-                padding-bottom: 25%; /* Asegura que se pueda hacer scroll hasta el final en mobile */
+                padding-bottom: 25%; 
             }
         }
     </style>
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SFP2DLPMX5"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){ dataLayer.push(arguments); }
-      gtag('js', new Date());
-      gtag('config', 'G-SFP2DLPMX5');
-    </script>
 </head>
-
 <body>
 
     <div class="desktop-bg"></div>
@@ -161,42 +115,7 @@
             <span class="orange-subtitle">Producida e importada desde Celaya, México</span>
         </header>
 
-         <nav class="nav-links">
-            <a 
-              href="https://a.co/d/04OIyzlR"
-              class="btn"
-              onclick="gtag('event', 'click_amazon', {
-                button_name: 'comprar_amazon_home',
-                page_name: 'home'
-              });"
-            >
-              Comprar en Amazon
-            </a>
-        
-            <a 
-              href="nuestros-sabores.html"
-              class="btn"
-              onclick="gtag('event', 'click_guia_sabores', {
-                button_name: 'guia_sabores_home',
-                page_name: 'home'
-              });"
-            >
-              Guía de sabores
-            </a>
-        
-            <a 
-              href="nosotros.html"
-              class="btn"
-              onclick="gtag('event', 'click_credenciales', {
-                button_name: 'desde_celaya_home',
-                page_name: 'home'
-              });"
-            >
-              Desde Celaya, Guanajuato
-            </a>
-        </nav>
-        
-    </main>
+        </main>
 
 </body>
 </html>
