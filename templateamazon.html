@@ -46,8 +46,18 @@
         .hero-piece { display: inline-block; will-change: transform, opacity; }
         .menu-item { will-change: transform, opacity; }
         
-        /* Aseguramos animación por hardware */
-        .ch1-word { display: inline-block; will-change: transform, opacity; }
+        /* Contenedor de palabras del Capítulo 1 */
+        .ch1-word-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .ch1-word { 
+            display: block; 
+            will-change: transform, opacity; 
+            white-space: nowrap;
+        }
     </style>
 </head>
 
@@ -83,7 +93,7 @@
         </div>
     </header>
 
-    <section id="menu-section" class="min-h-screen w-full flex flex-col items-center justify-center py-24 px-4 relative z-10 border-t border-fall-coffee/5">
+    <section id="menu-section" class="w-full flex flex-col items-center py-20 px-4 relative z-10 border-t border-fall-coffee/5">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 w-full max-w-5xl">
             <a href="#chapter-1" class="menu-item group opacity-0 flex flex-col justify-between bg-white/50 backdrop-blur-md border border-white hover:border-fall-mustard hover:bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(225,152,50,0.15)] rounded-3xl p-6 md:p-8 h-48 md:h-56 transition-all duration-300 cursor-pointer">
                 <div class="flex justify-end items-start"><span class="font-retro text-fall-coffee/20 group-hover:text-fall-mustard text-2xl md:text-3xl font-bold transition-colors duration-300">01</span></div>
@@ -116,12 +126,13 @@
         </div>
     </section>
 
-    <section id="chapter-1" class="relative w-full h-screen overflow-hidden border-t border-fall-coffee/5">
-        
-        <div id="ch1-title-container" class="absolute inset-0 w-full h-full flex flex-row items-center justify-center gap-3 md:gap-5 z-20 pointer-events-none">
-            <span class="ch1-word antes font-retro text-4xl md:text-5xl lg:text-[5.5rem] font-extrabold text-fall-rust leading-none tracking-tight">Antes</span>
-            <span class="ch1-word de font-retro text-4xl md:text-5xl lg:text-[5.5rem] font-extrabold text-fall-rust leading-none tracking-tight">de</span>
-            <span class="ch1-word comenzar font-retro text-4xl md:text-5xl lg:text-[5.5rem] font-extrabold text-fall-rust leading-none tracking-tight">comenzar</span>
+    <section id="chapter-1" class="relative w-full h-screen overflow-hidden border-t border-fall-coffee/5 mt-10">
+        <div id="ch1-title-container" class="absolute inset-0 w-full h-full flex items-center justify-center z-20 pointer-events-none">
+            <div class="ch1-word-container">
+                <span class="ch1-word antes font-retro text-6xl md:text-[6rem] lg:text-[7rem] font-extrabold text-fall-rust leading-none tracking-tight">Antes</span>
+                <span class="ch1-word de font-retro text-6xl md:text-[6rem] lg:text-[7rem] font-extrabold text-fall-rust leading-none tracking-tight py-2">de</span>
+                <span class="ch1-word comenzar font-retro text-6xl md:text-[6rem] lg:text-[7rem] font-extrabold text-fall-rust leading-none tracking-tight">comenzar</span>
+            </div>
         </div>
 
         <div class="absolute right-0 top-0 w-full md:w-[50%] h-full flex flex-col justify-center px-6 md:px-12 lg:px-20 z-10 pointer-events-none">
@@ -142,7 +153,7 @@
     </section>
 
     <div class="h-screen flex items-center justify-center border-t border-fall-coffee/5 mt-10">
-        <p class="font-retro text-2xl text-fall-coffee/30">Aquí irán los siguientes capítulos...</p>
+        <p class="font-retro text-2xl text-fall-coffee/30">Capítulo 2 próximamente...</p>
     </div>
 
     <script>
@@ -155,75 +166,56 @@
         tlDesarmar.fromTo(".hero-extra", { opacity: 1, y: 0 }, { opacity: 0, y: -30, ease: "none", immediateRender: false }, 0);
         tlDesarmar.fromTo(".hero-piece", { x: 0, y: 0, rotation: 0, scale: 1, opacity: 1 }, { x: () => gsap.utils.random(-120, 120), y: () => gsap.utils.random(-180, -40), rotation: () => gsap.utils.random(-35, 35), scale: () => gsap.utils.random(0.7, 1.3), opacity: 0, stagger: 0.01, ease: "none", immediateRender: false }, 0);
 
-        // 2. DASHBOARD MENU
-        gsap.fromTo(".menu-item", { y: 80, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: "power3.out", scrollTrigger: { trigger: "#menu-section", start: "top 85%", toggleActions: "play none none reverse" } });
+        // 2. DASHBOARD MENU OPTIMIZADO (Menor tiempo de duración y stagger más rápido)
+        gsap.fromTo(".menu-item", 
+            { y: 50, opacity: 0 }, 
+            { 
+                y: 0, opacity: 1, duration: 0.5, stagger: 0.04, ease: "power3.out", 
+                scrollTrigger: { trigger: "#menu-section", start: "top 85%", toggleActions: "play none none reverse" } 
+            }
+        );
 
-        // 3. CAPÍTULO 1: SCROLLYTELLING MATEMÁTICO
-        
-        // Función para calcular exactamente cuántos píxeles debe moverse una palabra en X para quedar centrada sobre otra
-        function getAlignmentX(wordToMoveClass, targetWordClass) {
-            const word = document.querySelector(wordToMoveClass);
-            const target = document.querySelector(targetWordClass);
-            if (!word || !target) return 0;
-            
-            // Calculamos el centro de cada elemento usando offsetLeft (ignora transformaciones previas)
-            const wordCenter = word.offsetLeft + (word.offsetWidth / 2);
-            const targetCenter = target.offsetLeft + (target.offsetWidth / 2);
-            
-            return targetCenter - wordCenter; 
-        }
+        // 3. CAPÍTULO 1: SCROLLYTELLING
+        const tlCh1 = gsap.timeline({ scrollTrigger: { trigger: "#chapter-1", start: "top top", end: "+=4000", pin: true, scrub: true, invalidateOnRefresh: true } });
 
-        const tlCh1 = gsap.timeline({ 
-            scrollTrigger: { 
-                trigger: "#chapter-1", start: "top top", end: "+=4000", pin: true, scrub: true, 
-                invalidateOnRefresh: true // Recalcula las matemáticas si redimensionas la pantalla
-            } 
-        });
-
-        // FASE 1: Armado Horizontal en el centro
         tlCh1.fromTo(".ch1-word", 
             { opacity: 0, y: 80, rotationX: -90 },
             { opacity: 1, y: 0, rotationX: 0, duration: 1.2, stagger: 0.15, ease: "power3.out" }
         );
 
-        tlCh1.to({}, { duration: 0.5 }); // Pausa de lectura
+        tlCh1.fromTo(".ch1-word.antes", { x: "120%" }, { x: 0, duration: 0.01 }, 0);
+        tlCh1.fromTo(".ch1-word.comenzar", { x: "-120%" }, { x: 0, duration: 0.01 }, 0);
 
-        // FASE 2: DESARME Y APILAMIENTO PERFECTO
+        tlCh1.to({}, { duration: 0.5 }); 
+
         tlCh1.add("desarme");
 
-        // El contenedor entero se mueve hacia la izquierda (o arriba en móvil)
         tlCh1.to("#ch1-title-container", {
             x: () => window.innerWidth >= 768 ? "-25vw" : "0",
             y: () => window.innerWidth < 768 ? "-30vh" : "0",
             duration: 2.0, ease: "power2.inOut"
         }, "desarme");
 
-        // "Antes" sube y se centra matemáticamente sobre "de"
         tlCh1.to(".ch1-word.antes", {
-            x: () => getAlignmentX('.ch1-word.antes', '.ch1-word.de'),
-            y: () => window.innerWidth >= 768 ? "-80px" : "-60px",
+            y: () => window.innerWidth >= 768 ? "-40px" : "-20px",
             duration: 2.0, ease: "power2.inOut"
         }, "desarme");
 
-        // "comenzar" baja y se centra matemáticamente bajo "de"
         tlCh1.to(".ch1-word.comenzar", {
-            x: () => getAlignmentX('.ch1-word.comenzar', '.ch1-word.de'),
-            y: () => window.innerWidth >= 768 ? "80px" : "60px",
+            y: () => window.innerWidth >= 768 ? "40px" : "20px",
             duration: 2.0, ease: "power2.inOut"
         }, "desarme");
 
-        // Sincronizamos la entrada de JP
         tlCh1.fromTo(".ch1-slide-1", { opacity: 0, x: 50 }, { opacity: 1, x: 0, duration: 1.5, ease: "power2.out" }, "desarme+=0.5");
 
-        tlCh1.to({}, { duration: 1.5 }); // Pausa lectura JP
+        tlCh1.to({}, { duration: 1.5 }); 
 
-        // FASE 3: TRANSICIÓN TEXTOS (LIMPIEZA TOTAL)
         tlCh1.to(".ch1-slide-1", { opacity: 0, y: -40, duration: 1.0, ease: "power2.in" });
         tlCh1.fromTo(".ch1-slide-2", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 1.0, ease: "power2.out" });
 
         tlCh1.to({}, { duration: 2.0 }); 
 
-        // Parallax del fondo global
+        // Parallax del fondo
         gsap.to('.bg-shape-1', { y: 100, ease: "none", scrollTrigger: { scrub: true } });
         gsap.to('.bg-shape-2', { y: -150, ease: "none", scrollTrigger: { scrub: true } });
         gsap.to('.bg-shape-3', { y: -80, x: 30, ease: "none", scrollTrigger: { scrub: true } });
