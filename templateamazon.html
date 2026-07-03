@@ -44,9 +44,6 @@
         
         .word-wrapper { display: inline-block; overflow: visible; }
         .hero-piece { display: inline-block; will-change: transform, opacity; }
-        .menu-item { will-change: transform, opacity; }
-        
-        /* Fuerza la aceleración por hardware de las palabras del capítulo 1 */
         .ch1-word { display: inline-block; will-change: transform, opacity; }
     </style>
 </head>
@@ -84,41 +81,88 @@
     </header>
 
     <section id="menu-section" class="w-full flex flex-col items-center py-20 px-4 relative z-10 border-t border-fall-coffee/5">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 w-full max-w-5xl">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-5xl">
             
-            <a href="#chapter-1" class="menu-item group flex flex-col justify-between bg-white/50 backdrop-blur-md border border-white hover:border-fall-mustard hover:bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(225,152,50,0.15)] rounded-3xl p-6 md:p-8 h-48 md:h-56 transition-all duration-300 cursor-pointer">
-                <div class="flex justify-end items-start"><span class="font-retro text-fall-coffee/20 group-hover:text-fall-mustard text-2xl md:text-3xl font-bold transition-colors duration-300">01</span></div>
-                <div class="flex justify-between items-end"><h3 class="font-retro text-2xl md:text-3xl font-bold text-fall-coffee group-hover:text-fall-rust transition-colors leading-tight w-4/5">Antes de comenzar</h3><div class="w-10 h-10 rounded-full bg-fall-coffee/5 group-hover:bg-fall-mustard flex items-center justify-center transition-colors"><span class="text-fall-coffee opacity-50 group-hover:opacity-100 group-hover:text-white transform group-hover:-rotate-45 transition-all">→</span></div></div>
+            <a href="#chapter-1" class="group flex flex-col justify-between bg-white/60 backdrop-blur-md border border-white hover:border-fall-mustard hover:bg-white shadow-sm hover:shadow-md rounded-[2rem] p-5 md:p-6 h-36 md:h-40 transition-all duration-300 cursor-pointer">
+                <div class="flex justify-end items-start">
+                    <span class="font-body text-3xl md:text-4xl font-extrabold text-fall-coffee/20 group-hover:text-fall-mustard transition-colors duration-300">01</span>
+                </div>
+                <div class="flex justify-between items-end">
+                    <h3 class="font-retro text-xl md:text-2xl font-bold text-fall-coffee/80 group-hover:text-fall-rust transition-colors leading-tight w-3/4">Antes de comenzar</h3>
+                    <div class="w-10 h-10 rounded-full bg-fall-coffee/5 group-hover:bg-fall-mustard flex items-center justify-center transition-colors">
+                        <span class="text-fall-coffee opacity-40 group-hover:opacity-100 group-hover:text-white transform group-hover:-rotate-45 transition-all font-bold">→</span>
+                    </div>
+                </div>
             </a>
 
-            <a href="#section-2" class="menu-item group flex flex-col justify-between bg-white/50 backdrop-blur-md border border-white hover:border-fall-mustard hover:bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(225,152,50,0.15)] rounded-3xl p-6 md:p-8 h-48 md:h-56 transition-all duration-300 cursor-pointer">
-                <div class="flex justify-end items-start"><span class="font-retro text-fall-coffee/20 group-hover:text-fall-mustard text-2xl md:text-3xl font-bold transition-colors duration-300">02</span></div>
-                <div class="flex justify-between items-end"><h3 class="font-retro text-2xl md:text-3xl font-bold text-fall-coffee group-hover:text-fall-rust transition-colors leading-tight w-4/5">¿Cómo se envían los Bundles?</h3><div class="w-10 h-10 rounded-full bg-fall-coffee/5 group-hover:bg-fall-mustard flex items-center justify-center transition-colors"><span class="text-fall-coffee opacity-50 group-hover:opacity-100 group-hover:text-white transform group-hover:-rotate-45 transition-all">→</span></div></div>
+            <a href="#section-2" class="group flex flex-col justify-between bg-white/60 backdrop-blur-md border border-white hover:border-fall-mustard hover:bg-white shadow-sm hover:shadow-md rounded-[2rem] p-5 md:p-6 h-36 md:h-40 transition-all duration-300 cursor-pointer">
+                <div class="flex justify-end items-start">
+                    <span class="font-body text-3xl md:text-4xl font-extrabold text-fall-coffee/20 group-hover:text-fall-mustard transition-colors duration-300">02</span>
+                </div>
+                <div class="flex justify-between items-end">
+                    <h3 class="font-retro text-xl md:text-2xl font-bold text-fall-coffee/80 group-hover:text-fall-rust transition-colors leading-tight w-3/4">¿Cómo se envían los Bundles?</h3>
+                    <div class="w-10 h-10 rounded-full bg-fall-coffee/5 group-hover:bg-fall-mustard flex items-center justify-center transition-colors">
+                        <span class="text-fall-coffee opacity-40 group-hover:opacity-100 group-hover:text-white transform group-hover:-rotate-45 transition-all font-bold">→</span>
+                    </div>
+                </div>
             </a>
 
-            <a href="#section-3" class="menu-item group flex flex-col justify-between bg-white/50 backdrop-blur-md border border-white hover:border-fall-mustard hover:bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(225,152,50,0.15)] rounded-3xl p-6 md:p-8 h-48 md:h-56 transition-all duration-300 cursor-pointer">
-                <div class="flex justify-end items-start"><span class="font-retro text-fall-coffee/20 group-hover:text-fall-mustard text-2xl md:text-3xl font-bold transition-colors duration-300">03</span></div>
-                <div class="flex justify-between items-end"><h3 class="font-retro text-2xl md:text-3xl font-bold text-fall-coffee group-hover:text-fall-rust transition-colors leading-tight w-4/5">¿Cuántos se preparan?</h3><div class="w-10 h-10 rounded-full bg-fall-coffee/5 group-hover:bg-fall-mustard flex items-center justify-center transition-colors"><span class="text-fall-coffee opacity-50 group-hover:opacity-100 group-hover:text-white transform group-hover:-rotate-45 transition-all">→</span></div></div>
+            <a href="#section-3" class="group flex flex-col justify-between bg-white/60 backdrop-blur-md border border-white hover:border-fall-mustard hover:bg-white shadow-sm hover:shadow-md rounded-[2rem] p-5 md:p-6 h-36 md:h-40 transition-all duration-300 cursor-pointer">
+                <div class="flex justify-end items-start">
+                    <span class="font-body text-3xl md:text-4xl font-extrabold text-fall-coffee/20 group-hover:text-fall-mustard transition-colors duration-300">03</span>
+                </div>
+                <div class="flex justify-between items-end">
+                    <h3 class="font-retro text-xl md:text-2xl font-bold text-fall-coffee/80 group-hover:text-fall-rust transition-colors leading-tight w-3/4">¿Cuántos se preparan?</h3>
+                    <div class="w-10 h-10 rounded-full bg-fall-coffee/5 group-hover:bg-fall-mustard flex items-center justify-center transition-colors">
+                        <span class="text-fall-coffee opacity-40 group-hover:opacity-100 group-hover:text-white transform group-hover:-rotate-45 transition-all font-bold">→</span>
+                    </div>
+                </div>
             </a>
 
-            <a href="#section-4" class="menu-item group flex flex-col justify-between bg-white/50 backdrop-blur-md border border-white hover:border-fall-mustard hover:bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(225,152,50,0.15)] rounded-3xl p-6 md:p-8 h-48 md:h-56 transition-all duration-300 cursor-pointer">
-                <div class="flex justify-end items-start"><span class="font-retro text-fall-coffee/20 group-hover:text-fall-mustard text-2xl md:text-3xl font-bold transition-colors duration-300">04</span></div>
-                <div class="flex justify-between items-end"><h3 class="font-retro text-2xl md:text-3xl font-bold text-fall-coffee group-hover:text-fall-rust transition-colors leading-tight w-4/5">Paso 1: Armado y empaquetado</h3><div class="w-10 h-10 rounded-full bg-fall-coffee/5 group-hover:bg-fall-mustard flex items-center justify-center transition-colors"><span class="text-fall-coffee opacity-50 group-hover:opacity-100 group-hover:text-white transform group-hover:-rotate-45 transition-all">→</span></div></div>
+            <a href="#section-4" class="group flex flex-col justify-between bg-white/60 backdrop-blur-md border border-white hover:border-fall-mustard hover:bg-white shadow-sm hover:shadow-md rounded-[2rem] p-5 md:p-6 h-36 md:h-40 transition-all duration-300 cursor-pointer">
+                <div class="flex justify-end items-start">
+                    <span class="font-body text-3xl md:text-4xl font-extrabold text-fall-coffee/20 group-hover:text-fall-mustard transition-colors duration-300">04</span>
+                </div>
+                <div class="flex justify-between items-end">
+                    <h3 class="font-retro text-xl md:text-2xl font-bold text-fall-coffee/80 group-hover:text-fall-rust transition-colors leading-tight w-3/4">Paso 1: Armado y empaquetado</h3>
+                    <div class="w-10 h-10 rounded-full bg-fall-coffee/5 group-hover:bg-fall-mustard flex items-center justify-center transition-colors">
+                        <span class="text-fall-coffee opacity-40 group-hover:opacity-100 group-hover:text-white transform group-hover:-rotate-45 transition-all font-bold">→</span>
+                    </div>
+                </div>
             </a>
 
-            <a href="#section-5" class="menu-item group flex flex-col justify-between bg-white/50 backdrop-blur-md border border-white hover:border-fall-mustard hover:bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(225,152,50,0.15)] rounded-3xl p-6 md:p-8 h-48 md:h-56 transition-all duration-300 cursor-pointer">
-                <div class="flex justify-end items-start"><span class="font-retro text-fall-coffee/20 group-hover:text-fall-mustard text-2xl md:text-3xl font-bold transition-colors duration-300">05</span></div>
-                <div class="flex justify-between items-end"><h3 class="font-retro text-2xl md:text-3xl font-bold text-fall-coffee group-hover:text-fall-rust transition-colors leading-tight w-4/5">Paso 2: Orden de envío</h3><div class="w-10 h-10 rounded-full bg-fall-coffee/5 group-hover:bg-fall-mustard flex items-center justify-center transition-colors"><span class="text-fall-coffee opacity-50 group-hover:opacity-100 group-hover:text-white transform group-hover:-rotate-45 transition-all">→</span></div></div>
+            <a href="#section-5" class="group flex flex-col justify-between bg-white/60 backdrop-blur-md border border-white hover:border-fall-mustard hover:bg-white shadow-sm hover:shadow-md rounded-[2rem] p-5 md:p-6 h-36 md:h-40 transition-all duration-300 cursor-pointer">
+                <div class="flex justify-end items-start">
+                    <span class="font-body text-3xl md:text-4xl font-extrabold text-fall-coffee/20 group-hover:text-fall-mustard transition-colors duration-300">05</span>
+                </div>
+                <div class="flex justify-between items-end">
+                    <h3 class="font-retro text-xl md:text-2xl font-bold text-fall-coffee/80 group-hover:text-fall-rust transition-colors leading-tight w-3/4">Paso 2: Orden de envío</h3>
+                    <div class="w-10 h-10 rounded-full bg-fall-coffee/5 group-hover:bg-fall-mustard flex items-center justify-center transition-colors">
+                        <span class="text-fall-coffee opacity-40 group-hover:opacity-100 group-hover:text-white transform group-hover:-rotate-45 transition-all font-bold">→</span>
+                    </div>
+                </div>
             </a>
 
-            <a href="#section-6" class="menu-item group flex flex-col justify-between bg-white/50 backdrop-blur-md border border-white hover:border-fall-mustard hover:bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(225,152,50,0.15)] rounded-3xl p-6 md:p-8 h-48 md:h-56 transition-all duration-300 cursor-pointer">
-                <div class="flex justify-end items-start"><span class="font-retro text-fall-coffee/20 group-hover:text-fall-mustard text-2xl md:text-3xl font-bold transition-colors duration-300">06</span></div>
-                <div class="flex justify-between items-end"><h3 class="font-retro text-2xl md:text-3xl font-bold text-fall-coffee group-hover:text-fall-rust transition-colors leading-tight w-4/5">Paso 3: Etiquetado a almacén</h3><div class="w-10 h-10 rounded-full bg-fall-coffee/5 group-hover:bg-fall-mustard flex items-center justify-center transition-colors"><span class="text-fall-coffee opacity-50 group-hover:opacity-100 group-hover:text-white transform group-hover:-rotate-45 transition-all">→</span></div></div>
+            <a href="#section-6" class="group flex flex-col justify-between bg-white/60 backdrop-blur-md border border-white hover:border-fall-mustard hover:bg-white shadow-sm hover:shadow-md rounded-[2rem] p-5 md:p-6 h-36 md:h-40 transition-all duration-300 cursor-pointer">
+                <div class="flex justify-end items-start">
+                    <span class="font-body text-3xl md:text-4xl font-extrabold text-fall-coffee/20 group-hover:text-fall-mustard transition-colors duration-300">06</span>
+                </div>
+                <div class="flex justify-between items-end">
+                    <h3 class="font-retro text-xl md:text-2xl font-bold text-fall-coffee/80 group-hover:text-fall-rust transition-colors leading-tight w-3/4">Paso 3: Etiquetado a almacén</h3>
+                    <div class="w-10 h-10 rounded-full bg-fall-coffee/5 group-hover:bg-fall-mustard flex items-center justify-center transition-colors">
+                        <span class="text-fall-coffee opacity-40 group-hover:opacity-100 group-hover:text-white transform group-hover:-rotate-45 transition-all font-bold">→</span>
+                    </div>
+                </div>
             </a>
 
-            <a href="#section-7" class="menu-item group md:col-span-2 flex flex-col md:flex-row items-start md:items-center justify-between bg-fall-olive/10 backdrop-blur-md border border-fall-olive/20 hover:border-fall-olive hover:bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(79,111,82,0.2)] rounded-3xl p-6 md:p-8 transition-all duration-300 cursor-pointer">
-                <div class="flex flex-col justify-center"><h3 class="font-retro text-2xl md:text-4xl font-bold text-fall-coffee group-hover:text-fall-olive transition-colors leading-tight">Dudas o Problemas</h3><p class="text-fall-coffee/60 font-medium mt-1">Soporte directo con el equipo digital.</p></div>
-                <div class="hidden md:flex w-12 h-12 rounded-full bg-fall-olive/10 group-hover:bg-fall-olive items-center justify-center transition-colors mt-4 md:mt-0"><span class="text-fall-olive opacity-50 group-hover:opacity-100 group-hover:text-white transform group-hover:-rotate-45 transition-all text-xl">→</span></div>
+            <a href="#section-7" class="group md:col-span-2 flex flex-col md:flex-row items-start md:items-center justify-between bg-fall-olive/10 backdrop-blur-md border border-fall-olive/20 hover:border-fall-olive hover:bg-white shadow-sm hover:shadow-md rounded-[2rem] p-6 transition-all duration-300 cursor-pointer">
+                <div class="flex flex-col justify-center">
+                    <h3 class="font-retro text-xl md:text-2xl font-bold text-fall-coffee group-hover:text-fall-olive transition-colors leading-tight">Dudas o Problemas</h3>
+                    <p class="text-fall-coffee/60 text-sm md:text-base font-medium mt-1">Soporte directo con el equipo digital.</p>
+                </div>
+                <div class="hidden md:flex w-10 h-10 rounded-full bg-fall-olive/10 group-hover:bg-fall-olive items-center justify-center transition-colors mt-4 md:mt-0">
+                    <span class="text-fall-olive opacity-50 group-hover:opacity-100 group-hover:text-white transform group-hover:-rotate-45 transition-all font-bold">→</span>
+                </div>
             </a>
             
         </div>
@@ -159,78 +203,64 @@
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
-        // ============================================
         // 1. HERO SECTION
-        // ============================================
         gsap.from(".word-wrapper", { y: 80, opacity: 0, duration: 1, stagger: 0.04, ease: "power4.out" });
         gsap.from(".hero-extra", { opacity: 0, duration: 0.8, delay: 0.4 });
+        
         const tlDesarmar = gsap.timeline({ scrollTrigger: { trigger: "#hero-section", start: "top top", end: "+=600", pin: true, scrub: true }});
         tlDesarmar.fromTo(".hero-extra", { opacity: 1, y: 0 }, { opacity: 0, y: -30, ease: "none", immediateRender: false }, 0);
-        tlDesarmar.fromTo(".hero-piece", { x: 0, y: 0, rotation: 0, scale: 1, opacity: 1 }, { x: () => gsap.utils.random(-120, 120), y: () => gsap.utils.random(-180, -40), rotation: () => gsap.utils.random(-35, 35), scale: () => gsap.utils.random(0.7, 1.3), opacity: 0, stagger: 0.01, ease: "none", immediateRender: false }, 0);
+        tlDesarmar.fromTo(".hero-piece", 
+            { x: 0, y: 0, rotation: 0, scale: 1, opacity: 1 }, 
+            { x: () => gsap.utils.random(-120, 120), y: () => gsap.utils.random(-180, -40), rotation: () => gsap.utils.random(-35, 35), scale: () => gsap.utils.random(0.7, 1.3), opacity: 0, stagger: 0.01, ease: "none", immediateRender: false }, 
+            0
+        );
 
-        // ============================================
-        // 2. CAPÍTULO 1: SCROLLYTELLING MATEMÁTICO
-        // ============================================
-        
-        // Función matemática para alinear centros de palabras de forma exacta en píxeles
+        // 2. CAPÍTULO 1: SCROLLYTELLING MATEMÁTICO (Restaurado e intacto)
         function getAlignmentX(wordToMoveClass, targetWordClass) {
             const word = document.querySelector(wordToMoveClass);
             const target = document.querySelector(targetWordClass);
             if (!word || !target) return 0;
-            
             const wordCenter = word.offsetLeft + (word.offsetWidth / 2);
             const targetCenter = target.offsetLeft + (target.offsetWidth / 2);
-            
             return targetCenter - wordCenter; 
         }
 
         const tlCh1 = gsap.timeline({ scrollTrigger: { trigger: "#chapter-1", start: "top top", end: "+=4000", pin: true, scrub: true, invalidateOnRefresh: true } });
 
-        // Entrada inicial del texto horizontal completo en el centro
         tlCh1.fromTo(".ch1-word", 
             { opacity: 0, y: 80, rotationX: -90 },
             { opacity: 1, y: 0, rotationX: 0, duration: 1.2, stagger: 0.15, ease: "power3.out" }
         );
-        tlCh1.to({}, { duration: 0.5 }); // Pausa de lectura inicial
+        tlCh1.to({}, { duration: 0.5 }); 
 
-        // GATILLO DEL DESARME Y RECONSTRUCCIÓN VERTICAL CENTRADA
         tlCh1.add("desarme");
 
-        // El contenedor maestro se desplaza al centro exacto de la mitad izquierda (-18vw)
         tlCh1.to("#ch1-title-container", {
-            x: () => window.innerWidth >= 768 ? "-18vw" : "0",
+            x: () => window.innerWidth >= 768 ? "-25vw" : "0",
             y: () => window.innerWidth < 768 ? "-30vh" : "0",
             duration: 2.0, ease: "power2.inOut"
         }, "desarme");
 
-        // "Antes": Sube verticalmente y se alinea en el eje central de la palabra "de"
         tlCh1.to(".ch1-word.antes", {
             x: () => getAlignmentX('.ch1-word.antes', '.ch1-word.de'),
             y: () => window.innerWidth >= 768 ? "-80px" : "-60px",
             duration: 2.0, ease: "power2.inOut"
         }, "desarme");
 
-        // "comenzar": Baja verticalmente y se alinea en el eje central de la palabra "de"
         tlCh1.to(".ch1-word.comenzar", {
             x: () => getAlignmentX('.ch1-word.comenzar', '.ch1-word.de'),
             y: () => window.innerWidth >= 768 ? "80px" : "60px",
             duration: 2.0, ease: "power2.inOut"
         }, "desarme");
 
-        // Entrada fluida de la Diapositiva 1
         tlCh1.fromTo(".ch1-slide-1", { opacity: 0, x: 50 }, { opacity: 1, x: 0, duration: 1.5, ease: "power2.out" }, "desarme+=0.5");
+        tlCh1.to({}, { duration: 1.5 }); 
 
-        tlCh1.to({}, { duration: 1.5 }); // Pausa de lectura Diapositiva 1
-
-        // SECUENCIA DE TEXTOS PULIDA: Primero limpia la pantalla por completo
         tlCh1.to(".ch1-slide-1", { opacity: 0, y: -40, duration: 1.0, ease: "power2.in" });
-        
-        // Hasta que se esfumó la 1, entra la 2 desde abajo
         tlCh1.fromTo(".ch1-slide-2", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 1.0, ease: "power2.out" });
+        tlCh1.to({}, { duration: 2.0 }); 
 
-        tlCh1.to({}, { duration: 2.0 }); // Pausa de lectura Diapositiva 2
-
-        // Parallax del fondo global
+        // 3. Parallax del fondo global
         gsap.to('.bg-shape-1', { y: 100, ease: "none", scrollTrigger: { scrub: true } });
         gsap.to('.bg-shape-2', { y: -150, ease: "none", scrollTrigger: { scrub: true } });
         gsap.to('.bg-shape-3', { y: -80, x: 30, ease: "none", scrollTrigger: { scrub: true } });
