@@ -51,12 +51,11 @@
         
         .ch1-slide-1, .ch1-slide-2 { visibility: hidden; }
         
-        /* Efecto activo para items de navegación */
         .nav-item.active { color: #C84B31; font-weight: 600; }
     </style>
 </head>
 
-<body class="text-fall-coffee font-body antialiased selection:bg-fall-mustard selection:text-white pb-20 md:pb-0">
+<body class="text-fall-coffee font-body antialiased selection:bg-fall-mustard selection:text-white pb-24 md:pb-0">
 
     <!-- Capa del Fondo Orgánico Parallax -->
     <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none opacity-40 md:opacity-60">
@@ -66,14 +65,12 @@
         <div class="bg-shape-3 absolute bottom-[-10%] left-1/3 w-96 h-96 bg-fall-rust/10 rounded-full blur-[100px] md:blur-[140px]"></div>
     </div>
 
-    <!-- [DESKTOP] BARRA DE NAVEGACIÓN PERMANENTE SUPERIOR -->
+    <!-- [DESKTOP] Navbar Superior -->
     <nav id="desktop-navbar" class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-5xl bg-white/60 backdrop-blur-xl border border-white/80 shadow-[0_10px_40px_rgba(62,39,35,0.03)] rounded-full px-3 py-2.5 hidden md:flex items-center justify-between opacity-0 translate-y-[-20px] transition-all duration-500">
         <div class="flex items-center gap-3 pl-4">
             <span class="w-2 h-2 rounded-full bg-fall-rust animate-pulse"></span>
             <span class="font-retro text-xs font-black uppercase tracking-wider text-fall-coffee/80">Logística FBA</span>
         </div>
-        
-        <!-- Links dinámicos de sección -->
         <div class="flex items-center gap-1 relative pl-6">
             <a href="#hero-section" class="nav-item active text-xs font-medium uppercase tracking-wider px-4 py-2 rounded-full text-fall-coffee/60 hover:text-fall-coffee transition-colors duration-300">Inicio</a>
             <a href="#chapter-1" class="nav-item text-xs font-medium uppercase tracking-wider px-4 py-2 rounded-full text-fall-coffee/60 hover:text-fall-coffee transition-colors duration-300">Antes de comenzar</a>
@@ -84,8 +81,8 @@
         </div>
     </nav>
 
-    <!-- [MOBILE] BARRA DE NAVEGACIÓN PERMANENTE INFERIOR (Estilo Tab Bar iOS) -->
-    <nav id="mobile-navbar" class="fixed bottom-4 left-4 right-4 z-50 bg-white/85 backdrop-blur-lg border border-white/60 shadow-[0_-10px_35px_rgba(62,39,35,0.05)] rounded-3xl p-2 flex md:hidden items-center justify-around transition-transform duration-500">
+    <!-- [MOBILE] Navbar Inferior Ergonómica -->
+    <nav id="mobile-navbar" class="fixed bottom-4 left-4 right-4 z-50 bg-white/90 backdrop-blur-md border border-white/60 shadow-[0_-10px_30px_rgba(62,39,35,0.08)] rounded-3xl p-2 flex md:hidden items-center justify-around">
         <a href="#hero-section" class="mobile-nav-item text-fall-rust flex flex-col items-center justify-center p-2 rounded-xl">
             <span class="text-lg">🎪</span>
             <span class="text-[9px] uppercase font-bold tracking-tight mt-0.5">Inicio</span>
@@ -129,36 +126,37 @@
         </div>
     </header>
 
-    <!-- SECCIÓN 1: Antes de comenzar (Scrollytelling Ultra-Sensible) -->
+    <!-- SECCIÓN 1: Antes de comenzar (Scrollytelling Blindado para Mobile) -->
     <section id="chapter-1" class="relative w-full h-screen overflow-hidden border-t border-fall-coffee/5 bg-fall-cream/50">
-        <!-- Título Dinámico -->
-        <div id="ch1-title-container" class="absolute inset-0 w-full h-full flex flex-col md:flex-row items-center justify-center gap-2 md:gap-5 whitespace-nowrap z-20 pointer-events-none px-4">
+        
+        <!-- Título Responsivo Inteligente -->
+        <div id="ch1-title-container" class="absolute inset-0 w-full h-full flex flex-col md:flex-row items-center justify-center gap-2 md:gap-5 whitespace-nowrap z-20 pointer-events-none px-6">
             <span class="ch1-word antes font-retro text-5xl md:text-7xl lg:text-[5.5rem] font-extrabold text-fall-rust leading-none tracking-tight">Antes</span>
             <span class="ch1-word de font-retro text-5xl md:text-7xl lg:text-[5.5rem] font-extrabold text-fall-rust leading-none tracking-tight">de</span>
             <span class="ch1-word comenzar font-retro text-5xl md:text-7xl lg:text-[5.5rem] font-extrabold text-fall-rust leading-none tracking-tight">comenzar</span>
         </div>
 
-        <!-- Textos Desplazados -->
-        <div class="absolute right-0 top-0 w-full md:w-[50%] h-full flex flex-col justify-center px-6 sm:px-12 lg:px-20 z-10 pointer-events-none">
+        <!-- Contenedor de Textos Desplazados -->
+        <div class="absolute inset-0 md:left-1/2 md:w-[50%] h-full flex flex-col justify-center px-6 sm:px-12 lg:px-20 z-10 pointer-events-none">
             <!-- Slide 1 -->
-            <div class="ch1-slide-1 absolute w-full pr-6 sm:pr-12 lg:pr-24 opacity-0">
+            <div class="ch1-slide-1 absolute left-6 right-6 md:left-auto md:right-auto md:w-full md:pr-24 opacity-0 text-center md:text-left">
                 <p class="text-2xl sm:text-3xl lg:text-4xl font-medium leading-relaxed md:leading-[1.3] text-fall-coffee tracking-tight">
                     Hola, soy <span class="text-fall-rust font-semibold">Juan Pablo</span>, encargado de la gestión digital de Amazon FBA.
                 </p>
             </div>
             <!-- Slide 2 -->
-            <div class="ch1-slide-2 absolute w-full pr-6 sm:pr-12 lg:pr-24 opacity-0 flex flex-col gap-4">
+            <div class="ch1-slide-2 absolute left-6 right-6 md:left-auto md:right-auto md:w-full md:pr-24 opacity-0 flex flex-col gap-4 text-center md:text-left">
                 <p class="text-lg sm:text-xl lg:text-2xl font-medium leading-relaxed text-fall-coffee/90 tracking-tight">
                     Amazon es extremadamente estricto con sus especificaciones de recepción logística.
                 </p>
-                <p class="text-lg sm:text-xl lg:text-2xl font-medium leading-relaxed text-fall-coffee/90 tracking-tight border-l-2 border-fall-mustard pl-4">
+                <p class="text-lg sm:text-xl lg:text-2xl font-medium leading-relaxed text-fall-coffee/90 tracking-tight border-t-2 pt-3 md:border-t-0 md:pt-0 md:border-l-2 border-fall-mustard md:pl-4">
                     Por eso diseñé este espacio: para tener los requerimientos físicos listos al instante, eliminando manuales aburridos.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- SECCIÓN 2: Paso 1 (Placeholder visual estructural) -->
+    <!-- SECCIÓN 2: Paso 1 -->
     <section id="step-1" class="relative w-full h-screen flex items-center justify-center border-t border-fall-coffee/5 bg-white/20 px-6">
         <div class="max-w-3xl text-center">
             <span class="text-xs font-bold uppercase tracking-[0.2em] text-fall-mustard block mb-3">Fase de Empaque</span>
@@ -167,7 +165,7 @@
         </div>
     </section>
 
-    <!-- SECCIÓN 3: Paso 2 (Placeholder visual estructural) -->
+    <!-- SECCIÓN 3: Paso 2 -->
     <section id="step-2" class="relative w-full h-screen flex items-center justify-center border-t border-fall-coffee/5 bg-fall-cream/30 px-6">
         <div class="max-w-3xl text-center">
             <span class="text-xs font-bold uppercase tracking-[0.2em] text-fall-olive block mb-3">Seller Central Workflow</span>
@@ -176,7 +174,7 @@
         </div>
     </section>
 
-    <!-- SECCIÓN 4: Paso 3 (Placeholder visual estructural) -->
+    <!-- SECCIÓN 4: Paso 3 -->
     <section id="step-3" class="relative w-full h-screen flex items-center justify-center border-t border-fall-coffee/5 bg-white/20 px-6">
         <div class="max-w-3xl text-center">
             <span class="text-xs font-bold uppercase tracking-[0.2em] text-fall-rust block mb-3">Logística Externa</span>
@@ -202,16 +200,13 @@
 
         document.addEventListener("DOMContentLoaded", () => {
             gsap.set([".ch1-slide-1", ".ch1-slide-2"], { visibility: "visible" });
-            
-            // Aparece la barra de navegación superior suavemente al cargar
             gsap.to("#desktop-navbar", { opacity: 1, y: 0, duration: 1, ease: "power3.out", delay: 0.5 });
         });
 
-        // 1. ANIMACIÓN DE ENTRADA HERO SECTION
+        // 1. HERO TIMELINE
         gsap.from(".word-wrapper", { y: 100, opacity: 0, duration: 1.2, stagger: 0.05, ease: "power4.out" });
         gsap.to(".hero-extra", { opacity: 1, duration: 1, delay: 0.6 });
         
-        // Desarmado del Hero en scroll (Más corto y responsivo: end +=600)
         const tlDesarmar = gsap.timeline({
             scrollTrigger: {
                 trigger: "#hero-section",
@@ -236,7 +231,7 @@
             0
         );
 
-        // 2. CAPÍTULO 1: SCROLLYTELLING ULTRA-SENSIBLE (Distancia optimizada a +=1200 para transiciones rápidas)
+        // Helper alignment (Solo usado en Desktop)
         function getAlignmentX(wordToMoveClass, targetWordClass) {
             const word = document.querySelector(wordToMoveClass);
             const target = document.querySelector(targetWordClass);
@@ -246,17 +241,21 @@
             return targetCenter - wordCenter; 
         }
 
+        // 2. CAPÍTULO 1: SCROLLYTELLING ULTRA-SENSIBLE CON BIFURCACIÓN DE PLATAFORMA
+        const isDesktop = window.innerWidth >= 768;
+
         const tlCh1 = gsap.timeline({
             scrollTrigger: {
                 trigger: "#chapter-1",
                 start: "top top",
-                end: "+=1400", // Mucho más corto para evitar scroll excesivo
+                end: "+=1400", 
                 pin: true,
                 scrub: 0.5,
                 invalidateOnRefresh: true
             }
         });
 
+        // Entrada común de palabras
         tlCh1.fromTo(".ch1-word", 
             { opacity: 0, y: 50, rotationX: -30 },
             { opacity: 1, y: 0, rotationX: 0, duration: 1, stagger: 0.08, ease: "power3.out" }
@@ -265,34 +264,30 @@
 
         tlCh1.add("desarme");
 
-        const isDesktop = window.innerWidth >= 768;
-
-        tlCh1.to("#ch1-title-container", {
-            x: () => isDesktop ? "-22vw" : "0",
-            y: () => isDesktop ? "0" : "-28vh",
-            duration: 1.5, 
-            ease: "power2.inOut"
-        }, "desarme");
-
-        tlCh1.to(".ch1-word.antes", {
-            x: () => getAlignmentX('.ch1-word.antes', '.ch1-word.de'),
-            y: () => isDesktop ? "-90px" : "-45px",
-            duration: 1.5, 
-            ease: "power2.inOut"
-        }, "desarme");
-
-        tlCh1.to(".ch1-word.comenzar", {
-            x: () => getAlignmentX('.ch1-word.comenzar', '.ch1-word.de'),
-            y: () => isDesktop ? "90px" : "45px",
-            duration: 1.5, 
-            ease: "power2.inOut"
-        }, "desarme");
-
-        tlCh1.fromTo(".ch1-slide-1", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 1.2, ease: "power2.out" }, "desarme+=0.3");
-        tlCh1.to({}, { duration: 0.8 }); 
-
-        tlCh1.to(".ch1-slide-1", { opacity: 0, y: -20, duration: 0.8, ease: "power2.in" });
-        tlCh1.fromTo(".ch1-slide-2", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, ease: "power2.out" });
+        if (isDesktop) {
+            // COMPORTAMIENTO DESKTOP ORIGINAL (Compactación a la izquierda y slides a la derecha)
+            tlCh1.to("#ch1-title-container", { x: "-22vw", duration: 1.5, ease: "power2.inOut" }, "desarme");
+            tlCh1.to(".ch1-word.antes", { x: () => getAlignmentX('.ch1-word.antes', '.ch1-word.de'), y: "-90px", duration: 1.5, ease: "power2.inOut" }, "desarme");
+            tlCh1.to(".ch1-word.comenzar", { x: () => getAlignmentX('.ch1-word.comenzar', '.ch1-word.de'), y: "90px", duration: 1.5, ease: "power2.inOut" }, "desarme");
+            
+            tlCh1.fromTo(".ch1-slide-1", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 1.2, ease: "power2.out" }, "desarme+=0.3");
+            tlCh1.to({}, { duration: 0.8 }); 
+            tlCh1.to(".ch1-slide-1", { opacity: 0, y: -20, duration: 0.8, ease: "power2.in" });
+            tlCh1.fromTo(".ch1-slide-2", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, ease: "power2.out" });
+        } else {
+            // COMPORTAMIENTO MÓVIL CORREGIDO (Desplazamiento vertical armónico y limpio)
+            // Movemos el bloque de títulos completo limpiamente hacia arriba para dar espacio abajo
+            tlCh1.to("#ch1-title-container", { y: "-28vh", scale: 0.85, duration: 1.5, ease: "power2.inOut" }, "desarme");
+            
+            // Slide 1 entra desde abajo de forma centralizada sin pisar el título anterior
+            tlCh1.fromTo(".ch1-slide-1", { opacity: 0, y: 40 }, { opacity: 1, y: 15, duration: 1.2, ease: "power2.out" }, "desarme+=0.3");
+            tlCh1.to({}, { duration: 0.8 }); 
+            
+            // Slide 1 se desvanece suavemente para dar paso al Slide 2 exactamente en la misma zona limpia
+            tlCh1.to(".ch1-slide-1", { opacity: 0, y: -20, duration: 0.8, ease: "power2.in" });
+            tlCh1.fromTo(".ch1-slide-2", { opacity: 0, y: 40 }, { opacity: 1, y: 15, duration: 1, ease: "power2.out" });
+        }
+        
         tlCh1.to({}, { duration: 1.2 }); 
 
         // 3. PARALLAX DE FONDO
@@ -300,8 +295,7 @@
         gsap.to('.bg-shape-2', { y: -140, ease: "none", scrollTrigger: { scrub: true } });
         gsap.to('.bg-shape-3', { y: -90, x: 40, ease: "none", scrollTrigger: { scrub: true } });
 
-
-        // 4. LÓGICA DE DETECCIÓN DINÁMICA DE SECCIONES (Spy Navigation)
+        // 4. SCROLL SPY LOGIC (Detección de Navegación Activa)
         const secciones = [
             { id: "#hero-section", index: 0 },
             { id: "#chapter-1", index: 1 },
@@ -317,15 +311,13 @@
         secciones.forEach((seccion) => {
             ScrollTrigger.create({
                 trigger: seccion.id,
-                start: "top 40%",
-                end: "bottom 40%",
+                start: "top 45%",
+                end: "bottom 45%",
                 onToggle: (self) => {
                     if (self.isActive) {
-                        // Actualizar Desktop
                         navItemsDesktop.forEach(item => item.classList.remove("active"));
                         if(navItemsDesktop[seccion.index]) navItemsDesktop[seccion.index].classList.add("active");
                         
-                        // Actualizar Mobile
                         navItemsMobile.forEach(item => {
                             item.classList.remove("text-fall-rust");
                             item.classList.add("text-fall-coffee/40");
@@ -339,20 +331,16 @@
             });
         });
 
-        // Manejo fluido de clics en la barra de navegación para evitar saltos bruscos
+        // Suavizado nativo al hacer click en los botones del nav
         document.querySelectorAll('nav a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const targetID = this.getAttribute('href');
-                const targetST = ScrollTrigger.getById(targetID) || document.querySelector(targetID);
-                
-                if(targetST) {
-                    gsap.to(window, {
-                        duration: 1,
-                        scrollTo: targetID,
-                        ease: "power3.inOut"
-                    });
-                }
+                gsap.to(window, {
+                    duration: 0.8,
+                    scrollTo: targetID,
+                    ease: "power2.inOut"
+                });
             });
         });
 
@@ -360,8 +348,6 @@
             ScrollTrigger.refresh();
         });
     </script>
-    
-    <!-- Plugin complementario de GSAP para scroll suave por clicks de navegación -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
 </body>
 </html>
