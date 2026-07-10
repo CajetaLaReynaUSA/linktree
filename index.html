@@ -47,9 +47,11 @@
         
         .word-wrapper { display: inline-block; overflow: hidden; vertical-align: bottom; }
         .hero-piece { display: inline-block; will-change: transform, opacity; }
-        .ch1-word { display: inline-block; will-change: transform, opacity; }
         
+        /* Previene destellos visuales (FOUC) ocultando el contenedor hasta que GSAP tome el control */
+        #ch1-title-container { opacity: 0; }
         .ch1-slide-1, .ch1-slide-2 { visibility: hidden; }
+        
         .nav-item.active { color: #C84B31; font-weight: 600; }
     </style>
 </head>
@@ -128,14 +130,20 @@
     <!-- SECCIÓN 1: Antes de comenzar -->
     <section id="chapter-1" class="relative w-full h-screen overflow-hidden border-t border-fall-coffee/5 bg-fall-cream/50">
         
-        <!-- Contenedor del Título Nativo Horizontal Perpetuo (gap adaptativo controlado) -->
-        <div id="ch1-title-container" class="absolute inset-0 w-full h-full flex flex-row items-center justify-center gap-x-2.5 md:gap-x-5 whitespace-nowrap z-20 pointer-events-none px-4">
-            <span class="ch1-word antes font-retro text-[10vw] sm:text-7xl md:text-7xl lg:text-[5.5rem] font-extrabold text-fall-rust leading-none tracking-tight">Antes</span>
-            <span class="ch1-word de font-retro text-[10vw] sm:text-7xl md:text-7xl lg:text-[5.5rem] font-extrabold text-fall-rust leading-none tracking-tight">de</span>
-            <span class="ch1-word comenzar font-retro text-[10vw] sm:text-7xl md:text-7xl lg:text-[5.5rem] font-extrabold text-fall-rust leading-none tracking-tight">comenzar</span>
+        <!-- CONTENEDOR REDISEÑADO: Estructura fija nativa horizontal protegida por gaps estrictos -->
+        <div id="ch1-title-container" class="absolute inset-0 w-full h-full flex flex-row items-center justify-center gap-x-3 sm:gap-x-4 md:gap-x-5 z-20 pointer-events-none px-4">
+            <div class="ch1-word-box flex justify-center items-center">
+                <span class="ch1-word antes font-retro text-[9vw] sm:text-6xl md:text-7xl lg:text-[5.5rem] font-extrabold text-fall-rust leading-none tracking-tight">Antes</span>
+            </div>
+            <div class="ch1-word-box flex justify-center items-center">
+                <span class="ch1-word de font-retro text-[9vw] sm:text-6xl md:text-7xl lg:text-[5.5rem] font-extrabold text-fall-rust leading-none tracking-tight">de</span>
+            </div>
+            <div class="ch1-word-box flex justify-center items-center">
+                <span class="ch1-word comenzar font-retro text-[9vw] sm:text-6xl md:text-7xl lg:text-[5.5rem] font-extrabold text-fall-rust leading-none tracking-tight">comenzar</span>
+            </div>
         </div>
 
-        <!-- Contenedor de Textos -->
+        <!-- Contenedor de Textos Explicativos -->
         <div class="absolute inset-0 md:left-1/2 md:w-[50%] h-full flex flex-col justify-center px-6 sm:px-12 lg:px-20 z-10 pointer-events-none">
             <!-- Slide 1 -->
             <div class="ch1-slide-1 absolute left-6 right-6 md:left-auto md:right-auto md:w-full md:pr-24 opacity-0 text-center md:text-left">
@@ -197,14 +205,20 @@
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
-        document.addEventListener("DOMContentLoaded", () => {
+        // 🛡️ ESPERA TÉCNICA CRÍTICA: Esperar a que la fuente exacta se pinte en pantalla
+        document.fonts.ready.then(() => {
+            // Hacemos visible el título una vez que los anchos tipográficos son 100% reales
+            gsap.set("#ch1-title-container", { opacity: 1 });
             gsap.set([".ch1-slide-1", ".ch1-slide-2"], { visibility: "visible" });
-            gsap.to("#desktop-navbar", { opacity: 1, y: 0, duration: 1, ease: "power3.out", delay: 0.5 });
+            
+            // Inicializar animaciones dependientes del layout correcto
+            initGSAPChoreography();
         });
 
-        // 1. HERO TIMELINE
+        // 1. HERO TIMELINE (Inmediato)
         gsap.from(".word-wrapper", { y: 100, opacity: 0, duration: 1.2, stagger: 0.05, ease: "power4.out" });
         gsap.to(".hero-extra", { opacity: 1, duration: 1, delay: 0.6 });
+        gsap.to("#desktop-navbar", { opacity: 1, y: 0, duration: 1, ease: "power3.out", delay: 0.5 });
         
         const tlDesarmar = gsap.timeline({
             scrollTrigger: {
@@ -230,7 +244,6 @@
             0
         );
 
-        // Alineación matemática limpia para Desktop
         function getAlignmentX(wordToMoveClass, targetWordClass) {
             const word = document.querySelector(wordToMoveClass);
             const target = document.querySelector(targetWordClass);
@@ -240,69 +253,70 @@
             return targetCenter - wordCenter; 
         }
 
-        // 2. CAPÍTULO 1: SCROLLYTELLING CON INVERSIÓN LOGICA DE MATRIZ
-        const isDesktop = window.innerWidth >= 768;
+        // 2. FUNCIÓN DE COREOGRAFÍA DE SCROLL (Ejecutada post-renderizado de fuentes)
+        function initGSAPChoreography() {
+            const isDesktop = window.innerWidth >= 768;
 
-        const tlCh1 = gsap.timeline({
-            scrollTrigger: {
-                trigger: "#chapter-1",
-                start: "top top",
-                end: "+=1500", 
-                pin: true,
-                scrub: 0.5,
-                invalidateOnRefresh: true
+            const tlCh1 = gsap.timeline({
+                scrollTrigger: {
+                    trigger: "#chapter-1",
+                    start: "top top",
+                    end: "+=1500", 
+                    pin: true,
+                    scrub: 0.5,
+                    invalidateOnRefresh: true
+                }
+            });
+
+            const wordAntes = document.querySelector('.ch1-word.antes');
+            const wordDe = document.querySelector('.ch1-word.de');
+            const wordComenzar = document.querySelector('.ch1-word.comenzar');
+
+            if (isDesktop) {
+                // RUTA DESKTOP UNIFICADA
+                tlCh1.fromTo(".ch1-word", 
+                    { opacity: 0, y: 50, rotationX: -30 },
+                    { opacity: 1, y: 0, rotationX: 0, duration: 1, stagger: 0.08, ease: "power3.out" }
+                );
+                tlCh1.to({}, { duration: 0.3 }).add("desarme");
+
+                tlCh1.to("#ch1-title-container", { x: "-22vw", duration: 1.5, ease: "power2.inOut" }, "desarme");
+                tlCh1.to(".ch1-word.antes", { x: () => getAlignmentX('.ch1-word.antes', '.ch1-word.de'), y: "-90px", duration: 1.5, ease: "power2.inOut" }, "desarme");
+                tlCh1.to(".ch1-word.comenzar", { x: () => getAlignmentX('.ch1-word.comenzar', '.ch1-word.de'), y: "90px", duration: 1.5, ease: "power2.inOut" }, "desarme");
+                
+                tlCh1.fromTo(".ch1-slide-1", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 1.2, ease: "power2.out" }, "desarme+=0.3");
+                tlCh1.to({}, { duration: 0.8 }); 
+                tlCh1.to(".ch1-slide-1", { opacity: 0, y: -20, duration: 0.8, ease: "power2.in" });
+                tlCh1.fromTo(".ch1-slide-2", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, ease: "power2.out" });
+            } else {
+                // 🔥 RUTA MÓVIL BLINDADA ANTICOLISIONES: Separación estructural por contenedores independientes
+                // Calculamos distancias basándonos en los centros geométricos reales y estables de las cajas protectoras
+                const antesXStart = wordDe.getBoundingClientRect().left - wordAntes.getBoundingClientRect().left;
+                const comenzarXStart = wordDe.getBoundingClientRect().left - wordComenzar.getBoundingClientRect().left;
+
+                // Forzamos el estado vertical puro separando los elementos de su eje horizontal natural (x:0, y:0)
+                tlCh1.fromTo(wordAntes, { opacity: 0, x: antesXStart, y: -55 }, { opacity: 1, duration: 0.6 }, 0);
+                tlCh1.fromTo(wordDe, { opacity: 0, y: 0 }, { opacity: 1, duration: 0.6 }, 0.1);
+                tlCh1.fromTo(wordComenzar, { opacity: 0, x: comenzarXStart, y: 55 }, { opacity: 1, duration: 0.6 }, 0.2);
+                
+                tlCh1.to({}, { duration: 0.3 }).add("desarme");
+
+                // En scroll, viajan limpiamente a 0, por lo que heredan la separación nativa e inquebrantable del CSS
+                tlCh1.to(wordAntes, { x: 0, y: 0, duration: 1.6, ease: "power3.inOut" }, "desarme");
+                tlCh1.to(wordComenzar, { x: 0, y: 0, duration: 1.6, ease: "power3.inOut" }, "desarme");
+                
+                // Eleva y escala todo el renglón de forma segura a la cabecera
+                tlCh1.to("#ch1-title-container", { y: "-33vh", scale: 0.55, duration: 1.6, ease: "power3.inOut" }, "desarme");
+                
+                // Despliegue de los textos en zona baja libre de ruidos tipográficos
+                tlCh1.fromTo(".ch1-slide-1", { opacity: 0, y: 40 }, { opacity: 1, y: 30, duration: 1.2, ease: "power2.out" }, "desarme+=0.4");
+                tlCh1.to({}, { duration: 0.8 }); 
+                tlCh1.to(".ch1-slide-1", { opacity: 0, y: -15, duration: 0.8, ease: "power2.in" });
+                tlCh1.fromTo(".ch1-slide-2", { opacity: 0, y: 40 }, { opacity: 1, y: 30, duration: 1, ease: "power2.out" });
             }
-        });
-
-        // Captura de nodos DOM para cálculos responsivos inmediatos
-        const wordAntes = document.querySelector('.ch1-word.antes');
-        const wordDe = document.querySelector('.ch1-word.de');
-        const wordComenzar = document.querySelector('.ch1-word.comenzar');
-
-        if (isDesktop) {
-            // COMPORTAMIENTO DESKTOP (Evolución lateral nativa)
-            tlCh1.fromTo(".ch1-word", 
-                { opacity: 0, y: 50, rotationX: -30 },
-                { opacity: 1, y: 0, rotationX: 0, duration: 1, stagger: 0.08, ease: "power3.out" }
-            );
-            tlCh1.to({}, { duration: 0.3 }).add("desarme");
-
-            tlCh1.to("#ch1-title-container", { x: "-22vw", duration: 1.5, ease: "power2.inOut" }, "desarme");
-            tlCh1.to(".ch1-word.antes", { x: () => getAlignmentX('.ch1-word.antes', '.ch1-word.de'), y: "-90px", duration: 1.5, ease: "power2.inOut" }, "desarme");
-            tlCh1.to(".ch1-word.comenzar", { x: () => getAlignmentX('.ch1-word.comenzar', '.ch1-word.de'), y: "90px", duration: 1.5, ease: "power2.inOut" }, "desarme");
             
-            tlCh1.fromTo(".ch1-slide-1", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 1.2, ease: "power2.out" }, "desarme+=0.3");
-            tlCh1.to({}, { duration: 0.8 }); 
-            tlCh1.to(".ch1-slide-1", { opacity: 0, y: -20, duration: 0.8, ease: "power2.in" });
-            tlCh1.fromTo(".ch1-slide-2", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, ease: "power2.out" });
-        } else {
-            // 🔥 COMPORTAMIENTO MÓVIL RE-INGENIERADO (Cero traslapes)
-            // Calculamos cuánto centrar X basándonos en la posición real del navegador
-            const antesXStart = wordDe.offsetLeft - wordAntes.offsetLeft;
-            const comenzarXStart = wordDe.offsetLeft - wordComenzar.offsetLeft;
-
-            // Forzamos el estado inicial VERTICAL desplazando desde el centro horizontal real
-            tlCh1.fromTo(wordAntes, { opacity: 0, x: antesXStart, y: -45 }, { opacity: 1, duration: 0.6 }, 0);
-            tlCh1.fromTo(wordDe, { opacity: 0, y: 0 }, { opacity: 1, duration: 0.6 }, 0.1);
-            tlCh1.fromTo(wordComenzar, { opacity: 0, x: comenzarXStart, y: 45 }, { opacity: 1, duration: 0.6 }, 0.2);
-            
-            tlCh1.to({}, { duration: 0.3 }).add("desarme");
-
-            // Animación de Scroll: regresan a 0,0 por lo que se alinean horizontalmente de forma perfecta
-            tlCh1.to(wordAntes, { x: 0, y: 0, duration: 1.6, ease: "power3.inOut" }, "desarme");
-            tlCh1.to(wordComenzar, { x: 0, y: 0, duration: 1.6, ease: "power3.inOut" }, "desarme");
-            
-            // Subimos y escalamos la marquesina completa de manera segura arriba
-            tlCh1.to("#ch1-title-container", { y: "-33vh", scale: 0.58, duration: 1.6, ease: "power3.inOut" }, "desarme");
-            
-            // Despliegue de los textos explicativos inferiores en zona limpia
-            tlCh1.fromTo(".ch1-slide-1", { opacity: 0, y: 40 }, { opacity: 1, y: 25, duration: 1.2, ease: "power2.out" }, "desarme+=0.4");
-            tlCh1.to({}, { duration: 0.8 }); 
-            tlCh1.to(".ch1-slide-1", { opacity: 0, y: -15, duration: 0.8, ease: "power2.in" });
-            tlCh1.fromTo(".ch1-slide-2", { opacity: 0, y: 40 }, { opacity: 1, y: 25, duration: 1, ease: "power2.out" });
+            tlCh1.to({}, { duration: 1.2 }); 
         }
-        
-        tlCh1.to({}, { duration: 1.2 }); 
 
         // 3. PARALLAX
         gsap.to('.bg-shape-1', { y: 120, ease: "none", scrollTrigger: { scrub: true } });
