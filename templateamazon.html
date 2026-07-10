@@ -44,239 +44,324 @@
         ::-webkit-scrollbar-track { background: #F4EFE6; }
         ::-webkit-scrollbar-thumb { background: rgba(62, 39, 35, 0.15); border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: #C84B31; }
-
-        /* Clase activa para el indicador de sección permanente */
-        .nav-item.active {
-            color: #C84B31;
-            font-weight: 700;
-        }
-        .nav-item.active .dot-indicator {
-            transform: scale(1);
-            opacity: 1;
-        }
+        
+        .word-wrapper { display: inline-block; overflow: hidden; vertical-align: bottom; }
+        .hero-piece { display: inline-block; will-change: transform, opacity; }
+        .ch1-word { display: inline-block; will-change: transform, opacity; }
+        
+        .ch1-slide-1, .ch1-slide-2 { visibility: hidden; }
+        
+        /* Efecto activo para items de navegación */
+        .nav-item.active { color: #C84B31; font-weight: 600; }
     </style>
 </head>
 
-<body class="text-fall-coffee font-body antialiased selection:bg-fall-mustard selection:text-white pb-24 md:pb-0">
+<body class="text-fall-coffee font-body antialiased selection:bg-fall-mustard selection:text-white pb-20 md:pb-0">
 
-    <!-- Capa del Fondo Orgánico Parallax Estático (Solo CSS para máximo rendimiento móvil) -->
-    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none opacity-40 md:opacity-50">
+    <!-- Capa del Fondo Orgánico Parallax -->
+    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none opacity-40 md:opacity-60">
         <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.75%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/%3E%3C/svg%3E');"></div>
-        <div class="absolute -top-20 -left-20 w-72 h-72 md:w-[40rem] md:h-[40rem] bg-fall-mustard/15 rounded-full blur-[80px] md:blur-[130px]"></div>
-        <div class="absolute top-1/3 right-[-10%] w-80 h-[35rem] bg-fall-olive/10 rounded-full blur-[90px] md:blur-[150px]"></div>
-        <div class="absolute bottom-[-10%] left-1/3 w-96 h-96 bg-fall-rust/10 rounded-full blur-[100px] md:blur-[140px]"></div>
+        <div class="bg-shape-1 absolute -top-20 -left-20 w-72 h-72 md:w-[40rem] md:h-[40rem] bg-fall-mustard/20 rounded-full blur-[80px] md:blur-[130px]"></div>
+        <div class="bg-shape-2 absolute top-1/3 right-[-10%] w-80 h-[35rem] bg-fall-olive/15 rounded-full blur-[90px] md:blur-[150px]"></div>
+        <div class="bg-shape-3 absolute bottom-[-10%] left-1/3 w-96 h-96 bg-fall-rust/10 rounded-full blur-[100px] md:blur-[140px]"></div>
     </div>
 
-    <!-- ========================================== -->
-    <!-- BARRA DE NAVEGACIÓN PERMANENTE INTERACTIVA -->
-    <!-- ========================================== -->
-    
-    <!-- 1. Versión Desktop (Superior Fija) -->
-    <nav class="hidden md:flex fixed top-0 left-0 w-full bg-fall-cream/70 backdrop-blur-md border-b border-fall-coffee/5 z-50 h-16 items-center px-8 justify-between">
-        <span class="font-retro font-extrabold tracking-tight text-fall-coffee text-lg">Manual FBA</span>
-        <div class="flex items-center gap-8">
-            <a href="#chapter-1" id="nav-desktop-chapter-1" class="nav-item group flex items-center gap-2 text-sm text-fall-coffee/60 transition-colors duration-300 hover:text-fall-coffee">
-                <span class="dot-indicator w-1.5 h-1.5 rounded-full bg-fall-rust opacity-0 scale-0 transition-all duration-300 ease-premium"></span>
-                Antes de comenzar
-            </a>
-            <a href="#section-2" id="nav-desktop-section-2" class="nav-item group flex items-center gap-2 text-sm text-fall-coffee/60 transition-colors duration-300 hover:text-fall-coffee">
-                <span class="dot-indicator w-1.5 h-1.5 rounded-full bg-fall-rust opacity-0 scale-0 transition-all duration-300 ease-premium"></span>
-                Paso 1: Armado
-            </a>
-            <a href="#section-3" id="nav-desktop-section-3" class="nav-item group flex items-center gap-2 text-sm text-fall-coffee/60 transition-colors duration-300 hover:text-fall-coffee">
-                <span class="dot-indicator w-1.5 h-1.5 rounded-full bg-fall-rust opacity-0 scale-0 transition-all duration-300 ease-premium"></span>
-                Paso 2: Orden
-            </a>
-            <a href="#section-4" id="nav-desktop-section-4" class="nav-item group flex items-center gap-2 text-sm text-fall-coffee/60 transition-colors duration-300 hover:text-fall-coffee">
-                <span class="dot-indicator w-1.5 h-1.5 rounded-full bg-fall-rust opacity-0 scale-0 transition-all duration-300 ease-premium"></span>
-                Paso 3: Almacén
-            </a>
-            <a href="#section-5" id="nav-desktop-section-5" class="nav-item group flex items-center gap-2 text-sm text-fall-coffee/60 transition-colors duration-300 hover:text-fall-coffee">
-                <span class="dot-indicator w-1.5 h-1.5 rounded-full bg-fall-rust opacity-0 scale-0 transition-all duration-300 ease-premium"></span>
-                Dudas o problemas
-            </a>
+    <!-- [DESKTOP] BARRA DE NAVEGACIÓN PERMANENTE SUPERIOR -->
+    <nav id="desktop-navbar" class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-5xl bg-white/60 backdrop-blur-xl border border-white/80 shadow-[0_10px_40px_rgba(62,39,35,0.03)] rounded-full px-3 py-2.5 hidden md:flex items-center justify-between opacity-0 translate-y-[-20px] transition-all duration-500">
+        <div class="flex items-center gap-3 pl-4">
+            <span class="w-2 h-2 rounded-full bg-fall-rust animate-pulse"></span>
+            <span class="font-retro text-xs font-black uppercase tracking-wider text-fall-coffee/80">Logística FBA</span>
+        </div>
+        
+        <!-- Links dinámicos de sección -->
+        <div class="flex items-center gap-1 relative pl-6">
+            <a href="#hero-section" class="nav-item active text-xs font-medium uppercase tracking-wider px-4 py-2 rounded-full text-fall-coffee/60 hover:text-fall-coffee transition-colors duration-300">Inicio</a>
+            <a href="#chapter-1" class="nav-item text-xs font-medium uppercase tracking-wider px-4 py-2 rounded-full text-fall-coffee/60 hover:text-fall-coffee transition-colors duration-300">Antes de comenzar</a>
+            <a href="#step-1" class="nav-item text-xs font-medium uppercase tracking-wider px-4 py-2 rounded-full text-fall-coffee/60 hover:text-fall-coffee transition-colors duration-300">Paso 1</a>
+            <a href="#step-2" class="nav-item text-xs font-medium uppercase tracking-wider px-4 py-2 rounded-full text-fall-coffee/60 hover:text-fall-coffee transition-colors duration-300">Paso 2</a>
+            <a href="#step-3" class="nav-item text-xs font-medium uppercase tracking-wider px-4 py-2 rounded-full text-fall-coffee/60 hover:text-fall-coffee transition-colors duration-300">Paso 3</a>
+            <a href="#support-section" class="nav-item text-xs font-medium uppercase tracking-wider px-4 py-2 rounded-full text-fall-coffee/60 hover:text-fall-coffee transition-colors duration-300">Soporte</a>
         </div>
     </nav>
 
-    <!-- 2. Versión Mobile (Barra Inferior Estilo App Nativa) -->
-    <nav class="md:hidden fixed bottom-0 left-0 w-full bg-fall-cream/80 backdrop-blur-lg border-t border-fall-coffee/10 z-50 py-3 px-2 flex justify-around items-center shadow-[0_-10px_30px_rgba(62,39,35,0.05)]">
-        <a href="#chapter-1" id="nav-mobile-chapter-1" class="nav-item flex flex-col items-center gap-1 text-[10px] uppercase tracking-wider text-fall-coffee/50 font-medium">
-            <span class="text-sm font-bold">01</span>
-            <span>Inicio</span>
+    <!-- [MOBILE] BARRA DE NAVEGACIÓN PERMANENTE INFERIOR (Estilo Tab Bar iOS) -->
+    <nav id="mobile-navbar" class="fixed bottom-4 left-4 right-4 z-50 bg-white/85 backdrop-blur-lg border border-white/60 shadow-[0_-10px_35px_rgba(62,39,35,0.05)] rounded-3xl p-2 flex md:hidden items-center justify-around transition-transform duration-500">
+        <a href="#hero-section" class="mobile-nav-item text-fall-rust flex flex-col items-center justify-center p-2 rounded-xl">
+            <span class="text-lg">🎪</span>
+            <span class="text-[9px] uppercase font-bold tracking-tight mt-0.5">Inicio</span>
         </a>
-        <a href="#section-2" id="nav-mobile-section-2" class="nav-item flex flex-col items-center gap-1 text-[10px] uppercase tracking-wider text-fall-coffee/50 font-medium">
-            <span class="text-sm font-bold">02</span>
-            <span>Armado</span>
+        <a href="#chapter-1" class="mobile-nav-item text-fall-coffee/40 flex flex-col items-center justify-center p-2 rounded-xl">
+            <span class="text-lg">📢</span>
+            <span class="text-[9px] uppercase font-bold tracking-tight mt-0.5">Intro</span>
         </a>
-        <a href="#section-3" id="nav-mobile-section-3" class="nav-item flex flex-col items-center gap-1 text-[10px] uppercase tracking-wider text-fall-coffee/50 font-medium">
-            <span class="text-sm font-bold">03</span>
-            <span>Orden</span>
+        <a href="#step-1" class="mobile-nav-item text-fall-coffee/40 flex flex-col items-center justify-center p-2 rounded-xl">
+            <span class="text-lg">📦</span>
+            <span class="text-[9px] uppercase font-bold tracking-tight mt-0.5">P1</span>
         </a>
-        <a href="#section-4" id="nav-mobile-section-4" class="nav-item flex flex-col items-center gap-1 text-[10px] uppercase tracking-wider text-fall-coffee/50 font-medium">
-            <span class="text-sm font-bold">04</span>
-            <span>Almacén</span>
+        <a href="#step-2" class="mobile-nav-item text-fall-coffee/40 flex flex-col items-center justify-center p-2 rounded-xl">
+            <span class="text-lg">📝</span>
+            <span class="text-[9px] uppercase font-bold tracking-tight mt-0.5">P2</span>
         </a>
-        <a href="#section-5" id="nav-mobile-section-5" class="nav-item flex flex-col items-center gap-1 text-[10px] uppercase tracking-wider text-fall-coffee/50 font-medium">
-            <span class="text-sm font-bold">05</span>
-            <span>Ayuda</span>
+        <a href="#step-3" class="mobile-nav-item text-fall-coffee/40 flex flex-col items-center justify-center p-2 rounded-xl">
+            <span class="text-lg">🚚</span>
+            <span class="text-[9px] uppercase font-bold tracking-tight mt-0.5">P3</span>
         </a>
     </nav>
 
-
-    <!-- ========================================== -->
-    <!-- CONTENIDO GENERAL (FLUJO NATURAL)          -->
-    <!-- ========================================== -->
-
-    <!-- Hero / Portada Principal -->
-    <header id="hero-section" class="relative w-full h-[90vh] md:h-screen flex flex-col justify-center items-center text-center px-4 md:px-6">
-        <div class="max-w-4xl mx-auto w-full">
-            <span class="inline-block py-1 px-4 rounded-full bg-fall-rust/10 text-fall-rust font-bold text-xs tracking-[0.15em] uppercase mb-6 border border-fall-rust/10">
+    <!-- Hero Section -->
+    <header id="hero-section" class="relative w-full h-screen flex flex-col justify-center items-center text-center px-4 md:px-6">
+        <div id="hero-content" class="max-w-5xl mx-auto w-full">
+            <span class="hero-extra inline-block py-1 px-4 rounded-full bg-fall-rust/10 text-fall-rust font-bold text-xs tracking-[0.15em] uppercase mb-6 border border-fall-rust/10">
                 Manual Logístico FBA
             </span>
-            <h1 class="font-retro text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] text-fall-coffee font-extrabold leading-[1.1] tracking-tight mb-8">
-                ¿Cómo se envían los <span class="text-fall-rust">Bundles</span> de Cajetas a Amazon?
+            <h1 class="font-retro text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-fall-coffee font-extrabold leading-[1.05] tracking-tight mb-8 flex flex-wrap justify-center gap-x-3 md:gap-x-4 gap-y-1">
+                <span class="word-wrapper"><span class="hero-piece">¿Cómo</span></span>
+                <span class="word-wrapper"><span class="hero-piece">se</span></span>
+                <span class="word-wrapper"><span class="hero-piece">envían</span></span>
+                <span class="word-wrapper"><span class="hero-piece">los</span></span>
+                <span class="word-wrapper"><span class="hero-piece text-fall-rust">Bundles</span></span>
+                <span class="word-wrapper"><span class="hero-piece text-fall-rust">de</span></span>
+                <span class="word-wrapper"><span class="hero-piece text-fall-rust">Cajetas</span></span>
+                <span class="word-wrapper"><span class="hero-piece">a</span></span>
+                <span class="word-wrapper"><span class="hero-piece">Amazon?</span></span>
             </h1>
-            <div class="w-12 md:w-20 h-[3px] bg-fall-mustard mx-auto rounded-full"></div>
+            <div class="hero-extra w-12 md:w-20 h-[3px] bg-fall-mustard mx-auto rounded-full"></div>
         </div>
     </header>
 
-    <!-- Sección 1: Antes de comenzar -->
-    <section id="chapter-1" class="content-section w-full max-w-4xl mx-auto py-16 md:py-28 px-4 md:px-6 border-t border-fall-coffee/5">
-        <div class="flex items-center gap-3 mb-4">
-            <span class="font-body text-xs font-bold uppercase tracking-[0.2em] text-fall-rust">Fase Inicial</span>
-            <div class="h-[1px] flex-1 bg-fall-rust/20"></div>
+    <!-- SECCIÓN 1: Antes de comenzar (Scrollytelling Ultra-Sensible) -->
+    <section id="chapter-1" class="relative w-full h-screen overflow-hidden border-t border-fall-coffee/5 bg-fall-cream/50">
+        <!-- Título Dinámico -->
+        <div id="ch1-title-container" class="absolute inset-0 w-full h-full flex flex-col md:flex-row items-center justify-center gap-2 md:gap-5 whitespace-nowrap z-20 pointer-events-none px-4">
+            <span class="ch1-word antes font-retro text-5xl md:text-7xl lg:text-[5.5rem] font-extrabold text-fall-rust leading-none tracking-tight">Antes</span>
+            <span class="ch1-word de font-retro text-5xl md:text-7xl lg:text-[5.5rem] font-extrabold text-fall-rust leading-none tracking-tight">de</span>
+            <span class="ch1-word comenzar font-retro text-5xl md:text-7xl lg:text-[5.5rem] font-extrabold text-fall-rust leading-none tracking-tight">comenzar</span>
         </div>
-        
-        <h2 class="font-retro text-3xl md:text-5xl font-extrabold text-fall-coffee mb-8 tracking-tight">Antes de comenzar</h2>
-        
-        <div class="space-y-6 text-fall-coffee/90 text-lg md:text-xl leading-relaxed font-normal">
-            <p class="text-2xl md:text-3xl font-medium text-fall-coffee tracking-tight leading-snug">
-                Hola, soy <span class="text-fall-rust font-semibold">Juan Pablo</span>, encargado de la gestión digital de Amazon FBA.
-            </p>
-            <p>
-                Amazon es extremadamente estricto con sus especificaciones de recepción logística en sus centros de distribución.
-            </p>
-            <p class="border-l-4 border-fall-mustard pl-5 italic text-fall-coffee/80 bg-white/30 py-4 pr-4 rounded-r-2xl shadow-[0_4px_20px_rgba(0,0,0,0.01)]">
-                Por eso diseñé este espacio: para tener todos los requerimientos físicos al alcance de un vistazo rápido y directo, eliminando por completo los manuales extensos e ineficientes.
-            </p>
-        </div>
-    </section>
 
-    <!-- Sección 2: Paso 1 -->
-    <section id="section-2" class="content-section w-full max-w-4xl mx-auto py-16 md:py-28 px-4 md:px-6 border-t border-fall-coffee/5">
-        <div class="flex items-center gap-3 mb-4">
-            <span class="font-body text-xs font-bold uppercase tracking-[0.2em] text-fall-mustard">Preparación Física</span>
-            <div class="h-[1px] flex-1 bg-fall-mustard/20"></div>
-        </div>
-        <h2 class="font-retro text-3xl md:text-5xl font-extrabold text-fall-coffee mb-6 tracking-tight">Paso 1: Armado y Empaquetado</h2>
-        <div class="bg-white/50 backdrop-blur-sm border border-white p-6 md:p-8 rounded-[2rem] shadow-[0_8px_30px_rgba(62,39,35,0.01)]">
-            <p class="text-lg leading-relaxed text-fall-coffee/80">
-                Aquí se especifican los materiales autorizados por Amazon, el uso de poliburbuja, el sellado hermético perimetral de los frascos y las etiquetas obligatorias de <i>"Ready to Ship / No Separar"</i> para que el operario del almacén sepa que es un bundle multi-unidad.
-            </p>
-        </div>
-    </section>
-
-    <!-- Sección 3: Paso 2 -->
-    <section id="section-3" class="content-section w-full max-w-4xl mx-auto py-16 md:py-28 px-4 md:px-6 border-t border-fall-coffee/5">
-        <div class="flex items-center gap-3 mb-4">
-            <span class="font-body text-xs font-bold uppercase tracking-[0.2em] text-fall-olive">Consola Digital</span>
-            <div class="h-[1px] flex-1 bg-fall-olive/20"></div>
-        </div>
-        <h2 class="font-retro text-3xl md:text-5xl font-extrabold text-fall-coffee mb-6 tracking-tight">Paso 2: Generar orden de envío</h2>
-        <div class="bg-white/50 backdrop-blur-sm border border-white p-6 md:p-8 rounded-[2rem] shadow-[0_8px_30px_rgba(62,39,35,0.01)]">
-            <p class="text-lg leading-relaxed text-fall-coffee/80">
-                Proceso paso a paso dentro de Seller Central. Configuración de dimensiones exactas de las cajas máster, pesos máximos permitidos por bulto (no exceder 22kg) y la declaración correcta del contenido para evitar penalizaciones o rechazos en andén.
-            </p>
-        </div>
-    </section>
-
-    <!-- Sección 4: Paso 3 -->
-    <section id="section-4" class="content-section w-full max-w-4xl mx-auto py-16 md:py-28 px-4 md:px-6 border-t border-fall-coffee/5">
-        <div class="flex items-center gap-3 mb-4">
-            <span class="font-body text-xs font-bold uppercase tracking-[0.2em] text-fall-rust">Tránsito Interno</span>
-            <div class="h-[1px] flex-1 bg-fall-rust/20"></div>
-        </div>
-        <h2 class="font-retro text-3xl md:text-5xl font-extrabold text-fall-coffee mb-6 tracking-tight">Paso 3: Envío al almacén</h2>
-        <div class="bg-white/50 backdrop-blur-sm border border-white p-6 md:p-8 rounded-[2rem] shadow-[0_8px_30px_rgba(62,39,35,0.01)]">
-            <p class="text-lg leading-relaxed text-fall-coffee/80">
-                Impresión y colocación térmica de las etiquetas FBA de las cajas y etiquetas del transportista. Criterios de paletizado si el volumen lo requiere y asignación del sistema de paquetería coordinada de Amazon.
-            </p>
-        </div>
-    </section>
-
-    <!-- Sección 5: Dudas o Problemas -->
-    <section id="section-5" class="content-section w-full max-w-4xl mx-auto py-16 md:py-28 px-4 md:px-6 border-t border-fall-coffee/5 mb-20">
-        <div class="bg-fall-coffee text-fall-cream rounded-[2.5rem] p-8 md:p-12 shadow-[0_20px_50px_rgba(62,39,35,0.15)] relative overflow-hidden">
-            <div class="absolute -right-10 -bottom-10 w-44 h-44 bg-fall-rust/20 rounded-full blur-3xl"></div>
-            
-            <div class="relative z-10">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-fall-mustard block mb-2">Canal Directo</span>
-                <h2 class="font-retro text-3xl md:text-5xl font-extrabold mb-4 tracking-tight">Dudas o problemas</h2>
-                <p class="text-fall-cream/70 text-lg max-w-2xl mb-8">
-                    ¿Te retuvieron una caja o tienes discrepancias con las etiquetas? Contacta inmediatamente con el centro de control operativo digital.
+        <!-- Textos Desplazados -->
+        <div class="absolute right-0 top-0 w-full md:w-[50%] h-full flex flex-col justify-center px-6 sm:px-12 lg:px-20 z-10 pointer-events-none">
+            <!-- Slide 1 -->
+            <div class="ch1-slide-1 absolute w-full pr-6 sm:pr-12 lg:pr-24 opacity-0">
+                <p class="text-2xl sm:text-3xl lg:text-4xl font-medium leading-relaxed md:leading-[1.3] text-fall-coffee tracking-tight">
+                    Hola, soy <span class="text-fall-rust font-semibold">Juan Pablo</span>, encargado de la gestión digital de Amazon FBA.
                 </p>
-                <button class="bg-fall-rust hover:bg-fall-rust/90 text-white font-medium px-6 py-3 rounded-full transition-all duration-300 transform active:scale-95 shadow-lg">
-                    Contactar a Soporte
-                </button>
+            </div>
+            <!-- Slide 2 -->
+            <div class="ch1-slide-2 absolute w-full pr-6 sm:pr-12 lg:pr-24 opacity-0 flex flex-col gap-4">
+                <p class="text-lg sm:text-xl lg:text-2xl font-medium leading-relaxed text-fall-coffee/90 tracking-tight">
+                    Amazon es extremadamente estricto con sus especificaciones de recepción logística.
+                </p>
+                <p class="text-lg sm:text-xl lg:text-2xl font-medium leading-relaxed text-fall-coffee/90 tracking-tight border-l-2 border-fall-mustard pl-4">
+                    Por eso diseñé este espacio: para tener los requerimientos físicos listos al instante, eliminando manuales aburridos.
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- Footer Simple -->
-    <footer class="w-full text-center py-12 border-t border-fall-coffee/5 text-sm text-fall-coffee/40 font-medium">
-        © 2026 Sistema Logístico Amazon FBA • Flujo Optimizado
-    </footer>
+    <!-- SECCIÓN 2: Paso 1 (Placeholder visual estructural) -->
+    <section id="step-1" class="relative w-full h-screen flex items-center justify-center border-t border-fall-coffee/5 bg-white/20 px-6">
+        <div class="max-w-3xl text-center">
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-fall-mustard block mb-3">Fase de Empaque</span>
+            <h2 class="font-retro text-4xl md:text-6xl font-extrabold text-fall-coffee mb-6 tracking-tight">Paso 1: Armado y Empaquetado</h2>
+            <p class="font-body text-lg md:text-xl text-fall-coffee/70 max-w-xl mx-auto">Configuración física, polibolsas, sellado hermético y restricciones de peso por unidad bundle.</p>
+        </div>
+    </section>
 
+    <!-- SECCIÓN 3: Paso 2 (Placeholder visual estructural) -->
+    <section id="step-2" class="relative w-full h-screen flex items-center justify-center border-t border-fall-coffee/5 bg-fall-cream/30 px-6">
+        <div class="max-w-3xl text-center">
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-fall-olive block mb-3">Seller Central Workflow</span>
+            <h2 class="font-retro text-4xl md:text-6xl font-extrabold text-fall-coffee mb-6 tracking-tight">Paso 2: Generar orden de envío</h2>
+            <p class="font-body text-lg md:text-xl text-fall-coffee/70 max-w-xl mx-auto">Declaración de unidades en la plataforma, creación del plano de envío FBA y asignación de SKUs correctos.</p>
+        </div>
+    </section>
 
-    <!-- ========================================== -->
-    <!-- JAVASCRIPT: MICRO-INTERACCIONES Y SCROLLSPY -->
-    <!-- ========================================== -->
+    <!-- SECCIÓN 4: Paso 3 (Placeholder visual estructural) -->
+    <section id="step-3" class="relative w-full h-screen flex items-center justify-center border-t border-fall-coffee/5 bg-white/20 px-6">
+        <div class="max-w-3xl text-center">
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-fall-rust block mb-3">Logística Externa</span>
+            <h2 class="font-retro text-4xl md:text-6xl font-extrabold text-fall-coffee mb-6 tracking-tight">Paso 3: Envío al almacén</h2>
+            <p class="font-body text-lg md:text-xl text-fall-coffee/70 max-w-xl mx-auto">Etiquetado térmico de cajas master, paletizado estándar de Amazon y selección de paquetería asociada.</p>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 5: Soporte -->
+    <section id="support-section" class="relative w-full h-screen flex items-center justify-center border-t border-fall-coffee/5 bg-fall-coffee/5 px-6">
+        <div class="max-w-3xl text-center bg-white/60 backdrop-blur-md border border-white p-8 md:p-14 rounded-[2.5rem] shadow-[0_20px_50px_rgba(62,39,35,0.03)]">
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-fall-rust block mb-3">Centro de ayuda</span>
+            <h2 class="font-retro text-3xl md:text-5xl font-extrabold text-fall-coffee mb-4 tracking-tight">¿Dudas o problemas?</h2>
+            <p class="font-body text-base md:text-lg text-fall-coffee/70 mb-8 max-w-md mx-auto">Si algún requerimiento de Amazon cambió o tienes problemas con las etiquetas, contacta al equipo.</p>
+            <button class="bg-fall-coffee hover:bg-fall-rust text-white font-body font-medium text-sm tracking-wider uppercase px-8 py-4 rounded-full transition-all duration-300 ease-premium transform hover:scale-105 shadow-md">
+                Contactar Soporte Digital
+            </button>
+        </div>
+    </section>
+
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
-        // 1. Animación suave de entrada inicial (Fade In Natural para mantener estabilidad)
-        window.addEventListener("DOMContentLoaded", () => {
-            gsap.from("#hero-section h1", {
-                opacity: 0,
-                y: 30,
-                duration: 1,
-                ease: "power3.out"
-            });
+        document.addEventListener("DOMContentLoaded", () => {
+            gsap.set([".ch1-slide-1", ".ch1-slide-2"], { visibility: "visible" });
+            
+            // Aparece la barra de navegación superior suavemente al cargar
+            gsap.to("#desktop-navbar", { opacity: 1, y: 0, duration: 1, ease: "power3.out", delay: 0.5 });
         });
 
-        // 2. SISTEMA SCROLLSPY (Detecta en qué sección estamos y actualiza los dos menús estables)
-        const sections = document.querySelectorAll(".content-section");
+        // 1. ANIMACIÓN DE ENTRADA HERO SECTION
+        gsap.from(".word-wrapper", { y: 100, opacity: 0, duration: 1.2, stagger: 0.05, ease: "power4.out" });
+        gsap.to(".hero-extra", { opacity: 1, duration: 1, delay: 0.6 });
         
-        sections.forEach(section => {
-            const sectionId = section.getAttribute("id");
-            
+        // Desarmado del Hero en scroll (Más corto y responsivo: end +=600)
+        const tlDesarmar = gsap.timeline({
+            scrollTrigger: {
+                trigger: "#hero-section",
+                start: "top top",
+                end: "+=600",
+                pin: true,
+                scrub: 0.5
+            }
+        });
+        
+        tlDesarmar.fromTo(".hero-extra", { opacity: 1, y: 0 }, { opacity: 0, y: -40, ease: "none" }, 0);
+        tlDesarmar.fromTo(".hero-piece", 
+            { x: 0, y: 0, rotation: 0, opacity: 1 }, 
+            { 
+                x: () => gsap.utils.random(-120, 120), 
+                y: () => gsap.utils.random(-180, -60), 
+                rotation: () => gsap.utils.random(-20, 20), 
+                opacity: 0, 
+                stagger: 0.005, 
+                ease: "none" 
+            }, 
+            0
+        );
+
+        // 2. CAPÍTULO 1: SCROLLYTELLING ULTRA-SENSIBLE (Distancia optimizada a +=1200 para transiciones rápidas)
+        function getAlignmentX(wordToMoveClass, targetWordClass) {
+            const word = document.querySelector(wordToMoveClass);
+            const target = document.querySelector(targetWordClass);
+            if (!word || !target) return 0;
+            const wordCenter = word.offsetLeft + (word.offsetWidth / 2);
+            const targetCenter = target.offsetLeft + (target.offsetWidth / 2);
+            return targetCenter - wordCenter; 
+        }
+
+        const tlCh1 = gsap.timeline({
+            scrollTrigger: {
+                trigger: "#chapter-1",
+                start: "top top",
+                end: "+=1400", // Mucho más corto para evitar scroll excesivo
+                pin: true,
+                scrub: 0.5,
+                invalidateOnRefresh: true
+            }
+        });
+
+        tlCh1.fromTo(".ch1-word", 
+            { opacity: 0, y: 50, rotationX: -30 },
+            { opacity: 1, y: 0, rotationX: 0, duration: 1, stagger: 0.08, ease: "power3.out" }
+        );
+        tlCh1.to({}, { duration: 0.3 }); 
+
+        tlCh1.add("desarme");
+
+        const isDesktop = window.innerWidth >= 768;
+
+        tlCh1.to("#ch1-title-container", {
+            x: () => isDesktop ? "-22vw" : "0",
+            y: () => isDesktop ? "0" : "-28vh",
+            duration: 1.5, 
+            ease: "power2.inOut"
+        }, "desarme");
+
+        tlCh1.to(".ch1-word.antes", {
+            x: () => getAlignmentX('.ch1-word.antes', '.ch1-word.de'),
+            y: () => isDesktop ? "-90px" : "-45px",
+            duration: 1.5, 
+            ease: "power2.inOut"
+        }, "desarme");
+
+        tlCh1.to(".ch1-word.comenzar", {
+            x: () => getAlignmentX('.ch1-word.comenzar', '.ch1-word.de'),
+            y: () => isDesktop ? "90px" : "45px",
+            duration: 1.5, 
+            ease: "power2.inOut"
+        }, "desarme");
+
+        tlCh1.fromTo(".ch1-slide-1", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 1.2, ease: "power2.out" }, "desarme+=0.3");
+        tlCh1.to({}, { duration: 0.8 }); 
+
+        tlCh1.to(".ch1-slide-1", { opacity: 0, y: -20, duration: 0.8, ease: "power2.in" });
+        tlCh1.fromTo(".ch1-slide-2", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, ease: "power2.out" });
+        tlCh1.to({}, { duration: 1.2 }); 
+
+        // 3. PARALLAX DE FONDO
+        gsap.to('.bg-shape-1', { y: 120, ease: "none", scrollTrigger: { scrub: true } });
+        gsap.to('.bg-shape-2', { y: -140, ease: "none", scrollTrigger: { scrub: true } });
+        gsap.to('.bg-shape-3', { y: -90, x: 40, ease: "none", scrollTrigger: { scrub: true } });
+
+
+        // 4. LÓGICA DE DETECCIÓN DINÁMICA DE SECCIONES (Spy Navigation)
+        const secciones = [
+            { id: "#hero-section", index: 0 },
+            { id: "#chapter-1", index: 1 },
+            { id: "#step-1", index: 2 },
+            { id: "#step-2", index: 3 },
+            { id: "#step-3", index: 4 },
+            { id: "#support-section", index: 5 }
+        ];
+
+        const navItemsDesktop = document.querySelectorAll(".nav-item");
+        const navItemsMobile = document.querySelectorAll(".mobile-nav-item");
+
+        secciones.forEach((seccion) => {
             ScrollTrigger.create({
-                trigger: section,
-                start: "top 40%", // Ajuste óptimo para detectar el cambio en la visualización
+                trigger: seccion.id,
+                start: "top 40%",
                 end: "bottom 40%",
-                onToggle: self => {
+                onToggle: (self) => {
                     if (self.isActive) {
-                        setActiveNavItem(sectionId);
+                        // Actualizar Desktop
+                        navItemsDesktop.forEach(item => item.classList.remove("active"));
+                        if(navItemsDesktop[seccion.index]) navItemsDesktop[seccion.index].classList.add("active");
+                        
+                        // Actualizar Mobile
+                        navItemsMobile.forEach(item => {
+                            item.classList.remove("text-fall-rust");
+                            item.classList.add("text-fall-coffee/40");
+                        });
+                        if(navItemsMobile[seccion.index]) {
+                            navItemsMobile[seccion.index].classList.remove("text-fall-coffee/40");
+                            navItemsMobile[seccion.index].classList.add("text-fall-rust");
+                        }
                     }
                 }
             });
         });
 
-        // Función puramente reactiva encargada de limpiar y asignar clases activas
-        function setActiveNavItem(id) {
-            // Limpiar estados anteriores de ambas barras
-            document.querySelectorAll(".nav-item").forEach(item => {
-                item.classList.remove("active");
+        // Manejo fluido de clics en la barra de navegación para evitar saltos bruscos
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetID = this.getAttribute('href');
+                const targetST = ScrollTrigger.getById(targetID) || document.querySelector(targetID);
+                
+                if(targetST) {
+                    gsap.to(window, {
+                        duration: 1,
+                        scrollTo: targetID,
+                        ease: "power3.inOut"
+                    });
+                }
             });
+        });
 
-            // Activar ítem correspondiente en Desktop
-            const desktopItem = document.getElementById(`nav-desktop-${id}`);
-            if (desktopItem) desktopItem.classList.add("active");
-
-            // Activar ítem correspondiente en Mobile
-            const mobileItem = document.getElementById(`nav-mobile-${id}`);
-            if (mobileItem) mobileItem.classList.add("active");
-        }
+        window.addEventListener("resize", () => {
+            ScrollTrigger.refresh();
+        });
     </script>
+    
+    <!-- Plugin complementario de GSAP para scroll suave por clicks de navegación -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
 </body>
 </html>
