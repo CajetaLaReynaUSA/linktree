@@ -65,7 +65,7 @@
         <div class="bg-shape-3 absolute bottom-[-10%] left-1/3 w-96 h-96 bg-fall-rust/10 rounded-full blur-[100px] md:blur-[140px]"></div>
     </div>
 
-    <!-- [DESKTOP] Navbar Superior -->
+    <!-- [DESKTOP] Navbar Superior Flotante -->
     <nav id="desktop-navbar" class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-5xl bg-white/60 backdrop-blur-xl border border-white/80 shadow-[0_10px_40px_rgba(62,39,35,0.03)] rounded-full px-3 py-2.5 hidden md:flex items-center justify-between opacity-0 translate-y-[-20px] transition-all duration-500">
         <div class="flex items-center gap-3 pl-4">
             <span class="w-2 h-2 rounded-full bg-fall-rust animate-pulse"></span>
@@ -81,7 +81,7 @@
         </div>
     </nav>
 
-    <!-- [MOBILE] Navbar Inferior -->
+    <!-- [MOBILE] Navbar Inferior Ergonómica Premium -->
     <nav id="mobile-navbar" class="fixed bottom-4 left-4 right-4 z-50 bg-white/90 backdrop-blur-md border border-white/60 shadow-[0_-10px_30px_rgba(62,39,35,0.08)] rounded-3xl p-2 flex md:hidden items-center justify-around">
         <a href="#hero-section" class="mobile-nav-item text-fall-rust flex flex-col items-center justify-center p-2 rounded-xl">
             <span class="text-lg">🎪</span>
@@ -126,17 +126,17 @@
         </div>
     </header>
 
-    <!-- SECCIÓN 1: Antes de comenzar -->
+    <!-- SECCIÓN 1: Antes de comenzar (Cinemática Adaptativa Avanzada) -->
     <section id="chapter-1" class="relative w-full h-screen overflow-hidden border-t border-fall-coffee/5 bg-fall-cream/50">
         
-        <!-- Contenedor del Título -->
+        <!-- Contenedor del Título Especial Mobile/Desktop -->
         <div id="ch1-title-container" class="absolute inset-0 w-full h-full flex flex-col md:flex-row items-center justify-center gap-4 md:gap-5 whitespace-nowrap z-20 pointer-events-none px-6">
             <span class="ch1-word antes font-retro text-5xl md:text-7xl lg:text-[5.5rem] font-extrabold text-fall-rust leading-none tracking-tight">Antes</span>
             <span class="ch1-word de font-retro text-5xl md:text-7xl lg:text-[5.5rem] font-extrabold text-fall-rust leading-none tracking-tight">de</span>
             <span class="ch1-word comenzar font-retro text-5xl md:text-7xl lg:text-[5.5rem] font-extrabold text-fall-rust leading-none tracking-tight">comenzar</span>
         </div>
 
-        <!-- Contenedor de Textos -->
+        <!-- Contenedor de Textos Explicativos -->
         <div class="absolute inset-0 md:left-1/2 md:w-[50%] h-full flex flex-col justify-center px-6 sm:px-12 lg:px-20 z-10 pointer-events-none">
             <!-- Slide 1 -->
             <div class="ch1-slide-1 absolute left-6 right-6 md:left-auto md:right-auto md:w-full md:pr-24 opacity-0 text-center md:text-left">
@@ -203,7 +203,7 @@
             gsap.to("#desktop-navbar", { opacity: 1, y: 0, duration: 1, ease: "power3.out", delay: 0.5 });
         });
 
-        // 1. HERO TIMELINE
+        // 1. HERO REVELATION TIMELINE
         gsap.from(".word-wrapper", { y: 100, opacity: 0, duration: 1.2, stagger: 0.05, ease: "power4.out" });
         gsap.to(".hero-extra", { opacity: 1, duration: 1, delay: 0.6 });
         
@@ -231,6 +231,7 @@
             0
         );
 
+        // Vector matemático Desktop
         function getAlignmentX(wordToMoveClass, targetWordClass) {
             const word = document.querySelector(wordToMoveClass);
             const target = document.querySelector(targetWordClass);
@@ -240,7 +241,7 @@
             return targetCenter - wordCenter; 
         }
 
-        // 2. CAPÍTULO 1: COREOGRAFÍA DISPOSITIVO-DEPENDIENTE (ULTRA-SENSITIVE)
+        // 2. CAPÍTULO 1: COREOGRAFÍA DISPOSITIVO-DEPENDIENTE (FAST-SCRUB)
         const isDesktop = window.innerWidth >= 768;
 
         const tlCh1 = gsap.timeline({
@@ -254,7 +255,7 @@
             }
         });
 
-        // Entrada tipográfica limpia
+        // Entrada tipográfica inicial
         tlCh1.fromTo(".ch1-word", 
             { opacity: 0, y: 50, rotationX: -30 },
             { opacity: 1, y: 0, rotationX: 0, duration: 1, stagger: 0.08, ease: "power3.out" }
@@ -264,7 +265,7 @@
         tlCh1.add("desarme");
 
         if (isDesktop) {
-            // COMPORTAMIENTO DESKTOP ORIGINAL
+            // COMPORTAMIENTO DESKTOP ORIGINAL (Compacta a la izquierda verticalmente)
             tlCh1.to("#ch1-title-container", { x: "-22vw", duration: 1.5, ease: "power2.inOut" }, "desarme");
             tlCh1.to(".ch1-word.antes", { x: () => getAlignmentX('.ch1-word.antes', '.ch1-word.de'), y: "-90px", duration: 1.5, ease: "power2.inOut" }, "desarme");
             tlCh1.to(".ch1-word.comenzar", { x: () => getAlignmentX('.ch1-word.comenzar', '.ch1-word.de'), y: "90px", duration: 1.5, ease: "power2.inOut" }, "desarme");
@@ -274,19 +275,19 @@
             tlCh1.to(".ch1-slide-1", { opacity: 0, y: -20, duration: 0.8, ease: "power2.in" });
             tlCh1.fromTo(".ch1-slide-2", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, ease: "power2.out" });
         } else {
-            // 🔥 NUEVO COMPORTAMIENTO MÓVIL GEOMÉTRICO ADAPTATIVO REAL
-            // Elevamos el contenedor superior y reducimos escala a formato marquesina flotante
+            // 🔥 COMPORTAMIENTO MÓVIL PREMIUM: MUTACIÓN COMPLETA A HORIZONTAL
+            // 1. Forzamos al contenedor global a subir a la parte superior del teléfono y reducir escala
             tlCh1.to("#ch1-title-container", { 
-                y: "-32vh", 
-                scale: 0.55, 
+                y: "-30vh", 
+                scale: 0.65, 
                 duration: 1.6, 
                 ease: "power3.inOut" 
             }, "desarme");
             
-            // Cálculos dinámicos en base al ancho del teléfono real del usuario para forzar la HORIZONTAL
+            // 2. Separación lateral coordinada: Modificamos X e Y simultáneamente para alinearlos en un solo renglón
             tlCh1.to(".ch1-word.antes", { 
-                x: () => -(window.innerWidth * 0.28), // Mueve "Antes" a la izquierda proporcionalmente
-                y: "52px", // Compensa el renglón flex-col nativo de mobile
+                x: "-105px", 
+                y: "48px", // Contrarresta el salto de línea nativo del flex-col en mobile
                 duration: 1.6, 
                 ease: "power3.inOut" 
             }, "desarme");
@@ -298,28 +299,28 @@
             }, "desarme");
 
             tlCh1.to(".ch1-word.comenzar", { 
-                x: () => (window.innerWidth * 0.28), // Mueve "comenzar" a la derecha proporcionalmente
-                y: "-52px", // Sube la palabra inferior al mismo nivel que las demás
+                x: "115px", 
+                y: "-48px", // Eleva la palabra inferior para acoplarla al renglón de arriba
                 duration: 1.6, 
                 ease: "power3.inOut" 
             }, "desarme");
             
-            // Revelaciones cinemáticas inferiores perfectamente libres de traslapes
-            tlCh1.fromTo(".ch1-slide-1", { opacity: 0, y: 60 }, { opacity: 1, y: 35, duration: 1.2, ease: "power2.out" }, "desarme+=0.4");
+            // 3. Despliegue de los textos en la zona inferior limpia del móvil
+            tlCh1.fromTo(".ch1-slide-1", { opacity: 0, y: 50 }, { opacity: 1, y: 30, duration: 1.2, ease: "power2.out" }, "desarme+=0.4");
             tlCh1.to({}, { duration: 0.8 }); 
             
             tlCh1.to(".ch1-slide-1", { opacity: 0, y: -15, duration: 0.8, ease: "power2.in" });
-            tlCh1.fromTo(".ch1-slide-2", { opacity: 0, y: 60 }, { opacity: 1, y: 35, duration: 1, ease: "power2.out" });
+            tlCh1.fromTo(".ch1-slide-2", { opacity: 0, y: 50 }, { opacity: 1, y: 30, duration: 1, ease: "power2.out" });
         }
         
         tlCh1.to({}, { duration: 1.2 }); 
 
-        // 3. PARALLAX
+        // 3. PARALLAX ORGÁNICO
         gsap.to('.bg-shape-1', { y: 120, ease: "none", scrollTrigger: { scrub: true } });
         gsap.to('.bg-shape-2', { y: -140, ease: "none", scrollTrigger: { scrub: true } });
         gsap.to('.bg-shape-3', { y: -90, x: 40, ease: "none", scrollTrigger: { scrub: true } });
 
-        // 4. SCROLL SPY LOGIC
+        // 4. SCROLL SPY LOGIC (Detección Activa de Rutas)
         const secciones = [
             { id: "#hero-section", index: 0 },
             { id: "#chapter-1", index: 1 },
@@ -355,6 +356,7 @@
             });
         });
 
+        // Suavizado cinemático al clickear los elementos de la barra flotante
         document.querySelectorAll('nav a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
