@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Navbar - FBA</title>
+    <title>Navbar Ultra-Premium | Minimalist Edition</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -21,14 +21,14 @@
                     },
                     colors: {
                         premium: {
-                            black: '#0a0a0a',
+                            black: 'rgba(10, 10, 10, 0.85)', /* Translucidez para el Blur */
                             dark: '#141414',
-                            border: 'rgba(255,255,255,0.1)',
+                            border: 'rgba(255,255,255,0.08)',
                             hover: 'rgba(255,255,255,0.05)'
+                        },
+                        fall: {
+                            rust: '#C84B31',
                         }
-                    },
-                    transitionTimingFunction: {
-                        'spring': 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
                     }
                 }
             }
@@ -36,9 +36,9 @@
     </script>
 
     <style>
-        body { background-color: #F4EFE6; } /* Color de fondo base de nuestro proyecto anterior para contraste */
+        body { background-color: #F4EFE6; }
         
-        /* Ocultar elementos iniciales para GSAP */
+        /* Estados iniciales ocultos para GSAP */
         .dropdown-menu, #mobile-menu-panel { 
             display: none; 
             opacity: 0; 
@@ -48,141 +48,151 @@
             height: 0;
             overflow: hidden;
         }
+
+        /* Micro-interacción de texto brillante */
+        .nav-link-text {
+            background: linear-gradient(to right, #ffffff, #ffffff);
+            background-size: 0% 2px;
+            background-repeat: no-repeat;
+            background-position: left bottom;
+            transition: background-size 0.3s ease;
+        }
+        button:hover .nav-link-text, a:hover .nav-link-text {
+            background-size: 100% 2px;
+        }
     </style>
 </head>
-<body class="font-body min-h-screen pt-20">
+<body class="font-body min-h-screen pt-32">
 
     <!-- ==========================================
-         NAVBAR PRINCIPAL (Floating Pill)
+         [DESKTOP] CÁPSULA FLOTANTE MINIMALISTA
     =========================================== -->
-    <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl bg-premium-black rounded-[2rem] px-4 md:px-6 py-3 shadow-[0_20px_40px_rgba(0,0,0,0.2)] border border-white/5 flex items-center justify-between transition-all duration-300">
+    <nav id="desktop-navbar" class="hidden md:flex fixed top-6 left-1/2 -translate-x-1/2 z-50 bg-premium-black backdrop-blur-xl border border-premium-border rounded-full px-2 py-2 shadow-[0_20px_40px_rgba(0,0,0,0.15)] items-center gap-1 transition-all duration-500">
         
-        <!-- LOGO -->
-        <div class="flex items-center gap-3 cursor-pointer group">
-            <svg class="w-6 h-6 text-white group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-            </svg>
-            <span class="text-white font-bold text-lg tracking-wide">Manual FBA</span>
-        </div>
-
-        <!-- ENLACES DESKTOP (Hidden on Mobile) -->
-        <div class="hidden md:flex items-center gap-2">
-            
-            <!-- Item 1: Inicio -->
-            <a href="#" class="text-white/70 hover:text-white px-4 py-2 rounded-full text-sm font-medium transition-colors">
-                Inicio
-            </a>
-
-            <!-- Item 2: Pasos (Dropdown) -->
-            <div class="relative group dropdown-container">
-                <button class="dropdown-toggle text-white/70 hover:text-white px-4 py-2 rounded-full text-sm font-medium transition-colors flex items-center gap-1">
-                    Pasos
-                    <svg class="w-4 h-4 chevron transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                </button>
-                <!-- Menú Desplegable -->
-                <div class="dropdown-menu absolute top-full left-1/2 -translate-x-1/2 mt-4 w-48 bg-premium-dark border border-premium-border rounded-2xl shadow-xl overflow-hidden backdrop-blur-xl">
-                    <div class="p-2 flex flex-col gap-1">
-                        <a href="#paso1" class="text-white/80 hover:text-white hover:bg-premium-hover px-4 py-2.5 rounded-xl text-sm font-medium transition-all flex items-center gap-2">
-                            <span class="w-1.5 h-1.5 rounded-full bg-white/20"></span> Paso 1
-                        </a>
-                        <a href="#paso2" class="text-white/80 hover:text-white hover:bg-premium-hover px-4 py-2.5 rounded-xl text-sm font-medium transition-all flex items-center gap-2">
-                            <span class="w-1.5 h-1.5 rounded-full bg-white/20"></span> Paso 2
-                        </a>
-                        <a href="#paso3" class="text-white/80 hover:text-white hover:bg-premium-hover px-4 py-2.5 rounded-xl text-sm font-medium transition-all flex items-center gap-2">
-                            <span class="w-1.5 h-1.5 rounded-full bg-white/20"></span> Paso 3
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Item 3: Etiquetas (Dropdown) -->
-            <div class="relative group dropdown-container">
-                <button class="dropdown-toggle text-white/70 hover:text-white px-4 py-2 rounded-full text-sm font-medium transition-colors flex items-center gap-1">
-                    Etiquetas
-                    <svg class="w-4 h-4 chevron transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                </button>
-                <!-- Menú Desplegable -->
-                <div class="dropdown-menu absolute top-full left-1/2 -translate-x-1/2 mt-4 w-40 bg-premium-dark border border-premium-border rounded-2xl shadow-xl overflow-hidden backdrop-blur-xl">
-                    <div class="p-2 flex flex-col gap-1">
-                        <a href="#360" class="text-white/80 hover:text-white hover:bg-premium-hover px-4 py-2.5 rounded-xl text-sm font-medium transition-all">360 gr</a>
-                        <a href="#155" class="text-white/80 hover:text-white hover:bg-premium-hover px-4 py-2.5 rounded-xl text-sm font-medium transition-all">155 gr</a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- CTA & BOTÓN MÓVIL -->
-        <div class="flex items-center gap-3">
-            <!-- Botón CTA (Visible siempre) -->
-            <button class="bg-white text-black hover:bg-gray-100 hover:scale-105 active:scale-95 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 flex items-center gap-2 shadow-sm">
-                <span>Book A Call</span>
-                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        <!-- Opción 1: Pasos (Dropdown) -->
+        <div class="relative group dropdown-container">
+            <button class="dropdown-toggle text-white/80 hover:text-white px-5 py-2.5 rounded-full text-sm font-medium transition-colors flex items-center gap-2">
+                <span class="nav-link-text pb-0.5">Pasos</span>
+                <svg class="w-4 h-4 chevron text-white/50 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                 </svg>
             </button>
+            <!-- Menú Desplegable -->
+            <div class="dropdown-menu absolute top-[120%] left-1/2 -translate-x-1/2 w-48 bg-premium-dark border border-premium-border rounded-2xl shadow-2xl overflow-hidden backdrop-blur-2xl">
+                <div class="p-2 flex flex-col gap-1">
+                    <a href="#paso1" class="text-white/70 hover:text-white hover:bg-premium-hover px-4 py-3 rounded-xl text-sm font-medium transition-all flex items-center gap-3">
+                        <span class="w-1.5 h-1.5 rounded-full bg-fall-rust opacity-0 group-hover:opacity-100 transition-opacity"></span> Paso 1
+                    </a>
+                    <a href="#paso2" class="text-white/70 hover:text-white hover:bg-premium-hover px-4 py-3 rounded-xl text-sm font-medium transition-all flex items-center gap-3">
+                        <span class="w-1.5 h-1.5 rounded-full bg-fall-rust opacity-0 group-hover:opacity-100 transition-opacity"></span> Paso 2
+                    </a>
+                    <a href="#paso3" class="text-white/70 hover:text-white hover:bg-premium-hover px-4 py-3 rounded-xl text-sm font-medium transition-all flex items-center gap-3">
+                        <span class="w-1.5 h-1.5 rounded-full bg-fall-rust opacity-0 group-hover:opacity-100 transition-opacity"></span> Paso 3
+                    </a>
+                </div>
+            </div>
+        </div>
 
-            <!-- Hamburguesa Mobile -->
-            <button id="mobile-menu-btn" class="md:hidden text-white/80 hover:text-white p-2">
-                <svg id="hamburger-icon" class="w-6 h-6 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+        <!-- Divisor Visual -->
+        <div class="w-px h-4 bg-white/10 mx-1"></div>
+
+        <!-- Opción 2: Etiquetas (Dropdown) -->
+        <div class="relative group dropdown-container">
+            <button class="dropdown-toggle text-white/80 hover:text-white px-5 py-2.5 rounded-full text-sm font-medium transition-colors flex items-center gap-2">
+                <span class="nav-link-text pb-0.5">Etiquetas</span>
+                <svg class="w-4 h-4 chevron text-white/50 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                 </svg>
             </button>
+            <!-- Menú Desplegable -->
+            <div class="dropdown-menu absolute top-[120%] left-1/2 -translate-x-1/2 w-40 bg-premium-dark border border-premium-border rounded-2xl shadow-2xl overflow-hidden backdrop-blur-2xl">
+                <div class="p-2 flex flex-col gap-1">
+                    <a href="#360gr" class="text-white/70 hover:text-white hover:bg-premium-hover px-4 py-3 rounded-xl text-sm font-medium transition-all flex items-center justify-between">
+                        360 gr <span class="text-xs text-white/30 border border-white/10 rounded px-1.5 py-0.5">Ver</span>
+                    </a>
+                    <a href="#155gr" class="text-white/70 hover:text-white hover:bg-premium-hover px-4 py-3 rounded-xl text-sm font-medium transition-all flex items-center justify-between">
+                        155 gr <span class="text-xs text-white/30 border border-white/10 rounded px-1.5 py-0.5">Ver</span>
+                    </a>
+                </div>
+            </div>
         </div>
+
+        <!-- Divisor Visual -->
+        <div class="w-px h-4 bg-white/10 mx-1"></div>
+
+        <!-- Opción 3: Acerca de (Link Directo) -->
+        <a href="#acerca-de" class="text-white/80 hover:text-white px-5 py-2.5 rounded-full text-sm font-medium transition-colors flex items-center">
+            <span class="nav-link-text pb-0.5">Acerca de</span>
+        </a>
+
     </nav>
 
     <!-- ==========================================
-         PANEL MÓVIL (Fullscreen superpuesto)
+         [MOBILE] BOTÓN CIRCULAR FLOTANTE
     =========================================== -->
-    <div id="mobile-menu-panel" class="fixed inset-x-4 top-24 z-40 bg-premium-black border border-premium-border rounded-3xl shadow-2xl p-6 md:hidden">
-        <div class="flex flex-col gap-4">
+    <button id="mobile-menu-btn" class="md:hidden fixed top-6 right-6 z-50 w-12 h-12 bg-premium-black backdrop-blur-xl border border-premium-border rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.2)] flex items-center justify-center group active:scale-90 transition-all duration-300">
+        <div class="relative w-5 h-4 flex flex-col justify-between">
+            <span class="w-full h-[2px] bg-white rounded-full transition-transform duration-300 transform origin-center line-1"></span>
+            <span class="w-full h-[2px] bg-white rounded-full transition-opacity duration-300 line-2"></span>
+            <span class="w-full h-[2px] bg-white rounded-full transition-transform duration-300 transform origin-center line-3"></span>
+        </div>
+    </button>
+
+    <!-- ==========================================
+         [MOBILE] PANEL DE CRISTAL (Acordeones)
+    =========================================== -->
+    <div id="mobile-menu-panel" class="md:hidden fixed inset-x-4 top-24 z-40 bg-premium-dark/95 backdrop-blur-2xl border border-premium-border rounded-3xl shadow-2xl p-6">
+        <div class="flex flex-col gap-2">
             
-            <a href="#" class="text-white text-lg font-medium py-2 border-b border-white/10">Inicio</a>
-            
-            <!-- Acordeón: Pasos -->
-            <div class="mobile-accordion">
-                <button class="w-full flex justify-between items-center text-white text-lg font-medium py-2 accordion-trigger">
+            <!-- Acordeón 1: Pasos -->
+            <div class="mobile-accordion bg-white/5 rounded-2xl overflow-hidden border border-white/5">
+                <button class="w-full flex justify-between items-center text-white px-5 py-4 font-medium accordion-trigger active:bg-white/5 transition-colors">
                     Pasos
-                    <svg class="w-5 h-5 chevron-mob transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="w-5 h-5 text-white/50 chevron-mob transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                 </button>
-                <div class="mobile-submenu">
-                    <div class="flex flex-col gap-3 py-3 pl-4 border-l border-white/10 ml-2 mt-2">
-                        <a href="#paso1" class="text-white/70 hover:text-white text-base">Paso 1</a>
-                        <a href="#paso2" class="text-white/70 hover:text-white text-base">Paso 2</a>
-                        <a href="#paso3" class="text-white/70 hover:text-white text-base">Paso 3</a>
+                <div class="mobile-submenu bg-black/20">
+                    <div class="flex flex-col px-5 py-2 pb-4 gap-1">
+                        <a href="#paso1" class="text-white/60 hover:text-white py-2 flex items-center gap-3"><span class="w-1 h-1 bg-fall-rust rounded-full"></span> Paso 1</a>
+                        <a href="#paso2" class="text-white/60 hover:text-white py-2 flex items-center gap-3"><span class="w-1 h-1 bg-fall-rust rounded-full"></span> Paso 2</a>
+                        <a href="#paso3" class="text-white/60 hover:text-white py-2 flex items-center gap-3"><span class="w-1 h-1 bg-fall-rust rounded-full"></span> Paso 3</a>
                     </div>
                 </div>
             </div>
 
-            <!-- Acordeón: Etiquetas -->
-            <div class="mobile-accordion">
-                <button class="w-full flex justify-between items-center text-white text-lg font-medium py-2 accordion-trigger">
+            <!-- Acordeón 2: Etiquetas -->
+            <div class="mobile-accordion bg-white/5 rounded-2xl overflow-hidden border border-white/5">
+                <button class="w-full flex justify-between items-center text-white px-5 py-4 font-medium accordion-trigger active:bg-white/5 transition-colors">
                     Etiquetas
-                    <svg class="w-5 h-5 chevron-mob transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="w-5 h-5 text-white/50 chevron-mob transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                 </button>
-                <div class="mobile-submenu">
-                    <div class="flex flex-col gap-3 py-3 pl-4 border-l border-white/10 ml-2 mt-2">
-                        <a href="#360" class="text-white/70 hover:text-white text-base">360 gr</a>
-                        <a href="#155" class="text-white/70 hover:text-white text-base">155 gr</a>
+                <div class="mobile-submenu bg-black/20">
+                    <div class="flex flex-col px-5 py-2 pb-4 gap-1">
+                        <a href="#360gr" class="text-white/60 hover:text-white py-2 flex items-center justify-between">
+                            360 gr <span class="text-[10px] uppercase border border-white/10 px-2 py-0.5 rounded text-white/40">Ver</span>
+                        </a>
+                        <a href="#155gr" class="text-white/60 hover:text-white py-2 flex items-center justify-between">
+                            155 gr <span class="text-[10px] uppercase border border-white/10 px-2 py-0.5 rounded text-white/40">Ver</span>
+                        </a>
                     </div>
                 </div>
             </div>
+
+            <!-- Link: Acerca de -->
+            <a href="#acerca-de" class="w-full flex items-center text-white px-5 py-4 font-medium rounded-2xl active:bg-white/5 transition-colors mt-2">
+                Acerca de
+            </a>
 
         </div>
     </div>
 
-    <!-- Scripts de Interacción GSAP -->
+    <!-- Scripts GSAP de Interacción Física -->
     <script>
         // ----------------------------------------------------
-        // Lógica DESKTOP: Click en Menús Desplegables
+        // [DESKTOP] Lógica Click & Click-Outside
         // ----------------------------------------------------
         const dropdownContainers = document.querySelectorAll('.dropdown-container');
         let activeDropdown = null;
@@ -192,17 +202,18 @@
             const menu = container.querySelector('.dropdown-menu');
             const chevron = container.querySelector('.chevron');
 
-            // Setear estado inicial
-            gsap.set(menu, { display: "none", opacity: 0, y: -10, scale: 0.95 });
+            // Setup invisible inicial
+            gsap.set(menu, { display: "none", opacity: 0, y: -15, scale: 0.95 });
 
             toggle.addEventListener('click', (e) => {
-                e.stopPropagation(); // Evitar que el evento cierre el menú inmediatamente
+                e.stopPropagation(); 
 
-                // Si hay otro menú abierto, ciérralo
+                // Cerrar el activo si es diferente al que clickeamos
                 if (activeDropdown && activeDropdown !== menu) {
                     closeDropdown(activeDropdown);
                 }
 
+                // Alternar el actual
                 if (menu.classList.contains('is-open')) {
                     closeDropdown(menu, chevron);
                 } else {
@@ -211,7 +222,7 @@
             });
         });
 
-        // Click fuera para cerrar los menús desktop
+        // Click en el vacío cierra el dropdown activo
         document.addEventListener('click', () => {
             if (activeDropdown) {
                 closeDropdown(activeDropdown);
@@ -221,9 +232,10 @@
         function openDropdown(menu, chevron) {
             menu.classList.add('is-open');
             activeDropdown = menu;
-            // Animación del chevron
-            gsap.to(chevron || menu.parentElement.querySelector('.chevron'), { rotation: 180, duration: 0.3, ease: "back.out(1.7)" });
-            // Animación del menú (Fade in + slide down)
+            
+            gsap.to(chevron || menu.parentElement.querySelector('.chevron'), { rotation: 180, duration: 0.4, ease: "back.out(1.7)" });
+            
+            // Animación de aparición magnética
             gsap.to(menu, {
                 display: "block",
                 opacity: 1,
@@ -237,45 +249,64 @@
         function closeDropdown(menu, chevron) {
             menu.classList.remove('is-open');
             activeDropdown = null;
+            
             gsap.to(chevron || menu.parentElement.querySelector('.chevron'), { rotation: 0, duration: 0.3, ease: "power3.out" });
+            
+            // Animación de cierre
             gsap.to(menu, {
                 opacity: 0,
-                y: -10,
+                y: -15,
                 scale: 0.95,
-                duration: 0.2,
+                duration: 0.25,
                 ease: "power2.in",
                 onComplete: () => gsap.set(menu, { display: "none" })
             });
         }
 
-
         // ----------------------------------------------------
-        // Lógica MOBILE: Menú Hamburguesa & Acordeones
+        // [MOBILE] Menú Circular & Acordeones
         // ----------------------------------------------------
         const mobileBtn = document.getElementById('mobile-menu-btn');
         const mobilePanel = document.getElementById('mobile-menu-panel');
+        
+        // Elementos del icono hamburguesa
+        const line1 = document.querySelector('.line-1');
+        const line2 = document.querySelector('.line-2');
+        const line3 = document.querySelector('.line-3');
+
         let isMobileMenuOpen = false;
 
-        // Animación de entrada inicial para el panel
-        gsap.set(mobilePanel, { display: "none", opacity: 0, y: -20 });
+        gsap.set(mobilePanel, { display: "none", opacity: 0, y: -20, scale: 0.98 });
 
         mobileBtn.addEventListener('click', () => {
             isMobileMenuOpen = !isMobileMenuOpen;
             
             if (isMobileMenuOpen) {
-                // Abrir Panel General
+                // Animar Icono a "X"
+                line1.style.transform = 'translateY(7px) rotate(45deg)';
+                line2.style.opacity = '0';
+                line3.style.transform = 'translateY(-7px) rotate(-45deg)';
+
+                // Mostrar Panel con Efecto de Cristal
                 gsap.to(mobilePanel, {
                     display: "block",
                     opacity: 1,
                     y: 0,
+                    scale: 1,
                     duration: 0.5,
-                    ease: "power3.out"
+                    ease: "back.out(1.2)"
                 });
             } else {
-                // Cerrar Panel General
+                // Restaurar Icono Hamburguesa
+                line1.style.transform = 'translateY(0) rotate(0)';
+                line2.style.opacity = '1';
+                line3.style.transform = 'translateY(0) rotate(0)';
+
+                // Ocultar Panel
                 gsap.to(mobilePanel, {
                     opacity: 0,
                     y: -20,
+                    scale: 0.98,
                     duration: 0.3,
                     ease: "power2.in",
                     onComplete: () => gsap.set(mobilePanel, { display: "none" })
@@ -296,18 +327,18 @@
                 isOpen = !isOpen;
                 
                 if (isOpen) {
-                    gsap.to(chevron, { rotation: 180, duration: 0.3 });
+                    gsap.to(chevron, { rotation: 180, duration: 0.4, ease: "back.out(2)" });
                     gsap.to(submenu, { 
                         height: "auto", 
                         duration: 0.4, 
                         ease: "power2.out" 
                     });
                 } else {
-                    gsap.to(chevron, { rotation: 0, duration: 0.3 });
+                    gsap.to(chevron, { rotation: 0, duration: 0.3, ease: "power2.out" });
                     gsap.to(submenu, { 
                         height: 0, 
                         duration: 0.3, 
-                        ease: "power2.in" 
+                        ease: "power2.inOut" 
                     });
                 }
             });
