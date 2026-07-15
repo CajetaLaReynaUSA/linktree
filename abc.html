@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cajeta La Reyna | Manual FBA</title>
+    <title>Cajeta La Reyna | Manual FBA Completo</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -38,7 +38,8 @@
                             coffee: '#3E2723',
                             rust: '#C84B31',
                             mustard: '#E19832',
-                            leather: '#8B5A33' /* Acento premium para la Sidebar */
+                            leather: '#8B5A33',
+                            olive: '#4F6F52'
                         }
                     }
                 }
@@ -68,7 +69,7 @@
         .hero-reveal { clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); }
         .hero-word { display: inline-block; transform: translateY(100px); opacity: 0; }
         
-        /* Preparación GSAP Editorial Módulo */
+        /* Preparación GSAP Editorial Módulos */
         .reveal-block { opacity: 0; transform: translateY(30px); }
         .detail-line { transform: scaleX(0); transform-origin: left; }
         .detail-text { opacity: 0; transform: translateY(10px); }
@@ -80,6 +81,7 @@
     <div class="fixed inset-0 z-[-1] pointer-events-none opacity-40">
         <div class="absolute top-[-10%] left-[-10%] w-[40rem] h-[40rem] bg-fall-mustard/15 rounded-full blur-[120px]"></div>
         <div class="absolute bottom-[-10%] right-[-5%] w-[35rem] h-[35rem] bg-fall-rust/10 rounded-full blur-[140px]"></div>
+        <div class="absolute top-[50%] right-[-10%] w-[40rem] h-[40rem] bg-fall-olive/5 rounded-full blur-[150px]"></div>
     </div>
 
     <!-- ==========================================
@@ -97,6 +99,12 @@
                 <div class="p-2.5 flex flex-col gap-1">
                     <a href="#paso-1" class="scroll-link text-white/75 hover:text-white hover:bg-premium-hover px-5 py-3.5 rounded-2xl text-[15px] font-medium transition-all flex items-center gap-3">
                         <span class="w-1.5 h-1.5 rounded-full bg-fall-rust opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span> Paso 1
+                    </a>
+                    <a href="#paso-2" class="scroll-link text-white/75 hover:text-white hover:bg-premium-hover px-5 py-3.5 rounded-2xl text-[15px] font-medium transition-all flex items-center gap-3">
+                        <span class="w-1.5 h-1.5 rounded-full bg-fall-mustard opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span> Paso 2
+                    </a>
+                    <a href="#paso-3" class="scroll-link text-white/75 hover:text-white hover:bg-premium-hover px-5 py-3.5 rounded-2xl text-[15px] font-medium transition-all flex items-center gap-3">
+                        <span class="w-1.5 h-1.5 rounded-full bg-fall-olive opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span> Paso 3
                     </a>
                 </div>
             </div>
@@ -153,6 +161,8 @@
                 <div class="mobile-submenu bg-black/20">
                     <div class="flex flex-col px-6 py-3 pb-5 gap-2">
                         <a href="#paso-1" class="scroll-link text-white/60 hover:text-white py-2 text-base flex items-center gap-3"><span class="w-1.5 h-1.5 bg-fall-rust rounded-full"></span> Paso 1</a>
+                        <a href="#paso-2" class="scroll-link text-white/60 hover:text-white py-2 text-base flex items-center gap-3"><span class="w-1.5 h-1.5 bg-fall-mustard rounded-full"></span> Paso 2</a>
+                        <a href="#paso-3" class="scroll-link text-white/60 hover:text-white py-2 text-base flex items-center gap-3"><span class="w-1.5 h-1.5 bg-fall-olive rounded-full"></span> Paso 3</a>
                     </div>
                 </div>
             </div>
@@ -188,13 +198,11 @@
     <header class="relative w-full min-h-[90vh] flex flex-col justify-center items-center text-center px-4 md:px-6 pt-16">
         <div class="max-w-5xl mx-auto w-full flex flex-col items-center">
             
-            <!-- Etiqueta Opcional (Agrega profundidad) -->
             <div class="hero-badge opacity-0 translate-y-4 inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-fall-rust/10 border border-fall-rust/20 text-fall-rust mb-6 md:mb-8">
                 <span class="w-2 h-2 rounded-full bg-fall-rust animate-pulse"></span>
                 <span class="font-body text-xs font-bold tracking-[0.15em] uppercase">Manual Logístico FBA</span>
             </div>
 
-            <!-- Título Cinemático -->
             <div class="hero-reveal overflow-hidden px-2 py-2">
                 <h1 class="font-retro text-6xl sm:text-7xl md:text-8xl lg:text-[8.5rem] font-extrabold text-fall-coffee leading-[1.05] tracking-tight flex flex-wrap justify-center gap-x-3 md:gap-x-5 gap-y-2">
                     <span class="hero-word">Cajeta</span> 
@@ -203,7 +211,6 @@
                 </h1>
             </div>
 
-            <!-- Subtítulo -->
             <div class="hero-reveal overflow-hidden mt-6 px-4">
                 <p class="font-body text-xl sm:text-2xl md:text-3xl text-fall-coffee/75 font-medium tracking-tight flex flex-wrap justify-center gap-x-2 md:gap-x-2.5">
                     <span class="hero-word">Guía</span>
@@ -220,47 +227,40 @@
     </header>
 
     <!-- ==========================================
-         3. MÓDULO DE INFORMACIÓN (ASYMMETRICAL STICKY)
+         PASO 1: (TARJETA A LA DERECHA)
     =========================================== -->
     <section id="paso-1" class="relative w-full py-20 md:py-32 px-4 sm:px-6 md:px-8 border-t border-fall-coffee/10">
         
-        <!-- Header de Sección -->
         <div class="max-w-6xl mx-auto mb-10 flex justify-start">
             <span class="text-xs font-bold uppercase tracking-[0.2em] text-fall-rust border border-fall-rust/20 px-4 py-2 rounded-full">Paso 1</span>
         </div>
 
-        <!-- Grid Asimétrico (12 columnas) -->
+        <!-- Grid Asimétrico (Tarjeta a la Derecha en Desktop: lg:order-2) -->
         <div class="max-w-6xl mx-auto flex flex-col lg:grid lg:grid-cols-12 gap-12 lg:gap-16">
             
-            <!-- [MOBILE ORDER 1] / [DESKTOP ORDER 2] : Tarjeta Sticky -->
+            <!-- Sticky Card (Derecha) -->
             <div class="lg:col-span-4 order-1 lg:order-2 relative">
-                <div class="lg:sticky lg:top-36 bg-fall-leather rounded-[2rem] p-8 md:p-10 shadow-[0_30px_60px_rgba(62,39,35,0.12)] border border-white/10" id="details-card">
+                <!-- Se agregó la clase 'details-card-anim' para iterar en GSAP -->
+                <div class="details-card-anim lg:sticky lg:top-36 bg-fall-leather rounded-[2rem] p-8 md:p-10 shadow-[0_30px_60px_rgba(62,39,35,0.12)] border border-white/10">
                     
                     <h3 class="font-retro text-2xl md:text-3xl font-extrabold text-white mb-8 tracking-wide">Especificaciones<br>Técnicas</h3>
 
                     <div class="flex flex-col gap-6">
-                        <!-- Dato 1 -->
                         <div class="pb-6 relative">
                             <div class="absolute bottom-0 left-0 w-full h-[1px] bg-white/20 detail-line"></div>
                             <span class="block font-body text-sm font-medium text-white/70 mb-1 detail-text tracking-wide uppercase">Códigos de Barras :</span>
-                            <span class="block font-body text-lg font-medium text-white detail-text leading-snug">Cada Bundle es un producto. Validar 4 combinaciones y 2 tamaños.</span>
+                            <span class="block font-body text-lg font-medium text-white detail-text leading-snug">Validar 4 combinaciones y 2 tamaños.</span>
                         </div>
-                        
-                        <!-- Dato 2 -->
                         <div class="pb-6 relative">
                             <div class="absolute bottom-0 left-0 w-full h-[1px] bg-white/20 detail-line"></div>
                             <span class="block font-body text-sm font-medium text-white/70 mb-1 detail-text tracking-wide uppercase">Tamaño Etiqueta :</span>
                             <span class="block font-body text-xl font-medium text-white detail-text">1" x 2-5/8"</span>
                         </div>
-                        
-                        <!-- Dato 3 -->
                         <div class="pb-6 relative">
                             <div class="absolute bottom-0 left-0 w-full h-[1px] bg-white/20 detail-line"></div>
                             <span class="block font-body text-sm font-medium text-white/70 mb-1 detail-text tracking-wide uppercase">Papel Impresión :</span>
                             <span class="block font-body text-lg font-medium text-white detail-text">US Letter (8.5" x 11")</span>
                         </div>
-                        
-                        <!-- Dato 4 -->
                         <div class="pt-2">
                             <span class="block font-body text-sm font-medium text-white/70 mb-1 detail-text tracking-wide uppercase">Rendimiento :</span>
                             <span class="block font-body text-xl font-medium text-white detail-text">30 por Hoja</span>
@@ -269,7 +269,7 @@
                 </div>
             </div>
 
-            <!-- [MOBILE ORDER 2] / [DESKTOP ORDER 1] : Contenido de Lectura -->
+            <!-- Text Content (Izquierda) lg:pr-8 para separar de la tarjeta -->
             <div class="lg:col-span-8 order-2 lg:order-1 flex flex-col gap-14 md:gap-16 lg:pr-8">
                 
                 <div class="reveal-block">
@@ -278,10 +278,8 @@
                         Para que Amazon nos acepte los Bundles en el almacén de FBA, hay <span class="font-bold text-fall-rust">3 condiciones fundamentales</span> que se deben de cumplir de manera estricta durante el proceso de empaquetado:
                     </p>
                     
-                    <!-- Lista con Iconos Personalizados -->
                     <ul class="flex flex-col gap-6">
                         <li class="group flex items-start gap-4 text-fall-coffee/80 font-body text-lg md:text-xl transition-all hover:text-fall-coffee hover:translate-x-1 duration-300">
-                            <!-- SVG Concentrico Elegante -->
                             <span class="mt-1.5 text-fall-rust flex-shrink-0">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="group-hover:scale-110 transition-transform duration-300">
                                     <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5" fill="currentColor"/>
@@ -289,7 +287,7 @@
                             </span>
                             <span>
                                 <strong class="text-fall-coffee font-semibold block mb-1">Sin códigos ajenos a la vista:</strong> 
-                                Es importante que al momento de hacer los Bundles los frascos se ordenen de manera que los códigos de barras propios de las botellas queden viendo "Hacia el interior". Que queden ocultos para evitar que los escáneres los lean por accidente.
+                                Los códigos de barras propios de las botellas deben quedar ocultos viendo "Hacia el interior".
                             </span>
                         </li>
                         <li class="group flex items-start gap-4 text-fall-coffee/80 font-body text-lg md:text-xl transition-all hover:text-fall-coffee hover:translate-x-1 duration-300">
@@ -300,7 +298,7 @@
                             </span>
                             <span>
                                 <strong class="text-fall-coffee font-semibold block mb-1">Prueba de caída (1 metro):</strong> 
-                                Los Bundles sellados deben aguantar una caída de 1 metro de altura sin separarse. Cuando se sellen con el plástico termoencogible debe quedar firme sin movimiento.
+                                El plástico termoencogible debe mantener los Bundles firmes sin separación tras caer 1 metro.
                             </span>
                         </li>
                         <li class="group flex items-start gap-4 text-fall-coffee/80 font-body text-lg md:text-xl transition-all hover:text-fall-coffee hover:translate-x-1 duration-300">
@@ -311,26 +309,196 @@
                             </span>
                             <span>
                                 <strong class="text-fall-coffee font-semibold block mb-1">Etiquetado correcto:</strong> 
-                                Amazon pide que cada Bundle tenga 2 etiquetas visibles en la parte lateral del producto o en la parte plana más amplia del mismo.
+                                Cada Bundle requiere 2 etiquetas FNSKU visibles en la parte lateral más plana.
                             </span>
                         </li>
                     </ul>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- Secciones Dummy para permitir Scroll y probar la Smart Navbar -->
-    <section id="etiquetas-360" class="h-screen bg-white/20 flex flex-col items-center justify-center border-t border-fall-coffee/10">
-        <h2 class="font-retro text-4xl text-fall-coffee/40">Sección: Etiquetas 360 gr</h2>
-    </section>
-    <section id="acerca-de" class="h-[50vh] bg-premium-dark flex flex-col items-center justify-center">
-        <h2 class="font-retro text-4xl text-white/50">Footer / Acerca de</h2>
+    <!-- ==========================================
+         PASO 2: ZIG-ZAG (TARJETA A LA IZQUIERDA)
+    =========================================== -->
+    <section id="paso-2" class="relative w-full py-20 md:py-32 px-4 sm:px-6 md:px-8 border-t border-fall-coffee/10 bg-white/30">
+        
+        <div class="max-w-6xl mx-auto mb-10 flex justify-start">
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-fall-mustard border border-fall-mustard/30 px-4 py-2 rounded-full">Paso 2</span>
+        </div>
+
+        <!-- ZIG-ZAG Matriz: Tarjeta a la izquierda (lg:order-1) y Texto a la derecha (lg:order-2) -->
+        <div class="max-w-6xl mx-auto flex flex-col lg:grid lg:grid-cols-12 gap-12 lg:gap-16">
+            
+            <!-- Sticky Card (Izquierda en Desktop, Arriba en Mobile) -->
+            <div class="lg:col-span-4 order-1 lg:order-1 relative">
+                <div class="details-card-anim lg:sticky lg:top-36 bg-fall-coffee rounded-[2rem] p-8 md:p-10 shadow-[0_30px_60px_rgba(62,39,35,0.12)] border border-white/5">
+                    
+                    <h3 class="font-retro text-2xl md:text-3xl font-extrabold text-white mb-8 tracking-wide">Plataforma<br>Seller Central</h3>
+
+                    <div class="flex flex-col gap-6">
+                        <div class="pb-6 relative">
+                            <div class="absolute bottom-0 left-0 w-full h-[1px] bg-white/20 detail-line"></div>
+                            <span class="block font-body text-sm font-medium text-white/70 mb-1 detail-text tracking-wide uppercase">Workflow :</span>
+                            <span class="block font-body text-lg font-medium text-white detail-text">Send to Amazon (STA)</span>
+                        </div>
+                        <div class="pb-6 relative">
+                            <div class="absolute bottom-0 left-0 w-full h-[1px] bg-white/20 detail-line"></div>
+                            <span class="block font-body text-sm font-medium text-white/70 mb-1 detail-text tracking-wide uppercase">Tipo Empaque :</span>
+                            <span class="block font-body text-lg font-medium text-white detail-text">Case Packed Products</span>
+                        </div>
+                        <div class="pb-6 relative">
+                            <div class="absolute bottom-0 left-0 w-full h-[1px] bg-white/20 detail-line"></div>
+                            <span class="block font-body text-sm font-medium text-white/70 mb-1 detail-text tracking-wide uppercase">Preparación :</span>
+                            <span class="block font-body text-lg font-medium text-white detail-text">Merchant Prep</span>
+                        </div>
+                        <div class="pt-2">
+                            <span class="block font-body text-sm font-medium text-white/70 mb-1 detail-text tracking-wide uppercase">Etiquetas Cajas :</span>
+                            <span class="block font-body text-xl font-medium text-white detail-text">Térmicas (4x6")</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text Content (Derecha) lg:pl-8 para separar de la tarjeta izquierda -->
+            <div class="lg:col-span-8 order-2 lg:order-2 flex flex-col gap-14 md:gap-16 lg:pl-8">
+                
+                <div class="reveal-block">
+                    <h2 class="font-retro text-3xl md:text-4xl lg:text-5xl font-extrabold text-fall-coffee mb-6 tracking-tight leading-[1.1]">Generar Orden de Envío</h2>
+                    <p class="font-body text-lg md:text-xl text-fall-coffee/80 leading-relaxed mb-8">
+                        Una vez armados los Bundles, el siguiente paso crítico es la creación digital del envío dentro de <span class="font-bold text-fall-mustard">Amazon Seller Central</span>. Es imperativo reportar las cantidades exactas para evitar retrasos en el inventario FBA.
+                    </p>
+                    
+                    <ul class="flex flex-col gap-6">
+                        <li class="group flex items-start gap-4 text-fall-coffee/80 font-body text-lg md:text-xl transition-all hover:text-fall-coffee hover:translate-x-1 duration-300">
+                            <span class="mt-1.5 text-fall-mustard flex-shrink-0">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="group-hover:scale-110 transition-transform duration-300">
+                                    <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5" fill="currentColor"/>
+                                </svg>
+                            </span>
+                            <span>
+                                <strong class="text-fall-coffee font-semibold block mb-1">Declaración de SKUs:</strong> 
+                                Seleccionar los SKUs específicos a enviar y confirmar el origen del embarque.
+                            </span>
+                        </li>
+                        <li class="group flex items-start gap-4 text-fall-coffee/80 font-body text-lg md:text-xl transition-all hover:text-fall-coffee hover:translate-x-1 duration-300">
+                            <span class="mt-1.5 text-fall-mustard flex-shrink-0">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="group-hover:scale-110 transition-transform duration-300">
+                                    <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5" fill="currentColor"/>
+                                </svg>
+                            </span>
+                            <span>
+                                <strong class="text-fall-coffee font-semibold block mb-1">Medidas de Cajas Master (Box Content):</strong> 
+                                Proveer las dimensiones exactas (Largo x Ancho x Alto) y el peso en Libras de cada caja máster.
+                            </span>
+                        </li>
+                        <li class="group flex items-start gap-4 text-fall-coffee/80 font-body text-lg md:text-xl transition-all hover:text-fall-coffee hover:translate-x-1 duration-300">
+                            <span class="mt-1.5 text-fall-mustard flex-shrink-0">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="group-hover:scale-110 transition-transform duration-300">
+                                    <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5" fill="currentColor"/>
+                                </svg>
+                            </span>
+                            <span>
+                                <strong class="text-fall-coffee font-semibold block mb-1">Confirmar Carrier:</strong> 
+                                Imprimir las etiquetas de envío generadas por el sistema (Amazon Partnered Carrier o Externo).
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- ==========================================
-         SCRIPTS: GSAP, SMART HEADER Y LÓGICA UX
+         PASO 3: ZIG-ZAG (TARJETA A LA DERECHA OTRA VEZ)
+    =========================================== -->
+    <section id="paso-3" class="relative w-full py-20 md:py-32 px-4 sm:px-6 md:px-8 border-t border-fall-coffee/10">
+        
+        <div class="max-w-6xl mx-auto mb-10 flex justify-start">
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-fall-olive border border-fall-olive/30 px-4 py-2 rounded-full">Paso 3</span>
+        </div>
+
+        <div class="max-w-6xl mx-auto flex flex-col lg:grid lg:grid-cols-12 gap-12 lg:gap-16">
+            
+            <!-- Sticky Card (Derecha en Desktop) -->
+            <div class="lg:col-span-4 order-1 lg:order-2 relative">
+                <div class="details-card-anim lg:sticky lg:top-36 bg-[#2B3A2C] rounded-[2rem] p-8 md:p-10 shadow-[0_30px_60px_rgba(43,58,44,0.12)] border border-white/10">
+                    
+                    <h3 class="font-retro text-2xl md:text-3xl font-extrabold text-white mb-8 tracking-wide">Despacho<br>Logístico</h3>
+
+                    <div class="flex flex-col gap-6">
+                        <div class="pb-6 relative">
+                            <div class="absolute bottom-0 left-0 w-full h-[1px] bg-white/20 detail-line"></div>
+                            <span class="block font-body text-sm font-medium text-white/70 mb-1 detail-text tracking-wide uppercase">Límite Peso Caja :</span>
+                            <span class="block font-body text-xl font-medium text-white detail-text">Max 50 Lbs</span>
+                        </div>
+                        <div class="pb-6 relative">
+                            <div class="absolute bottom-0 left-0 w-full h-[1px] bg-white/20 detail-line"></div>
+                            <span class="block font-body text-sm font-medium text-white/70 mb-1 detail-text tracking-wide uppercase">Límite Medidas :</span>
+                            <span class="block font-body text-lg font-medium text-white detail-text">Max 25" x lado</span>
+                        </div>
+                        <div class="pb-6 relative">
+                            <div class="absolute bottom-0 left-0 w-full h-[1px] bg-white/20 detail-line"></div>
+                            <span class="block font-body text-sm font-medium text-white/70 mb-1 detail-text tracking-wide uppercase">Lugar de Etiqueta :</span>
+                            <span class="block font-body text-lg font-medium text-white detail-text leading-snug">Costado superior, sin cruzar la cinta de sellado</span>
+                        </div>
+                        <div class="pt-2">
+                            <span class="block font-body text-sm font-medium text-white/70 mb-1 detail-text tracking-wide uppercase">Palletización :</span>
+                            <span class="block font-body text-xl font-medium text-white detail-text">Estándar 40x48"</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text Content (Izquierda) lg:pr-8 -->
+            <div class="lg:col-span-8 order-2 lg:order-1 flex flex-col gap-14 md:gap-16 lg:pr-8">
+                
+                <div class="reveal-block">
+                    <h2 class="font-retro text-3xl md:text-4xl lg:text-5xl font-extrabold text-fall-coffee mb-6 tracking-tight leading-[1.1]">Envío al Almacén de Amazon</h2>
+                    <p class="font-body text-lg md:text-xl text-fall-coffee/80 leading-relaxed mb-8">
+                        La fase final requiere que la entrega a los almacenes fluya sin problemas. Una caja rechazada o dañada en el trayecto representa una merma operativa y costos adicionales.
+                    </p>
+                    
+                    <ul class="flex flex-col gap-6">
+                        <li class="group flex items-start gap-4 text-fall-coffee/80 font-body text-lg md:text-xl transition-all hover:text-fall-coffee hover:translate-x-1 duration-300">
+                            <span class="mt-1.5 text-fall-olive flex-shrink-0">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="group-hover:scale-110 transition-transform duration-300">
+                                    <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5" fill="currentColor"/>
+                                </svg>
+                            </span>
+                            <span>
+                                <strong class="text-fall-coffee font-semibold block mb-1">Límites estrictos de caja:</strong> 
+                                Ninguna caja estándar debe superar las 50 libras o las 25 pulgadas por lado. En caso de superarlo, Amazon puede rechazar la recepción.
+                            </span>
+                        </li>
+                        <li class="group flex items-start gap-4 text-fall-coffee/80 font-body text-lg md:text-xl transition-all hover:text-fall-coffee hover:translate-x-1 duration-300">
+                            <span class="mt-1.5 text-fall-olive flex-shrink-0">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="group-hover:scale-110 transition-transform duration-300">
+                                    <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5" fill="currentColor"/>
+                                </svg>
+                            </span>
+                            <span>
+                                <strong class="text-fall-coffee font-semibold block mb-1">Colocación de Etiquetas Térmicas:</strong> 
+                                Deben pegarse en un lugar liso, preferentemente en el costado, cuidando que la cinta adhesiva de la caja nunca cruce por encima del código de barras.
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Dummy -->
+    <section id="acerca-de" class="relative w-full py-40 px-6 flex items-center justify-center bg-premium-dark border-t border-fall-coffee/10">
+        <div class="text-center">
+            <h2 class="font-retro text-4xl md:text-5xl text-white mb-6">Acerca de nosotros</h2>
+            <p class="text-white/60 font-body text-lg">Documentación oficial FBA de Cajeta La Reyna.</p>
+        </div>
+    </section>
+
+
+    <!-- ==========================================
+         JAVASCRIPT (Lógicas Globales y Timelines GSAP)
     =========================================== -->
     <script>
         gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
@@ -338,13 +506,13 @@
         document.fonts.ready.then(() => {
             initHeroAnimation();
             initSmartNavbar();
-            initEditorialAnimation();
+            initEditorialAnimation(); // Ahora maneja TODAS las tarjetas dinámicamente
             initSmoothScrolling();
             initMobileMenu();
             initDesktopDropdowns();
         });
 
-        // 1. ANIMACIÓN DEL HERO
+        // 1. HERO ANIMATION
         function initHeroAnimation() {
             const tl = gsap.timeline();
             tl.fromTo(["#desktop-navbar", "#mobile-menu-btn"], { y: -100, opacity: 0 }, { y: 0, opacity: 1, duration: 1.2, ease: "power4.out", delay: 0.2 });
@@ -352,51 +520,45 @@
             tl.to(".hero-word", { y: 0, opacity: 1, duration: 1.2, stagger: 0.05, ease: "power4.out" }, "-=0.6");
         }
 
-        // 2. SMART NAVBAR (Ocultar al bajar / Mostrar al subir)
+        // 2. SMART NAVBAR (Ocultar/Mostrar con Threshold)
         function initSmartNavbar() {
             let lastScrollY = window.scrollY;
             let isNavHidden = false;
             let isTicking = false;
-            const scrollThreshold = 15; // Evita que se active por error con toques leves
+            const scrollThreshold = 15; 
             const navElements = ["#desktop-navbar", "#mobile-menu-btn"];
-
-            function updateNavbar() {
-                const currentScrollY = window.scrollY;
-                const scrolledDistance = Math.abs(currentScrollY - lastScrollY);
-
-                if (scrolledDistance < scrollThreshold) {
-                    isTicking = false;
-                    return;
-                }
-
-                if (currentScrollY > lastScrollY && currentScrollY > 100) {
-                    // Bajando
-                    if (!isNavHidden) {
-                        gsap.to(navElements, { y: -120, opacity: 0, duration: 0.5, ease: "power3.inOut" });
-                        isNavHidden = true;
-                        if(isMobileMenuOpen) closeMobilePanel(); // Cierra el menú al bajar
-                    }
-                } else if (currentScrollY < lastScrollY) {
-                    // Subiendo
-                    if (isNavHidden) {
-                        gsap.to(navElements, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" });
-                        isNavHidden = false;
-                    }
-                }
-                lastScrollY = currentScrollY;
-                isTicking = false;
-            }
 
             window.addEventListener('scroll', () => {
                 if (!isTicking) {
-                    window.requestAnimationFrame(updateNavbar);
+                    window.requestAnimationFrame(() => {
+                        const currentScrollY = window.scrollY;
+                        const scrolledDistance = Math.abs(currentScrollY - lastScrollY);
+
+                        if (scrolledDistance < scrollThreshold) { isTicking = false; return; }
+
+                        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                            if (!isNavHidden) {
+                                gsap.to(navElements, { y: -120, opacity: 0, duration: 0.5, ease: "power3.inOut" });
+                                isNavHidden = true;
+                                if(isMobileMenuOpen) closeMobilePanel(); 
+                            }
+                        } else if (currentScrollY < lastScrollY) {
+                            if (isNavHidden) {
+                                gsap.to(navElements, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" });
+                                isNavHidden = false;
+                            }
+                        }
+                        lastScrollY = currentScrollY;
+                        isTicking = false;
+                    });
                     isTicking = true;
                 }
             });
         }
 
-        // 3. ANIMACIÓN DEL MÓDULO DE INFORMACIÓN
+        // 3. ✨ ANIMACIÓN EDITORIAL MULTIPLE (Iteración Dinámica)
         function initEditorialAnimation() {
+            // Textos descriptivos (Fade Up)
             const blocks = gsap.utils.toArray('.reveal-block');
             blocks.forEach((block) => {
                 gsap.to(block, {
@@ -405,13 +567,26 @@
                 });
             });
 
-            const cardTl = gsap.timeline({ scrollTrigger: { trigger: "#details-card", start: "top 80%" } });
-            cardTl.from("#details-card", { opacity: 0, y: 40, scale: 0.98, duration: 1, ease: "power4.out" });
-            cardTl.to(".detail-line", { scaleX: 1, duration: 0.8, stagger: 0.15, ease: "power3.inOut" }, "-=0.6");
-            cardTl.to(".detail-text", { opacity: 1, y: 0, duration: 0.6, stagger: 0.08, ease: "power2.out" }, "-=0.6");
+            // Tarjetas Sticky (Bucle inteligente para las 3 tarjetas de Detalles)
+            const detailCards = gsap.utils.toArray('.details-card-anim');
+            detailCards.forEach((card) => {
+                const cardTl = gsap.timeline({
+                    scrollTrigger: { trigger: card, start: "top 80%" }
+                });
+
+                // Entrada general de la tarjeta
+                cardTl.from(card, { opacity: 0, y: 40, scale: 0.98, duration: 1, ease: "power4.out" });
+                
+                // Busca y anima los elementos internos ESPECÍFICOS de la tarjeta actual
+                const lines = card.querySelectorAll('.detail-line');
+                const texts = card.querySelectorAll('.detail-text');
+                
+                cardTl.to(lines, { scaleX: 1, duration: 0.8, stagger: 0.15, ease: "power3.inOut" }, "-=0.6");
+                cardTl.to(texts, { opacity: 1, y: 0, duration: 0.6, stagger: 0.08, ease: "power2.out" }, "-=0.6");
+            });
         }
 
-        // 4. SMOOTH SCROLLING (Navegación Suave a Secciones)
+        // 4. SMOOTH SCROLLING 
         function initSmoothScrolling() {
             document.querySelectorAll('.scroll-link').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
@@ -423,7 +598,7 @@
 
                     gsap.to(window, {
                         duration: 1.5,
-                        scrollTo: { y: targetID, offsetY: 120 }, // Offset para que la Navbar no tape el título
+                        scrollTo: { y: targetID, offsetY: 120 }, 
                         ease: "power4.inOut"
                     });
                 });
@@ -470,7 +645,6 @@
 
             mobileBtn.addEventListener('click', () => isMobileMenuOpen ? closeMobilePanel() : openMobilePanel());
 
-            // Lógica de Acordeones
             document.querySelectorAll('.mobile-accordion').forEach(acc => {
                 const trigger = acc.querySelector('.accordion-trigger'), submenu = acc.querySelector('.mobile-submenu'), chevron = acc.querySelector('.chevron-mob');
                 let isOpen = false;
