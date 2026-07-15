@@ -3,17 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cajeta La Reyna | Manual Logístico FBA</title>
+    <title>Navbar & Hero | Cajeta La Reyna</title>
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- GSAP Core & Plugins -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
     
-    <!-- Google Fonts Premium -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -40,9 +34,6 @@
                             mustard: '#E19832',
                             olive: '#4F6F52'
                         }
-                    },
-                    transitionTimingFunction: {
-                        'premium': 'cubic-bezier(0.16, 1, 0.3, 1)',
                     }
                 }
             }
@@ -51,14 +42,18 @@
 
     <style>
         body { background-color: #F4EFE6; overflow-x: hidden; }
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #F4EFE6; }
-        ::-webkit-scrollbar-thumb { background: rgba(62, 39, 35, 0.15); border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #C84B31; }
         
-        /* Navbar & Dropdowns */
-        .dropdown-menu, #mobile-menu-panel { display: none; opacity: 0; }
-        .mobile-submenu { height: 0; overflow: hidden; }
+        /* Ocultar elementos para GSAP */
+        .dropdown-menu, #mobile-menu-panel { 
+            display: none; 
+            opacity: 0; 
+        }
+        .mobile-submenu {
+            height: 0;
+            overflow: hidden;
+        }
+
+        /* Micro-interacción de texto (Hover) */
         .nav-link-text {
             background: linear-gradient(to right, #ffffff, #ffffff);
             background-size: 0% 2px;
@@ -66,28 +61,25 @@
             background-position: left bottom;
             transition: background-size 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        button:hover .nav-link-text, a:hover .nav-link-text { background-size: 100% 2px; }
+        button:hover .nav-link-text, a:hover .nav-link-text {
+            background-size: 100% 2px;
+        }
         
-        /* Hero & Scrollytelling Setup */
+        /* Utilidad para la animación de texto del Hero */
         .hero-reveal { clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); }
         .hero-word { display: inline-block; transform: translateY(100px); opacity: 0; }
-        
-        #ch1-title-desktop, #ch1-title-mobile { opacity: 0; }
-        .ch1-slide-1, .ch1-slide-2 { visibility: hidden; }
     </style>
 </head>
 <body class="font-body min-h-screen">
 
-    <!-- Fondo Orgánico (Z-index profundo) -->
+    <!-- Fondo Sutil de Pruebas -->
     <div class="fixed inset-0 z-[-1] pointer-events-none opacity-40">
-        <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.75%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/%3E%3C/svg%3E');"></div>
-        <div class="bg-shape-1 absolute -top-20 -left-20 w-72 h-72 md:w-[40rem] md:h-[40rem] bg-fall-mustard/20 rounded-full blur-[80px] md:blur-[130px]"></div>
-        <div class="bg-shape-2 absolute top-1/3 right-[-10%] w-80 h-[35rem] bg-fall-olive/15 rounded-full blur-[90px] md:blur-[150px]"></div>
-        <div class="bg-shape-3 absolute bottom-[-10%] left-1/3 w-96 h-96 bg-fall-rust/10 rounded-full blur-[100px] md:blur-[140px]"></div>
+        <div class="absolute top-[-10%] left-[-10%] w-[40rem] h-[40rem] bg-fall-mustard/10 rounded-full blur-[100px]"></div>
+        <div class="absolute bottom-[-10%] right-[-5%] w-[35rem] h-[35rem] bg-fall-rust/5 rounded-full blur-[120px]"></div>
     </div>
 
     <!-- ==========================================
-         [DESKTOP] NAVBAR FLOTANTE
+         [DESKTOP] NAVBAR FLOTANTE MINIMALISTA
     =========================================== -->
     <nav id="desktop-navbar" class="hidden md:flex fixed top-8 left-1/2 -translate-x-1/2 z-50 bg-premium-black backdrop-blur-xl border border-premium-border rounded-full px-2.5 py-2.5 shadow-[0_25px_50px_rgba(0,0,0,0.15)] items-center gap-2 transition-all duration-500 opacity-0 translate-y-[-20px]">
         
@@ -101,13 +93,13 @@
             </button>
             <div class="dropdown-menu absolute top-[125%] left-1/2 -translate-x-1/2 w-52 bg-premium-dark border border-premium-border rounded-3xl shadow-2xl overflow-hidden backdrop-blur-2xl">
                 <div class="p-2.5 flex flex-col gap-1">
-                    <a href="#step-1" class="text-white/75 hover:text-white hover:bg-premium-hover px-5 py-3.5 rounded-2xl text-[15px] font-medium transition-all flex items-center gap-3">
+                    <a href="#paso1" class="text-white/75 hover:text-white hover:bg-premium-hover px-5 py-3.5 rounded-2xl text-[15px] font-medium transition-all flex items-center gap-3">
                         <span class="w-1.5 h-1.5 rounded-full bg-fall-rust opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span> Paso 1
                     </a>
-                    <a href="#step-2" class="text-white/75 hover:text-white hover:bg-premium-hover px-5 py-3.5 rounded-2xl text-[15px] font-medium transition-all flex items-center gap-3">
+                    <a href="#paso2" class="text-white/75 hover:text-white hover:bg-premium-hover px-5 py-3.5 rounded-2xl text-[15px] font-medium transition-all flex items-center gap-3">
                         <span class="w-1.5 h-1.5 rounded-full bg-fall-rust opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span> Paso 2
                     </a>
-                    <a href="#step-3" class="text-white/75 hover:text-white hover:bg-premium-hover px-5 py-3.5 rounded-2xl text-[15px] font-medium transition-all flex items-center gap-3">
+                    <a href="#paso3" class="text-white/75 hover:text-white hover:bg-premium-hover px-5 py-3.5 rounded-2xl text-[15px] font-medium transition-all flex items-center gap-3">
                         <span class="w-1.5 h-1.5 rounded-full bg-fall-rust opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span> Paso 3
                     </a>
                 </div>
@@ -126,10 +118,10 @@
             </button>
             <div class="dropdown-menu absolute top-[125%] left-1/2 -translate-x-1/2 w-48 bg-premium-dark border border-premium-border rounded-3xl shadow-2xl overflow-hidden backdrop-blur-2xl">
                 <div class="p-2.5 flex flex-col gap-1">
-                    <a href="#step-1" class="text-white/75 hover:text-white hover:bg-premium-hover px-5 py-3.5 rounded-2xl text-[15px] font-medium transition-all flex items-center justify-between">
+                    <a href="#360" class="text-white/75 hover:text-white hover:bg-premium-hover px-5 py-3.5 rounded-2xl text-[15px] font-medium transition-all flex items-center justify-between">
                         360 gr <span class="text-[11px] font-bold text-white/30 border border-white/10 rounded-md px-2 py-1">Ver</span>
                     </a>
-                    <a href="#step-1" class="text-white/75 hover:text-white hover:bg-premium-hover px-5 py-3.5 rounded-2xl text-[15px] font-medium transition-all flex items-center justify-between">
+                    <a href="#155" class="text-white/75 hover:text-white hover:bg-premium-hover px-5 py-3.5 rounded-2xl text-[15px] font-medium transition-all flex items-center justify-between">
                         155 gr <span class="text-[11px] font-bold text-white/30 border border-white/10 rounded-md px-2 py-1">Ver</span>
                     </a>
                 </div>
@@ -139,13 +131,14 @@
         <div class="w-[1.5px] h-5 bg-white/10 mx-1"></div>
 
         <!-- Link: Acerca de -->
-        <a href="#support-section" class="text-white/85 hover:text-white px-6 py-3 rounded-full text-[15px] font-medium transition-colors flex items-center">
+        <a href="#acerca-de" class="text-white/85 hover:text-white px-6 py-3 rounded-full text-[15px] font-medium transition-colors flex items-center">
             <span class="nav-link-text pb-0.5">Acerca de</span>
         </a>
+
     </nav>
 
     <!-- ==========================================
-         [MOBILE] BOTÓN Y PANEL
+         [MOBILE] BOTÓN CIRCULAR (+6px Extra)
     =========================================== -->
     <button id="mobile-menu-btn" class="md:hidden fixed top-6 right-6 z-50 w-[54px] h-[54px] bg-premium-black backdrop-blur-xl border border-premium-border rounded-full shadow-[0_15px_35px_rgba(0,0,0,0.2)] flex items-center justify-center group active:scale-90 transition-all duration-300">
         <div class="relative w-5 h-4 flex flex-col justify-between">
@@ -155,8 +148,10 @@
         </div>
     </button>
 
+    <!-- [MOBILE] PANEL DE CRISTAL (Acordeones) -->
     <div id="mobile-menu-panel" class="md:hidden fixed inset-x-4 top-[100px] z-40 bg-premium-dark/95 backdrop-blur-2xl border border-premium-border rounded-[2rem] shadow-2xl p-6">
         <div class="flex flex-col gap-2.5">
+            
             <!-- Acordeón Pasos -->
             <div class="mobile-accordion bg-white/5 rounded-2xl overflow-hidden border border-white/5">
                 <button class="w-full flex justify-between items-center text-white px-6 py-4.5 font-medium text-lg accordion-trigger active:bg-white/5 transition-colors">
@@ -167,9 +162,9 @@
                 </button>
                 <div class="mobile-submenu bg-black/20">
                     <div class="flex flex-col px-6 py-3 pb-5 gap-2">
-                        <a href="#step-1" class="mobile-link text-white/60 hover:text-white py-2 text-base flex items-center gap-3"><span class="w-1.5 h-1.5 bg-fall-rust rounded-full"></span> Paso 1</a>
-                        <a href="#step-2" class="mobile-link text-white/60 hover:text-white py-2 text-base flex items-center gap-3"><span class="w-1.5 h-1.5 bg-fall-rust rounded-full"></span> Paso 2</a>
-                        <a href="#step-3" class="mobile-link text-white/60 hover:text-white py-2 text-base flex items-center gap-3"><span class="w-1.5 h-1.5 bg-fall-rust rounded-full"></span> Paso 3</a>
+                        <a href="#paso1" class="text-white/60 hover:text-white py-2 text-base flex items-center gap-3"><span class="w-1.5 h-1.5 bg-fall-rust rounded-full"></span> Paso 1</a>
+                        <a href="#paso2" class="text-white/60 hover:text-white py-2 text-base flex items-center gap-3"><span class="w-1.5 h-1.5 bg-fall-rust rounded-full"></span> Paso 2</a>
+                        <a href="#paso3" class="text-white/60 hover:text-white py-2 text-base flex items-center gap-3"><span class="w-1.5 h-1.5 bg-fall-rust rounded-full"></span> Paso 3</a>
                     </div>
                 </div>
             </div>
@@ -184,43 +179,46 @@
                 </button>
                 <div class="mobile-submenu bg-black/20">
                     <div class="flex flex-col px-6 py-3 pb-5 gap-2">
-                        <a href="#step-1" class="mobile-link text-white/60 hover:text-white py-2 text-base flex items-center justify-between">
+                        <a href="#360" class="text-white/60 hover:text-white py-2 text-base flex items-center justify-between">
                             360 gr <span class="text-[11px] font-bold uppercase border border-white/10 px-2.5 py-1 rounded-md text-white/40">Ver</span>
                         </a>
-                        <a href="#step-1" class="mobile-link text-white/60 hover:text-white py-2 text-base flex items-center justify-between">
+                        <a href="#155" class="text-white/60 hover:text-white py-2 text-base flex items-center justify-between">
                             155 gr <span class="text-[11px] font-bold uppercase border border-white/10 px-2.5 py-1 rounded-md text-white/40">Ver</span>
                         </a>
                     </div>
                 </div>
             </div>
 
-            <a href="#support-section" class="mobile-link w-full flex items-center text-white px-6 py-4.5 text-lg font-medium rounded-2xl active:bg-white/5 transition-colors mt-2">
+            <a href="#acerca-de" class="w-full flex items-center text-white px-6 py-4.5 text-lg font-medium rounded-2xl active:bg-white/5 transition-colors mt-2">
                 Acerca de
             </a>
         </div>
     </div>
 
     <!-- ==========================================
-         HERO SECTION
+         HERO SECTION (Título y Subtítulo)
     =========================================== -->
-    <header id="hero-section" class="relative w-full min-h-screen flex flex-col justify-center items-center text-center px-4 md:px-6">
+    <header class="relative w-full h-screen flex flex-col justify-center items-center text-center px-4 md:px-6">
         <div class="max-w-5xl mx-auto w-full flex flex-col items-center">
             
-            <div class="hero-badge opacity-0 translate-y-4 inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-fall-rust/10 border border-fall-rust/20 text-fall-rust mb-6">
+            <!-- Etiqueta Opcional de Alta Gama -->
+            <div class="hero-badge opacity-0 translate-y-4 inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-fall-rust/10 border border-fall-rust/20 text-fall-rust mb-6 md:mb-8">
                 <span class="w-2 h-2 rounded-full bg-fall-rust animate-pulse"></span>
-                <span class="font-body text-xs font-bold tracking-[0.15em] uppercase">Manual Logístico FBA</span>
+                <span class="font-body text-xs font-bold tracking-[0.15em] uppercase">Manual Logístico</span>
             </div>
 
+            <!-- TÍTULO (Cajeta La Reyna) -->
             <div class="hero-reveal overflow-hidden px-2 py-2">
-                <h1 class="font-retro text-5xl sm:text-7xl md:text-8xl lg:text-[7.5rem] font-extrabold text-fall-coffee leading-[1.05] tracking-tight">
+                <h1 class="font-retro text-5xl sm:text-7xl md:text-8xl lg:text-[7.5rem] font-extrabold text-fall-coffee leading-[1.05] tracking-tight flex flex-wrap justify-center gap-x-3 md:gap-x-5 gap-y-2">
                     <span class="hero-word">Cajeta</span> 
                     <span class="hero-word text-fall-rust">La</span> 
                     <span class="hero-word text-fall-rust">Reyna</span>
                 </h1>
             </div>
 
+            <!-- SUBTÍTULO -->
             <div class="hero-reveal overflow-hidden mt-6 px-4">
-                <p class="font-body text-xl sm:text-2xl md:text-3xl text-fall-coffee/70 font-medium tracking-tight">
+                <p class="font-body text-xl sm:text-2xl md:text-3xl text-fall-coffee/75 font-medium tracking-tight flex flex-wrap justify-center gap-x-2 md:gap-x-2.5">
                     <span class="hero-word">Guía</span>
                     <span class="hero-word">para</span>
                     <span class="hero-word">enviar</span>
@@ -234,225 +232,33 @@
         </div>
     </header>
 
-    <!-- ==========================================
-         SCROLLYTELLING: ANTES DE COMENZAR
-    =========================================== -->
-    <section id="chapter-1" class="relative w-full h-screen overflow-hidden border-t border-fall-coffee/5 bg-fall-cream/50">
-        
-        <!-- [DESKTOP] -->
-        <div id="ch1-title-desktop" class="absolute inset-0 w-full h-full hidden md:flex flex-row items-center justify-center gap-5 whitespace-nowrap z-20 pointer-events-none px-4">
-            <span class="ch1-word-dk antes font-retro text-7xl lg:text-[5.5rem] font-extrabold text-fall-rust leading-none tracking-tight">Antes</span>
-            <span class="ch1-word-dk de font-retro text-7xl lg:text-[5.5rem] font-extrabold text-fall-rust leading-none tracking-tight">de</span>
-            <span class="ch1-word-dk comenzar font-retro text-7xl lg:text-[5.5rem] font-extrabold text-fall-rust leading-none tracking-tight">comenzar</span>
-        </div>
-
-        <!-- [MOBILE] -->
-        <div id="ch1-title-mobile" class="absolute inset-0 w-full h-full flex md:hidden flex-row items-center justify-center gap-x-2.5 whitespace-nowrap z-20 pointer-events-none px-4">
-            <div class="ch1-word-box flex justify-center items-center">
-                <span class="ch1-word-mb antes font-retro text-[9.5vw] font-extrabold text-fall-rust leading-none tracking-tight">Antes</span>
-            </div>
-            <div class="ch1-word-box flex justify-center items-center">
-                <span class="ch1-word-mb de font-retro text-[9.5vw] font-extrabold text-fall-rust leading-none tracking-tight">de</span>
-            </div>
-            <div class="ch1-word-box flex justify-center items-center">
-                <span class="ch1-word-mb comenzar font-retro text-[9.5vw] font-extrabold text-fall-rust leading-none tracking-tight">comenzar</span>
-            </div>
-        </div>
-
-        <div class="absolute inset-0 md:left-1/2 md:w-[50%] h-full flex flex-col justify-center px-6 sm:px-12 lg:px-20 z-10 pointer-events-none">
-            <div class="ch1-slide-1 absolute left-6 right-6 md:left-auto md:right-auto md:w-full md:pr-24 opacity-0 text-center md:text-left">
-                <p class="text-2xl sm:text-3xl lg:text-4xl font-medium leading-relaxed md:leading-[1.3] text-fall-coffee tracking-tight">
-                    Hola, soy <span class="text-fall-rust font-semibold">Juan Pablo</span>, encargado de la gestión digital de Amazon FBA.
-                </p>
-            </div>
-            <div class="ch1-slide-2 absolute left-6 right-6 md:left-auto md:right-auto md:w-full md:pr-24 opacity-0 flex flex-col gap-4 text-center md:text-left">
-                <p class="text-lg sm:text-xl lg:text-2xl font-medium leading-relaxed text-fall-coffee/90 tracking-tight">
-                    Amazon es extremadamente estricto con sus especificaciones de recepción logística.
-                </p>
-                <p class="text-lg sm:text-xl lg:text-2xl font-medium leading-relaxed text-fall-coffee/90 tracking-tight border-t-2 pt-3 md:border-t-0 md:pt-0 md:border-l-2 border-fall-mustard md:pl-4">
-                    Por eso diseñé este espacio: para tener los requerimientos físicos listos al instante, eliminando manuales aburridos.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==========================================
-         PASO 1: EDITORIAL PREMIUM
-    =========================================== -->
-    <section id="step-1" class="relative w-full min-h-screen flex items-center justify-center border-t border-fall-coffee/5 bg-white/20 py-24 px-4 sm:px-6 md:px-8">
-        <div class="max-w-5xl w-full">
-            
-            <div class="text-center md:text-left mb-12 md:mb-16">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-fall-mustard block mb-3">Fase de Empaque</span>
-                <h2 class="font-retro text-3xl sm:text-5xl md:text-6xl font-extrabold text-fall-coffee mb-6 tracking-tight leading-tight">
-                    Paso 1: Armado y Empaquetado
-                </h2>
-                <p class="font-body text-lg sm:text-xl text-fall-coffee/80 max-w-2xl mx-auto md:mx-0 leading-relaxed">
-                    Para que Amazon nos acepte los Bundles hay <span class="text-fall-rust font-bold">3 condiciones fundamentales</span> que se deben cumplir estrictamente.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                <!-- Tarjeta 1 -->
-                <div class="group bg-white/60 hover:bg-white border border-white hover:border-fall-mustard/30 rounded-[2rem] p-6 sm:p-8 shadow-[0_10px_30px_rgba(62,39,35,0.01)] hover:shadow-[0_20px_40px_rgba(62,39,35,0.04)] transition-all duration-500 ease-premium transform hover:-translate-y-1">
-                    <div class="w-10 h-10 rounded-full bg-fall-rust/10 text-fall-rust font-retro font-bold flex items-center justify-center mb-6">1</div>
-                    <h3 class="font-retro text-xl font-bold text-fall-coffee mb-4 leading-tight group-hover:text-fall-rust transition-colors">Sin códigos ajenos a la vista</h3>
-                    <p class="font-body text-sm text-fall-coffee/75 leading-relaxed">
-                        Es importante que al hacer los Bundles los frascos se ordenen de manera que los códigos de barras propios de las botellas queden viendo <span class="font-semibold text-fall-coffee">“Hacia el interior”</span>. Que queden ocultos. Esto evita que los escáneres de Amazon los lean por accidente.
-                    </p>
-                </div>
-                <!-- Tarjeta 2 -->
-                <div class="group bg-white/60 hover:bg-white border border-white hover:border-fall-mustard/30 rounded-[2rem] p-6 sm:p-8 shadow-[0_10px_30px_rgba(62,39,35,0.01)] hover:shadow-[0_20px_40px_rgba(62,39,35,0.04)] transition-all duration-500 ease-premium transform hover:-translate-y-1">
-                    <div class="w-10 h-10 rounded-full bg-fall-mustard/10 text-fall-mustard font-retro font-bold flex items-center justify-center mb-6">2</div>
-                    <h3 class="font-retro text-xl font-bold text-fall-coffee mb-4 leading-tight group-hover:text-fall-mustard transition-colors">Prueba de caída (1 metro)</h3>
-                    <p class="font-body text-sm text-fall-coffee/75 leading-relaxed">
-                        Los Bundles sellados deben aguantar una caída de <span class="font-semibold text-fall-coffee">1 metro de altura sin separarse</span>. Cuando se sellen con el plástico termoencogible debe quedar totalmente firme, sólido y sin ningún tipo de movimiento interno.
-                    </p>
-                </div>
-                <!-- Tarjeta 3 -->
-                <div class="group bg-white/60 hover:bg-white border border-white hover:border-fall-mustard/30 rounded-[2rem] p-6 sm:p-8 shadow-[0_10px_30px_rgba(62,39,35,0.01)] hover:shadow-[0_20px_40px_rgba(62,39,35,0.04)] transition-all duration-500 ease-premium transform hover:-translate-y-1">
-                    <div class="w-10 h-10 rounded-full bg-fall-olive/10 text-fall-olive font-retro font-bold flex items-center justify-center mb-6">3</div>
-                    <h3 class="font-retro text-xl font-bold text-fall-coffee mb-4 leading-tight group-hover:text-fall-olive transition-colors">Etiquetado correcto</h3>
-                    <p class="font-body text-sm text-fall-coffee/75 leading-relaxed">
-                        Amazon pide que cada Bundle tenga <span class="font-semibold text-fall-coffee">2 etiquetas visibles</span> en la parte lateral del producto o en la parte plana más amplia del mismo.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Focus Técnico -->
-            <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
-                <div class="md:col-span-3 bg-white/40 border border-white/60 rounded-[2rem] p-6 sm:p-8 shadow-[0_4px_20px_rgba(62,39,35,0.01)]">
-                    <h4 class="font-retro text-lg font-bold text-fall-coffee mb-3 flex items-center gap-2">
-                        <span class="w-1.5 h-1.5 rounded-full bg-fall-rust"></span> Código de barras por producto
-                    </h4>
-                    <p class="font-body text-sm text-fall-coffee/80 leading-relaxed">
-                        Cada Bundle es considerado un producto individual único. Como manejamos <span class="font-semibold text-fall-rust">4 combinaciones de sabores con 2 tamaños diferentes</span>, solo hay que validar minuciosamente que el código del Bundle corresponda al tamaño exacto.
-                    </p>
-                </div>
-                <div class="md:col-span-2 bg-fall-mustard/5 border border-fall-mustard/20 rounded-[2rem] p-6 sm:p-8 flex flex-col justify-center">
-                    <h4 class="font-retro text-xs font-bold uppercase tracking-widest text-fall-mustard mb-2">Especificación de Impresión</h4>
-                    <p class="font-body text-base text-fall-coffee font-semibold mb-1">Tamaño: 1" x 2-5/8"</p>
-                    <p class="font-body text-xs text-fall-coffee/60 leading-relaxed">
-                        Imprimir obligatoriamente en papel tamaño Carta (<span class="italic">US Letter / 8.5" x 11"</span>) en una distribución exacta de <span class="font-bold text-fall-rust">30 etiquetas por Hoja</span>.
-                    </p>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- SECCIÓN 4: Paso 2 -->
-    <section id="step-2" class="relative w-full h-screen flex items-center justify-center border-t border-fall-coffee/5 bg-fall-cream/30 px-6">
-        <div class="max-w-3xl text-center">
-            <span class="text-xs font-bold uppercase tracking-[0.2em] text-fall-olive block mb-3">Seller Central Workflow</span>
-            <h2 class="font-retro text-4xl md:text-6xl font-extrabold text-fall-coffee mb-6 tracking-tight">Paso 2: Generar orden de envío</h2>
-            <p class="font-body text-lg md:text-xl text-fall-coffee/70 max-w-xl mx-auto">Declaración de unidades en la plataforma, creación del plano de envío FBA y asignación de SKUs correctos.</p>
-        </div>
-    </section>
-
-    <!-- SECCIÓN 5: Paso 3 -->
-    <section id="step-3" class="relative w-full h-screen flex items-center justify-center border-t border-fall-coffee/5 bg-white/20 px-6">
-        <div class="max-w-3xl text-center">
-            <span class="text-xs font-bold uppercase tracking-[0.2em] text-fall-rust block mb-3">Logística Externa</span>
-            <h2 class="font-retro text-4xl md:text-6xl font-extrabold text-fall-coffee mb-6 tracking-tight">Paso 3: Envío al almacén</h2>
-            <p class="font-body text-lg md:text-xl text-fall-coffee/70 max-w-xl mx-auto">Etiquetado térmico de cajas master, paletizado estándar de Amazon y selección de paquetería asociada.</p>
-        </div>
-    </section>
-
-    <!-- SECCIÓN 6: Soporte -->
-    <section id="support-section" class="relative w-full h-screen flex items-center justify-center border-t border-fall-coffee/5 bg-fall-coffee/5 px-6">
-        <div class="max-w-3xl text-center bg-white/60 backdrop-blur-md border border-white p-8 md:p-14 rounded-[2.5rem] shadow-[0_20px_50px_rgba(62,39,35,0.03)]">
-            <span class="text-xs font-bold uppercase tracking-[0.2em] text-fall-rust block mb-3">Acerca del Manual</span>
-            <h2 class="font-retro text-3xl md:text-5xl font-extrabold text-fall-coffee mb-4 tracking-tight">Acerca de nosotros</h2>
-            <p class="font-body text-base md:text-lg text-fall-coffee/70 mb-8 max-w-md mx-auto">Esta es la documentación técnica y logística para el correcto empaquetado de Cajeta La Reyna en FBA.</p>
-            <button class="bg-fall-coffee hover:bg-fall-rust text-white font-body font-medium text-sm tracking-wider uppercase px-8 py-4 rounded-full transition-all duration-300 ease-premium transform hover:scale-105 shadow-md">
-                Contactar Soporte Digital
-            </button>
-        </div>
-    </section>
-
-    <!-- INTERACTIVIDAD GSAP -->
+    <!-- Scripts de Interacción GSAP -->
     <script>
-        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
-
-        // 1. ESPERA CRÍTICA TIPOGRÁFICA
-        document.fonts.ready.then(() => {
-            gsap.set(["#ch1-title-desktop", "#ch1-title-mobile"], { opacity: 1 });
-            gsap.set([".ch1-slide-1", ".ch1-slide-2"], { visibility: "visible" });
+        // ----------------------------------------------------
+        // Animación de Carga (Hero & Navbar)
+        // ----------------------------------------------------
+        document.addEventListener("DOMContentLoaded", () => {
+            const tl = gsap.timeline();
             
-            initHeroAnimation();
-            initResponsiveScrollytelling();
+            // Aparecer barra Desktop
+            tl.to("#desktop-navbar", { opacity: 1, y: 0, duration: 1, ease: "power3.out", delay: 0.2 });
+            
+            // Animación del Hero
+            tl.to(".hero-badge", { opacity: 1, y: 0, duration: 0.8, ease: "back.out(1.5)" }, "-=0.6");
+            
+            // Revelar palabras una por una
+            tl.to(".hero-word", {
+                y: 0,
+                opacity: 1,
+                duration: 1.2,
+                stagger: 0.05,
+                ease: "power4.out"
+            }, "-=0.4");
         });
 
-        // 2. HERO ANIMATION (Cajeta La Reyna)
-        function initHeroAnimation() {
-            const tl = gsap.timeline();
-            tl.to("#desktop-navbar", { opacity: 1, y: 0, duration: 1, ease: "power3.out", delay: 0.2 });
-            tl.to(".hero-badge", { opacity: 1, y: 0, duration: 0.8, ease: "back.out(1.5)" }, "-=0.6");
-            tl.to(".hero-word", { y: 0, opacity: 1, duration: 1.2, stagger: 0.08, ease: "power4.out" }, "-=0.4");
-        }
-
-        // 3. SCROLLYTELLING "Antes de comenzar"
-        function getAlignmentX(wordToMoveClass, targetWordClass) {
-            const word = document.querySelector(wordToMoveClass);
-            const target = document.querySelector(targetWordClass);
-            if (!word || !target) return 0;
-            return (target.offsetLeft + (target.offsetWidth / 2)) - (word.offsetLeft + (word.offsetWidth / 2)); 
-        }
-
-        function initResponsiveScrollytelling() {
-            const isDesktop = window.innerWidth >= 768;
-            const tlCh1 = gsap.timeline({
-                scrollTrigger: {
-                    trigger: "#chapter-1",
-                    start: "top top",
-                    end: "+=1500", 
-                    pin: true,
-                    scrub: 0.5,
-                    invalidateOnRefresh: true
-                }
-            });
-
-            if (isDesktop) {
-                // DESKTOP LOGIC
-                tlCh1.fromTo(".ch1-word-dk", { opacity: 0, y: 50, rotationX: -30 }, { opacity: 1, y: 0, rotationX: 0, duration: 1, stagger: 0.08, ease: "power3.out" });
-                tlCh1.to({}, { duration: 0.3 }).add("desarme");
-                tlCh1.to("#ch1-title-desktop", { x: "-22vw", duration: 1.5, ease: "power2.inOut" }, "desarme");
-                tlCh1.to(".ch1-word-dk.antes", { x: () => getAlignmentX('.ch1-word-dk.antes', '.ch1-word-dk.de'), y: "-90px", duration: 1.5, ease: "power2.inOut" }, "desarme");
-                tlCh1.to(".ch1-word-dk.comenzar", { x: () => getAlignmentX('.ch1-word-dk.comenzar', '.ch1-word-dk.de'), y: "90px", duration: 1.5, ease: "power2.inOut" }, "desarme");
-                
-                tlCh1.fromTo(".ch1-slide-1", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 1.2, ease: "power2.out" }, "desarme+=0.3");
-                tlCh1.to({}, { duration: 0.8 }); 
-                tlCh1.to(".ch1-slide-1", { opacity: 0, y: -20, duration: 0.8, ease: "power2.in" });
-                tlCh1.fromTo(".ch1-slide-2", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, ease: "power2.out" });
-            } else {
-                // MOBILE LOGIC
-                const wordAntes = document.querySelector('.ch1-word-mb.antes');
-                const wordDe = document.querySelector('.ch1-word-mb.de');
-                const wordComenzar = document.querySelector('.ch1-word-mb.comenzar');
-                const centerOfViewport = window.innerWidth / 2;
-
-                const antesXStart = centerOfViewport - wordAntes.getBoundingClientRect().left - (wordAntes.offsetWidth / 2);
-                const deXStart = centerOfViewport - wordDe.getBoundingClientRect().left - (wordDe.offsetWidth / 2);
-                const comenzarXStart = centerOfViewport - wordComenzar.getBoundingClientRect().left - (wordComenzar.offsetWidth / 2);
-
-                tlCh1.fromTo(wordAntes, { opacity: 0, x: antesXStart, y: -65 }, { opacity: 1, duration: 0.6 }, 0);
-                tlCh1.fromTo(wordDe, { opacity: 0, x: deXStart, y: 0 }, { opacity: 1, duration: 0.6 }, 0.1);
-                tlCh1.fromTo(wordComenzar, { opacity: 0, x: comenzarXStart, y: 65 }, { opacity: 1, duration: 0.6 }, 0.2);
-                tlCh1.to({}, { duration: 0.3 }).add("desarme");
-
-                tlCh1.to([wordAntes, wordDe, wordComenzar], { x: 0, y: 0, duration: 1.6, ease: "power3.inOut" }, "desarme");
-                tlCh1.to("#ch1-title-mobile", { y: "-33vh", scale: 0.58, duration: 1.6, ease: "power3.inOut" }, "desarme");
-                
-                tlCh1.fromTo(".ch1-slide-1", { opacity: 0, y: 40 }, { opacity: 1, y: 25, duration: 1.2, ease: "power2.out" }, "desarme+=0.4");
-                tlCh1.to({}, { duration: 0.8 }); 
-                tlCh1.to(".ch1-slide-1", { opacity: 0, y: -15, duration: 0.8, ease: "power2.in" });
-                tlCh1.fromTo(".ch1-slide-2", { opacity: 0, y: 40 }, { opacity: 1, y: 25, duration: 1, ease: "power2.out" });
-            }
-            tlCh1.to({}, { duration: 1.2 }); 
-        }
-
-        // 4. LÓGICA NAVBAR DESKTOP
+        // ----------------------------------------------------
+        // Lógica DESKTOP: Click & Outside Click
+        // ----------------------------------------------------
         const dropdownContainers = document.querySelectorAll('.dropdown-container');
         let activeDropdown = null;
 
@@ -460,6 +266,8 @@
             const toggle = container.querySelector('.dropdown-toggle');
             const menu = container.querySelector('.dropdown-menu');
             const chevron = container.querySelector('.chevron');
+
+            gsap.set(menu, { display: "none", opacity: 0, y: -15, scale: 0.95 });
 
             toggle.addEventListener('click', (e) => {
                 e.stopPropagation(); 
@@ -484,11 +292,15 @@
             gsap.to(menu, { opacity: 0, y: -15, scale: 0.95, duration: 0.25, ease: "power2.in", onComplete: () => gsap.set(menu, { display: "none" }) });
         }
 
-        // 5. LÓGICA NAVBAR MOBILE
+        // ----------------------------------------------------
+        // Lógica MOBILE: Menú Circular y Acordeones
+        // ----------------------------------------------------
         const mobileBtn = document.getElementById('mobile-menu-btn');
         const mobilePanel = document.getElementById('mobile-menu-panel');
         const line1 = document.querySelector('.line-1'), line2 = document.querySelector('.line-2'), line3 = document.querySelector('.line-3');
         let isMobileMenuOpen = false;
+
+        gsap.set(mobilePanel, { display: "none", opacity: 0, y: -20, scale: 0.98 });
 
         mobileBtn.addEventListener('click', () => {
             isMobileMenuOpen = !isMobileMenuOpen;
@@ -498,23 +310,11 @@
                 line3.style.transform = 'translateY(-7.5px) rotate(-45deg)';
                 gsap.to(mobilePanel, { display: "block", opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.2)" });
             } else {
-                closeMobileMenu();
+                line1.style.transform = 'translateY(0) rotate(0)';
+                line2.style.opacity = '1';
+                line3.style.transform = 'translateY(0) rotate(0)';
+                gsap.to(mobilePanel, { opacity: 0, y: -20, scale: 0.98, duration: 0.3, ease: "power2.in", onComplete: () => gsap.set(mobilePanel, { display: "none" }) });
             }
-        });
-
-        function closeMobileMenu() {
-            isMobileMenuOpen = false;
-            line1.style.transform = 'translateY(0) rotate(0)';
-            line2.style.opacity = '1';
-            line3.style.transform = 'translateY(0) rotate(0)';
-            gsap.to(mobilePanel, { opacity: 0, y: -20, scale: 0.98, duration: 0.3, ease: "power2.in", onComplete: () => gsap.set(mobilePanel, { display: "none" }) });
-        }
-
-        // Cierra el menú móvil al hacer click en cualquier link de navegación
-        document.querySelectorAll('.mobile-link').forEach(link => {
-            link.addEventListener('click', () => {
-                if(isMobileMenuOpen) closeMobileMenu();
-            });
         });
 
         const accordions = document.querySelectorAll('.mobile-accordion');
@@ -532,25 +332,6 @@
                 }
             });
         });
-
-        // 6. SCROLL SMOOTH PARA ANCLAS (El puente crítico que fallaba)
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetID = this.getAttribute('href');
-                
-                // Asegurar cierre de menús al navegar
-                if (activeDropdown) closeDropdown(activeDropdown);
-                
-                gsap.to(window, {
-                    duration: 1,
-                    scrollTo: { y: targetID, offsetY: 0 },
-                    ease: "power3.inOut"
-                });
-            });
-        });
-
-        window.addEventListener("resize", () => ScrollTrigger.refresh());
     </script>
 </body>
 </html>
