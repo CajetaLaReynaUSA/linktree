@@ -860,6 +860,65 @@
             document.querySelector('.line-3').style.transform = 'translateY(0) rotate(0)';
             gsap.to('#mobile-menu-panel', { opacity: 0, y: -20, scale: 0.98, duration: 0.3, ease: "power2.in", onComplete: () => gsap.set('#mobile-menu-panel', { display: "none" }) });
         }
+
+        // =================================================================
+        // LÓGICA DEL LIGHTBOX (Para la imagen de "Códigos hacia el interior")
+        // =================================================================
+        function openLightbox(imageUrl) {
+            const modal = document.getElementById('lightbox-modal');
+            const img = document.getElementById('lightbox-image');
+            
+            // Setea la imagen
+            img.src = imageUrl;
+            
+            // Anima la aparición (Fade In + Scale)
+            gsap.to(modal, { opacity: 1, duration: 0.4, ease: "power2.out", pointerEvents: "auto" });
+            gsap.to(img, { scale: 1, duration: 0.5, ease: "back.out(1.5)" });
+            
+            // Evita que el usuario haga scroll en el fondo mientras ve la imagen
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const modal = document.getElementById('lightbox-modal');
+            const img = document.getElementById('lightbox-image');
+            
+            // Anima la desaparición (Fade Out + Scale down)
+            gsap.to(img, { scale: 0.95, duration: 0.3, ease: "power2.in" });
+            gsap.to(modal, { opacity: 0, duration: 0.3, ease: "power2.in", pointerEvents: "none", onComplete: () => {
+                img.src = ""; // Limpia la memoria
+            }});
+            
+            // Devuelve el scroll al usuario
+            document.body.style.overflow = '';
+        }
+
+        // Permitir cerrar el modal con la tecla ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "Escape") closeLightbox();
+        });
     </script>
+
+
+    <!-- ==========================================
+         LIGHTBOX MODAL (Para ampliar la imagen)
+    =========================================== -->
+    <div id="lightbox-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-premium-black/90 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-500">
+        <!-- Botón cerrar (Cubre todo el fondo) -->
+        <div class="absolute inset-0 cursor-zoom-out" onclick="closeLightbox()"></div>
+        
+        <!-- Botón cerrar UI -->
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 sm:top-10 sm:right-10 w-12 h-12 bg-white/10 hover:bg-white/20 text-white rounded-full flex items-center justify-center backdrop-blur-xl transition-colors z-10">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+
+        <!-- Imagen Ampliada -->
+        <div class="relative z-10 p-4 max-w-5xl max-h-[90vh] flex flex-col items-center">
+            <img id="lightbox-image" src="" alt="Ejemplo de Acomodo Amazon" class="max-w-full max-h-[85vh] object-contain rounded-2xl shadow-2xl transform scale-95 transition-transform duration-500">
+            <p class="text-white/60 font-body text-sm mt-4 text-center">Acomodo correcto: Códigos originales hacia el interior.</p>
+        </div>
+    </div>
+
+    
 </body>
 </html>
