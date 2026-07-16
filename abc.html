@@ -1,191 +1,738 @@
 <!DOCTYPE html>
-<html lang="es" class="antialiased">
+<html lang="es" class="antialiased scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recursos Mobile | Cajeta La Reyna</title>
+    <title>Cajeta La Reyna | Manual Logístico FBA</title>
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- GSAP Core & Plugins -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@800&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+    
+    <!-- Google Fonts Premium -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { retro: ['"Bricolage Grotesque"', 'serif'], body: ['Outfit', 'sans-serif'] },
+                    fontFamily: {
+                        retro: ['"Bricolage Grotesque"', 'serif'],
+                        body: ['Outfit', 'sans-serif'],
+                    },
                     colors: {
-                        premium: { dark: '#141414', border: 'rgba(255,255,255,0.08)', hover: 'rgba(255,255,255,0.06)' },
-                        fall: { cream: '#F4EFE6', coffee: '#3E2723', rust: '#C84B31', leather: '#8B5A33' }
+                        premium: {
+                            black: 'rgba(10, 10, 10, 0.85)',
+                            dark: '#141414',
+                            border: 'rgba(255,255,255,0.08)',
+                            hover: 'rgba(255,255,255,0.06)'
+                        },
+                        fall: {
+                            cream: '#F4EFE6',
+                            coffee: '#3E2723',
+                            rust: '#C84B31',
+                            mustard: '#E19832',
+                            leather: '#8B5A33',
+                            olive: '#4F6F52'
+                        }
                     }
                 }
             }
         }
     </script>
+
     <style>
-        body { background-color: #F4EFE6; }
-        .accordion-content { height: 0; overflow: hidden; opacity: 0; }
-        .is-open > .accordion-content { height: auto; opacity: 1; }
+        body { background-color: #F4EFE6; overflow-x: hidden; }
+        
+        /* Micro-interacción Navbar */
+        .nav-link-text {
+            background: linear-gradient(to right, #ffffff, #ffffff);
+            background-size: 0% 2px;
+            background-repeat: no-repeat;
+            background-position: left bottom;
+            transition: background-size 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        button:hover .nav-link-text, a:hover .nav-link-text { background-size: 100% 2px; }
+        
+        /* Ocultar elementos para entrada GSAP */
+        #desktop-navbar, #mobile-menu-btn { opacity: 0; }
+        .dropdown-menu, #mobile-menu-panel { display: none; opacity: 0; }
+        
+        /* Preparación GSAP Hero y Módulos */
+        .hero-reveal { clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); }
+        .hero-word { display: inline-block; transform: translateY(100px); opacity: 0; }
+        .reveal-block { opacity: 0; transform: translateY(30px); }
+        .prologue-block { opacity: 0; transform: translateY(40px); }
+        
+        /* Modal Lightbox */
+        #lightbox-modal { backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
     </style>
 </head>
-<body class="font-body p-4">
+<body class="font-body min-h-screen selection:bg-fall-rust selection:text-white">
+
+    <!-- Fondo Sutil Orgánico -->
+    <div class="fixed inset-0 z-[-1] pointer-events-none opacity-40">
+        <div class="absolute top-[-10%] left-[-10%] w-[40rem] h-[40rem] bg-fall-mustard/15 rounded-full blur-[120px]"></div>
+        <div class="absolute bottom-[-10%] right-[-5%] w-[35rem] h-[35rem] bg-fall-rust/10 rounded-full blur-[140px]"></div>
+        <div class="absolute top-[50%] right-[-10%] w-[40rem] h-[40rem] bg-fall-olive/5 rounded-full blur-[150px]"></div>
+    </div>
 
     <!-- ==========================================
-         COMPONENTE DE RECURSOS (MOBILE)
+         1. SMART NAVBAR [DESKTOP] 
     =========================================== -->
-    <div class="max-w-sm mx-auto mt-10">
-        
-        <!-- Contenedor Principal con efecto Glassmorphism -->
-        <div class="bg-white/70 backdrop-blur-xl border border-white rounded-3xl shadow-[0_15px_35px_rgba(62,39,35,0.05)] overflow-hidden">
-            
-            <!-- CABECERA DEL ACORDEÓN PRINCIPAL (Nivel 1) -->
-            <button id="main-trigger" class="w-full flex items-center justify-between p-6 group">
-                <div class="flex items-center gap-4">
-                    <!-- Icono circular premium -->
-                    <span class="flex items-center justify-center w-12 h-12 rounded-full bg-fall-leather/10 text-fall-leather border border-fall-leather/10 transition-colors group-hover:bg-fall-leather group-hover:text-white">
-                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                        </svg>
-                    </span>
-                    <h3 class="font-retro text-2xl font-extrabold text-fall-coffee tracking-tight">Descargar etiquetas</h3>
-                </div>
-                <!-- Chevron animado -->
-                <svg id="main-chevron" class="w-6 h-6 text-fall-coffee/30 transition-transform duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
-                </svg>
+    <nav id="desktop-navbar" class="hidden md:flex fixed top-8 left-1/2 -translate-x-1/2 z-50 bg-premium-black backdrop-blur-xl border border-premium-border rounded-full px-2.5 py-2.5 shadow-[0_25px_50px_rgba(0,0,0,0.15)] items-center gap-2">
+        <div class="relative group dropdown-container">
+            <button class="dropdown-toggle text-white/85 hover:text-white px-6 py-3 rounded-full text-[15px] font-medium transition-colors flex items-center gap-2.5">
+                <span class="nav-link-text pb-0.5">Pasos</span>
+                <svg class="w-4 h-4 chevron text-white/50 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" /></svg>
             </button>
-
-            <!-- CONTENIDO PRINCIPAL (Nivel 1) -->
-            <div id="main-content" class="accordion-content border-t border-fall-coffee/5 bg-white/30">
-                <div class="p-3 flex flex-col gap-3">
-
-                    <!-- OPCIÓN A: Bundle 360 gr (Nivel 2 - Sub-acordeón) -->
-                    <div class="sub-accordion rounded-2xl border border-fall-coffee/5 bg-white/50 overflow-hidden">
-                        <button class="sub-trigger w-full flex items-center justify-between p-5 text-left group">
-                            <span class="font-body text-base font-semibold text-fall-coffee group-hover:text-fall-rust transition-colors">Bundle de 360 gr</span>
-                            <svg class="sub-chevron w-5 h-5 text-fall-coffee/20 transition-transform duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </button>
-                        <!-- Enlaces internos (Sub-nivel 2) -->
-                        <div class="sub-content accordion-content bg-fall-cream/30">
-                            <div class="p-4 pl-6 flex flex-col gap-2.5 border-t border-fall-coffee/5">
-                                <a href="#" class="text-sm text-fall-coffee/70 hover:text-fall-rust transition-colors py-1 flex items-center gap-2">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-fall-rust/30"></span> Natural, Vainilla y Fresa
-                                </a>
-                                <a href="#" class="text-sm text-fall-coffee/70 hover:text-fall-rust transition-colors py-1 flex items-center gap-2">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-fall-rust/30"></span> Natural, Café y Envinada
-                                </a>
-                                <!-- ... resto de enlaces ... -->
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- OPCIÓN B: Bundle 155 gr (Nivel 2 - Sub-acordeón) -->
-                    <div class="sub-accordion rounded-2xl border border-fall-coffee/5 bg-white/50 overflow-hidden">
-                        <button class="sub-trigger w-full flex items-center justify-between p-5 text-left group">
-                            <span class="font-body text-base font-semibold text-fall-coffee group-hover:text-fall-rust transition-colors">Bundle de 155 gr</span>
-                            <svg class="sub-chevron w-5 h-5 text-fall-coffee/20 transition-transform duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </button>
-                        <div class="sub-content accordion-content bg-fall-cream/30">
-                            <div class="p-4 pl-6 flex flex-col gap-2.5 border-t border-fall-coffee/5">
-                                <a href="#" class="text-sm text-fall-coffee/70 hover:text-fall-rust transition-colors py-1 flex items-center gap-2">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-fall-rust/30"></span> Natural, Vainilla y Fresa
-                                </a>
-                                <!-- ... resto de enlaces ... -->
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- OPCIÓN C: Sold as a Set (Enlace Directo Premium) -->
-                    <a href="https://drive.google.com/file/d/1BVIo4PhHDz91jv6kU1cvcosFaDL6vUyo/view?usp=sharing" target="_blank" class="w-full bg-white/50 hover:bg-fall-rust/5 border border-fall-coffee/5 hover:border-fall-rust/20 rounded-2xl p-5 flex items-center justify-between group transition-all duration-300">
-                        <span class="font-body text-base font-semibold text-fall-coffee group-hover:text-fall-rust">Plantilla de "Sold as a Set"</span>
-                        <svg class="w-5 h-5 text-fall-rust opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                        </svg>
+            <div class="dropdown-menu absolute top-[125%] left-1/2 -translate-x-1/2 w-52 bg-premium-dark border border-premium-border rounded-3xl shadow-2xl overflow-hidden backdrop-blur-2xl">
+                <div class="p-2.5 flex flex-col gap-1">
+                    <a href="#paso-1" class="scroll-link text-white/75 hover:text-white hover:bg-premium-hover px-5 py-3.5 rounded-2xl text-[15px] font-medium transition-all flex items-center gap-3">
+                        <span class="w-1.5 h-1.5 rounded-full bg-fall-rust opacity-0 group-hover:opacity-100 transition-opacity"></span> Paso 1
                     </a>
-
+                    <a href="#paso-2" class="scroll-link text-white/75 hover:text-white hover:bg-premium-hover px-5 py-3.5 rounded-2xl text-[15px] font-medium transition-all flex items-center gap-3">
+                        <span class="w-1.5 h-1.5 rounded-full bg-fall-mustard opacity-0 group-hover:opacity-100 transition-opacity"></span> Paso 2
+                    </a>
+                    <a href="#paso-3" class="scroll-link text-white/75 hover:text-white hover:bg-premium-hover px-5 py-3.5 rounded-2xl text-[15px] font-medium transition-all flex items-center gap-3">
+                        <span class="w-1.5 h-1.5 rounded-full bg-fall-olive opacity-0 group-hover:opacity-100 transition-opacity"></span> Paso 3
+                    </a>
                 </div>
             </div>
         </div>
+
+        <div class="w-[1.5px] h-5 bg-white/10 mx-1"></div>
+
+        <a href="#acerca-de" class="scroll-link text-white/85 hover:text-white px-6 py-3 rounded-full text-[15px] font-medium transition-colors flex items-center">
+            <span class="nav-link-text pb-0.5">Acerca de</span>
+        </a>
+    </nav>
+
+    <!-- ==========================================
+         SMART NAVBAR [MOBILE] BOTÓN Y PANEL
+    =========================================== -->
+    <button id="mobile-menu-btn" class="md:hidden fixed top-6 right-6 z-50 w-[54px] h-[54px] bg-premium-black backdrop-blur-xl border border-premium-border rounded-full shadow-[0_15px_35px_rgba(0,0,0,0.2)] flex items-center justify-center group active:scale-90 transition-transform duration-300">
+        <div class="relative w-5 h-4 flex flex-col justify-between">
+            <span class="w-full h-[2.5px] bg-white rounded-full transition-transform duration-300 transform origin-center line-1"></span>
+            <span class="w-full h-[2.5px] bg-white rounded-full transition-opacity duration-300 line-2"></span>
+            <span class="w-full h-[2.5px] bg-white rounded-full transition-transform duration-300 transform origin-center line-3"></span>
+        </div>
+    </button>
+
+    <div id="mobile-menu-panel" class="md:hidden fixed inset-x-4 top-[95px] z-40 bg-premium-dark/95 backdrop-blur-2xl border border-premium-border rounded-[2rem] shadow-2xl p-6">
+        <div class="flex flex-col gap-2.5">
+            <div class="mobile-accordion bg-white/5 rounded-2xl overflow-hidden border border-white/5">
+                <button class="w-full flex justify-between items-center text-white px-6 py-4.5 font-medium text-lg accordion-trigger active:bg-white/5 transition-colors">
+                    Pasos
+                    <svg class="w-5 h-5 text-white/50 chevron-mob transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" /></svg>
+                </button>
+                <div class="h-0 overflow-hidden opacity-0 mobile-submenu bg-black/20">
+                    <div class="flex flex-col px-6 py-3 pb-5 gap-2">
+                        <a href="#paso-1" class="scroll-link text-white/60 hover:text-white py-2 text-base flex items-center gap-3"><span class="w-1.5 h-1.5 bg-fall-rust rounded-full"></span> Paso 1</a>
+                        <a href="#paso-2" class="scroll-link text-white/60 hover:text-white py-2 text-base flex items-center gap-3"><span class="w-1.5 h-1.5 bg-fall-mustard rounded-full"></span> Paso 2</a>
+                        <a href="#paso-3" class="scroll-link text-white/60 hover:text-white py-2 text-base flex items-center gap-3"><span class="w-1.5 h-1.5 bg-fall-olive rounded-full"></span> Paso 3</a>
+                    </div>
+                </div>
+            </div>
+            <a href="#acerca-de" class="scroll-link w-full flex items-center text-white px-6 py-4.5 text-lg font-medium rounded-2xl active:bg-white/5 transition-colors mt-2">Acerca de</a>
+        </div>
     </div>
 
-    <!-- LÓGICA DE INTERACCIÓN CON GSAP -->
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
+    <!-- ==========================================
+         2. HERO SECTION (TÍTULO)
+    =========================================== -->
+    <header class="relative w-full min-h-[90vh] flex flex-col justify-center items-center text-center px-4 md:px-6 pt-16">
+        <div class="max-w-5xl mx-auto w-full flex flex-col items-center">
             
-            const easePremium = "cubic-bezier(0.23, 1, 0.32, 1)"; // Curva de aceleración suave y costosa
+            <div class="hero-badge opacity-0 translate-y-4 inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-fall-rust/10 border border-fall-rust/20 text-fall-rust mb-6 md:mb-8">
+                <span class="w-2 h-2 rounded-full bg-fall-rust animate-pulse"></span>
+                <span class="font-body text-xs font-bold tracking-[0.15em] uppercase">Manual Logístico FBA</span>
+            </div>
 
-            // --- ACORDEÓN PRINCIPAL (Nivel 1) ---
-            const mainTrigger = document.getElementById('main-trigger');
-            const mainContent = document.getElementById('main-content');
-            const mainChevron = document.getElementById('main-chevron');
-            let isMainOpen = false;
+            <div class="hero-reveal overflow-hidden px-2 py-2">
+                <h1 class="font-retro text-6xl sm:text-7xl md:text-8xl lg:text-[8.5rem] font-extrabold text-fall-coffee leading-[1.05] tracking-tight flex flex-wrap justify-center gap-x-3 md:gap-x-5 gap-y-2">
+                    <span class="hero-word">Cajeta</span> <span class="hero-word text-fall-rust">La</span> <span class="hero-word text-fall-rust">Reyna</span>
+                </h1>
+            </div>
 
-            // Pre-setear el estado cerrado con GSAP
-            gsap.set(mainContent, { height: 0, opacity: 0 });
+            <div class="hero-reveal overflow-hidden mt-6 px-4">
+                <p class="font-body text-xl sm:text-2xl md:text-3xl text-fall-coffee/75 font-medium tracking-tight flex flex-wrap justify-center gap-x-2 md:gap-x-2.5">
+                    <span class="hero-word">Guía</span><span class="hero-word">para</span><span class="hero-word">enviar</span><span class="hero-word">el</span><span class="hero-word">producto</span><span class="hero-word">a</span><span class="hero-word font-bold text-fall-coffee">Amazon.</span>
+                </p>
+            </div>
+        </div>
+    </header>
 
-            mainTrigger.addEventListener('click', () => {
-                isMainOpen = !isMainOpen;
+    <!-- ==========================================
+         3. MASTER PROLOGUE (Split-DOM + Storytelling)
+    =========================================== -->
+    <section id="antes-de-comenzar" class="relative w-full py-20 md:py-32 px-4 sm:px-6 md:px-8 border-t border-fall-coffee/5 bg-gradient-to-b from-transparent to-white/40">
+        
+        <div class="max-w-5xl mx-auto">
+            
+            <!-- PARTE 1: El Contexto y el Saludo -->
+            <div class="prologue-block max-w-3xl mx-auto text-center mb-16 md:mb-24">
+                <div class="inline-flex items-center gap-3 mb-6 md:mb-8">
+                    <span class="w-2 h-2 rounded-full bg-fall-rust animate-pulse"></span>
+                    <span class="font-body text-xs font-bold tracking-[0.2em] uppercase text-fall-coffee/50">Contexto Operativo</span>
+                </div>
                 
-                // Animación de la altura y opacidad
-                gsap.to(mainContent, {
-                    height: isMainOpen ? "auto" : 0,
-                    opacity: isMainOpen ? 1 : 0,
-                    duration: 0.6,
-                    ease: easePremium
-                });
+                <h2 class="font-retro text-4xl md:text-5xl lg:text-6xl font-extrabold text-fall-coffee mb-8 tracking-tight">
+                    ¿Por qué este protocolo?
+                </h2>
+                
+                <p class="font-body text-xl md:text-2xl text-fall-coffee/85 leading-[1.6] mb-6">
+                    <span class="font-semibold text-fall-rust">Hola, soy Juan Pablo.</span> Hice este manual para evitar errores porque Amazon es 
+                    <span class="font-bold text-fall-rust relative inline-block">extremadamente estricto<svg class="absolute -bottom-2 left-0 w-full h-2 text-fall-rust/30" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 5 Q 50 10 100 5" stroke="currentColor" stroke-width="3" fill="transparent"/></svg></span>.
+                </p>
+                
+                <p class="font-body text-lg md:text-xl text-fall-coffee/70 leading-relaxed">
+                    Amazon intenta que sus procesos logísticos involucren a la menor cantidad de personas posible. Hoy, casi el 100% de la recepción de mercancía está automatizada mediante escáneres y básculas.
+                </p>
+            </div>
 
-                // Rotación del Chevron
-                gsap.to(mainChevron, {
-                    rotation: isMainOpen ? 180 : 0,
-                    duration: 0.6,
-                    ease: easePremium
+            <!-- PARTE 2: Nota Técnica (Alerta UI Premium) -->
+            <div class="prologue-block max-w-4xl mx-auto mb-20">
+                <!-- SPLIT DOM: DESKTOP ALERT -->
+                <div class="hidden md:flex relative bg-white/70 backdrop-blur-xl border border-white/80 rounded-[2rem] p-8 shadow-[0_25px_60px_rgba(62,39,35,0.03)] flex-col gap-4 group hover:border-fall-rust/20 hover:bg-white transition-all duration-500 ease-premium">
+                    <div class="flex items-center gap-3">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-full bg-fall-rust/10 text-fall-rust border border-fall-rust/10 font-retro font-bold text-xs">i</span>
+                        <h4 class="font-retro text-base font-bold text-fall-coffee uppercase tracking-widest">Nota Técnica</h4>
+                    </div>
+                    <p class="font-body text-lg text-fall-coffee/90 leading-relaxed border-l-2 border-fall-mustard pl-4 italic">
+                        "Tuve un retraso <span class="text-fall-rust font-bold not-italic">enorme</span> debido a que para Amazon, empaquetar las botellas cuenta como <span class="text-fall-rust font-semibold">"Producto Nuevo"</span>. Pero ya están autorizados"
+                    </p>
+                </div>
+                <!-- SPLIT DOM: MOBILE ALERT -->
+                <div class="flex md:hidden bg-fall-rust/[0.04] border border-fall-rust/10 rounded-2xl p-5 relative overflow-hidden">
+                    <div class="absolute top-3 right-4 font-retro text-[10px] font-black uppercase tracking-widest text-fall-rust/40">Estatus</div>
+                    <p class="font-body text-[15px] text-fall-coffee/90 leading-relaxed pr-8">
+                        "Tuve un retraso <span class="text-fall-rust font-bold">enorme</span> debido a que para Amazon, empaquetar las botellas cuenta como <span class="text-fall-rust font-semibold">"Producto Nuevo"</span>. Pero ya están autorizados"
+                    </p>
+                </div>
+            </div>
+
+            <!-- PARTE 3: Las 3 Exigencias (Grid) -->
+            <div class="prologue-block mb-12">
+                <h3 class="font-body text-lg md:text-xl font-medium text-fall-coffee text-center mb-8">
+                    Al generar una orden de envío, me exigen declarar exactamente:
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white/60 backdrop-blur-xl border border-white rounded-[2rem] p-8 shadow-[0_10px_30px_rgba(62,39,35,0.02)] text-center transition-transform hover:-translate-y-1 duration-500">
+                        <div class="w-12 h-12 mx-auto bg-fall-rust/10 text-fall-rust rounded-full flex items-center justify-center mb-4"><svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg></div>
+                        <p class="font-body text-base md:text-lg text-fall-coffee/80 font-medium">Cuántas <span class="font-bold text-fall-coffee">cajas</span> enviamos.</p>
+                    </div>
+                    <div class="bg-white/60 backdrop-blur-xl border border-white rounded-[2rem] p-8 shadow-[0_10px_30px_rgba(62,39,35,0.02)] text-center transition-transform hover:-translate-y-1 duration-500">
+                        <div class="w-12 h-12 mx-auto bg-fall-mustard/10 text-fall-mustard rounded-full flex items-center justify-center mb-4"><svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/></svg></div>
+                        <p class="font-body text-base md:text-lg text-fall-coffee/80 font-medium">El <span class="font-bold text-fall-coffee">tamaño y peso</span> de cada caja.</p>
+                    </div>
+                    <div class="bg-white/60 backdrop-blur-xl border border-white rounded-[2rem] p-8 shadow-[0_10px_30px_rgba(62,39,35,0.02)] text-center transition-transform hover:-translate-y-1 duration-500">
+                        <div class="w-12 h-12 mx-auto bg-fall-olive/10 text-fall-olive rounded-full flex items-center justify-center mb-4"><svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/></svg></div>
+                        <p class="font-body text-base md:text-lg text-fall-coffee/80 font-medium">Los <span class="font-bold text-fall-coffee">productos específicos</span> dentro.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PARTE 4: El Riesgo (Warning Banner Premium) -->
+            <div class="prologue-block max-w-4xl mx-auto mb-20 relative">
+                <div class="absolute inset-0 bg-fall-rust/5 blur-xl rounded-3xl pointer-events-none"></div>
+                <div class="relative bg-white/80 backdrop-blur-md border-l-4 border-fall-rust rounded-r-3xl rounded-l-md p-6 md:p-8 flex flex-col md:flex-row gap-6 items-start md:items-center">
+                    <div class="hidden md:flex w-14 h-14 flex-shrink-0 bg-fall-rust/10 rounded-full items-center justify-center text-fall-rust">
+                        <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                    </div>
+                    <div>
+                        <p class="font-body text-base md:text-lg text-fall-coffee/80 leading-relaxed">
+                            Amazon genera una etiqueta por caja. <strong class="text-fall-rust">Si hay discrepancias</strong> (mayor cantidad, artículos distintos o peso incorrecto), el sistema retiene los productos, cobra multas y puede bloquear la cuenta para envíos futuros.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PARTE 5: Roadmap -->
+            <div class="prologue-block max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h3 class="font-retro text-3xl md:text-4xl font-extrabold text-fall-coffee mb-4">El Mapa de Trabajo</h3>
+                </div>
+                <div class="relative pl-6 md:pl-10 border-l-2 border-fall-coffee/10 space-y-12">
+                    <div class="relative">
+                        <div class="absolute -left-[35px] md:-left-[51px] w-8 h-8 md:w-10 md:h-10 bg-fall-cream border-2 border-fall-rust text-fall-rust rounded-full flex items-center justify-center font-retro font-bold text-sm md:text-base">1</div>
+                        <h4 class="font-retro text-xl md:text-2xl font-bold text-fall-coffee mb-2">Armado y empaquetado</h4>
+                        <p class="font-body text-base md:text-lg text-fall-coffee/75 leading-relaxed">Ensamblar Bundles, etiquetar y registrar caja por caja detalladamente.</p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-[35px] md:-left-[51px] w-8 h-8 md:w-10 md:h-10 bg-fall-cream border-2 border-fall-mustard text-fall-mustard rounded-full flex items-center justify-center font-retro font-bold text-sm md:text-base">2</div>
+                        <h4 class="font-retro text-xl md:text-2xl font-bold text-fall-coffee mb-2">Aviso y orden de envío</h4>
+                        <p class="font-body text-base md:text-lg text-fall-coffee/75 leading-relaxed">Declarar envío en Seller Central con los datos precisos.</p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-[35px] md:-left-[51px] w-8 h-8 md:w-10 md:h-10 bg-fall-cream border-2 border-fall-olive text-fall-olive rounded-full flex items-center justify-center font-retro font-bold text-sm md:text-base">3</div>
+                        <h4 class="font-retro text-xl md:text-2xl font-bold text-fall-coffee mb-2">Etiquetado y salida</h4>
+                        <p class="font-body text-base md:text-lg text-fall-coffee/75 leading-relaxed">Imprimir PDF final, sellar y entregar a paquetería.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==========================================
+         PASO 1: DASHBOARD OPERATIVO (Recursos)
+    =========================================== -->
+    <section id="paso-1" class="relative w-full py-20 md:py-32 px-4 sm:px-6 md:px-8 border-t border-fall-coffee/10">
+        
+        <div class="max-w-7xl mx-auto mb-10 flex justify-start">
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-fall-rust border border-fall-rust/20 px-4 py-2 rounded-full">Paso 1</span>
+        </div>
+
+        <div class="max-w-7xl mx-auto flex flex-col lg:grid lg:grid-cols-12 gap-12 lg:gap-16">
+            
+            <!-- [SPLIT DOM - RECURSOS STICKY] -->
+            <!-- MOBILE: Primero / DESKTOP: Derecha (lg:order-2) -->
+            <div class="lg:col-span-5 order-1 lg:order-2 relative">
+                <div class="details-card-anim lg:sticky lg:top-32 bg-white/70 lg:bg-white/80 backdrop-blur-2xl rounded-[2rem] shadow-[0_15px_35px_rgba(62,39,35,0.05)] border border-white overflow-hidden transition-all duration-300">
+                    
+                    <button id="resources-trigger" class="w-full flex items-center justify-between p-6 lg:p-7 text-left group transition-colors lg:hover:bg-white/50 z-10 relative">
+                        <div class="flex items-center gap-4 lg:gap-5">
+                            <span class="flex items-center justify-center w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-fall-leather/10 text-fall-leather border border-fall-leather/10 transition-all duration-500 lg:group-hover:bg-fall-leather lg:group-hover:text-white">
+                                <svg class="w-6 h-6 lg:w-7 lg:h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                            </span>
+                            <div>
+                                <h3 class="font-retro text-2xl lg:text-3xl font-extrabold text-fall-coffee tracking-tight">Descargar etiquetas</h3>
+                            </div>
+                        </div>
+                        <svg id="resources-chevron" class="w-6 h-6 lg:w-7 lg:h-7 text-fall-coffee/30 transition-transform duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+
+                    <!-- Nested Accordions -->
+                    <div id="resources-content" class="h-0 overflow-hidden opacity-0 border-t border-fall-coffee/5 bg-white/30 lg:bg-fall-cream/20">
+                        <div class="p-4 lg:p-5 flex flex-col gap-3 lg:gap-4">
+                            
+                            <!-- Bundle 360 -->
+                            <div class="sub-accordion rounded-2xl bg-white/50 lg:bg-white/60 border border-fall-coffee/5 transition-all overflow-hidden lg:hover:shadow-sm">
+                                <button class="sub-trigger w-full flex items-center justify-between p-5 text-left group">
+                                    <div class="flex items-center gap-3">
+                                        <span class="hidden lg:block w-2.5 h-2.5 rounded-full bg-fall-rust opacity-40 group-hover:opacity-100 transition-opacity"></span>
+                                        <span class="font-body text-base font-semibold text-fall-coffee lg:group-hover:text-fall-rust transition-colors">Bundle de 360 gr</span>
+                                    </div>
+                                    <svg class="sub-chevron w-5 h-5 text-fall-coffee/20 lg:group-hover:text-fall-rust/50 transition-all duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" /></svg>
+                                </button>
+                                <div class="sub-content h-0 overflow-hidden opacity-0 bg-fall-cream/30 lg:bg-white/40">
+                                    <div class="p-4 pl-6 lg:p-5 lg:pl-10 flex flex-col gap-2.5 lg:gap-3.5 border-t border-fall-coffee/5">
+                                        <a href="#" class="group/link flex items-center justify-between py-1 font-body text-sm font-medium text-fall-coffee/70 lg:text-fall-coffee/80 hover:text-fall-rust transition-colors">
+                                            <span class="flex items-center gap-2"><span class="lg:hidden w-1.5 h-1.5 rounded-full bg-fall-rust/30"></span> Natural, Vainilla y Fresa</span>
+                                            <svg class="hidden lg:block w-4 h-4 text-fall-rust opacity-0 group-hover/link:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                                        </a>
+                                        <a href="#" class="group/link flex items-center justify-between py-1 font-body text-sm font-medium text-fall-coffee/70 lg:text-fall-coffee/80 hover:text-fall-rust transition-colors">
+                                            <span class="flex items-center gap-2"><span class="lg:hidden w-1.5 h-1.5 rounded-full bg-fall-rust/30"></span> Natural, Café y Envinada</span>
+                                            <svg class="hidden lg:block w-4 h-4 text-fall-rust opacity-0 group-hover/link:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                                        </a>
+                                        <a href="#" class="group/link flex items-center justify-between py-1 font-body text-sm font-medium text-fall-coffee/70 lg:text-fall-coffee/80 hover:text-fall-rust transition-colors">
+                                            <span class="flex items-center gap-2"><span class="lg:hidden w-1.5 h-1.5 rounded-full bg-fall-rust/30"></span> Natural, Quemada y Nuez</span>
+                                            <svg class="hidden lg:block w-4 h-4 text-fall-rust opacity-0 group-hover/link:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                                        </a>
+                                        <a href="#" class="group/link flex items-center justify-between py-1 font-body text-sm font-medium text-fall-coffee/70 lg:text-fall-coffee/80 hover:text-fall-rust transition-colors">
+                                            <span class="flex items-center gap-2"><span class="lg:hidden w-1.5 h-1.5 rounded-full bg-fall-rust/30"></span> Tequila, Mezcal y Rompope</span>
+                                            <svg class="hidden lg:block w-4 h-4 text-fall-rust opacity-0 group-hover/link:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Bundle 155 -->
+                            <div class="sub-accordion rounded-2xl bg-white/50 lg:bg-white/60 border border-fall-coffee/5 transition-all overflow-hidden lg:hover:shadow-sm">
+                                <button class="sub-trigger w-full flex items-center justify-between p-5 text-left group">
+                                    <div class="flex items-center gap-3">
+                                        <span class="hidden lg:block w-2.5 h-2.5 rounded-full bg-fall-mustard opacity-40 group-hover:opacity-100 transition-opacity"></span>
+                                        <span class="font-body text-base font-semibold text-fall-coffee lg:group-hover:text-fall-mustard transition-colors">Bundle de 155 gr</span>
+                                    </div>
+                                    <svg class="sub-chevron w-5 h-5 text-fall-coffee/20 lg:group-hover:text-fall-mustard/50 transition-all duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" /></svg>
+                                </button>
+                                <div class="sub-content h-0 overflow-hidden opacity-0 bg-fall-cream/30 lg:bg-white/40">
+                                    <div class="p-4 pl-6 lg:p-5 lg:pl-10 flex flex-col gap-2.5 lg:gap-3.5 border-t border-fall-coffee/5">
+                                        <a href="#" class="group/link flex items-center justify-between py-1 font-body text-sm font-medium text-fall-coffee/70 lg:text-fall-coffee/80 hover:text-fall-mustard transition-colors">
+                                            <span class="flex items-center gap-2"><span class="lg:hidden w-1.5 h-1.5 rounded-full bg-fall-mustard/30"></span> Natural, Vainilla y Fresa</span>
+                                            <svg class="hidden lg:block w-4 h-4 text-fall-mustard opacity-0 group-hover/link:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                                        </a>
+                                        <!-- Add more 155g options here -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Sold as a Set CTA -->
+                            <a href="https://drive.google.com/file/d/1BVIo4PhHDz91jv6kU1cvcosFaDL6vUyo/view?usp=sharing" target="_blank" class="w-full bg-white/50 lg:bg-fall-rust hover:bg-fall-rust/5 lg:hover:bg-fall-coffee border border-fall-coffee/5 lg:border-transparent lg:text-white rounded-2xl p-5 flex items-center justify-between group transition-all duration-500 lg:shadow-sm lg:hover:shadow-lg lg:hover:-translate-y-0.5 mt-2 lg:mt-0">
+                                <span class="font-body text-base font-semibold text-fall-coffee lg:text-white lg:group-hover:text-white group-hover:text-fall-rust transition-colors">Plantilla de "Sold as a Set"</span>
+                                <svg class="lg:hidden w-5 h-5 text-fall-rust opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                                <div class="hidden lg:flex items-center gap-2 opacity-80 group-hover:opacity-100 transition-opacity">
+                                    <span class="text-xs font-bold uppercase tracking-widest">Descargar</span>
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                                </div>
+                            </a>
+
+                            <!-- Specs -->
+                            <div class="bg-fall-mustard/10 rounded-2xl p-4 lg:p-5 mt-4 border border-fall-mustard/20">
+                                <span class="block font-retro text-[10px] lg:text-xs tracking-widest uppercase text-fall-mustard mb-1.5 lg:mb-2">Especificaciones de Impresión</span>
+                                <p class="font-body text-xs lg:text-sm text-fall-coffee/80 leading-relaxed">
+                                    Tamaño: <strong class="text-fall-coffee">1" x 2-5/8"</strong> | 
+                                    Papel: <strong class="text-fall-coffee">Carta (8.5" x 11")</strong> | 
+                                    Rendimiento: <strong class="text-fall-coffee">30 por Hoja</strong>
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- [CONTENIDO PRINCIPAL IZQUIERDA] -->
+            <div class="lg:col-span-7 order-2 lg:order-1 flex flex-col gap-10 lg:pr-4">
+                <div class="reveal-block">
+                    <h2 class="font-retro text-4xl md:text-5xl lg:text-6xl font-extrabold text-fall-coffee mb-4 tracking-tight leading-[1.05]">Armado y Empaquetado</h2>
+                    <h3 class="font-body text-xl md:text-2xl font-medium text-fall-rust mb-8">1.1 Armado de los Bundles</h3>
+                    <p class="font-body text-lg md:text-xl text-fall-coffee/80 leading-relaxed mb-10">
+                        Para que Amazon nos acepte los Bundles hay <strong class="text-fall-coffee">3 condiciones</strong> que se deben de cumplir:
+                    </p>
+                    
+                    <ul class="flex flex-col gap-10">
+                        <!-- Regla 1 + Imagen Lightbox -->
+                        <li class="group flex items-start gap-5 transition-all duration-300">
+                            <span class="mt-1.5 text-fall-rust flex-shrink-0 bg-fall-rust/10 p-2 rounded-full">
+                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                            </span>
+                            <div class="flex flex-col gap-4">
+                                <span class="font-body text-lg md:text-xl text-fall-coffee/80 leading-relaxed">
+                                    <strong class="text-fall-coffee font-semibold block mb-1">Sin códigos ajenos a la vista:</strong> 
+                                    Es importante que al momento de hacer los Bundles los frascos se ordenen de manera que los códigos de barras propios de las botellas queden viendo “Hacia el interior”. Que queden ocultos. Esto para evitar que los escáneres de Amazon pudieran leerlos por accidente.
+                                </span>
+                                <button onclick="openLightbox('https://res.cloudinary.com/dlylomauh/image/upload/v1782783591/Reporte_de_Amazon_Hasta_el_20_de_abril_del_2026_3_br6ve5.webp')" class="flex items-center gap-4 p-3 pr-6 bg-white/50 hover:bg-white border border-white/60 hover:border-fall-rust/30 rounded-2xl w-fit shadow-sm hover:shadow-md transition-all duration-300 group/btn text-left">
+                                    <div class="relative overflow-hidden rounded-xl w-16 h-16 flex-shrink-0 border border-fall-coffee/10">
+                                        <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1782783591/Reporte_de_Amazon_Hasta_el_20_de_abril_del_2026_3_br6ve5.webp" alt="Ejemplo de acomodo" class="w-full h-full object-cover transform group-hover/btn:scale-110 transition-transform duration-500">
+                                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover/btn:opacity-100 transition-opacity">
+                                            <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <span class="font-retro text-sm font-bold text-fall-coffee">Ver ejemplo visual</span>
+                                        <span class="font-body text-xs text-fall-coffee/60">Haz clic para ampliar imagen</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </li>
+
+                        <!-- Regla 2 -->
+                        <li class="group flex items-start gap-5 transition-all duration-300">
+                            <span class="mt-1.5 text-fall-mustard flex-shrink-0 bg-fall-mustard/10 p-2 rounded-full">
+                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                            </span>
+                            <span class="font-body text-lg md:text-xl text-fall-coffee/80 leading-relaxed">
+                                <strong class="text-fall-coffee font-semibold block mb-1">Prueba de caída (1 metro):</strong> 
+                                Los Bundles sellados deben aguantar una caída de 1 metro de altura sin separarse. Cuando se sellen con el plástico termoencogible debe quedar firme sin movimiento.
+                            </span>
+                        </li>
+
+                        <!-- Regla 3 -->
+                        <li class="group flex items-start gap-5 transition-all duration-300">
+                            <span class="mt-1.5 text-fall-olive flex-shrink-0 bg-fall-olive/10 p-2 rounded-full">
+                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/></svg>
+                            </span>
+                            <span class="font-body text-lg md:text-xl text-fall-coffee/80 leading-relaxed">
+                                <strong class="text-fall-coffee font-semibold block mb-1">Etiquetado correcto:</strong> 
+                                Amazon pide que cada Bundle tenga 2 etiquetas visibles en la parte lateral del producto o en la parte plana más amplia del mismo.
+                            </span>
+                        </li>
+
+                        <!-- Regla 4 -->
+                        <li class="group flex items-start gap-5 transition-all duration-300">
+                            <span class="mt-1.5 text-fall-leather flex-shrink-0 bg-fall-leather/10 p-2 rounded-full">
+                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+                            </span>
+                            <span class="font-body text-lg md:text-xl text-fall-coffee/80 leading-relaxed">
+                                <strong class="text-fall-coffee font-semibold block mb-1">Código de barras por producto:</strong> 
+                                Cada Bundle es considerado un producto. Como tenemos 4 combinaciones de sabores con 2 tamaños diferentes. Solo hay que revisar que el Bundle corresponda al tamaño.
+                            </span>
+                        </li>
+
+                        <!-- Regla Sold as a Set -->
+                        <li class="group flex items-start gap-5 transition-all duration-300 bg-white/40 p-6 rounded-[2rem] border border-white/60 shadow-sm mt-4">
+                            <span class="mt-1.5 text-fall-rust flex-shrink-0 bg-fall-rust/10 p-2 rounded-full">
+                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                            </span>
+                            <span class="font-body text-lg md:text-xl text-fall-coffee/80 leading-relaxed">
+                                <strong class="text-fall-coffee font-semibold block mb-1">Etiqueta de “Sold as a Set”:</strong> 
+                                Cada Bundle debe de llevar una etiqueta de “Sold as a set” para evitar que un empleado de Amazon en el futuro pudiera abrir los productos por error.
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Placeholder Secciones -->
+    <section id="paso-2" class="h-[50vh] bg-white/30 flex items-center justify-center border-t border-fall-coffee/10">
+        <h2 class="font-retro text-4xl text-fall-coffee/40">Paso 2</h2>
+    </section>
+    <section id="paso-3" class="h-[50vh] bg-fall-cream/50 flex items-center justify-center border-t border-fall-coffee/10">
+        <h2 class="font-retro text-4xl text-fall-coffee/40">Paso 3</h2>
+    </section>
+    <section id="acerca-de" class="h-[40vh] bg-premium-dark flex items-center justify-center border-t border-fall-coffee/10">
+        <h2 class="font-retro text-4xl text-white/50">Acerca de nosotros</h2>
+    </section>
+
+    <!-- ==========================================
+         LIGHTBOX MODAL 
+    =========================================== -->
+    <div id="lightbox-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-premium-black/90 opacity-0 pointer-events-none transition-opacity duration-500">
+        <div class="absolute inset-0 cursor-zoom-out" onclick="closeLightbox()"></div>
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 sm:top-10 sm:right-10 w-12 h-12 bg-white/10 hover:bg-white/20 text-white rounded-full flex items-center justify-center backdrop-blur-xl transition-colors z-10">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+        <div class="relative z-10 p-4 max-w-5xl max-h-[90vh] flex flex-col items-center">
+            <img id="lightbox-image" src="" alt="Ejemplo Amazon" class="max-w-full max-h-[85vh] object-contain rounded-2xl shadow-2xl transform scale-95 transition-transform duration-500">
+            <p class="text-white/60 font-body text-sm mt-4 text-center">Acomodo correcto: Códigos originales hacia el interior.</p>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         JAVASCRIPT GSAP COREOGRAPHY
+    =========================================== -->
+    <script>
+        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+        document.fonts.ready.then(() => {
+            initHeroAnimation();
+            initSmartNavbar();
+            initPrologueAnimation();
+            initEditorialAnimation();
+            initResourcesAccordion();
+            initSmoothScrolling();
+            initMobileMenu();
+            initDesktopDropdowns();
+        });
+
+        // 1. HERO ANIMATION
+        function initHeroAnimation() {
+            const tl = gsap.timeline();
+            tl.fromTo(["#desktop-navbar", "#mobile-menu-btn"], { y: -100, opacity: 0 }, { y: 0, opacity: 1, duration: 1.2, ease: "power4.out", delay: 0.2 });
+            tl.to(".hero-badge", { opacity: 1, y: 0, duration: 0.8, ease: "back.out(1.5)" }, "-=0.8");
+            tl.to(".hero-word", { y: 0, opacity: 1, duration: 1.2, stagger: 0.05, ease: "power4.out" }, "-=0.6");
+        }
+
+        // 2. SMART NAVBAR
+        function initSmartNavbar() {
+            let lastScrollY = window.scrollY;
+            let isNavHidden = false;
+            let isTicking = false;
+            const scrollThreshold = 15; 
+            const navElements = ["#desktop-navbar", "#mobile-menu-btn"];
+
+            window.addEventListener('scroll', () => {
+                if (!isTicking) {
+                    window.requestAnimationFrame(() => {
+                        const currentScrollY = window.scrollY;
+                        const scrolledDistance = Math.abs(currentScrollY - lastScrollY);
+
+                        if (scrolledDistance < scrollThreshold) { isTicking = false; return; }
+
+                        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                            if (!isNavHidden) {
+                                gsap.to(navElements, { y: -120, opacity: 0, duration: 0.5, ease: "power3.inOut" });
+                                isNavHidden = true;
+                                if(isMobileMenuOpen) closeMobilePanel(); 
+                            }
+                        } else if (currentScrollY < lastScrollY) {
+                            if (isNavHidden) {
+                                gsap.to(navElements, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" });
+                                isNavHidden = false;
+                            }
+                        }
+                        lastScrollY = currentScrollY;
+                        isTicking = false;
+                    });
+                    isTicking = true;
+                }
+            });
+        }
+
+        // 3. MASTER PROLOGUE ANIMATION
+        function initPrologueAnimation() {
+            const prologueBlocks = gsap.utils.toArray('.prologue-block');
+            gsap.set(prologueBlocks, { opacity: 0, y: 40 });
+            prologueBlocks.forEach((block) => {
+                gsap.to(block, {
+                    scrollTrigger: { trigger: block, start: "top 85%", toggleActions: "play none none none" },
+                    opacity: 1, y: 0, duration: 1.2, ease: "power3.out"
+                });
+            });
+        }
+
+        // 4. EDITORIAL BLOCKS ANIMATION
+        function initEditorialAnimation() {
+            const blocks = gsap.utils.toArray('.reveal-block');
+            blocks.forEach((block) => {
+                gsap.to(block, {
+                    scrollTrigger: { trigger: block, start: "top 85%", toggleActions: "play none none none" },
+                    opacity: 1, y: 0, duration: 1, ease: "power3.out"
                 });
             });
 
-            // --- SUB-ACORDEONES (Nivel 2) ---
-            const subAccordions = document.querySelectorAll('.sub-accordion');
+            const detailCards = gsap.utils.toArray('.details-card-anim');
+            detailCards.forEach((card) => {
+                gsap.from(card, {
+                    scrollTrigger: { trigger: card, start: "top 80%" },
+                    opacity: 0, y: 40, scale: 0.98, duration: 1, ease: "power4.out"
+                });
+            });
+        }
 
+        // 5. ACORDEONES ANIDADOS (Recursos)
+        function initResourcesAccordion() {
+            const easePremium = "cubic-bezier(0.23, 1, 0.32, 1)"; 
+            const mainTrigger = document.getElementById('resources-trigger');
+            const mainContent = document.getElementById('resources-content');
+            const mainChevron = document.getElementById('resources-chevron');
+            let isMainOpen = false;
+
+            if(mainTrigger && mainContent) {
+                mainTrigger.addEventListener('click', () => {
+                    isMainOpen = !isMainOpen;
+                    gsap.to(mainContent, { height: isMainOpen ? "auto" : 0, opacity: isMainOpen ? 1 : 0, duration: 0.6, ease: easePremium });
+                    gsap.to(mainChevron, { rotation: isMainOpen ? 180 : 0, duration: 0.6, ease: easePremium });
+                });
+            }
+
+            const subAccordions = document.querySelectorAll('.sub-accordion');
             subAccordions.forEach(acc => {
                 const trigger = acc.querySelector('.sub-trigger');
                 const content = acc.querySelector('.sub-content');
                 const chevron = acc.querySelector('.sub-chevron');
                 let isOpen = false;
 
-                // Pre-setear cerrado
-                gsap.set(content, { height: 0, opacity: 0 });
-
                 trigger.addEventListener('click', () => {
                     isOpen = !isOpen;
-
-                    // Cerrar otros sub-acordeones abiertos (opcional, para UX más limpia)
                     if (isOpen) {
                         subAccordions.forEach(otherAcc => {
                             if (otherAcc !== acc && otherAcc.classList.contains('is-sub-open')) {
-                                otherAcc.click(); // Trigger click para cerrar
+                                otherAcc.click(); 
                             }
                         });
                         acc.classList.add('is-sub-open');
                     } else {
                         acc.classList.remove('is-sub-open');
                     }
-
-                    gsap.to(content, {
-                        height: isOpen ? "auto" : 0,
-                        opacity: isOpen ? 1 : 0,
-                        duration: 0.5,
-                        ease: easePremium
-                    });
-
-                    gsap.to(chevron, {
-                        rotation: isOpen ? 180 : 0,
-                        duration: 0.5,
-                        ease: easePremium
-                    });
+                    gsap.to(content, { height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0, duration: 0.5, ease: easePremium });
+                    gsap.to(chevron, { rotation: isOpen ? 180 : 0, duration: 0.5, ease: easePremium });
                 });
             });
-        });
+        }
+
+        // 6. LIGHTBOX MODAL
+        function openLightbox(imageUrl) {
+            const modal = document.getElementById('lightbox-modal');
+            const img = document.getElementById('lightbox-image');
+            img.src = imageUrl;
+            gsap.to(modal, { opacity: 1, duration: 0.4, ease: "power2.out", pointerEvents: "auto" });
+            gsap.to(img, { scale: 1, duration: 0.5, ease: "back.out(1.5)" });
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const modal = document.getElementById('lightbox-modal');
+            const img = document.getElementById('lightbox-image');
+            gsap.to(img, { scale: 0.95, duration: 0.3, ease: "power2.in" });
+            gsap.to(modal, { opacity: 0, duration: 0.3, ease: "power2.in", pointerEvents: "none", onComplete: () => { img.src = ""; }});
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', (e) => { if (e.key === "Escape") closeLightbox(); });
+
+        // 7. SMOOTH SCROLLING
+        function initSmoothScrolling() {
+            document.querySelectorAll('.scroll-link').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetID = this.getAttribute('href');
+                    if (activeDropdown) closeDropdown(activeDropdown);
+                    if (isMobileMenuOpen) closeMobilePanel();
+                    gsap.to(window, { duration: 1.5, scrollTo: { y: targetID, offsetY: 120 }, ease: "power4.inOut" });
+                });
+            });
+        }
+
+        // 8. DROPDOWNS DESKTOP
+        let activeDropdown = null;
+        function initDesktopDropdowns() {
+            document.querySelectorAll('.dropdown-container').forEach(container => {
+                const toggle = container.querySelector('.dropdown-toggle');
+                const menu = container.querySelector('.dropdown-menu');
+                const chevron = container.querySelector('.chevron');
+                gsap.set(menu, { display: "none", opacity: 0, y: -15, scale: 0.95 });
+
+                toggle.addEventListener('click', (e) => {
+                    e.stopPropagation(); 
+                    if (activeDropdown && activeDropdown !== menu) closeDropdown(activeDropdown);
+                    menu.classList.contains('is-open') ? closeDropdown(menu, chevron) : openDropdown(menu, chevron);
+                });
+            });
+            document.addEventListener('click', () => activeDropdown && closeDropdown(activeDropdown));
+        }
+
+        function openDropdown(menu, chevron) {
+            menu.classList.add('is-open'); activeDropdown = menu;
+            gsap.to(chevron || menu.parentElement.querySelector('.chevron'), { rotation: 180, duration: 0.4, ease: "back.out(1.7)" });
+            gsap.to(menu, { display: "block", opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "power3.out" });
+        }
+        function closeDropdown(menu, chevron) {
+            menu.classList.remove('is-open'); activeDropdown = null;
+            gsap.to(chevron || menu.parentElement.querySelector('.chevron'), { rotation: 0, duration: 0.3, ease: "power3.out" });
+            gsap.to(menu, { opacity: 0, y: -15, scale: 0.95, duration: 0.25, ease: "power2.in", onComplete: () => gsap.set(menu, { display: "none" }) });
+        }
+
+        // 9. MOBILE MENU
+        let isMobileMenuOpen = false;
+        function initMobileMenu() {
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const mobilePanel = document.getElementById('mobile-menu-panel');
+            gsap.set(mobilePanel, { display: "none", opacity: 0, y: -20, scale: 0.98 });
+            mobileBtn.addEventListener('click', () => isMobileMenuOpen ? closeMobilePanel() : openMobilePanel());
+
+            document.querySelectorAll('.mobile-accordion').forEach(acc => {
+                const trigger = acc.querySelector('.accordion-trigger'), submenu = acc.querySelector('.mobile-submenu'), chevron = acc.querySelector('.chevron-mob');
+                let isOpen = false;
+                trigger.addEventListener('click', () => {
+                    isOpen = !isOpen;
+                    if (isOpen) {
+                        gsap.to(chevron, { rotation: 180, duration: 0.4, ease: "back.out(2)" });
+                        gsap.to(submenu, { height: "auto", opacity: 1, duration: 0.4, ease: "power2.out" });
+                    } else {
+                        gsap.to(chevron, { rotation: 0, duration: 0.3, ease: "power2.out" });
+                        gsap.to(submenu, { height: 0, opacity: 0, duration: 0.3, ease: "power2.inOut" });
+                    }
+                });
+            });
+        }
+
+        function openMobilePanel() {
+            isMobileMenuOpen = true;
+            document.querySelector('.line-1').style.transform = 'translateY(7.5px) rotate(45deg)';
+            document.querySelector('.line-2').style.opacity = '0';
+            document.querySelector('.line-3').style.transform = 'translateY(-7.5px) rotate(-45deg)';
+            gsap.to('#mobile-menu-panel', { display: "block", opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.2)" });
+        }
+
+        function closeMobilePanel() {
+            isMobileMenuOpen = false;
+            document.querySelector('.line-1').style.transform = 'translateY(0) rotate(0)';
+            document.querySelector('.line-2').style.opacity = '1';
+            document.querySelector('.line-3').style.transform = 'translateY(0) rotate(0)';
+            gsap.to('#mobile-menu-panel', { opacity: 0, y: -20, scale: 0.98, duration: 0.3, ease: "power2.in", onComplete: () => gsap.set('#mobile-menu-panel', { display: "none" }) });
+        }
     </script>
 </body>
 </html>
