@@ -299,8 +299,8 @@
 
         <div class="max-w-7xl mx-auto flex flex-col lg:grid lg:grid-cols-12 gap-12 lg:gap-16">
             
-            <!-- [TEXTO IZQUIERDA EN DESKTOP / ARRIBA EN MOBILE] -->
-            <div class="lg:col-span-7 order-1 lg:order-1 flex flex-col gap-10 lg:pr-4">
+            <!-- [1. CONTENIDO DE TEXTO] -> Arriba en Mobile, Izquierda en Desktop -->
+            <div class="lg:col-span-7 flex flex-col gap-10 lg:pr-4">
                 <div class="reveal-block">
                     <h2 class="font-retro text-4xl md:text-5xl lg:text-6xl font-extrabold text-fall-coffee mb-4 tracking-tight leading-[1.05]">Armado y Empaquetado</h2>
                     <h3 class="font-body text-xl md:text-2xl font-medium text-fall-rust mb-8">1.1 Armado de los Bundles</h3>
@@ -309,6 +309,7 @@
                     </p>
                     
                     <ul class="flex flex-col gap-10">
+                        <!-- Regla 1 + Imagen Lightbox -->
                         <li class="group flex items-start gap-5 transition-all duration-300">
                             <span class="mt-1.5 text-fall-rust flex-shrink-0 bg-fall-rust/10 p-2 rounded-full">
                                 <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
@@ -333,6 +334,7 @@
                             </div>
                         </li>
 
+                        <!-- Regla 2 -->
                         <li class="group flex items-start gap-5 transition-all duration-300">
                             <span class="mt-1.5 text-fall-mustard flex-shrink-0 bg-fall-mustard/10 p-2 rounded-full"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg></span>
                             <span class="font-body text-lg md:text-xl text-fall-coffee/80 leading-relaxed">
@@ -341,6 +343,7 @@
                             </span>
                         </li>
 
+                        <!-- Regla 3 -->
                         <li class="group flex items-start gap-5 transition-all duration-300">
                             <span class="mt-1.5 text-fall-olive flex-shrink-0 bg-fall-olive/10 p-2 rounded-full"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/></svg></span>
                             <span class="font-body text-lg md:text-xl text-fall-coffee/80 leading-relaxed">
@@ -349,6 +352,7 @@
                             </span>
                         </li>
 
+                        <!-- Regla 4 -->
                         <li class="group flex items-start gap-5 transition-all duration-300">
                             <span class="mt-1.5 text-fall-leather flex-shrink-0 bg-fall-leather/10 p-2 rounded-full"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg></span>
                             <span class="font-body text-lg md:text-xl text-fall-coffee/80 leading-relaxed">
@@ -357,6 +361,7 @@
                             </span>
                         </li>
 
+                        <!-- Regla Sold as a Set -->
                         <li class="group flex items-start gap-5 transition-all duration-300 bg-white/40 p-6 rounded-[2rem] border border-white/60 shadow-sm mt-4">
                             <span class="mt-1.5 text-fall-rust flex-shrink-0 bg-fall-rust/10 p-2 rounded-full"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg></span>
                             <span class="font-body text-lg md:text-xl text-fall-coffee/80 leading-relaxed">
@@ -368,8 +373,8 @@
                 </div>
             </div>
 
-            <!-- [RECURSOS DERECHA EN DESKTOP / ABAJO EN MOBILE] -->
-            <div class="lg:col-span-5 order-2 lg:order-2 relative mt-4 lg:mt-0">
+            <!-- [2. TARJETA DE RECURSOS] -> Abajo en Mobile, Derecha en Desktop -->
+            <div class="lg:col-span-5 relative mt-4 lg:mt-0">
                 <div class="details-card-anim lg:sticky lg:top-32 bg-white/70 lg:bg-white/80 backdrop-blur-2xl rounded-[2rem] shadow-[0_15px_35px_rgba(62,39,35,0.05)] lg:shadow-[0_20px_50px_rgba(62,39,35,0.04)] border border-white overflow-hidden transition-all duration-300 lg:hover:shadow-[0_30px_70px_rgba(62,39,35,0.08)]">
                     
                     <button id="resources-trigger" class="w-full flex items-center justify-between p-6 lg:p-7 text-left group transition-colors lg:hover:bg-white/50 z-10 relative">
@@ -434,25 +439,13 @@
                                             <span class="flex items-center gap-2"><span class="lg:hidden w-1.5 h-1.5 rounded-full bg-fall-mustard/30"></span> Natural, Vainilla y Fresa</span>
                                             <svg class="hidden lg:block w-4 h-4 text-fall-mustard opacity-0 group-hover/link:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
                                         </a>
-                                        <a href="#" class="group/link flex items-center justify-between py-1 font-body text-sm font-medium text-fall-coffee/70 lg:text-fall-coffee/80 hover:text-fall-mustard transition-colors">
-                                            <span class="flex items-center gap-2"><span class="lg:hidden w-1.5 h-1.5 rounded-full bg-fall-mustard/30"></span> Natural, Café y Envinada</span>
-                                            <svg class="hidden lg:block w-4 h-4 text-fall-mustard opacity-0 group-hover/link:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                                        </a>
-                                        <a href="#" class="group/link flex items-center justify-between py-1 font-body text-sm font-medium text-fall-coffee/70 lg:text-fall-coffee/80 hover:text-fall-mustard transition-colors">
-                                            <span class="flex items-center gap-2"><span class="lg:hidden w-1.5 h-1.5 rounded-full bg-fall-mustard/30"></span> Natural, Quemada y Nuez</span>
-                                            <svg class="hidden lg:block w-4 h-4 text-fall-mustard opacity-0 group-hover/link:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                                        </a>
-                                        <a href="#" class="group/link flex items-center justify-between py-1 font-body text-sm font-medium text-fall-coffee/70 lg:text-fall-coffee/80 hover:text-fall-mustard transition-colors">
-                                            <span class="flex items-center gap-2"><span class="lg:hidden w-1.5 h-1.5 rounded-full bg-fall-mustard/30"></span> Tequila, Mezcal y Rompope</span>
-                                            <svg class="hidden lg:block w-4 h-4 text-fall-mustard opacity-0 group-hover/link:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                                        </a>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Sold as a Set CTA -->
                             <a href="https://drive.google.com/file/d/1BVIo4PhHDz91jv6kU1cvcosFaDL6vUyo/view?usp=sharing" target="_blank" class="w-full bg-white/50 lg:bg-fall-rust hover:bg-fall-rust/5 lg:hover:bg-fall-coffee border border-fall-coffee/5 lg:border-transparent lg:text-white rounded-2xl p-5 flex items-center justify-between group transition-all duration-500 lg:shadow-sm lg:hover:shadow-lg lg:hover:-translate-y-0.5 mt-2 lg:mt-0">
-                                <span class="font-body text-base font-semibold text-fall-coffee lg:text-white lg:group-hover:text-white group-hover:text-fall-rust transition-colors">Plantilla "Sold as a Set"</span>
+                                <span class="font-body text-base font-semibold text-fall-coffee lg:text-white lg:group-hover:text-white group-hover:text-fall-rust transition-colors">Plantilla de "Sold as a Set"</span>
                                 <svg class="lg:hidden w-5 h-5 text-fall-rust opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
                                 <div class="hidden lg:flex items-center gap-2 opacity-80 group-hover:opacity-100 transition-opacity">
                                     <span class="text-xs font-bold uppercase tracking-widest">Descargar</span>
@@ -466,7 +459,7 @@
                                 <p class="font-body text-xs lg:text-sm text-fall-coffee/80 leading-relaxed">
                                     Tamaño: <strong class="text-fall-coffee">1" x 2-5/8"</strong> | 
                                     Papel: <strong class="text-fall-coffee">Carta (8.5" x 11")</strong> | 
-                                    Rend.: <strong class="text-fall-coffee">30 x Hoja</strong>
+                                    Rendimiento: <strong class="text-fall-coffee">30 por Hoja</strong>
                                 </p>
                             </div>
 
@@ -477,7 +470,6 @@
 
         </div>
     </section>
-
     <!-- ==========================================
          PASO 2: ZIG-ZAG (TARJETA A LA IZQUIERDA)
     =========================================== -->
