@@ -276,66 +276,200 @@
         </div>
     </section>
 
-    <!-- ==========================================
-         PASO 1: EDITORIAL PREMIUM
+
+
+<!-- ==========================================
+         PASO 1: DASHBOARD OPERATIVO Y RECURSOS
     =========================================== -->
-    <section id="step-1" class="relative w-full min-h-screen flex items-center justify-center border-t border-fall-coffee/5 bg-white/20 py-24 px-4 sm:px-6 md:px-8">
-        <div class="max-w-5xl w-full">
+    <section id="paso-1" class="relative w-full py-20 md:py-32 px-4 sm:px-6 md:px-8 border-t border-fall-coffee/10">
+        
+        <div class="max-w-7xl mx-auto mb-10 flex justify-start">
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-fall-rust border border-fall-rust/20 px-4 py-2 rounded-full">Paso 1</span>
+        </div>
+
+        <div class="max-w-7xl mx-auto flex flex-col lg:grid lg:grid-cols-12 gap-12 lg:gap-16">
             
-            <div class="text-center md:text-left mb-12 md:mb-16">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-fall-mustard block mb-3">Fase de Empaque</span>
-                <h2 class="font-retro text-3xl sm:text-5xl md:text-6xl font-extrabold text-fall-coffee mb-6 tracking-tight leading-tight">
-                    Paso 1: Armado y Empaquetado
-                </h2>
-                <p class="font-body text-lg sm:text-xl text-fall-coffee/80 max-w-2xl mx-auto md:mx-0 leading-relaxed">
-                    Para que Amazon nos acepte los Bundles hay <span class="text-fall-rust font-bold">3 condiciones fundamentales</span> que se deben cumplir estrictamente.
-                </p>
+            <!-- [COLUMNA IZQUIERDA / ARRIBA EN MOBILE]: Contenido de Texto (Storytelling Primero) -->
+            <div class="lg:col-span-7 order-1 flex flex-col gap-10 lg:pr-4">
+                
+                <div class="reveal-block">
+                    <h2 class="font-retro text-4xl md:text-5xl lg:text-6xl font-extrabold text-fall-coffee mb-4 tracking-tight leading-[1.05]">Armado y Empaquetado</h2>
+                    <h3 class="font-body text-xl md:text-2xl font-medium text-fall-rust mb-8">1.1 Armado de los Bundles</h3>
+                    <p class="font-body text-lg md:text-xl text-fall-coffee/80 leading-relaxed mb-10">
+                        Para que Amazon nos acepte los Bundles hay <strong class="text-fall-coffee">3 condiciones estrictas</strong> que se deben de cumplir:
+                    </p>
+                    
+                    <ul class="flex flex-col gap-10">
+                        <!-- Regla 1 + Imagen Lightbox -->
+                        <li class="group flex items-start gap-5 transition-all duration-300">
+                            <span class="mt-1.5 text-fall-rust flex-shrink-0 bg-fall-rust/10 p-2 rounded-full">
+                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                            </span>
+                            <div class="flex flex-col gap-4">
+                                <span class="font-body text-lg md:text-xl text-fall-coffee/80 leading-relaxed">
+                                    <strong class="text-fall-coffee font-semibold block mb-1">Sin códigos ajenos a la vista:</strong> 
+                                    Es importante que al momento de hacer los Bundles los frascos se ordenen de manera que los códigos de barras propios de las botellas queden viendo “Hacia el interior”. Que queden ocultos. Esto para evitar que los escáneres de Amazon pudieran leerlos por accidente.
+                                </span>
+                                <button onclick="openLightbox('https://res.cloudinary.com/dlylomauh/image/upload/v1782783591/Reporte_de_Amazon_Hasta_el_20_de_abril_del_2026_3_br6ve5.webp')" class="flex items-center gap-4 p-3 pr-6 bg-white/50 hover:bg-white border border-white/60 hover:border-fall-rust/30 rounded-2xl w-fit shadow-sm hover:shadow-md transition-all duration-300 group/btn text-left">
+                                    <div class="relative overflow-hidden rounded-xl w-16 h-16 flex-shrink-0 border border-fall-coffee/10">
+                                        <img src="https://res.cloudinary.com/dlylomauh/image/upload/v1782783591/Reporte_de_Amazon_Hasta_el_20_de_abril_del_2026_3_br6ve5.webp" alt="Ejemplo de acomodo" class="w-full h-full object-cover transform group-hover/btn:scale-110 transition-transform duration-500">
+                                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover/btn:opacity-100 transition-opacity">
+                                            <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <span class="font-retro text-sm font-bold text-fall-coffee">Ver ejemplo visual</span>
+                                        <span class="font-body text-xs text-fall-coffee/60">Haz clic para ampliar imagen</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </li>
+
+                        <!-- Regla 2 -->
+                        <li class="group flex items-start gap-5 transition-all duration-300">
+                            <span class="mt-1.5 text-fall-mustard flex-shrink-0 bg-fall-mustard/10 p-2 rounded-full">
+                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                            </span>
+                            <span class="font-body text-lg md:text-xl text-fall-coffee/80 leading-relaxed">
+                                <strong class="text-fall-coffee font-semibold block mb-1">Prueba de caída (1 metro):</strong> 
+                                Los Bundles sellados deben aguantar una caída de 1 metro de altura sin separarse. Cuando se sellen con el plástico termoencogible debe quedar firme sin movimiento.
+                            </span>
+                        </li>
+
+                        <!-- Regla 3 -->
+                        <li class="group flex items-start gap-5 transition-all duration-300">
+                            <span class="mt-1.5 text-fall-olive flex-shrink-0 bg-fall-olive/10 p-2 rounded-full">
+                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/></svg>
+                            </span>
+                            <span class="font-body text-lg md:text-xl text-fall-coffee/80 leading-relaxed">
+                                <strong class="text-fall-coffee font-semibold block mb-1">Etiquetado correcto:</strong> 
+                                Amazon pide que cada Bundle tenga 2 etiquetas visibles en la parte lateral del producto o en la parte plana más amplia del mismo.
+                            </span>
+                        </li>
+
+                        <!-- Regla 4 -->
+                        <li class="group flex items-start gap-5 transition-all duration-300">
+                            <span class="mt-1.5 text-fall-leather flex-shrink-0 bg-fall-leather/10 p-2 rounded-full">
+                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+                            </span>
+                            <span class="font-body text-lg md:text-xl text-fall-coffee/80 leading-relaxed">
+                                <strong class="text-fall-coffee font-semibold block mb-1">Código de barras por producto:</strong> 
+                                Cada Bundle es considerado un producto. Como tenemos 4 combinaciones de sabores con 2 tamaños diferentes. Solo hay que revisar que el Bundle corresponda al tamaño.
+                            </span>
+                        </li>
+
+                        <!-- Regla Sold as a Set -->
+                        <li class="group flex items-start gap-5 transition-all duration-300 bg-white/40 p-6 rounded-[2rem] border border-white/60 shadow-sm mt-4">
+                            <span class="mt-1.5 text-fall-rust flex-shrink-0 bg-fall-rust/10 p-2 rounded-full">
+                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                            </span>
+                            <span class="font-body text-lg md:text-xl text-fall-coffee/80 leading-relaxed">
+                                <strong class="text-fall-coffee font-semibold block mb-1">Etiqueta de “Sold as a Set”:</strong> 
+                                Cada Bundle debe de llevar una etiqueta de “Sold as a set” para evitar que un empleado de Amazon en el futuro pudiera abrir los productos por error.
+                            </span>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                <div class="group bg-white/60 hover:bg-white border border-white hover:border-fall-mustard/30 rounded-[2rem] p-6 sm:p-8 shadow-[0_10px_30px_rgba(62,39,35,0.01)] hover:shadow-[0_20px_40px_rgba(62,39,35,0.04)] transition-all duration-500 ease-premium transform hover:-translate-y-1">
-                    <div class="w-10 h-10 rounded-full bg-fall-rust/10 text-fall-rust font-retro font-bold flex items-center justify-center mb-6">1</div>
-                    <h3 class="font-retro text-xl font-bold text-fall-coffee mb-4 leading-tight group-hover:text-fall-rust transition-colors">Sin códigos ajenos a la vista</h3>
-                    <p class="font-body text-sm text-fall-coffee/75 leading-relaxed">
-                        Es importante que al hacer los Bundles los frascos se ordenen de manera que los códigos de barras propios queden viendo <span class="font-semibold text-fall-coffee">“Hacia el interior”</span>.
-                    </p>
-                </div>
-                <div class="group bg-white/60 hover:bg-white border border-white hover:border-fall-mustard/30 rounded-[2rem] p-6 sm:p-8 shadow-[0_10px_30px_rgba(62,39,35,0.01)] hover:shadow-[0_20px_40px_rgba(62,39,35,0.04)] transition-all duration-500 ease-premium transform hover:-translate-y-1">
-                    <div class="w-10 h-10 rounded-full bg-fall-mustard/10 text-fall-mustard font-retro font-bold flex items-center justify-center mb-6">2</div>
-                    <h3 class="font-retro text-xl font-bold text-fall-coffee mb-4 leading-tight group-hover:text-fall-mustard transition-colors">Prueba de caída (1 metro)</h3>
-                    <p class="font-body text-sm text-fall-coffee/75 leading-relaxed">
-                        Los Bundles sellados deben aguantar una caída de <span class="font-semibold text-fall-coffee">1 metro de altura sin separarse</span>.
-                    </p>
-                </div>
-                <div class="group bg-white/60 hover:bg-white border border-white hover:border-fall-mustard/30 rounded-[2rem] p-6 sm:p-8 shadow-[0_10px_30px_rgba(62,39,35,0.01)] hover:shadow-[0_20px_40px_rgba(62,39,35,0.04)] transition-all duration-500 ease-premium transform hover:-translate-y-1">
-                    <div class="w-10 h-10 rounded-full bg-fall-olive/10 text-fall-olive font-retro font-bold flex items-center justify-center mb-6">3</div>
-                    <h3 class="font-retro text-xl font-bold text-fall-coffee mb-4 leading-tight group-hover:text-fall-olive transition-colors">Etiquetado correcto</h3>
-                    <p class="font-body text-sm text-fall-coffee/75 leading-relaxed">
-                        Amazon pide que cada Bundle tenga <span class="font-semibold text-fall-coffee">2 etiquetas visibles</span> en la parte lateral del producto o en la parte plana más amplia del mismo.
-                    </p>
-                </div>
-            </div>
+            <!-- [COLUMNA DERECHA / ABAJO EN MOBILE]: Tarjeta de Recursos (Llamado a la Acción) -->
+            <div class="lg:col-span-5 order-2 relative mt-4 lg:mt-0">
+                <div class="details-card-anim lg:sticky lg:top-32 bg-white/70 lg:bg-white/80 backdrop-blur-2xl rounded-[2rem] shadow-[0_15px_35px_rgba(62,39,35,0.05)] lg:shadow-[0_20px_50px_rgba(62,39,35,0.04)] border border-white overflow-hidden transition-all duration-300 lg:hover:shadow-[0_30px_70px_rgba(62,39,35,0.08)]">
+                    
+                    <button id="resources-trigger" class="w-full flex items-center justify-between p-6 lg:p-7 text-left group transition-colors lg:hover:bg-white/50 z-10 relative">
+                        <div class="flex items-center gap-4 lg:gap-5">
+                            <span class="flex items-center justify-center w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-fall-leather/10 text-fall-leather border border-fall-leather/10 transition-all duration-500 lg:group-hover:bg-fall-leather lg:group-hover:text-white">
+                                <svg class="w-6 h-6 lg:w-7 lg:h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                            </span>
+                            <div>
+                                <h3 class="font-retro text-2xl lg:text-3xl font-extrabold text-fall-coffee tracking-tight">Descargar etiquetas</h3>
+                                <p class="hidden lg:block text-sm text-fall-coffee/60 mt-1">Plantillas oficiales FBA</p>
+                            </div>
+                        </div>
+                        <svg id="resources-chevron" class="w-6 h-6 lg:w-7 lg:h-7 text-fall-coffee/30 transition-transform duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
 
-            <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
-                <div class="md:col-span-3 bg-white/40 border border-white/60 rounded-[2rem] p-6 sm:p-8 shadow-[0_4px_20px_rgba(62,39,35,0.01)]">
-                    <h4 class="font-retro text-lg font-bold text-fall-coffee mb-3 flex items-center gap-2">
-                        <span class="w-1.5 h-1.5 rounded-full bg-fall-rust"></span> Código de barras por producto
-                    </h4>
-                    <p class="font-body text-sm text-fall-coffee/80 leading-relaxed">
-                        Cada Bundle es considerado un producto individual único. Como manejamos <span class="font-semibold text-fall-rust">4 combinaciones de sabores con 2 tamaños diferentes</span>, solo hay que validar minuciosamente que el código del Bundle corresponda al tamaño exacto.
-                    </p>
-                </div>
-                <div class="md:col-span-2 bg-fall-mustard/5 border border-fall-mustard/20 rounded-[2rem] p-6 sm:p-8 flex flex-col justify-center">
-                    <h4 class="font-retro text-xs font-bold uppercase tracking-widest text-fall-mustard mb-2">Especificación de Impresión</h4>
-                    <p class="font-body text-base text-fall-coffee font-semibold mb-1">Tamaño: 1" x 2-5/8"</p>
-                    <p class="font-body text-xs text-fall-coffee/60 leading-relaxed">
-                        Imprimir obligatoriamente en papel tamaño Carta (<span class="italic">US Letter / 8.5" x 11"</span>) en una distribución exacta de <span class="font-bold text-fall-rust">30 etiquetas por Hoja</span>.
-                    </p>
+                    <div id="resources-content" class="h-0 overflow-hidden opacity-0 border-t border-fall-coffee/5 bg-white/30 lg:bg-fall-cream/20">
+                        <div class="p-4 lg:p-5 flex flex-col gap-3 lg:gap-4">
+                            
+                            <!-- Bundle 360 -->
+                            <div class="sub-accordion rounded-2xl bg-white/50 lg:bg-white/60 border border-fall-coffee/5 transition-all overflow-hidden lg:hover:shadow-sm">
+                                <button class="sub-trigger w-full flex items-center justify-between p-5 text-left group">
+                                    <div class="flex items-center gap-3">
+                                        <span class="hidden lg:block w-2.5 h-2.5 rounded-full bg-fall-rust opacity-40 group-hover:opacity-100 transition-opacity"></span>
+                                        <span class="font-body text-base font-semibold text-fall-coffee lg:group-hover:text-fall-rust transition-colors">Bundle de 360 gr</span>
+                                    </div>
+                                    <svg class="sub-chevron w-5 h-5 text-fall-coffee/20 lg:group-hover:text-fall-rust/50 transition-all duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" /></svg>
+                                </button>
+                                <div class="sub-content h-0 overflow-hidden opacity-0 bg-fall-cream/30 lg:bg-white/40">
+                                    <div class="p-4 pl-6 lg:p-5 lg:pl-10 flex flex-col gap-2.5 lg:gap-3.5 border-t border-fall-coffee/5">
+                                        <a href="#" class="group/link flex items-center justify-between py-1 font-body text-sm font-medium text-fall-coffee/70 lg:text-fall-coffee/80 hover:text-fall-rust transition-colors">
+                                            <span class="flex items-center gap-2"><span class="lg:hidden w-1.5 h-1.5 rounded-full bg-fall-rust/30"></span> Natural, Vainilla y Fresa</span>
+                                            <svg class="hidden lg:block w-4 h-4 text-fall-rust opacity-0 group-hover/link:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                                        </a>
+                                        <a href="#" class="group/link flex items-center justify-between py-1 font-body text-sm font-medium text-fall-coffee/70 lg:text-fall-coffee/80 hover:text-fall-rust transition-colors">
+                                            <span class="flex items-center gap-2"><span class="lg:hidden w-1.5 h-1.5 rounded-full bg-fall-rust/30"></span> Natural, Café y Envinada</span>
+                                            <svg class="hidden lg:block w-4 h-4 text-fall-rust opacity-0 group-hover/link:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                                        </a>
+                                        <a href="#" class="group/link flex items-center justify-between py-1 font-body text-sm font-medium text-fall-coffee/70 lg:text-fall-coffee/80 hover:text-fall-rust transition-colors">
+                                            <span class="flex items-center gap-2"><span class="lg:hidden w-1.5 h-1.5 rounded-full bg-fall-rust/30"></span> Natural, Quemada y Nuez</span>
+                                            <svg class="hidden lg:block w-4 h-4 text-fall-rust opacity-0 group-hover/link:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                                        </a>
+                                        <a href="#" class="group/link flex items-center justify-between py-1 font-body text-sm font-medium text-fall-coffee/70 lg:text-fall-coffee/80 hover:text-fall-rust transition-colors">
+                                            <span class="flex items-center gap-2"><span class="lg:hidden w-1.5 h-1.5 rounded-full bg-fall-rust/30"></span> Tequila, Mezcal y Rompope</span>
+                                            <svg class="hidden lg:block w-4 h-4 text-fall-rust opacity-0 group-hover/link:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Bundle 155 -->
+                            <div class="sub-accordion rounded-2xl bg-white/50 lg:bg-white/60 border border-fall-coffee/5 transition-all overflow-hidden lg:hover:shadow-sm">
+                                <button class="sub-trigger w-full flex items-center justify-between p-5 text-left group">
+                                    <div class="flex items-center gap-3">
+                                        <span class="hidden lg:block w-2.5 h-2.5 rounded-full bg-fall-mustard opacity-40 group-hover:opacity-100 transition-opacity"></span>
+                                        <span class="font-body text-base font-semibold text-fall-coffee lg:group-hover:text-fall-mustard transition-colors">Bundle de 155 gr</span>
+                                    </div>
+                                    <svg class="sub-chevron w-5 h-5 text-fall-coffee/20 lg:group-hover:text-fall-mustard/50 transition-all duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" /></svg>
+                                </button>
+                                <div class="sub-content h-0 overflow-hidden opacity-0 bg-fall-cream/30 lg:bg-white/40">
+                                    <div class="p-4 pl-6 lg:p-5 lg:pl-10 flex flex-col gap-2.5 lg:gap-3.5 border-t border-fall-coffee/5">
+                                        <a href="#" class="group/link flex items-center justify-between py-1 font-body text-sm font-medium text-fall-coffee/70 lg:text-fall-coffee/80 hover:text-fall-mustard transition-colors">
+                                            <span class="flex items-center gap-2"><span class="lg:hidden w-1.5 h-1.5 rounded-full bg-fall-mustard/30"></span> Natural, Vainilla y Fresa</span>
+                                            <svg class="hidden lg:block w-4 h-4 text-fall-mustard opacity-0 group-hover/link:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Sold as a Set CTA -->
+                            <a href="https://drive.google.com/file/d/1BVIo4PhHDz91jv6kU1cvcosFaDL6vUyo/view?usp=sharing" target="_blank" class="w-full bg-white/50 lg:bg-fall-rust hover:bg-fall-rust/5 lg:hover:bg-fall-coffee border border-fall-coffee/5 lg:border-transparent lg:text-white rounded-2xl p-5 flex items-center justify-between group transition-all duration-500 lg:shadow-sm lg:hover:shadow-lg lg:hover:-translate-y-0.5 mt-2 lg:mt-0">
+                                <span class="font-body text-base font-semibold text-fall-coffee lg:text-white lg:group-hover:text-white group-hover:text-fall-rust transition-colors">Plantilla de "Sold as a Set"</span>
+                                <svg class="lg:hidden w-5 h-5 text-fall-rust opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                                <div class="hidden lg:flex items-center gap-2 opacity-80 group-hover:opacity-100 transition-opacity">
+                                    <span class="text-xs font-bold uppercase tracking-widest">Descargar</span>
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                                </div>
+                            </a>
+
+                            <!-- Specs -->
+                            <div class="bg-fall-mustard/10 rounded-2xl p-4 lg:p-5 mt-4 border border-fall-mustard/20">
+                                <span class="block font-retro text-[10px] lg:text-xs tracking-widest uppercase text-fall-mustard mb-1.5 lg:mb-2">Especificaciones de Impresión</span>
+                                <p class="font-body text-xs lg:text-sm text-fall-coffee/80 leading-relaxed">
+                                    Tamaño: <strong class="text-fall-coffee">1" x 2-5/8"</strong> | 
+                                    Papel: <strong class="text-fall-coffee">Carta (8.5" x 11")</strong> | 
+                                    Rendimiento: <strong class="text-fall-coffee">30 por Hoja</strong>
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
             </div>
 
         </div>
     </section>
+    
 
     <!-- ==========================================
          SECCIÓN EDITORIAL NUEVA (Sticky Sidebar)
