@@ -301,8 +301,8 @@
 
         <div class="max-w-7xl mx-auto flex flex-col lg:grid lg:grid-cols-12 gap-12 lg:gap-16">
             
-            <!-- [TEXTO PRINCIPAL] -> Arriba en Mobile, Izquierda en Desktop -->
-            <div class="lg:col-span-7 order-1 lg:order-1 flex flex-col gap-10 lg:pr-4">
+            <!-- [1. TEXTO PRINCIPAL] -> Arriba en Mobile, Izquierda en Desktop -->
+            <div class="lg:col-span-7 order-1 flex flex-col gap-10 lg:pr-4">
                 <div class="reveal-block">
                     <h2 class="font-retro text-4xl md:text-5xl lg:text-6xl font-extrabold text-fall-coffee mb-4 tracking-tight leading-[1.05]">Armado y Empaquetado</h2>
                     <h3 class="font-body text-xl md:text-2xl font-medium text-fall-rust mb-8">1.1 Armado de los Bundles</h3>
@@ -372,10 +372,10 @@
             </div>
 
             <!-- [2. TARJETAS DE DETALLES + RECURSOS] -> Abajo en Mobile, Derecha en Desktop -->
-            <div class="lg:col-span-5 relative mt-4 lg:mt-0 order-2 lg:order-2">
+            <div class="lg:col-span-5 relative mt-4 lg:mt-0 order-2">
                 <div class="flex flex-col gap-6 lg:gap-8 lg:sticky lg:top-32">
                     
-                    <!-- A. TARJETA DE DETALLES TÉCNICOS (AHORA CON ACORDEONES) -->
+                    <!-- A. TARJETA DE DETALLES TÉCNICOS (CON ACORDEONES EXCLUSIVOS) -->
                     <div class="details-card-anim bg-fall-leather rounded-[2rem] p-8 md:p-10 shadow-[0_30px_60px_rgba(62,39,35,0.12)] border border-white/10">
                         <h3 class="font-retro text-2xl md:text-3xl font-extrabold text-white mb-8 tracking-wide">Especificaciones<br>de Empaque</h3>
                         
@@ -384,19 +384,20 @@
                             <!-- 1. Códigos de Barras (Acordeón) -->
                             <div class="pb-4 relative spec-accordion">
                                 <div class="absolute bottom-0 left-0 w-full h-[1px] bg-white/20 detail-line"></div>
-                                <button class="spec-trigger w-full text-left flex items-center justify-between group detail-text">
+                                <button class="spec-trigger w-full text-left flex items-center justify-between group detail-text focus:outline-none">
                                     <div>
                                         <span class="block font-body text-sm font-medium text-white/70 mb-1 tracking-wide uppercase">Códigos de Barras :</span>
                                         <span class="block font-body text-lg font-medium text-white leading-snug group-hover:text-fall-mustard transition-colors">Validar combinaciones y tamaños</span>
                                     </div>
                                     <svg class="spec-chevron w-5 h-5 text-white/50 transition-transform duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
                                 </button>
+                                <!-- GSAP target (h-0 por defecto) -->
                                 <div class="spec-content h-0 overflow-hidden opacity-0">
-                                    <div class="pt-3 pb-2 flex flex-col gap-2 pl-2 border-l border-white/10 ml-2 mt-2">
-                                        <a href="#" class="text-white/70 hover:text-white font-body text-sm flex items-center gap-2"><span class="w-1 h-1 bg-fall-mustard rounded-full"></span> Opción 1 (Texto de prueba)</a>
-                                        <a href="#" class="text-white/70 hover:text-white font-body text-sm flex items-center gap-2"><span class="w-1 h-1 bg-fall-mustard rounded-full"></span> Opción 2 (Texto de prueba)</a>
-                                        <a href="#" class="text-white/70 hover:text-white font-body text-sm flex items-center gap-2"><span class="w-1 h-1 bg-fall-mustard rounded-full"></span> Opción 3 (Texto de prueba)</a>
-                                        <a href="#" class="text-white/70 hover:text-white font-body text-sm flex items-center gap-2"><span class="w-1 h-1 bg-fall-mustard rounded-full"></span> Opción 4 (Texto de prueba)</a>
+                                    <div class="pt-4 pb-2 flex flex-col gap-3 pl-3 border-l-2 border-white/20 ml-2 mt-2">
+                                        <a href="#" class="text-white hover:text-fall-mustard font-body font-bold text-[15px] flex items-center gap-2.5 transition-colors"><span class="w-1.5 h-1.5 bg-fall-mustard rounded-full"></span> Opción 1 (Texto de prueba)</a>
+                                        <a href="#" class="text-white hover:text-fall-mustard font-body font-bold text-[15px] flex items-center gap-2.5 transition-colors"><span class="w-1.5 h-1.5 bg-fall-mustard rounded-full"></span> Opción 2 (Texto de prueba)</a>
+                                        <a href="#" class="text-white hover:text-fall-mustard font-body font-bold text-[15px] flex items-center gap-2.5 transition-colors"><span class="w-1.5 h-1.5 bg-fall-mustard rounded-full"></span> Opción 3 (Texto de prueba)</a>
+                                        <a href="#" class="text-white hover:text-fall-mustard font-body font-bold text-[15px] flex items-center gap-2.5 transition-colors"><span class="w-1.5 h-1.5 bg-fall-mustard rounded-full"></span> Opción 4 (Texto de prueba)</a>
                                     </div>
                                 </div>
                             </div>
@@ -404,24 +405,25 @@
                             <!-- 2. Tamaño Etiqueta (Acordeón) -->
                             <div class="pb-4 relative spec-accordion">
                                 <div class="absolute bottom-0 left-0 w-full h-[1px] bg-white/20 detail-line"></div>
-                                <button class="spec-trigger w-full text-left flex items-center justify-between group detail-text">
+                                <button class="spec-trigger w-full text-left flex items-center justify-between group detail-text focus:outline-none">
                                     <div>
                                         <span class="block font-body text-sm font-medium text-white/70 mb-1 tracking-wide uppercase">Tamaño Etiqueta :</span>
                                         <span class="block font-body text-lg font-medium text-white leading-snug group-hover:text-fall-mustard transition-colors">1" x 2-5/8"</span>
                                     </div>
                                     <svg class="spec-chevron w-5 h-5 text-white/50 transition-transform duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
                                 </button>
+                                <!-- GSAP target (h-0 por defecto) -->
                                 <div class="spec-content h-0 overflow-hidden opacity-0">
-                                    <div class="pt-3 pb-2 flex flex-col gap-2 pl-2 border-l border-white/10 ml-2 mt-2">
-                                        <a href="#" class="text-white/70 hover:text-white font-body text-sm flex items-center gap-2"><span class="w-1 h-1 bg-fall-mustard rounded-full"></span> Opción 1 (Texto de prueba)</a>
-                                        <a href="#" class="text-white/70 hover:text-white font-body text-sm flex items-center gap-2"><span class="w-1 h-1 bg-fall-mustard rounded-full"></span> Opción 2 (Texto de prueba)</a>
-                                        <a href="#" class="text-white/70 hover:text-white font-body text-sm flex items-center gap-2"><span class="w-1 h-1 bg-fall-mustard rounded-full"></span> Opción 3 (Texto de prueba)</a>
-                                        <a href="#" class="text-white/70 hover:text-white font-body text-sm flex items-center gap-2"><span class="w-1 h-1 bg-fall-mustard rounded-full"></span> Opción 4 (Texto de prueba)</a>
+                                    <div class="pt-4 pb-2 flex flex-col gap-3 pl-3 border-l-2 border-white/20 ml-2 mt-2">
+                                        <a href="#" class="text-white hover:text-fall-mustard font-body font-bold text-[15px] flex items-center gap-2.5 transition-colors"><span class="w-1.5 h-1.5 bg-fall-mustard rounded-full"></span> Opción 1 (Texto de prueba)</a>
+                                        <a href="#" class="text-white hover:text-fall-mustard font-body font-bold text-[15px] flex items-center gap-2.5 transition-colors"><span class="w-1.5 h-1.5 bg-fall-mustard rounded-full"></span> Opción 2 (Texto de prueba)</a>
+                                        <a href="#" class="text-white hover:text-fall-mustard font-body font-bold text-[15px] flex items-center gap-2.5 transition-colors"><span class="w-1.5 h-1.5 bg-fall-mustard rounded-full"></span> Opción 3 (Texto de prueba)</a>
+                                        <a href="#" class="text-white hover:text-fall-mustard font-body font-bold text-[15px] flex items-center gap-2.5 transition-colors"><span class="w-1.5 h-1.5 bg-fall-mustard rounded-full"></span> Opción 4 (Texto de prueba)</a>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- 3. Papel Impresión (Botón enlace a otra página) -->
+                            <!-- 3. Papel Impresión (Botón de Enlace) -->
                             <div class="pb-4 relative">
                                 <div class="absolute bottom-0 left-0 w-full h-[1px] bg-white/20 detail-line"></div>
                                 <a href="https://google.com" target="_blank" class="w-full text-left flex items-center justify-between group detail-text hover:bg-white/5 p-2 -ml-2 rounded-lg transition-colors">
@@ -429,12 +431,12 @@
                                         <span class="block font-body text-sm font-medium text-white/70 mb-1 tracking-wide uppercase">Papel Impresión :</span>
                                         <span class="block font-body text-lg font-medium text-white leading-snug group-hover:text-fall-mustard transition-colors">Carta (8.5" x 11")</span>
                                     </div>
-                                    <!-- External Link Icon -->
-                                    <svg class="w-5 h-5 text-white/50 group-hover:text-white group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                                    <!-- External Link Icon animado -->
+                                    <svg class="w-5 h-5 text-white/50 group-hover:text-white group-hover:-translate-y-1 group-hover:translate-x-1 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
                                 </a>
                             </div>
 
-                            <!-- 4. Rendimiento (Texto fijo) -->
+                            <!-- 4. Rendimiento (Fijo) -->
                             <div class="pt-2">
                                 <span class="block font-body text-sm font-medium text-white/70 mb-1 detail-text tracking-wide uppercase">Rendimiento :</span>
                                 <span class="block font-body text-xl font-medium text-white detail-text">30 por Hoja</span>
@@ -445,7 +447,7 @@
                     <!-- B. ACORDEÓN DE DESCARGAS (Glassmorphism) -->
                     <div class="details-card-anim bg-white/70 lg:bg-white/80 backdrop-blur-2xl rounded-[2rem] shadow-[0_15px_35px_rgba(62,39,35,0.05)] border border-white overflow-hidden transition-all duration-300">
                         
-                        <button id="resources-trigger" class="w-full flex items-center justify-between p-6 lg:p-7 text-left group transition-colors lg:hover:bg-white/50 z-10 relative">
+                        <button id="resources-trigger" class="w-full flex items-center justify-between p-6 lg:p-7 text-left group transition-colors lg:hover:bg-white/50 z-10 relative focus:outline-none">
                             <div class="flex items-center gap-4 lg:gap-5">
                                 <span class="flex items-center justify-center w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-fall-leather/10 lg:bg-fall-leather/5 text-fall-leather border border-fall-leather/10 transition-all duration-500 lg:group-hover:scale-105 lg:group-hover:bg-fall-leather lg:group-hover:text-white">
                                     <svg class="w-6 h-6 lg:w-7 lg:h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
@@ -463,7 +465,7 @@
                                 
                                 <!-- Bundle 360 -->
                                 <div class="sub-accordion rounded-2xl bg-white/50 lg:bg-white/60 border border-fall-coffee/5 lg:border-white lg:hover:border-fall-rust/20 transition-all overflow-hidden lg:hover:shadow-sm">
-                                    <button class="sub-trigger w-full flex items-center justify-between p-5 text-left group">
+                                    <button class="sub-trigger w-full flex items-center justify-between p-5 text-left group focus:outline-none">
                                         <div class="flex items-center gap-3">
                                             <span class="hidden lg:block w-2.5 h-2.5 rounded-full bg-fall-rust opacity-40 group-hover:opacity-100 transition-opacity"></span>
                                             <span class="font-body text-base font-semibold text-fall-coffee lg:group-hover:text-fall-rust transition-colors">Bundle de 360 gr</span>
@@ -494,7 +496,7 @@
 
                                 <!-- Bundle 155 -->
                                 <div class="sub-accordion rounded-2xl bg-white/50 lg:bg-white/60 border border-fall-coffee/5 lg:border-white lg:hover:border-fall-mustard/20 transition-all overflow-hidden lg:hover:shadow-sm mt-1 lg:mt-0">
-                                    <button class="sub-trigger w-full flex items-center justify-between p-5 text-left group">
+                                    <button class="sub-trigger w-full flex items-center justify-between p-5 text-left group focus:outline-none">
                                         <div class="flex items-center gap-3">
                                             <span class="hidden lg:block w-2.5 h-2.5 rounded-full bg-fall-mustard opacity-40 group-hover:opacity-100 transition-opacity"></span>
                                             <span class="font-body text-base font-semibold text-fall-coffee lg:group-hover:text-fall-mustard transition-colors">Bundle de 155 gr</span>
@@ -710,7 +712,7 @@
             initSmartNavbar();
             initPrologueAnimation();
             initEditorialAnimation();
-            initSpecsAccordion(); // NUEVO: Acordeones de la tarjeta de Especificaciones
+            initSpecsAccordion(); // NUEVO: Acordeones Mutex (Exclusivos)
             initResourcesAccordion();
             initSmoothScrolling();
             initMobileMenu();
@@ -795,7 +797,7 @@
             });
         }
 
-        // 5. NUEVO: ACORDEONES TARJETA ESPECIFICACIONES TÉCNICAS (Exclusivos)
+        // 5. ACORDEONES EXCLUSIVOS (Tarjeta de Especificaciones)
         function initSpecsAccordion() {
             const easePremium = "cubic-bezier(0.23, 1, 0.32, 1)"; 
             const specAccordions = document.querySelectorAll('.spec-accordion');
@@ -804,67 +806,77 @@
                 const trigger = acc.querySelector('.spec-trigger');
                 const content = acc.querySelector('.spec-content');
                 const chevron = acc.querySelector('.spec-chevron');
-                let isOpen = false;
 
                 trigger.addEventListener('click', () => {
-                    isOpen = !isOpen;
-                    
-                    // Comportamiento "Solo uno abierto a la vez"
-                    if (isOpen) {
-                        specAccordions.forEach(otherAcc => {
-                            if (otherAcc !== acc && otherAcc.classList.contains('is-spec-open')) {
-                                otherAcc.click(); // Dispara el click para cerrarlo
-                            }
-                        });
-                        acc.classList.add('is-spec-open');
-                    } else {
-                        acc.classList.remove('is-spec-open');
-                    }
+                    const isCurrentlyOpen = acc.classList.contains('is-spec-open');
 
-                    // Animar apertura/cierre
-                    gsap.to(content, { height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0, duration: 0.5, ease: easePremium });
-                    gsap.to(chevron, { rotation: isOpen ? 180 : 0, duration: 0.5, ease: easePremium });
+                    // 1. Cierra TODOS los sub-acordeones de especificaciones primero
+                    specAccordions.forEach(otherAcc => {
+                        otherAcc.classList.remove('is-spec-open');
+                        const otherContent = otherAcc.querySelector('.spec-content');
+                        const otherChevron = otherAcc.querySelector('.spec-chevron');
+                        gsap.to(otherContent, { height: 0, opacity: 0, duration: 0.5, ease: easePremium });
+                        gsap.to(otherChevron, { rotation: 0, duration: 0.5, ease: easePremium });
+                    });
+
+                    // 2. Si el que clickeaste NO estaba abierto, ábrelo
+                    if (!isCurrentlyOpen) {
+                        acc.classList.add('is-spec-open');
+                        gsap.to(content, { height: "auto", opacity: 1, duration: 0.5, ease: easePremium });
+                        gsap.to(chevron, { rotation: 180, duration: 0.5, ease: easePremium });
+                    }
                 });
             });
         }
 
-        // 6. ACORDEONES ANIDADOS (Recursos)
+        // 6. ACORDEONES ANIDADOS EXCLUSIVOS (Recursos de Descarga)
         function initResourcesAccordion() {
             const easePremium = "cubic-bezier(0.23, 1, 0.32, 1)"; 
+            
+            // Lógica del Panel Principal
             const mainTrigger = document.getElementById('resources-trigger');
             const mainContent = document.getElementById('resources-content');
             const mainChevron = document.getElementById('resources-chevron');
-            let isMainOpen = false;
 
             if(mainTrigger && mainContent) {
                 mainTrigger.addEventListener('click', () => {
-                    isMainOpen = !isMainOpen;
-                    gsap.to(mainContent, { height: isMainOpen ? "auto" : 0, opacity: isMainOpen ? 1 : 0, duration: 0.6, ease: easePremium });
-                    gsap.to(mainChevron, { rotation: isMainOpen ? 180 : 0, duration: 0.6, ease: easePremium });
+                    const isMainOpen = mainTrigger.classList.contains('is-open');
+                    
+                    if(!isMainOpen) {
+                        mainTrigger.classList.add('is-open');
+                        gsap.to(mainContent, { height: "auto", opacity: 1, duration: 0.6, ease: easePremium });
+                        gsap.to(mainChevron, { rotation: 180, duration: 0.6, ease: easePremium });
+                    } else {
+                        mainTrigger.classList.remove('is-open');
+                        gsap.to(mainContent, { height: 0, opacity: 0, duration: 0.6, ease: easePremium });
+                        gsap.to(mainChevron, { rotation: 0, duration: 0.6, ease: easePremium });
+                    }
                 });
             }
 
+            // Lógica de Sub-paneles
             const subAccordions = document.querySelectorAll('.sub-accordion');
             subAccordions.forEach(acc => {
                 const trigger = acc.querySelector('.sub-trigger');
                 const content = acc.querySelector('.sub-content');
                 const chevron = acc.querySelector('.sub-chevron');
-                let isOpen = false;
 
                 trigger.addEventListener('click', () => {
-                    isOpen = !isOpen;
-                    if (isOpen) {
-                        subAccordions.forEach(otherAcc => {
-                            if (otherAcc !== acc && otherAcc.classList.contains('is-sub-open')) {
-                                otherAcc.click(); 
-                            }
-                        });
+                    const isCurrentlyOpen = acc.classList.contains('is-sub-open');
+
+                    subAccordions.forEach(otherAcc => {
+                        otherAcc.classList.remove('is-sub-open');
+                        const otherContent = otherAcc.querySelector('.sub-content');
+                        const otherChevron = otherAcc.querySelector('.sub-chevron');
+                        gsap.to(otherContent, { height: 0, opacity: 0, duration: 0.5, ease: easePremium });
+                        gsap.to(otherChevron, { rotation: 0, duration: 0.5, ease: easePremium });
+                    });
+
+                    if (!isCurrentlyOpen) {
                         acc.classList.add('is-sub-open');
-                    } else {
-                        acc.classList.remove('is-sub-open');
+                        gsap.to(content, { height: "auto", opacity: 1, duration: 0.5, ease: easePremium });
+                        gsap.to(chevron, { rotation: 180, duration: 0.5, ease: easePremium });
                     }
-                    gsap.to(content, { height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0, duration: 0.5, ease: easePremium });
-                    gsap.to(chevron, { rotation: isOpen ? 180 : 0, duration: 0.5, ease: easePremium });
                 });
             });
         }
