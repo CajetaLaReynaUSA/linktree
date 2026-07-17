@@ -89,7 +89,6 @@
          FONDO PARALLAX ORGÁNICO
     =========================================== -->
     <div class="fixed inset-0 z-[-1] pointer-events-none opacity-40">
-        <!-- Textura de Ruido Vectorial -->
         <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.75%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/%3E%3C/svg%3E');"></div>
         <div class="bg-shape-1 absolute -top-20 -left-20 w-72 h-72 md:w-[40rem] md:h-[40rem] bg-fall-mustard/15 rounded-full blur-[80px] md:blur-[130px]"></div>
         <div class="bg-shape-2 absolute top-1/3 right-[-10%] w-80 h-[35rem] bg-fall-olive/10 rounded-full blur-[90px] md:blur-[150px]"></div>
@@ -213,7 +212,7 @@
                 </p>
             </div>
 
-            <!-- Alerta Técnica (Split-DOM) -->
+            <!-- Alerta Técnica -->
             <div class="prologue-block max-w-4xl mx-auto mb-20">
                 <div class="hidden md:flex relative bg-white/70 backdrop-blur-xl border border-white/80 rounded-[2rem] p-8 shadow-[0_25px_60px_rgba(62,39,35,0.03)] flex-col gap-4 group hover:border-fall-rust/20 hover:bg-white transition-all duration-500 ease-premium">
                     <div class="flex items-center gap-3">
@@ -302,8 +301,8 @@
 
         <div class="max-w-7xl mx-auto flex flex-col lg:grid lg:grid-cols-12 gap-12 lg:gap-16">
             
-            <!-- [TEXTO PRINCIPAL] -> Al ponerlo PRIMERO en el HTML, Mobile lo apila ARRIBA naturalmente -->
-            <div class="lg:col-span-7 flex flex-col gap-10 lg:pr-4">
+            <!-- [1. TEXTO PRINCIPAL] -> Arriba en Mobile, Izquierda en Desktop -->
+            <div class="lg:col-span-7 order-1 lg:order-1 flex flex-col gap-10 lg:pr-4">
                 <div class="reveal-block">
                     <h2 class="font-retro text-4xl md:text-5xl lg:text-6xl font-extrabold text-fall-coffee mb-4 tracking-tight leading-[1.05]">Armado y Empaquetado</h2>
                     <h3 class="font-body text-xl md:text-2xl font-medium text-fall-rust mb-8">1.1 Armado de los Bundles</h3>
@@ -372,98 +371,119 @@
                 </div>
             </div>
 
-            <!-- [TARJETA DE RECURSOS] -> Al ponerlo SEGUNDO en el HTML, Mobile lo apila ABAJO, Desktop lo pone DERECHA -->
-            <div class="lg:col-span-5 relative mt-4 lg:mt-0">
-                <div class="details-card-anim lg:sticky lg:top-32 bg-white/70 lg:bg-white/80 backdrop-blur-2xl rounded-[2rem] shadow-[0_15px_35px_rgba(62,39,35,0.05)] lg:shadow-[0_20px_50px_rgba(62,39,35,0.04)] border border-white overflow-hidden transition-all duration-300 lg:hover:shadow-[0_30px_70px_rgba(62,39,35,0.08)]">
+            <!-- [2. TARJETAS DE DETALLES + RECURSOS] -> Abajo en Mobile, Derecha en Desktop -->
+            <div class="lg:col-span-5 relative mt-4 lg:mt-0 order-2 lg:order-2">
+                <div class="flex flex-col gap-8 lg:sticky lg:top-32">
                     
-                    <button id="resources-trigger" class="w-full flex items-center justify-between p-6 lg:p-7 text-left group transition-colors lg:hover:bg-white/50 z-10 relative">
-                        <div class="flex items-center gap-4 lg:gap-5">
-                            <span class="flex items-center justify-center w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-fall-leather/10 lg:bg-fall-leather/5 text-fall-leather border border-fall-leather/10 transition-all duration-500 lg:group-hover:scale-105 lg:group-hover:bg-fall-leather lg:group-hover:text-white">
-                                <svg class="w-6 h-6 lg:w-7 lg:h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
-                            </span>
-                            <div>
-                                <h3 class="font-retro text-2xl lg:text-3xl font-extrabold text-fall-coffee tracking-tight">Descargar etiquetas</h3>
-                                <p class="hidden lg:block text-sm text-fall-coffee/60 mt-1">Plantillas oficiales FBA</p>
+                    <!-- A. TARJETA DE DETALLES TÉCNICOS -->
+                    <div class="details-card-anim bg-fall-leather rounded-[2rem] p-8 md:p-10 shadow-[0_30px_60px_rgba(62,39,35,0.12)] border border-white/10">
+                        <h3 class="font-retro text-2xl md:text-3xl font-extrabold text-white mb-8 tracking-wide">Especificaciones<br>de Empaque</h3>
+                        
+                        <div class="flex flex-col gap-6">
+                            <div class="pb-6 relative">
+                                <div class="absolute bottom-0 left-0 w-full h-[1px] bg-white/20 detail-line"></div>
+                                <span class="block font-body text-sm font-medium text-white/70 mb-1 detail-text tracking-wide uppercase">Códigos de Barras :</span>
+                                <span class="block font-body text-lg font-medium text-white detail-text leading-snug">Validar combinaciones y tamaños</span>
                             </div>
-                        </div>
-                        <svg id="resources-chevron" class="w-6 h-6 lg:w-7 lg:h-7 text-fall-coffee/30 transition-transform duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" /></svg>
-                    </button>
-
-                    <div id="resources-content" class="h-0 overflow-hidden opacity-0 border-t border-fall-coffee/5 bg-white/30 lg:bg-fall-cream/20">
-                        <div class="p-4 lg:p-5 flex flex-col gap-3 lg:gap-4">
-                            
-                            <!-- Bundle 360 -->
-                            <div class="sub-accordion rounded-2xl bg-white/50 lg:bg-white/60 border border-fall-coffee/5 lg:border-white lg:hover:border-fall-rust/20 transition-all overflow-hidden lg:hover:shadow-sm">
-                                <button class="sub-trigger w-full flex items-center justify-between p-5 text-left group">
-                                    <div class="flex items-center gap-3">
-                                        <span class="hidden lg:block w-2.5 h-2.5 rounded-full bg-fall-rust opacity-40 group-hover:opacity-100 transition-opacity"></span>
-                                        <span class="font-body text-base font-semibold text-fall-coffee lg:group-hover:text-fall-rust transition-colors">Bundle de 360 gr</span>
-                                    </div>
-                                    <svg class="sub-chevron w-5 h-5 text-fall-coffee/20 lg:group-hover:text-fall-rust/50 transition-all duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" /></svg>
-                                </button>
-                                <div class="sub-content h-0 overflow-hidden opacity-0 bg-fall-cream/30 lg:bg-white/40">
-                                    <div class="p-4 pl-6 lg:p-5 lg:pl-10 flex flex-col gap-2.5 lg:gap-3.5 border-t border-fall-coffee/5">
-                                        <a href="#" class="group/link flex items-center justify-between py-1 font-body text-sm font-medium text-fall-coffee/70 lg:text-fall-coffee/80 hover:text-fall-rust transition-colors">
-                                            <span class="flex items-center gap-2"><span class="lg:hidden w-1.5 h-1.5 rounded-full bg-fall-rust/30"></span> Natural, Vainilla y Fresa</span>
-                                            <svg class="hidden lg:block w-4 h-4 text-fall-rust opacity-0 group-hover/link:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                                        </a>
-                                        <a href="#" class="group/link flex items-center justify-between py-1 font-body text-sm font-medium text-fall-coffee/70 lg:text-fall-coffee/80 hover:text-fall-rust transition-colors">
-                                            <span class="flex items-center gap-2"><span class="lg:hidden w-1.5 h-1.5 rounded-full bg-fall-rust/30"></span> Natural, Café y Envinada</span>
-                                            <svg class="hidden lg:block w-4 h-4 text-fall-rust opacity-0 group-hover/link:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                                        </a>
-                                        <a href="#" class="group/link flex items-center justify-between py-1 font-body text-sm font-medium text-fall-coffee/70 lg:text-fall-coffee/80 hover:text-fall-rust transition-colors">
-                                            <span class="flex items-center gap-2"><span class="lg:hidden w-1.5 h-1.5 rounded-full bg-fall-rust/30"></span> Natural, Quemada y Nuez</span>
-                                            <svg class="hidden lg:block w-4 h-4 text-fall-rust opacity-0 group-hover/link:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                                        </a>
-                                        <a href="#" class="group/link flex items-center justify-between py-1 font-body text-sm font-medium text-fall-coffee/70 lg:text-fall-coffee/80 hover:text-fall-rust transition-colors">
-                                            <span class="flex items-center gap-2"><span class="lg:hidden w-1.5 h-1.5 rounded-full bg-fall-rust/30"></span> Tequila, Mezcal y Rompope</span>
-                                            <svg class="hidden lg:block w-4 h-4 text-fall-rust opacity-0 group-hover/link:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                                        </a>
-                                    </div>
-                                </div>
+                            <div class="pb-6 relative">
+                                <div class="absolute bottom-0 left-0 w-full h-[1px] bg-white/20 detail-line"></div>
+                                <span class="block font-body text-sm font-medium text-white/70 mb-1 detail-text tracking-wide uppercase">Tamaño Etiqueta :</span>
+                                <span class="block font-body text-xl font-medium text-white detail-text">1" x 2-5/8"</span>
                             </div>
-
-                            <!-- Bundle 155 -->
-                            <div class="sub-accordion rounded-2xl bg-white/50 lg:bg-white/60 border border-fall-coffee/5 lg:border-white lg:hover:border-fall-mustard/20 transition-all overflow-hidden lg:hover:shadow-sm mt-1 lg:mt-0">
-                                <button class="sub-trigger w-full flex items-center justify-between p-5 text-left group">
-                                    <div class="flex items-center gap-3">
-                                        <span class="hidden lg:block w-2.5 h-2.5 rounded-full bg-fall-mustard opacity-40 group-hover:opacity-100 transition-opacity"></span>
-                                        <span class="font-body text-base font-semibold text-fall-coffee lg:group-hover:text-fall-mustard transition-colors">Bundle de 155 gr</span>
-                                    </div>
-                                    <svg class="sub-chevron w-5 h-5 text-fall-coffee/20 lg:group-hover:text-fall-mustard/50 transition-all duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" /></svg>
-                                </button>
-                                <div class="sub-content h-0 overflow-hidden opacity-0 bg-fall-cream/30 lg:bg-white/40">
-                                    <div class="p-4 pl-6 lg:p-5 lg:pl-10 flex flex-col gap-2.5 lg:gap-3.5 border-t border-fall-coffee/5">
-                                        <a href="#" class="group/link flex items-center justify-between py-1 font-body text-sm font-medium text-fall-coffee/70 lg:text-fall-coffee/80 hover:text-fall-mustard transition-colors">
-                                            <span class="flex items-center gap-2"><span class="lg:hidden w-1.5 h-1.5 rounded-full bg-fall-mustard/30"></span> Natural, Vainilla y Fresa</span>
-                                            <svg class="hidden lg:block w-4 h-4 text-fall-mustard opacity-0 group-hover/link:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                                        </a>
-                                    </div>
-                                </div>
+                            <div class="pb-6 relative">
+                                <div class="absolute bottom-0 left-0 w-full h-[1px] bg-white/20 detail-line"></div>
+                                <span class="block font-body text-sm font-medium text-white/70 mb-1 detail-text tracking-wide uppercase">Papel Impresión :</span>
+                                <span class="block font-body text-lg font-medium text-white detail-text">Carta (8.5" x 11")</span>
                             </div>
-
-                            <!-- Sold as a Set CTA -->
-                            <a href="https://drive.google.com/file/d/1BVIo4PhHDz91jv6kU1cvcosFaDL6vUyo/view?usp=sharing" target="_blank" class="w-full bg-white/50 lg:bg-fall-rust hover:bg-fall-rust/5 lg:hover:bg-fall-coffee border border-fall-coffee/5 lg:border-transparent lg:text-white rounded-2xl p-5 flex items-center justify-between group transition-all duration-500 lg:shadow-sm lg:hover:shadow-lg lg:hover:-translate-y-0.5 mt-2 lg:mt-0">
-                                <span class="font-body text-base font-semibold text-fall-coffee lg:text-white lg:group-hover:text-white group-hover:text-fall-rust transition-colors">Plantilla "Sold as a Set"</span>
-                                <svg class="lg:hidden w-5 h-5 text-fall-rust opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
-                                <div class="hidden lg:flex items-center gap-2 opacity-80 group-hover:opacity-100 transition-opacity">
-                                    <span class="text-xs font-bold uppercase tracking-widest">Descargar</span>
-                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
-                                </div>
-                            </a>
-
-                            <!-- Specs -->
-                            <div class="bg-fall-mustard/10 rounded-2xl p-4 lg:p-5 mt-4 border border-fall-mustard/20">
-                                <span class="block font-retro text-[10px] lg:text-xs tracking-widest uppercase text-fall-mustard mb-1.5 lg:mb-2">Especificaciones de Impresión</span>
-                                <p class="font-body text-xs lg:text-sm text-fall-coffee/80 leading-relaxed">
-                                    Tamaño: <strong class="text-fall-coffee">1" x 2-5/8"</strong> | 
-                                    Papel: <strong class="text-fall-coffee">Carta (8.5" x 11")</strong> | 
-                                    Rendimiento: <strong class="text-fall-coffee">30 por Hoja</strong>
-                                </p>
+                            <div class="pt-2">
+                                <span class="block font-body text-sm font-medium text-white/70 mb-1 detail-text tracking-wide uppercase">Rendimiento :</span>
+                                <span class="block font-body text-xl font-medium text-white detail-text">30 por Hoja</span>
                             </div>
-
                         </div>
                     </div>
+
+                    <!-- B. ACORDEÓN DE DESCARGAS (Glassmorphism) -->
+                    <div class="details-card-anim bg-white/70 lg:bg-white/80 backdrop-blur-2xl rounded-[2rem] shadow-[0_15px_35px_rgba(62,39,35,0.05)] border border-white overflow-hidden transition-all duration-300">
+                        
+                        <button id="resources-trigger" class="w-full flex items-center justify-between p-6 lg:p-7 text-left group transition-colors lg:hover:bg-white/50 z-10 relative">
+                            <div class="flex items-center gap-4 lg:gap-5">
+                                <span class="flex items-center justify-center w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-fall-leather/10 lg:bg-fall-leather/5 text-fall-leather border border-fall-leather/10 transition-all duration-500 lg:group-hover:scale-105 lg:group-hover:bg-fall-leather lg:group-hover:text-white">
+                                    <svg class="w-6 h-6 lg:w-7 lg:h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                                </span>
+                                <div>
+                                    <h3 class="font-retro text-2xl lg:text-3xl font-extrabold text-fall-coffee tracking-tight">Descargar etiquetas</h3>
+                                    <p class="hidden lg:block text-sm text-fall-coffee/60 mt-1">Plantillas oficiales FBA</p>
+                                </div>
+                            </div>
+                            <svg id="resources-chevron" class="w-6 h-6 lg:w-7 lg:h-7 text-fall-coffee/30 transition-transform duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+
+                        <div id="resources-content" class="h-0 overflow-hidden opacity-0 border-t border-fall-coffee/5 bg-white/30 lg:bg-fall-cream/20">
+                            <div class="p-4 lg:p-5 flex flex-col gap-3 lg:gap-4">
+                                
+                                <!-- Bundle 360 -->
+                                <div class="sub-accordion rounded-2xl bg-white/50 lg:bg-white/60 border border-fall-coffee/5 lg:border-white lg:hover:border-fall-rust/20 transition-all overflow-hidden lg:hover:shadow-sm">
+                                    <button class="sub-trigger w-full flex items-center justify-between p-5 text-left group">
+                                        <div class="flex items-center gap-3">
+                                            <span class="hidden lg:block w-2.5 h-2.5 rounded-full bg-fall-rust opacity-40 group-hover:opacity-100 transition-opacity"></span>
+                                            <span class="font-body text-base font-semibold text-fall-coffee lg:group-hover:text-fall-rust transition-colors">Bundle de 360 gr</span>
+                                        </div>
+                                        <svg class="sub-chevron w-5 h-5 text-fall-coffee/20 lg:group-hover:text-fall-rust/50 transition-all duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" /></svg>
+                                    </button>
+                                    <div class="sub-content h-0 overflow-hidden opacity-0 bg-fall-cream/30 lg:bg-white/40">
+                                        <div class="p-4 pl-6 lg:p-5 lg:pl-10 flex flex-col gap-2.5 lg:gap-3.5 border-t border-fall-coffee/5">
+                                            <a href="#" class="group/link flex items-center justify-between py-1 font-body text-sm font-medium text-fall-coffee/70 lg:text-fall-coffee/80 hover:text-fall-rust transition-colors">
+                                                <span class="flex items-center gap-2"><span class="lg:hidden w-1.5 h-1.5 rounded-full bg-fall-rust/30"></span> Natural, Vainilla y Fresa</span>
+                                                <svg class="hidden lg:block w-4 h-4 text-fall-rust opacity-0 group-hover/link:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                                            </a>
+                                            <a href="#" class="group/link flex items-center justify-between py-1 font-body text-sm font-medium text-fall-coffee/70 lg:text-fall-coffee/80 hover:text-fall-rust transition-colors">
+                                                <span class="flex items-center gap-2"><span class="lg:hidden w-1.5 h-1.5 rounded-full bg-fall-rust/30"></span> Natural, Café y Envinada</span>
+                                                <svg class="hidden lg:block w-4 h-4 text-fall-rust opacity-0 group-hover/link:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                                            </a>
+                                            <a href="#" class="group/link flex items-center justify-between py-1 font-body text-sm font-medium text-fall-coffee/70 lg:text-fall-coffee/80 hover:text-fall-rust transition-colors">
+                                                <span class="flex items-center gap-2"><span class="lg:hidden w-1.5 h-1.5 rounded-full bg-fall-rust/30"></span> Natural, Quemada y Nuez</span>
+                                                <svg class="hidden lg:block w-4 h-4 text-fall-rust opacity-0 group-hover/link:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                                            </a>
+                                            <a href="#" class="group/link flex items-center justify-between py-1 font-body text-sm font-medium text-fall-coffee/70 lg:text-fall-coffee/80 hover:text-fall-rust transition-colors">
+                                                <span class="flex items-center gap-2"><span class="lg:hidden w-1.5 h-1.5 rounded-full bg-fall-rust/30"></span> Tequila, Mezcal y Rompope</span>
+                                                <svg class="hidden lg:block w-4 h-4 text-fall-rust opacity-0 group-hover/link:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Bundle 155 -->
+                                <div class="sub-accordion rounded-2xl bg-white/50 lg:bg-white/60 border border-fall-coffee/5 lg:border-white lg:hover:border-fall-mustard/20 transition-all overflow-hidden lg:hover:shadow-sm mt-1 lg:mt-0">
+                                    <button class="sub-trigger w-full flex items-center justify-between p-5 text-left group">
+                                        <div class="flex items-center gap-3">
+                                            <span class="hidden lg:block w-2.5 h-2.5 rounded-full bg-fall-mustard opacity-40 group-hover:opacity-100 transition-opacity"></span>
+                                            <span class="font-body text-base font-semibold text-fall-coffee lg:group-hover:text-fall-mustard transition-colors">Bundle de 155 gr</span>
+                                        </div>
+                                        <svg class="sub-chevron w-5 h-5 text-fall-coffee/20 lg:group-hover:text-fall-mustard/50 transition-all duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" /></svg>
+                                    </button>
+                                    <div class="sub-content h-0 overflow-hidden opacity-0 bg-fall-cream/30 lg:bg-white/40">
+                                        <div class="p-4 pl-6 lg:p-5 lg:pl-10 flex flex-col gap-2.5 lg:gap-3.5 border-t border-fall-coffee/5">
+                                            <a href="#" class="group/link flex items-center justify-between py-1 font-body text-sm font-medium text-fall-coffee/70 lg:text-fall-coffee/80 hover:text-fall-mustard transition-colors">
+                                                <span class="flex items-center gap-2"><span class="lg:hidden w-1.5 h-1.5 rounded-full bg-fall-mustard/30"></span> Natural, Vainilla y Fresa</span>
+                                                <svg class="hidden lg:block w-4 h-4 text-fall-mustard opacity-0 group-hover/link:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Sold as a Set CTA -->
+                                <a href="https://drive.google.com/file/d/1BVIo4PhHDz91jv6kU1cvcosFaDL6vUyo/view?usp=sharing" target="_blank" class="w-full bg-white/50 lg:bg-fall-rust hover:bg-fall-rust/5 lg:hover:bg-fall-coffee border border-fall-coffee/5 lg:border-transparent lg:text-white rounded-2xl p-5 flex items-center justify-between group transition-all duration-500 lg:shadow-sm lg:hover:shadow-lg lg:hover:-translate-y-0.5 mt-2 lg:mt-0">
+                                    <span class="font-body text-base font-semibold text-fall-coffee lg:text-white lg:group-hover:text-white group-hover:text-fall-rust transition-colors">Plantilla "Sold as a Set"</span>
+                                    <svg class="lg:hidden w-5 h-5 text-fall-rust opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                                    <div class="hidden lg:flex items-center gap-2 opacity-80 group-hover:opacity-100 transition-opacity">
+                                        <span class="text-xs font-bold uppercase tracking-widest">Descargar</span>
+                                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -556,7 +576,7 @@
 
         <div class="max-w-7xl mx-auto flex flex-col lg:grid lg:grid-cols-12 gap-12 lg:gap-16">
             
-            <!-- [TEXTO PRINCIPAL] -> Arriba en Mobile, Izquierda en Desktop -->
+            <!-- Text Content (Izquierda) -->
             <div class="lg:col-span-7 order-1 lg:order-1 flex flex-col gap-10 lg:pr-4">
                 <div class="reveal-block">
                     <h2 class="font-retro text-4xl md:text-5xl lg:text-6xl font-extrabold text-fall-coffee mb-4 tracking-tight leading-[1.05]">Envío al Almacén</h2>
@@ -584,7 +604,7 @@
                 </div>
             </div>
 
-            <!-- Sticky Card (Derecha en Desktop, Abajo en Mobile) -->
+            <!-- Sticky Card (Derecha en Desktop) -->
             <div class="lg:col-span-5 order-2 lg:order-2 relative mt-4 lg:mt-0">
                 <div class="details-card-anim lg:sticky lg:top-32 bg-[#2B3A2C] rounded-[2rem] p-8 md:p-10 shadow-[0_30px_60px_rgba(43,58,44,0.12)] border border-white/10">
                     <h3 class="font-retro text-2xl md:text-3xl font-extrabold text-white mb-8 tracking-wide">Despacho<br>Logístico</h3>
@@ -712,7 +732,7 @@
             });
         }
 
-        // 4. EDITORIAL BLOCKS ANIMATION (ZIG-ZAG)
+        // 4. EDITORIAL BLOCKS ANIMATION (ZIG-ZAG + DETAILS CARDS)
         function initEditorialAnimation() {
             const blocks = gsap.utils.toArray('.reveal-block');
             blocks.forEach((block) => {
@@ -722,6 +742,7 @@
                 });
             });
 
+            // Esto detectará TAMBIÉN la nueva tarjeta de Especificaciones Técnicas del Paso 1
             const detailCards = gsap.utils.toArray('.details-card-anim');
             detailCards.forEach((card) => {
                 const cardTl = gsap.timeline({ scrollTrigger: { trigger: card, start: "top 80%" } });
